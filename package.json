@@ -1,0 +1,25 @@
+{
+  "name": "ner-the-high-priest",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\" \"tools/**/*.ts\"",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "validate": "esbuild tools/validate-cli.ts --bundle --platform=node --format=esm --outfile=.cache/validate-cards.mjs && node .cache/validate-cards.mjs",
+    "sim": "esbuild tools/simulate.ts --bundle --platform=node --format=esm --outfile=.cache/simulate.mjs && node .cache/simulate.mjs",
+    "editor": "vite --open /editor.html"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "esbuild": "^0.28.2",
+    "jsdom": "^29.1.1",
+    "prettier": "^3.9.10",
+    "typescript": "~5.9.3",
+    "vite": "^7.1.0",
+    "vitest": "^4.1.12"
+  }
+}

@@ -1,0 +1,1058 @@
+{
+  "modes": {
+    "label": "모드",
+    "bestYear": "최장 재임 ({mode}) {year}년",
+    "previewUp": "증가, 크기 {n} 정도",
+    "previewDown": "감소, 크기 {n} 정도",
+    "previewNeutral": "변화 크기 {n} 정도, 방향 불명",
+    "apprentice": {
+      "name": "견습 사제",
+      "tier": "Easy",
+      "desc": "어디 보자… 도장이…",
+      "endingLine": "견습 사제로 결재"
+    },
+    "priest": {
+      "name": "사제장",
+      "tier": "Hard",
+      "desc": "오늘따라 까다롭네요",
+      "endingLine": "사제장으로 결재"
+    },
+    "bishop": {
+      "name": "주교",
+      "tier": "Endless + Extreme",
+      "desc": "끝이 없군요…",
+      "endingLine": "주교로 결재",
+      "locked": "진엔딩 후 해금",
+      "lockedHint": "견습 사제나 사제장으로 200년을 버틴 뒤 왕국 탈출에 성공하면 열려요."
+    }
+  },
+  "statuses": {
+    "cane_spread": {
+      "name": "사탕수수 번식",
+      "desc": "사탕수수가 저절로 퍼져 사탕이 공문마다 늘어납니다."
+    },
+    "ember": {
+      "name": "불씨",
+      "desc": "폭죽 불씨가 어딘가에 남아 있습니다. 곧 신앙이 크게 떨어집니다."
+    },
+    "strike": {
+      "name": "파업",
+      "desc": "해산당한 요정들이 일손을 놓아 사탕이 공문마다 줄어듭니다."
+    },
+    "drought": {
+      "name": "가뭄",
+      "desc": "밭이 말라 주민이 공문마다 줄어듭니다."
+    },
+    "logging": {
+      "name": "뿌리 공사",
+      "desc": "동쪽 들판 공사로 세계수 뿌리가 다쳐 신앙이 공문마다 줄어듭니다."
+    },
+    "loyalty_potion": {
+      "name": "충성 포션",
+      "desc": "주민이 공문마다 조금씩 늘어납니다."
+    },
+    "betrayal_potion": {
+      "name": "배신 포션",
+      "desc": "주민이 공문마다 조금씩 줄어듭니다."
+    },
+    "ticking_parcel": {
+      "name": "째깍째깍",
+      "desc": "소포가 곧 열립니다. 사탕이 크게 줄어듭니다."
+    },
+    "hibernation": {
+      "name": "단체 낮잠",
+      "desc": "요정들이 낮잠 자는 동안 주민 게이지가 움직이지 않습니다."
+    },
+    "sprout": {
+      "name": "새싹 돌보기",
+      "desc": "세계수 새싹이 자라 신앙이 공문마다 늘어납니다."
+    },
+    "damp_storage": {
+      "name": "눅눅한 창고",
+      "desc": "새는 지붕 때문에 사탕이 공문마다 줄어듭니다."
+    },
+    "axe_repair": {
+      "name": "도끼 정비 중",
+      "desc": "도끼를 쓸 수 없습니다. 돌아오면 졸음이 사라집니다."
+    },
+    "night_escape": {
+      "name": "밤마다 탈출",
+      "desc": "여왕님의 밤 외출을 막지 못해 경비대가 지쳐 갑니다. 주민이 공문마다 줄어듭니다."
+    },
+    "sulky_queen": {
+      "name": "서운한 여왕",
+      "desc": "삐친 여왕님. 에르핀이 공문마다 줄어듭니다."
+    },
+    "guarded_branch": {
+      "name": "지켜 낸 가지",
+      "desc": "팔지 않은 세계수 가지 덕분에 신앙이 공문마다 늘어납니다."
+    },
+    "empty_houses": {
+      "name": "빈집들",
+      "desc": "떠난 이웃을 따라 주민이 공문마다 줄어듭니다."
+    },
+    "supply_delay": {
+      "name": "공급 지연",
+      "desc": "모나티엄이 공급을 늦춰 사탕이 공문마다 줄어듭니다."
+    },
+    "light_greeting": {
+      "name": "가벼운 인사",
+      "desc": "부담 없는 인사 덕분에 주민이 공문마다 늘어납니다."
+    },
+    "grace_year": {
+      "name": "한 해 유예",
+      "desc": "유예가 끝나면 사탕 값이 크게 오릅니다."
+    },
+    "drowsy_fairies": {
+      "name": "꾸벅꾸벅",
+      "desc": "꿀잠 물약 부작용으로 요정들이 졸아 사탕이 공문마다 줄어듭니다."
+    },
+    "subscription_fee": {
+      "name": "이용료",
+      "desc": "냉장 진열장 이용료가 나가 사탕이 공문마다 줄어듭니다."
+    },
+    "sugar_cut": {
+      "name": "설탕 공급 중단",
+      "desc": "모나티엄이 설탕을 끊었습니다. 결재할 때마다 사탕이 조금씩 줄어듭니다."
+    },
+    "pikora_drift": {
+      "name": "피코라의 실습",
+      "desc": "피코라의 마법이 남아, 자원이 정해진 쪽으로 조금씩 움직입니다."
+    },
+    "sylla_gale": {
+      "name": "실라의 돌풍",
+      "desc": "정령산 바람이 거세게 붑니다. 신앙의 변화가 커집니다."
+    },
+    "yokan_cleanup": {
+      "name": "양갱 청소",
+      "desc": "버려진 양갱을 치우느라 공문마다 사탕이 듭니다."
+    },
+    "mountain_wind": {
+      "name": "산바람",
+      "desc": "산바람에 요정들이 술렁입니다. 주민의 변화가 커집니다."
+    },
+    "fence_work": {
+      "name": "울타리 공사",
+      "desc": "정령산 울타리를 세우느라 공문마다 사탕이 듭니다."
+    },
+    "ifrit_temper": {
+      "name": "이프리트의 화",
+      "desc": "이프리트가 씩씩거립니다. 공문마다 신앙이 줄어듭니다."
+    },
+    "fire_lesson": {
+      "name": "불 수업",
+      "desc": "여왕님이 불 수업을 받는 중입니다. 수업이 끝나면 에르핀이 크게 줄어듭니다."
+    },
+    "ifrit_sulk": {
+      "name": "삐친 이프리트",
+      "desc": "이프리트가 삐쳐 불기둥 구경이 사라졌습니다. 공문마다 에르핀이 줄어듭니다."
+    },
+    "burnt_bread": {
+      "name": "시꺼먼 빵",
+      "desc": "축제 빵이 시꺼멓게 구워지는 중입니다. 곧 주민이 크게 줄어듭니다."
+    },
+    "sinking_ground": {
+      "name": "꺼지는 땅",
+      "desc": "세계수 밑 땅이 꺼지고 있습니다. 곧 신앙이 크게 줄어듭니다."
+    },
+    "dug_garden": {
+      "name": "파헤친 정원",
+      "desc": "왕궁 정원이 파헤쳐져 여왕님이 시무룩합니다. 공문마다 에르핀이 줄어듭니다."
+    },
+    "gabia_sulk": {
+      "name": "굳게 닫힌 땅",
+      "desc": "서운한 가비아가 땅을 굳게 닫았습니다. 사탕이 움직이지 않습니다."
+    },
+    "root_storage": {
+      "name": "뿌리 옆 창고",
+      "desc": "세계수 뿌리 옆 창고에 요정들이 드나듭니다. 공문마다 신앙이 줄어듭니다."
+    },
+    "naia_pout": {
+      "name": "토라진 나이아",
+      "desc": "토라진 나이아가 마을에 물을 뿌립니다. 공문마다 주민이 줄어듭니다."
+    },
+    "queen_cold": {
+      "name": "여왕님 감기",
+      "desc": "호수에 빠진 여왕님이 콜록거립니다. 곧 에르핀이 크게 줄어듭니다."
+    },
+    "naia_downpour": {
+      "name": "그치지 않는 비",
+      "desc": "나이아의 비가 그치지 않습니다. 사탕의 변화가 커집니다."
+    },
+    "dull_axe": {
+      "name": "무뎌진 도끼",
+      "desc": "날이 무뎌져 도끼를 쓸 수 없습니다."
+    }
+  },
+  "gauges": [
+    {
+      "key": "sugar",
+      "label": "사탕"
+    },
+    {
+      "key": "people",
+      "label": "주민"
+    },
+    {
+      "key": "faith",
+      "label": "신앙"
+    },
+    {
+      "key": "erpin",
+      "label": "에르핀"
+    }
+  ],
+  "factions": {
+    "fairy": "요정왕국 에르피엔",
+    "beastfolk": "수인 마을",
+    "witch": "마녀왕국 벨리티엔",
+    "dragon": "용족",
+    "ghost": "유령 늪",
+    "elf": "모나티엄",
+    "spirit": "정령"
+  },
+  "speakers": {
+    "erpin": {
+      "name": "에르핀",
+      "color": "#e8a33d"
+    },
+    "belita": {
+      "name": "벨리타",
+      "color": "#7b4fa8"
+    },
+    "ashur": {
+      "name": "에슈르",
+      "color": "#c98a5a"
+    },
+    "guard": {
+      "name": "경비대원 요정",
+      "color": "#5a7fa8",
+      "portrait": "guard"
+    },
+    "marie": {
+      "name": "마리",
+      "color": "#e06a4f"
+    },
+    "mayo": {
+      "name": "마요",
+      "color": "#8a9a5b"
+    },
+    "diana": {
+      "name": "디아나",
+      "color": "#a8784f"
+    },
+    "sist": {
+      "name": "시스트",
+      "color": "#4f8a7b"
+    },
+    "kyarot": {
+      "name": "캬롯",
+      "color": "#e0884f"
+    },
+    "speaki": {
+      "name": "스피키",
+      "color": "#e07a2f"
+    },
+    "worldtree": {
+      "name": "세계수",
+      "color": "#3f7a4f"
+    },
+    "fricle": {
+      "name": "프리클",
+      "color": "#9a4f8f"
+    },
+    "renewa": {
+      "name": "리뉴아",
+      "color": "#5b8fb0"
+    },
+    "villager": {
+      "name": "마을 요정",
+      "color": "#9a8a6a",
+      "portrait": "fairy"
+    },
+    "sweetshop": {
+      "name": "사탕 가게 요정",
+      "color": "#d06a7a",
+      "portrait": "fairy"
+    },
+    "farmer": {
+      "name": "농부 요정",
+      "color": "#8a9a4a",
+      "portrait": "fairy"
+    },
+    "kid": {
+      "name": "꼬마 요정",
+      "color": "#e0a050",
+      "portrait": "fairy"
+    },
+    "church": {
+      "name": "교단 요정",
+      "color": "#6a8a6a",
+      "portrait": "church"
+    },
+    "beast_kid": {
+      "name": "수인 꼬마",
+      "color": "#c9965a",
+      "portrait": "beast_kid"
+    },
+    "monatium_staff": {
+      "name": "모나티엄 직원",
+      "color": "#5b8fb0",
+      "portrait": "monatium_staff"
+    },
+    "witch_courier": {
+      "name": "마녀왕국 전령",
+      "color": "#7b4fa8",
+      "portrait": "witch_courier"
+    },
+    "witch_guest": {
+      "name": "마녀왕국 손님",
+      "color": "#7b4fa8",
+      "portrait": "witch_courier"
+    },
+    "elena": {
+      "name": "엘레나",
+      "color": "#4f8fb0"
+    },
+    "amelia": {
+      "name": "아멜리아",
+      "color": "#5a6fa8"
+    },
+    "rohne": {
+      "name": "로네",
+      "color": "#7ab0c8"
+    },
+    "chloe": {
+      "name": "클로에",
+      "color": "#c86a8a"
+    },
+    "xion": {
+      "name": "검은 마탄의 사수",
+      "color": "#3a3a4a"
+    },
+    "canta": {
+      "name": "칸타",
+      "color": "#a04a6a"
+    },
+    "snorky": {
+      "name": "스노키",
+      "color": "#8a7a5a"
+    },
+    "pira": {
+      "name": "피라",
+      "color": "#b09a3a"
+    },
+    "goldie": {
+      "name": "골디",
+      "color": "#d4a62a"
+    },
+    "bigwood": {
+      "name": "빅우드",
+      "color": "#6a7f3a"
+    },
+    "ifrit": {
+      "name": "이프리트",
+      "color": "#d0502a"
+    },
+    "gabia": {
+      "name": "가비아",
+      "color": "#7a6a4a"
+    },
+    "naia": {
+      "name": "나이아",
+      "color": "#3f8fc0"
+    },
+    "sylla": {
+      "name": "실라",
+      "color": "#6aa890"
+    },
+    "shaydi": {
+      "name": "셰이디",
+      "color": "#5a4a7a"
+    },
+    "espi": {
+      "name": "에스피",
+      "color": "#4a5a8a"
+    },
+    "ner": {
+      "name": "네르",
+      "color": "#9c8fc4"
+    }
+  },
+  "axeLine": "하아… 이게 진짜 내 성질 나오게 하네?",
+  "bulletLine": "덜크 원더... 하... 한 발 부탁드릴게요.",
+  "boons": {
+    "intuition": {
+      "name": "직감",
+      "short": "직감",
+      "desc": "몇 번의 결재 동안 자원이 늘지 줄지 색으로 보입니다."
+    },
+    "hyean": {
+      "name": "디아나의 혜안",
+      "short": "혜안",
+      "desc": "몇 번의 결재 동안 자원의 정확한 수치와 변화량이 보입니다."
+    },
+    "rewind": {
+      "name": "리뉴아의 역행",
+      "short": "역행",
+      "desc": "왕국이 무너지면 한 번, 조금 전으로 되돌아갑니다."
+    },
+    "bullet": {
+      "name": "검은 마탄",
+      "short": "마탄",
+      "desc": "엘프와 마녀의 공문까지, 부작용 없이 공문을 박살 냅니다."
+    },
+    "stitch": {
+      "name": "클로에의 바늘땀",
+      "short": "바늘땀",
+      "desc": "무너지려는 자원 하나를 한 번 꿰매어 멈춥니다."
+    },
+    "alice": {
+      "name": "와일드 카드",
+      "short": "와일드 카드",
+      "desc": "일반 공문 한 장을 다른 공문으로 바꿉니다."
+    },
+    "blindfold": {
+      "name": "마법의 눈가리개",
+      "short": "눈가리개",
+      "desc": "올려 둔 자원은 다음 결재 한 번 동안 변하지 않습니다."
+    },
+    "scope": {
+      "name": "마탄 스코프",
+      "short": "스코프",
+      "desc": "겨눈 공문의 나빠지는 변화는 줄이고, 좋아지는 변화는 키웁니다."
+    },
+    "understudy": {
+      "name": "대역 배우",
+      "short": "대역",
+      "desc": "자원이 위험해질 때 그 변화를 조금 줄여 줍니다."
+    },
+    "bandage": {
+      "name": "만능 반창고",
+      "short": "반창고",
+      "desc": "자원 하나에 붙이면 가운데 쪽으로 당겨 줍니다."
+    }
+  },
+  "aliceLine": "카드가 속삭인다. ‘이 공문, 다른 걸로 바꿔 드릴까요?’",
+  "rewindPrompt": {
+    "header": "리뉴아의 역행",
+    "title": "다시 한 번 기회를",
+    "art": "linuaRewind",
+    "lines": [
+      {
+        "name": "리뉴아",
+        "text": "어쩔 수 없군요. 지금이라면 아직 되돌릴 수 있어요. 제 능력으로 5년 전으로 시간을 되돌릴 수 있어요. 단, 한 번뿐이에요."
+      }
+    ],
+    "yes": "5년 되돌린다",
+    "no": "포기한다",
+    "boss": {
+      "lines": [
+        {
+          "name": "리뉴아",
+          "text": "아직 끝나지 않았어요. 제가 도울 수 있는 한까지 도와드릴게요. 조금 전으로 되돌아가요. 단, 한 번뿐이에요."
+        }
+      ],
+      "yes": "조금 전으로 되돌린다"
+    }
+  },
+  "scenes": {
+    "speakiCaught": {
+      "header": "가짜 공문 적발",
+      "title": "각오는 했겠지?",
+      "art": "speakiCaught",
+      "lines": [
+        {
+          "name": "스피키",
+          "text": "스... 스피키가 그리 잘못한 것 같지는 않은데..."
+        },
+        {
+          "name": "네르",
+          "text": "잔말 말고 따라오세요!"
+        }
+      ],
+      "button": "풀어 준다"
+    },
+    "speakiFooled": {
+      "header": "가짜 공문이었다",
+      "title": "제사장 네르에요!",
+      "art": "speakiFooled",
+      "lines": [
+        {
+          "name": "스피키",
+          "text": "헤헤~ 네르가 가짜 공문에 도장 찍는 사이에, 오늘 설교는 네르가 했어요오!"
+        }
+      ],
+      "button": "…다음엔 안 속아요"
+    },
+    "stitch": {
+      "header": "클로에의 바늘땀",
+      "title": "칠칠치 못하기는, 도와줄게",
+      "art": "stitchScene",
+      "lines": [
+        {
+          "name": "클로에",
+          "text": "아? 여기 터졌네. 가만있어 봐, 사제장. …됐다. 한 땀이면 충분해."
+        },
+        {
+          "name": "네르",
+          "text": "…빚졌네요, 클로에. 매듭빵이라도 사드리겠습니다."
+        }
+      ],
+      "button": "다시 결재하러"
+    },
+    "kickout": {
+      "header": "버텨 낸 한 걸음",
+      "title": "아직 안 끝났어요!",
+      "art": "nerKickout",
+      "lines": [
+        {
+          "name": "에르핀",
+          "text": "네르! 손 잡아! 여기서 넘어지면 안 돼!"
+        },
+        {
+          "name": "네르",
+          "text": "…하아, 하아. 네, 여왕님. 아직 쓰러질 때가 아니죠."
+        }
+      ],
+      "button": "다시 일어선다"
+    },
+    "erpinSave": {
+      "header": "네르가 잠든 사이",
+      "title": "어떻게든 버텼어!",
+      "art": "erpinSurvived",
+      "lines": [
+        {
+          "name": "에르핀",
+          "text": "네르... 일단 내가 열심히 도장 찍었어. 졸리면 미리 나한테 말하지... 잘했으니까 사탕 줄 거지? 음냐..."
+        },
+        {
+          "name": "네르",
+          "text": "음... 으응?"
+        }
+      ],
+      "button": "…여왕님? 저 잠들었었나요?"
+    },
+    "asleep": {
+      "header": "네르가 잠든 사이",
+      "title": "네르, 내가 도와줄게!",
+      "art": "erpinSave",
+      "lines": [
+        {
+          "name": "에르핀",
+          "text": "어? 네르 자? …좋아, 내가 네르 대신 도와줄게! 어... 대충 아무거나 찍으면 되겠지?"
+        },
+        {
+          "name": "네르",
+          "text": "(쿨… 쿨…)"
+        }
+      ],
+      "button": "…여왕님을 지켜야..."
+    }
+  },
+  "gameOvers": {
+    "sugar_low": {
+      "title": "설탕 폭동",
+      "text": "사탕 창고가 바닥나자 굶주린 요정들이 창고 문을 부수고 들어옵니다. 마지막 사탕 부스러기를 두고 다툼이 벌어지고, 왕국의 질서는 무너졌습니다."
+    },
+    "sugar_high": {
+      "title": "사탕 중독",
+      "text": "왕국 곳곳에 사탕이 넘쳐흐르자 요정들은 하루 종일 단것을 입에 물고 헤롱거립니다. 에르핀마저 사탕 더미 위에서 잠들었습니다. 결재실 문을 두드리는 요정은 이제 없습니다."
+    },
+    "people_low": {
+      "title": "떠나는 요정들",
+      "text": "왕국의 무능에 지친 요정들이 하나둘 짐을 쌉니다. 누구는 수인 숲으로, 누구는 마녀왕국으로. 마지막 요정이 떠난 날, 세계수 아래에는 네르와 에르핀만 남았습니다."
+    },
+    "people_high": {
+      "title": "요정 민주주의 선언",
+      "text": "무엇이든 들어주는 여왕과 사제장 덕분에, 요정들은 날이 갈수록 기고만장해졌습니다. 결국 광장에 모인 요정들이 외쳤습니다. \"이제 여왕님 말은 안 들어요! 우리 요정들의 민주주의를 만들 거예요!\" 첫 번째 안건 '사제장 도장 폐지'는 만장일치로 통과되었습니다."
+    },
+    "faith_low": {
+      "title": "깨어난 어느 사제의 분노",
+      "text": "세계수를 향한 믿음이 바닥나자 뿌리 깊은 곳에서 무언가가 깨어났습니다. 오래 잠들어 있던 어느 사제의 분노에 교단과 요정왕국은 세계수의 심판을 받았습니다."
+    },
+    "faith_high": {
+      "title": "영원히 잠든 요정들",
+      "text": "요정들은 기도 말고는 아무것도 하지 않습니다. 세계수의 뜻 아래 모두가 잠이 들어 왕국 전체가 하나의 거대한 예배당이 되었습니다."
+    },
+    "erpin_low": {
+      "title": "왕관을 버린 여왕",
+      "text": "\"네르, 나는 여왕의 자격이 없나 봐...\" 에르핀은 왕관을 결재실 책상 위에 내려놓고 왕궁을 떠나 가출했습니다."
+    },
+    "erpin_high": {
+      "title": "통제 불능 여왕",
+      "text": "\"헤헤, 네르! 이제부터 내 맘대로 할게!\" 뭐든 들어준 결과, 에르핀은 사탕과 케이크의 폭군이 되어 누구의 말도 듣지 않았습니다. 네르의 말까지도요."
+    },
+    "sleep": {
+      "title": "네르가 잠든 사이",
+      "text": "네르가 잠든 사이 에르핀이 찍은 도장이 왕국을 무너뜨렸습니다. 깨어난 네르 앞에는 폐허뿐입니다."
+    }
+  },
+  "endingHints": {
+    "sugar_low": "사탕 창고가 바닥을 드러내면…",
+    "sugar_high": "왕국이 단것에 파묻히면…",
+    "people_low": "요정들이 왕국을 등지면…",
+    "people_high": "요정들의 말을 다 들어주다 보면…",
+    "faith_low": "세계수를 믿는 이가 사라지면…",
+    "faith_high": "믿음이 지나치게 뜨거워지면…",
+    "erpin_low": "여왕님의 마음이 바닥나면…",
+    "erpin_high": "여왕님의 응석을 끝까지 받아 주면…",
+    "sleep": "사제장이 잠든 사이에…",
+    "true": "200년을 버텨 낸 끝에…",
+    "purist": "게임오버를 막는 아이템이나 효과를 한 번도 발동시키지 않고 200년을 버텨 내면…",
+    "reformed": "200년 내내 도끼를 꾹 참아 내면…"
+  },
+  "trueEnding": {
+    "title": "그대를 만나다",
+    "text": "설탕이 끊기고 왕국이 들고일어난 밤, 네르는 에르핀의 손을 잡고 세계수 뿌리 아래를 달렸다. 빛을 따라 달려간 곳에는 덩치가 큰 어느 낯선 이가 있었다."
+  },
+  "notice": "이 게임은 「트릭컬 리바이브」와 「Reigns」를 패러디한 비공식·비상업 팬게임입니다. 원작의 권리는 각 권리자(에피드게임즈 / Nerial·Devolver Digital)에게 있으며, 어떠한 수익도 내지 않습니다.",
+  "title": {
+    "pick": "도장을 끌어서 선택하세요",
+    "tutorial": "튜토리얼",
+    "options": "옵션",
+    "album": "엔딩 도감",
+    "records": "최장 재임",
+    "yearUnit": "{year}년",
+    "noRecord": "기록 없음",
+    "cleared": "200년 완주",
+    "continue": "이어서 결재",
+    "continueDetail": "{mode} · {year}년째 결재 중",
+    "continueNote": "새로 도장을 찍으면 이어하던 판은 사라져요."
+  },
+  "options": {
+    "title": "옵션",
+    "sfx": "효과음",
+    "bgm": "배경음",
+    "bgmNote": "음악: cynicmusic 「Town Theme RPG」 (CC0)",
+    "mute": "{name} 끄기",
+    "unmute": "{name} 켜기",
+    "fullscreen": "전체 화면",
+    "fullscreenEnter": "전체 화면으로",
+    "fullscreenExit": "전체 화면 끄기",
+    "fullscreenNote": "주소창을 숨기고 화면을 넓게 씁니다.",
+    "language": "언어",
+    "languages": {
+      "ko": "한국어",
+      "en": "English",
+      "ja": "日本語"
+    },
+    "close": "닫기",
+    "erase": "수양록 지우기",
+    "eraseConfirm": "최장 재임 기록과 클리어 이력, 엔딩 도감이 모두 사라집니다. 클리어 이력이 지워지면 주교 모드도 다시 잠기고, 이어하던 판도 함께 사라져요. 되돌릴 수 없어요. 그래도 수양록을 지우시겠어요?",
+    "eraseYes": "지운다",
+    "eraseNo": "그만둔다",
+    "eraseDone": "수양록을 모두 지웠어요.",
+    "unlock": "주교 모드 해금",
+    "unlockConfirm": "주교 모드는 견습 사제나 사제장으로 200년을 버틴 뒤 왕국 탈출에 성공하면 열리는 모드예요. 지금 바로 해금할까요?",
+    "unlockYes": "해금한다",
+    "unlockNo": "그만둔다",
+    "unlockDone": "주교 모드가 열렸어요.",
+    "unlocked": "주교 모드 열림",
+    "musicAsk": {
+      "title": "배경음악",
+      "text": "배경음악을 켤까요?",
+      "yes": "네",
+      "no": "아니요"
+    }
+  },
+  "tutorial": {
+    "title": "튜토리얼",
+    "next": "다음",
+    "prev": "이전",
+    "done": "결재 시작",
+    "skip": "건너뛰기",
+    "steps": [
+      {
+        "title": "공문 결재",
+        "text": "공문이 올라오면 도장을 끌어 공문 위에 찍으세요.",
+        "focus": "tools",
+        "try": "아래 도장 하나를 공문 위로 끌어다 놓아 보세요.",
+        "success": "찍혔어요! 결재할 때마다 공문 내용에 따라 자원이 움직이고, 다음 공문이 올라와요.",
+        "demo": "stamp"
+      },
+      {
+        "title": "네 가지 자원",
+        "text": "사탕, 주민, 신앙, 에르핀. 하나라도 바닥나거나 가득 차면 통치가 끝납니다. 너무 모자라도, 너무 넘쳐도 안 돼요.",
+        "focus": "gauges",
+        "demo": "static"
+      },
+      {
+        "title": "변화 미리 보기",
+        "text": "도장을 들면 바뀔 자원 위에 점이 떠요. 점 하나가 5 정도예요. 오를지 내릴지는 공문을 읽고 짐작해야 해요.",
+        "focus": "gauges",
+        "demo": "preview"
+      },
+      {
+        "title": "흔들리는 시기",
+        "text": "왕국이 흔들리는 시기에는 같은 공문이라도 변화가 커져요. 점 개수는 그대로지만, 점이 불씨처럼 달아오를수록 더 크게 움직입니다.",
+        "focus": "gauges",
+        "toggle": [
+          "평온한 시기",
+          "흔들리는 시기"
+        ],
+        "demo": "era"
+      },
+      {
+        "title": "도끼와 졸음",
+        "text": "마음에 안 드는 공문은 도끼로 버릴 수 있어요. 대신 일반 공문을 버리면 도끼 위의 Z(졸음)가 하나씩 차올라요. 두 번째부터는 졸려서 점 대신 ?만 보이고, 세 번째에는 네르가 잠든 동안 에르핀이 대신 도장을 3번 찍습니다.",
+        "focus": "axe",
+        "try": "도끼를 공문 위로 끌어내려 버려 보세요. 도끼 위의 Z가 하나 채워질 거예요.",
+        "success": "공문이 버려졌어요. 대신 Z가 하나 쌓였어요. 도끼 밑에 적힌 장수만큼 공문을 더 넘기면 하나씩 풀려요.",
+        "demo": "axe"
+      },
+      {
+        "title": "졸음이 가득 차면",
+        "text": "Z가 세 개 다 차면 네르가 꾸벅꾸벅 잠들어요. 잠든 동안에는 에르핀이 대신 공문 3장에 도장을 찍는데, 어느 쪽을 찍을지는 에르핀 마음대로예요.",
+        "try": "Z가 두 개 찬 상태예요. 도끼를 한 번 더 써서 네르를 재워 보세요.",
+        "success": "네르가 잠든 사이 에르핀이 공문 3장을 마음대로 찍었어요. 깨어나면 Z는 다시 비어 있어요.",
+        "focus": "axe",
+        "demo": "sleep"
+      },
+      {
+        "title": "스피키의 가짜 공문",
+        "text": "가끔 스피키가 다른 사람인 척 가짜 공문을 끼워 넣어요. 말투가 어딘가 이상하면 의심해 보세요. 가짜 공문은 도끼로 버려도 졸음이 쌓이지 않아요. 오히려 도끼로 잡아야 손해가 없어요.",
+        "try": "이 공문은 스피키가 쓴 가짜예요. 도끼로 버려 보세요.",
+        "success": "스피키를 잡았어요! 가짜 공문은 도끼로 버려도 Z가 쌓이지 않아요.",
+        "focus": "axe",
+        "demo": "speaki"
+      },
+      {
+        "title": "아이템",
+        "text": "어떤 공문은 아이템으로 이어져요. 대역 배우처럼 갖고만 있어도 돕는 아이템도 있고, 마탄이나 반창고처럼 직접 끌어다 쓰는 아이템도 있어요.",
+        "focus": null,
+        "demo": "static",
+        "items": [
+          "understudy",
+          "bullet",
+          "bandage"
+        ]
+      },
+      {
+        "title": "200년",
+        "text": "요정왕국을 200년 동안 지켜 내세요. 그 끝에 무엇이 기다리는지는… 직접 확인해 보세요.",
+        "focus": null,
+        "demo": "static"
+      }
+    ],
+    "offer": "처음 오셨나요? 공문 결재하는 법을 짧게 알려 드릴게요.",
+    "offerAccept": "배워 볼게요",
+    "offerSkip": "바로 시작할게요",
+    "itemKinds": {
+      "passive": "패시브",
+      "active": "액티브"
+    }
+  },
+  "clear": {
+    "apprentice": "견습 사제 · 200년 완주",
+    "priest": "사제장 · 200년 완주"
+  },
+  "menu": {
+    "title": "잠시 마카롱 타임",
+    "resume": "계속하기",
+    "backNote": "뒤로 가기를 한 번 더 하면 게임을 나가요. 진행은 저장되어 있으니 언제든 이어서 결재할 수 있어요.",
+    "autosave": "자동 저장"
+  },
+  "extraEndings": {
+    "document": "추가 결재 공문",
+    "stamp": "특별 기록",
+    "next": "다음 기록 보기",
+    "items": {
+      "purist": {
+        "tag": "보험 없이",
+        "title": "퍼펙트 사제장",
+        "text": "되감긴 시간도, 재단사의 바늘도, 에르핀의 손길도 필요 없었다. 이백 년 동안 요정왕국은 단 한 번도 무너질 뻔하지 않았다. 어느 선배 사제는 뿌듯하게 그런 네르를 바라봤다."
+      },
+      "reformed": {
+        "tag": "도끼 없이",
+        "title": "개과천선",
+        "text": "이백 년 동안 사제장의 도끼는 한 번도 화풀이로 공문을 내려치지 않았다. 네르는 액자 속 자신의 옛 모습을 바라보며 내심 과거를 떠올려봤다."
+      }
+    }
+  },
+  "ui": {
+    "noEligibleCard": "조건을 만족하는 일반 공문이 없습니다.",
+    "documentLabel": "공문서",
+    "chroniclePrefix": "연대기 · ",
+    "importantPrefix": "중요 공문 · ",
+    "specialPrefix": "특별 공문 · ",
+    "kingdomStatus": "왕국 상태",
+    "increase": "증가",
+    "decrease": "감소",
+    "unknownChange": "변화 있음, 크기·방향 불명",
+    "soundOn": "효과음 켜짐",
+    "soundOff": "효과음 꺼짐",
+    "restartConfirm": "처음부터 다시 시작할까요?",
+    "titleConfirm": "첫 화면으로 나갈까요?",
+    "menuLabel": "메뉴",
+    "calendar": "에르피엔력",
+    "yearSuffix": "년",
+    "documentStage": "공문 결재",
+    "sleepHint": "강제 수면 · 화면을 누르면 에르핀이 도장을 찍습니다",
+    "stampHint": "도장을 꾹 눌러 공문 위에 놓으세요",
+    "restart": "처음부터 다시",
+    "backToTitle": "첫 화면으로",
+    "recordsPreserved": "최장 재임 기록과 엔딩 도감은 그대로 남습니다.",
+    "runLost": "지금 통치 기록은 사라집니다.",
+    "yes": "예",
+    "no": "아니요",
+    "rewindHeader": "리뉴아의 역행",
+    "albumTags": {
+      "sugar": {
+        "low": "기근",
+        "high": "포식"
+      },
+      "people": {
+        "low": "이탈",
+        "high": "득세"
+      },
+      "faith": {
+        "low": "불신",
+        "high": "맹신"
+      },
+      "erpin": {
+        "low": "낙담",
+        "high": "폭주"
+      }
+    },
+    "specialEndings": "특별한 결말",
+    "whileAsleep": "잠든 사이",
+    "twoHundredYears": "200년",
+    "unseenEnding": "아직 보지 못한 결말",
+    "albumTitle": "엔딩 도감",
+    "close": "닫기",
+    "albumBack": "← 도감으로",
+    "titleEyebrow": "세계수 교단 · 결재실",
+    "highPriest": "사제장",
+    "ner": "네르",
+    "albumOpen": "엔딩 도감 펼치기",
+    "depleted": "고갈",
+    "excess": "과다",
+    "endingEyebrow": "세계수 교단 · 최종 기록",
+    "finalDocument": "최종 결재 공문",
+    "twoHundredRecord": "200년의 기록",
+    "reignEnded": "통치 종료",
+    "returnToTitle": "타이틀로 돌아가기",
+    "reject": "반려",
+    "approve": "승인",
+    "extendHand": "손을 내민다",
+    "alice": "와일드 카드",
+    "handStamp": "손을 내미는 도장",
+    "lightStamp": "빛으로 가는 도장",
+    "leftStamp": "왼쪽 도장",
+    "approveLeftStamp": "승인 도장 (왼쪽)",
+    "axeDiscard": "도끼 폐기",
+    "bulletFire": "마탄 사격",
+    "rightStamp": "오른쪽 도장",
+    "approveRightStamp": "승인 도장 (오른쪽)",
+    "boonUses": "{n}번",
+    "bulletCount": "{n}발",
+    "exactChange": "{dir} {n}",
+    "approxChange": "{dir}, 크기 약 {n}",
+    "unknownApproxChange": "변화 크기 약 {n}, 방향 불명",
+    "endingCause": "원인: {gauge} {dir}",
+    "stampLabel": "{name} 도장",
+    "drowseLabel": "졸음 {stack}/3{recovery}",
+    "drowseRecovery": ", {n}장 뒤 한 단계 회복",
+    "documentCount": "{n}장",
+    "rewindAnnouncement": "{from}년에서 {to}년으로 되돌아갑니다",
+    "titlePrayerFirst": "세계수시여, 부디 이 미천한 사제가",
+    "titlePrayerSecond": "여왕님과 교단을 잘 이끌 수 있도록 굽어살피소서.",
+    "gaugeDangerLow": "{gauge} 위험: 바닥이 가까워요",
+    "gaugeDangerHigh": "{gauge} 위험: 넘치기 직전이에요",
+    "drowseShort": "회복: {n}장",
+    "noticeOpen": "팬게임 안내",
+    "questPrefix": "의뢰 · ",
+    "hardPrefix": "긴급 공문 · ",
+    "bossDay": "{year}년 · {day}일째",
+    "mend": "반창고",
+    "useItem": "사용하기",
+    "itemLeft": "남은 장수 {n}",
+    "mendDesc": {
+      "worst": "가장 위험한 자원들을 가운데 쪽으로 되돌립니다.",
+      "center": "고른 자원 하나를 가운데로 되돌립니다.",
+      "all": "모든 자원을 조금씩 가운데 쪽으로 되돌립니다."
+    }
+  },
+  "bishop": {
+    "reign": "재임 {year}년",
+    "omenLabel": "징조",
+    "blessingLabel": "축복",
+    "flowLabel": "기류",
+    "calm": "잔잔한 때",
+    "flowLeft": "{name} · {n}년 남음",
+    "answer": {
+      "title": "세계수의 응답",
+      "text": "꿈속에서 세계수가 두 갈래 길을 보여 줍니다. 한쪽으로 걸어가면, 다른 쪽 길은 안개 속으로 사라져요."
+    },
+    "notice": {
+      "omen": {
+        "header": "징조",
+        "button": "받아들인다"
+      },
+      "embrace": {
+        "header": "세계수의 품",
+        "title": "세계수가 붙잡았다",
+        "text": "쓰러지기 직전, 커다란 뿌리가 왕국을 받쳐 들었습니다. 그 뒤로 징조가 더 짙어졌어요. 다음은 없을 거예요.",
+        "button": "다시 결재한다"
+      },
+      "embraceGift": {
+        "header": "세계수의 품",
+        "title": "세계수가 왕국을 감싸 안았다",
+        "text": "재임 100년. 세계수가 왕국을 품에 안습니다. 쓰러지는 순간 한 번, 붙잡아 줄 거예요.",
+        "button": "감사히 받는다"
+      }
+    },
+    "omens": {
+      "ants": {
+        "name": "창고의 개미 떼",
+        "desc": "사탕이 빠질 때 조금 더 빠져요."
+      },
+      "rumors": {
+        "name": "광장의 소문",
+        "desc": "민심이 조금 더 크게 흔들려요."
+      },
+      "lapsed": {
+        "name": "늘어나는 냉담자",
+        "desc": "신앙이 빠질 때 조금 더 빠져요."
+      },
+      "whims": {
+        "name": "여왕의 변덕",
+        "desc": "에르핀 기분이 조금 더 크게 흔들려요."
+      }
+    },
+    "flows": {
+      "harvest": {
+        "name": "사탕수수 대풍작",
+        "desc": "사탕이 들어올 때 더 많이 들어와요."
+      },
+      "bloom": {
+        "name": "세계수 개화기",
+        "desc": "세계수에 꽃이 가득 피어 순례 오는 요정이 늘어나는 때예요. 신앙이 오를 때 더 크게 올라요."
+      },
+      "bread": {
+        "name": "빵 열풍",
+        "desc": "빵 이야기가 자주 올라오고, 민심이 오를 때 더 올라요."
+      },
+      "quiet": {
+        "name": "조용한 시절",
+        "desc": "가벼운 공문이 많이 올라와요."
+      },
+      "drought": {
+        "name": "큰 가뭄",
+        "desc": "사탕이 빠질 때 더 많이 빠져요."
+      },
+      "rebel": {
+        "name": "여왕님 반항기",
+        "desc": "에르핀 기분이 크게 오르내려요."
+      },
+      "speaki": {
+        "name": "스피키 장난 시기",
+        "desc": "가짜 공문이 자주 섞여 들어와요."
+      },
+      "boom": {
+        "name": "모나티엄 호황",
+        "desc": "사탕이 더 들어오지만, 모나티엄 공문과 엘프 위기도 잦아져요."
+      },
+      "nap": {
+        "name": "낮잠 유행",
+        "desc": "신앙이 오를 때 조금 더 오르는 대신, 사탕 벌이가 줄어요."
+      },
+      "spirits": {
+        "name": "정령 회의의 해",
+        "desc": "정령들이 자주 찾아와요."
+      },
+      "ghosts": {
+        "name": "유령늪이 시끄러운 해",
+        "desc": "유령늪 손님들이 자주 찾아와요."
+      }
+    },
+    "blessings": {
+      "sweet": {
+        "name": "달콤한 창고",
+        "desc": "사탕이 들어올 때 더 많이 들어와요. 대신 민심이 빠질 때 조금 더 빠져요."
+      },
+      "napprayer": {
+        "name": "낮잠 기도",
+        "desc": "신앙이 오를 때 더 크게 오르고 교단 공문이 늘어요. 대신 사탕 벌이가 조금 줄어요."
+      },
+      "bestie": {
+        "name": "여왕의 단짝",
+        "desc": "에르핀 기분이 덜 흔들려요. 대신 민심이 빠질 때 조금 더 빠져요."
+      },
+      "careful": {
+        "name": "꼼꼼한 결재",
+        "desc": "25년마다 혜안 3번. 대신 어려운 공문이 조금 늘어요."
+      },
+      "thrift": {
+        "name": "검소한 창고",
+        "desc": "사탕이 덜 빠져요. 대신 민심이 덜 올라요."
+      },
+      "calmfaith": {
+        "name": "잔잔한 믿음",
+        "desc": "신앙이 덜 빠져요. 대신 에르핀 기분이 덜 올라요."
+      }
+    },
+    "multChip": "적용 중인 배율",
+    "multCount": "{n}개",
+    "multNone": "배율 없음",
+    "flowShort": "{name} · {n}년",
+    "statusLabel": "지속 효과",
+    "arrowTip": "{gauge}: 오를 때 ×{gain} · 빠질 때 ×{loss}",
+    "era": {
+      "name": "시대 배율",
+      "desc": "모든 공문의 효과가 ×{x}로 커져 있어요. 화살표에는 넣지 않아요."
+    },
+    "base": {
+      "name": "주교 기본",
+      "desc": "사탕이 빠질 때 늘 ×0.7이에요. 화살표에는 넣지 않아요."
+    },
+    "specialsLabel": "특수 효과",
+    "specials": {
+      "lightDocs": {
+        "name": "가벼운 공문 증가",
+        "desc": "가벼운 공문이 많이 올라와요."
+      },
+      "fakeDocs": {
+        "name": "가짜 공문 증가",
+        "desc": "스피키의 가짜 공문이 자주 섞여 들어와요."
+      },
+      "spirits": {
+        "name": "정령 방문 증가",
+        "desc": "정령들이 자주 찾아와요."
+      },
+      "ghosts": {
+        "name": "유령늪 손님 증가",
+        "desc": "유령늪 손님들이 자주 찾아와요."
+      },
+      "bread": {
+        "name": "빵 공문 증가",
+        "desc": "빵 이야기가 자주 올라와요."
+      },
+      "monatium": {
+        "name": "모나티엄·엘프 공문 증가",
+        "desc": "모나티엄 공문과 엘프 위기가 잦아져요."
+      },
+      "church": {
+        "name": "교단 공문 증가",
+        "desc": "교단 공문이 자주 올라와요."
+      },
+      "hyean": {
+        "name": "25년마다 혜안 3번",
+        "desc": "25년마다 혜안을 3번 받아요."
+      },
+      "hardDocs": {
+        "name": "어려운 공문 증가",
+        "desc": "어려운 공문이 조금 늘어요."
+      },
+      "embrace": {
+        "name": "세계수의 품",
+        "desc": "쓰러지는 순간 한 번, 세계수가 붙잡아 줘요."
+      },
+      "omenUp": {
+        "name": "징조 강화",
+        "desc": "세계수의 품이 붙잡아 준 뒤로 모든 징조가 ×1.2로 세졌어요."
+      }
+    }
+  }
+}

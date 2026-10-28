@@ -1,0 +1,6501 @@
+[
+  {
+    "id": "story_coronation",
+    "kind": "story",
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "에르핀 즉위식",
+    "text": "네르! 오늘 나 진짜 여왕 되는 날이야? 나… 떨려. 내가 좋은 여왕이 될 수 있을까?",
+    "trigger": {
+      "year": 1,
+      "order": 1
+    },
+    "years": 1,
+    "axe": false,
+    "reject": {
+      "label": "그럼요, 앞으로 잘 해내실 수 있을 거예요.",
+      "effects": {}
+    },
+    "approve": {
+      "label": "네, 여왕님. 모든 요정들이 여왕님을 따를 겁니다.",
+      "effects": {}
+    }
+  },
+  {
+    "id": "story_belita_farewell",
+    "kind": "story",
+    "speaker": "belita",
+    "faction": "witch",
+    "title": "벨리타의 출발",
+    "text": "네르, 아무래도 나는 세계수의 뿌리를 돌보기 위해 지하로 내려가야 할 것 같구나. 분명 그 아이에게 이 결심을 전한다면, 가지 말라며 울고불고 매달리겠지. 에르핀과 함께 지상의 일은 네게 맡기마. 부디 잘 부탁하마.",
+    "trigger": {
+      "year": 0,
+      "order": 1
+    },
+    "years": 1,
+    "axe": false,
+    "reject": {
+      "label": "약속은 지킬게요. 걱정하지 마세요.",
+      "effects": {}
+    },
+    "approve": {
+      "label": "그래도 작별 인사는 하고 가셔야죠.",
+      "effects": {}
+    }
+  },
+  {
+    "id": "fixed_erpin_lost_crown",
+    "kind": "fixed",
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "사라진 왕관",
+    "text": "네르 있잖아... 그... 나 왕관을 잃어버렸어! 그 정말 정말로 내 잘못이 아니라...",
+    "trigger": {
+      "year": 2,
+      "order": 1
+    },
+    "years": 1,
+    "axe": false,
+    "reject": {
+      "label": "찾으실 때까지 케이크는 없어요.",
+      "effects": {
+        "sugar": 5,
+        "erpin": -5
+      }
+    },
+    "approve": {
+      "label": "에휴... 제가 찾아드릴게요.",
+      "effects": {
+        "faith": -5,
+        "erpin": 5
+      }
+    }
+  },
+  {
+    "id": "fixed_bread_bill",
+    "kind": "fixed",
+    "speaker": "ashur",
+    "faction": "fairy",
+    "title": "빵값 청구서",
+    "text": "사제장님, 여왕님께서 오늘도 빵을 드시고 그냥 가셨어요. 이번 달만 열네 번째예요! 그리고 몇 번을 말씀드려야 하나요. 여긴 빵집이 아니라 마법학교라고요!",
+    "trigger": {
+      "year": 3,
+      "order": 1
+    },
+    "years": 1,
+    "axe": false,
+    "reject": {
+      "label": "여왕님께 직접 갚으시라 하죠.",
+      "effects": {
+        "erpin": -5,
+        "people": 5
+      }
+    },
+    "approve": {
+      "label": "교단이 다 물어 드리죠.",
+      "effects": {
+        "sugar": -5,
+        "erpin": 5
+      }
+    }
+  },
+  {
+    "id": "fixed_thief_marie",
+    "kind": "fixed",
+    "speaker": "guard",
+    "faction": "fairy",
+    "title": "보물고의 도둑 요정",
+    "text": "보고합니다. 왕궁 보물고에 숨어든 도둑 요정을 붙잡았습니다. 그런데 여왕님께서 \"내 친구니까 풀어 줘!\"라고 하십니다. 털어 갈 만한 건 하나도 없었다고 합니다.",
+    "trigger": {
+      "year": 4,
+      "order": 1
+    },
+    "years": 1,
+    "axe": false,
+    "reject": {
+      "label": "일단 가둬 두세요.",
+      "effects": {
+        "people": 5,
+        "erpin": -5
+      }
+    },
+    "approve": {
+      "label": "여왕님 친구라니… 풀어 주세요.",
+      "effects": {
+        "erpin": 5,
+        "people": -5
+      },
+      "setFlags": [
+        "marie_friend"
+      ]
+    }
+  },
+  {
+    "id": "story_diana_thanks",
+    "kind": "fixed",
+    "look": "special",
+    "speaker": "diana",
+    "faction": "beastfolk",
+    "title": "숲에서 온 답례",
+    "text": "사제장님, 우리 마을 꼬마들이 요즘 빵 얘기만 한답니다. 고마운 일엔 꼭 답례를 해야지요. 이 늙은이의 지혜를 빌려드릴까요? 아니면 요정왕국에 도움을 드릴까요?",
+    "trigger": {
+      "scheduled": true,
+      "order": 1
+    },
+    "years": 1,
+    "axe": false,
+    "reject": {
+      "label": "혜안",
+      "effects": {},
+      "grant": {
+        "boon": "hyean",
+        "uses": 5
+      }
+    },
+    "approve": {
+      "label": "반창고",
+      "effects": {},
+      "mend": {
+        "mode": "worst",
+        "count": 2,
+        "amount": 30
+      }
+    },
+    "stamps": "direction"
+  },
+  {
+    "id": "story_diana_thanks_again",
+    "kind": "fixed",
+    "look": "special",
+    "speaker": "diana",
+    "faction": "beastfolk",
+    "title": "다시 온 답례",
+    "text": "또 신세를 졌군요, 사제장님. 꼬마들이 요정왕국 빵 얘기로 밤을 새운답니다. 이번에도 이 늙은이의 도움을 빌려드릴 테니 선택해주시면 된답니다.",
+    "trigger": {
+      "scheduled": true,
+      "order": 1
+    },
+    "years": 1,
+    "axe": false,
+    "reject": {
+      "label": "혜안",
+      "effects": {},
+      "grant": {
+        "boon": "hyean",
+        "uses": 5
+      }
+    },
+    "approve": {
+      "label": "반창고",
+      "effects": {},
+      "mend": {
+        "mode": "worst",
+        "count": 2,
+        "amount": 30
+      }
+    },
+    "stamps": "direction"
+  },
+  {
+    "id": "story_elf_crash",
+    "kind": "story",
+    "speaker": "guard",
+    "faction": "fairy",
+    "title": "낯선 이방인들",
+    "text": "보고합니다! 수인 마을 너머 들판에 귀가 뾰족한 이들이 잔뜩 나타났습니다. 다친 이는 없다고 하는데… 요정은 아닌 것 같습니다.",
+    "trigger": {
+      "year": 80,
+      "order": 1
+    },
+    "years": 1,
+    "axe": false,
+    "reject": {
+      "label": "조사단을 파견하세요.",
+      "effects": {},
+      "setFlags": [
+        "met_elves"
+      ]
+    },
+    "approve": {
+      "label": "경비를 세우고 지켜보세요.",
+      "effects": {},
+      "setFlags": [
+        "met_elves"
+      ]
+    }
+  },
+  {
+    "id": "story_monatium_founding",
+    "kind": "story",
+    "speaker": "elena",
+    "faction": "elf",
+    "title": "모나티엄 건설",
+    "text": "이봐 원시 종족? 아니, 요정이라고 했었나? 여기 땅, 좀 빌려 쓰자. 우리가 살 도시가 필요하거든. 이름은 모나티엄. 대신 설탕은 우리가 공급해 줄게. 솔직히 너희보다 우리가 훨씬 잘 만들거든.",
+    "trigger": {
+      "year": 80,
+      "order": 2
+    },
+    "years": 1,
+    "axe": false,
+    "reject": {
+      "label": "세계수 근처만은 건드리지 마세요.",
+      "effects": {},
+      "setFlags": [
+        "monatium"
+      ]
+    },
+    "approve": {
+      "label": "…이웃이 되는 거라면요.",
+      "effects": {},
+      "setFlags": [
+        "monatium"
+      ]
+    }
+  },
+  {
+    "id": "story_avalanche",
+    "kind": "story",
+    "speaker": "guard",
+    "faction": "fairy",
+    "title": "왕궁을 덮은 눈",
+    "text": "보고합니다! 밤새 내린 폭설로 왕궁 한쪽이 무너졌습니다. 여왕님이 안에 갇히셨습니다! …그런데 날개 없는 요정 하나가 벌써 눈 속으로 뛰어들었습니다. 재단소 주인이라고 합니다.",
+    "trigger": {
+      "year": 200,
+      "order": 1
+    },
+    "years": 1,
+    "axe": false,
+    "reject": {
+      "label": "경비대, 당장 뒤따라가요!",
+      "effects": {},
+      "setFlags": [
+        "met_chloe"
+      ]
+    },
+    "approve": {
+      "label": "저도 가겠습니다. 지금 당장요!",
+      "effects": {},
+      "setFlags": [
+        "met_chloe"
+      ]
+    }
+  },
+  {
+    "id": "story_finale_no_reply",
+    "kind": "story",
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "돌아오지 않는 답장",
+    "text": "네르, 언니한테 편지를 열 통이나 보냈어. 근데 답장이 하나도 안 와. 벨리타는 바빠도 꼭 한 줄은 써 줬는데… 나 뭐 잘못했나?",
+    "trigger": {
+      "year": 200,
+      "order": 1
+    },
+    "years": 0,
+    "axe": false,
+    "reject": {
+      "label": "여왕님 잘못이 아니에요.",
+      "effects": {}
+    },
+    "approve": {
+      "label": "…한 통만 더 써 봐요. 제가 전할게요.",
+      "effects": {}
+    },
+    "bossAfter": 2
+  },
+  {
+    "id": "story_finale_witch_queen",
+    "kind": "story",
+    "speaker": "witch_courier",
+    "faction": "witch",
+    "title": "사라진 여왕",
+    "text": "…사제장님. 통로를 겨우 빠져나왔습니다. 벨리타 여왕님이… 사라지셨습니다. 왕궁에도, 지하 어디에도 안 계십니다. 프리클이 벨리타 여왕님 대신 통치 중인데 분위기가 심상치 않습니다.",
+    "trigger": {
+      "year": 200,
+      "order": 2
+    },
+    "years": 0,
+    "axe": false,
+    "reject": {
+      "label": "…여왕님께는 제가 말할게요.",
+      "effects": {}
+    },
+    "approve": {
+      "label": "먼저 쉬세요. 상처부터 봐요.",
+      "effects": {}
+    },
+    "bossAfter": 4
+  },
+  {
+    "id": "story_escape_1",
+    "stamps": "direction",
+    "kind": "story",
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "도망",
+    "text": "네르! 뒤에서 횃불이 따라와! 앞에 길이 두 갈래야. 어느 쪽?!",
+    "trigger": {
+      "year": 200,
+      "order": 5
+    },
+    "years": 0,
+    "axe": false,
+    "reject": {
+      "label": "왼쪽으로!",
+      "effects": {}
+    },
+    "approve": {
+      "label": "오른쪽으로!",
+      "effects": {}
+    }
+  },
+  {
+    "id": "story_escape_2",
+    "stamps": "direction",
+    "kind": "story",
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "세계수 뿌리 아래",
+    "text": "헉, 헉… 네르, 뿌리가 또 갈라져. 한쪽은 물소리가 나고, 한쪽은 깜깜해. 길 알아? 진짜 알아?",
+    "trigger": {
+      "year": 200,
+      "order": 6
+    },
+    "years": 0,
+    "axe": false,
+    "reject": {
+      "label": "물가 쪽으로 달리세요!",
+      "effects": {}
+    },
+    "approve": {
+      "label": "어두운 쪽으로 달리세요!",
+      "effects": {}
+    }
+  },
+  {
+    "id": "story_escape_3",
+    "stamps": "direction",
+    "kind": "story",
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "가까워지는 발소리",
+    "text": "발소리가 가까워졌어! 누가 내 이름 불러… 네르, 돌아보지 마. 어디로 가?",
+    "trigger": {
+      "year": 200,
+      "order": 7
+    },
+    "years": 0,
+    "axe": false,
+    "reject": {
+      "label": "쉿, 그대로 왼쪽으로 가세요.",
+      "effects": {}
+    },
+    "approve": {
+      "label": "살금살금 오른쪽으로 가세요.",
+      "effects": {}
+    }
+  },
+  {
+    "id": "story_escape_4",
+    "stamps": "direction",
+    "kind": "story",
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "놓지 마",
+    "text": "네르… 나 무서워. 다리가 막 떨려. 그래도 손은 절대 놓지 마. 알았지? 어느 쪽이야?",
+    "trigger": {
+      "year": 200,
+      "order": 8
+    },
+    "years": 0,
+    "axe": false,
+    "reject": {
+      "label": "여왕님, 제게 업히세요.",
+      "effects": {}
+    },
+    "approve": {
+      "label": "제 손을 잡고 따라오세요.",
+      "effects": {}
+    }
+  },
+  {
+    "id": "story_finale_light",
+    "stamps": "light",
+    "kind": "story",
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "하늘의 빛줄기",
+    "text": "네르, 저거 봐! 하늘에서 커다란 빛줄기가 내려와!",
+    "trigger": {
+      "year": 200,
+      "order": 9
+    },
+    "years": 0,
+    "axe": false,
+    "reject": {
+      "label": "세계수님, 이 난관을 해결할 기적인가요?",
+      "effects": {}
+    },
+    "approve": {
+      "label": "여왕님, 빛을 향해 달려가죠!",
+      "effects": {}
+    }
+  },
+  {
+    "id": "story_finale_stranger",
+    "kind": "story",
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "빛 속의 누군가",
+    "text": "네르, 빛 한가운데에 누가 있어. …덩치가 엄청 크네?",
+    "trigger": {
+      "year": 200,
+      "order": 10
+    },
+    "years": 0,
+    "axe": false,
+    "stamps": "meet",
+    "reject": {
+      "label": "이분이… 세계수께서 내려주신 구원자?",
+      "effects": {}
+    },
+    "approve": {
+      "label": "…일단 방패로 쓸까요?",
+      "effects": {}
+    }
+  },
+  {
+    "id": "story_era_50",
+    "kind": "story",
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "쌓여 가는 공문",
+    "text": "네르, 요즘 많이 힘들지? 나도 공문을 열심히 읽어보려 노력했는데... 공문 한 줄만 읽어도 머리가 핑핑 돌 것 같아.",
+    "trigger": {
+      "year": 50,
+      "order": 1
+    },
+    "years": 0,
+    "axe": false,
+    "reject": {
+      "label": "여왕님, 그림일기는 쓰셨죠?",
+      "effects": {}
+    },
+    "approve": {
+      "label": "고마워요 여왕님, 힘내 볼게요.",
+      "effects": {}
+    }
+  },
+  {
+    "id": "story_era_100",
+    "kind": "story",
+    "speaker": "belita",
+    "faction": "witch",
+    "title": "여왕님의 걱정",
+    "text": "네르, 어느덧 에르핀이 여왕이 된 지 100년이 되었구나. 마음만 같아서는 조촐하게 축하 파티라도 하고 싶지만... 마녀왕국에 급한 일이 생겨서 이렇게라도 편지를 보낸단다. 언제나 에르핀을 챙겨주어 고맙구나.",
+    "trigger": {
+      "year": 100,
+      "order": 1
+    },
+    "years": 0,
+    "axe": false,
+    "reject": {
+      "label": "에르핀 여왕님이 벨리타님을 그리워하십니다.",
+      "effects": {}
+    },
+    "approve": {
+      "label": "걱정 마세요, 에르핀 여왕님을 지키겠습니다.",
+      "effects": {}
+    }
+  },
+  {
+    "id": "story_era_150",
+    "kind": "story",
+    "speaker": "ner",
+    "faction": "fairy",
+    "title": "사제장의 기도",
+    "text": "세계수시여… 요즈음 왕국과 교단이 잇따른 혼란으로 흔들리고 있사옵니다. 부디 이 미천한 사제장이 여왕님을 올바르게 보필하고, 왕국과 교단을 바로 이끌어 나갈 수 있도록 힘과 지혜를 내려주시옵소서…",
+    "trigger": {
+      "year": 150,
+      "order": 1
+    },
+    "years": 0,
+    "axe": false,
+    "reject": {
+      "label": "기도하나이다.",
+      "effects": {}
+    },
+    "approve": {
+      "label": "영원히 영원토록.",
+      "effects": {}
+    }
+  },
+  {
+    "id": "quest_goldie_storage",
+    "kind": "fixed",
+    "look": "quest",
+    "speaker": "goldie",
+    "faction": "dragon",
+    "title": "창고 좀 빌려주세요",
+    "text": "모나티엄25 알바생이 발주를 잘못 넣어서 우주식량이 한 트럭이나 들어왔어요. 유통기한이 길어서 버릴 수도 없고, 가게 창고는 꽉 찼고요… 혹시 사제장님, 세계수 교단 창고를 잠깐만 빌릴 수 있을까요?",
+    "trigger": {
+      "from": 80,
+      "to": 100,
+      "order": 1
+    },
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "교단 창고는 빌려드릴 수 없어요.",
+      "effects": {}
+    },
+    "approve": {
+      "label": "…잠깐만이에요.",
+      "effects": {
+        "faith": -10
+      },
+      "setFlags": [
+        "xion_debt"
+      ]
+    }
+  },
+  {
+    "id": "fixed_xion_request",
+    "kind": "fixed",
+    "speaker": "xion",
+    "faction": "elf",
+    "title": "그림자 속의 의뢰인",
+    "text": "훗… 요정왕국의 사제장이여. 나는 검은 마탄의 사수, 덜크 원더러. 그대에게 빚을 갚으러 왔다. 왜 돕냐고? 절대… 절대로 내가 편의점 물건을 잘못 주문한 걸 여기 맡아 준 보답 같은 게 아니다. 크흠! 아무튼. 마탄이냐, 스코프냐. 골라라. 큭큭.",
+    "trigger": {
+      "from": 100,
+      "to": 110,
+      "order": 1
+    },
+    "years": 1,
+    "axe": false,
+    "reject": {
+      "label": "마탄 2발",
+      "effects": {},
+      "grant": {
+        "boon": "bullet"
+      }
+    },
+    "approve": {
+      "label": "스코프",
+      "effects": {},
+      "grant": {
+        "boon": "scope",
+        "uses": 4
+      }
+    },
+    "look": "special",
+    "stamps": "direction",
+    "conditions": {
+      "flagsAll": [
+        "xion_debt"
+      ]
+    }
+  },
+  {
+    "id": "fixed_renewa_theater",
+    "kind": "fixed",
+    "speaker": "renewa",
+    "faction": "elf",
+    "title": "극장 개업 허가",
+    "text": "처음 뵙겠습니다, 사제장님. 저번 왕국 폭발 당시 무너진 초콜릿 가게 자리에 작은 극장을 세워보려고 해요. 그 가게를 아끼던 분들이 많은 건 알아요. 그래도 허락해 주신다면… 나중에 도움을 드릴게요.",
+    "trigger": {
+      "from": 110,
+      "to": 130,
+      "order": 1
+    },
+    "years": 1,
+    "axe": true,
+    "reject": {
+      "label": "그 자리는 비워 두고 싶어요.",
+      "effects": {}
+    },
+    "approve": {
+      "label": "좋아요. 허가해 드리죠.",
+      "effects": {
+        "people": -10,
+        "erpin": -10
+      },
+      "setFlags": [
+        "theater_open"
+      ]
+    },
+    "look": "quest"
+  },
+  {
+    "id": "special_renewa_curtain",
+    "kind": "fixed",
+    "look": "special",
+    "stamps": "direction",
+    "speaker": "renewa",
+    "faction": "elf",
+    "title": "극장 완공",
+    "text": "사제장님, 덕분에 극장이 완공됐어요. 첫 공연 날엔 초콜릿 가게 단골이던 분들도 와 주셨답니다. 약속대로 보답을 드릴게요. 잘못된 선택을 되돌릴 수 있는 기회와 힘든 선택의 고통을 줄여주는 힘... 어떤 것이 좋은가요?",
+    "trigger": {
+      "from": 140,
+      "to": 150,
+      "order": 1
+    },
+    "years": 1,
+    "axe": false,
+    "conditions": {
+      "flagsAll": [
+        "theater_open"
+      ]
+    },
+    "reject": {
+      "label": "역행",
+      "effects": {},
+      "grant": {
+        "boon": "rewind"
+      }
+    },
+    "approve": {
+      "label": "대역",
+      "effects": {},
+      "grant": {
+        "boon": "understudy"
+      }
+    }
+  },
+  {
+    "id": "special_fricle_pikora",
+    "kind": "fixed",
+    "look": "hard",
+    "stamps": "direction",
+    "speaker": "fricle",
+    "faction": "witch",
+    "title": "마녀들의 실습",
+    "text": "요정왕국의 사제장. 내 제자 피코라가 실습할 곳이 필요하다는군. 하여간 손이 많이 가. 내가 직접 본보기를 보여 줄지, 이 애한테 맡길지 골라. 내 마법은 확실하게 아프고, 피코라의 마법은… 어디로 튈지 나도 몰라. 계약은 계약이니 둘 중 하나는 해야 해.",
+    "trigger": {
+      "from": 170,
+      "to": 180,
+      "order": 1
+    },
+    "years": 2,
+    "axe": "bullet",
+    "reject": {
+      "label": "프리클",
+      "effects": {},
+      "witchPress": {
+        "amount": 10,
+        "floor": 15
+      }
+    },
+    "approve": {
+      "label": "피코라",
+      "effects": {},
+      "witchDrift": {
+        "perDoc": 5,
+        "turns": 6
+      }
+    }
+  },
+  {
+    "id": "fixed_chloe_tailor",
+    "kind": "fixed",
+    "speaker": "chloe",
+    "faction": "fairy",
+    "title": "재단소 허가",
+    "text": "아? 사제장? 여왕은 내가 구했으니 걱정하지 마. 그리고 왕궁 앞에 재단소 차리기로 했어. 여왕한테 허락은 받았으니까, 허가 도장 찍어 줘. 계약금은 이미 여왕에게 과자로 줬어! ... 한 번 더 도와줄 테니까 그리 째려보지 마. 어떻게 도와주면 좋겠어?",
+    "trigger": {
+      "year": 200,
+      "order": 2
+    },
+    "years": 1,
+    "axe": false,
+    "reject": {
+      "label": "바늘땀",
+      "effects": {},
+      "grant": {
+        "boon": "stitch"
+      }
+    },
+    "approve": {
+      "label": "반창고",
+      "effects": {},
+      "mend": {
+        "mode": "all",
+        "amount": 15
+      }
+    },
+    "look": "special",
+    "stamps": "direction"
+  },
+  {
+    "id": "fixed_elena_development",
+    "kind": "fixed",
+    "speaker": "elena",
+    "faction": "elf",
+    "title": "개발권 협상",
+    "text": "야, 사제장? 요정왕국 땅 좀 더 빌리자. 공장 하나만 더 세우면 설탕이 두 배로 나와. 너희한텐 손해 볼 거 없는 장사잖아? 싫으면 말고. 대신 설탕 값은 오를 거야.",
+    "trigger": {
+      "from": 90,
+      "to": 160,
+      "order": 1
+    },
+    "years": 1,
+    "axe": "bullet",
+    "reject": {
+      "label": "세계수 땅은 내드릴 수 없어요.",
+      "effects": {
+        "sugar": -15,
+        "faith": 5
+      }
+    },
+    "approve": {
+      "label": "끙… 조건부로 허가하죠.",
+      "effects": {
+        "faith": -15,
+        "sugar": 10,
+        "people": -10
+      },
+      "setFlags": [
+        "elf_monopoly"
+      ]
+    },
+    "variant": {
+      "group": "elves",
+      "pool": 1
+    },
+    "look": "hard"
+  },
+  {
+    "id": "fixed_amelia_audit",
+    "kind": "fixed",
+    "speaker": "amelia",
+    "faction": "elf",
+    "title": "계약 유지비",
+    "text": "아멜리아입니다. 시장님 지시로 다음 분기부터 설탕 공급 계약 유지비를 받겠습니다. 사탕으로 납부하시면 낡은 예배당 보수비는 모나티엄이 부담하겠습니다. 납부하지 않으시면 교단 납품부터 중단합니다. 이건 부탁이 아닙니다.",
+    "trigger": {
+      "from": 90,
+      "to": 160,
+      "order": 1
+    },
+    "years": 1,
+    "axe": "bullet",
+    "reject": {
+      "label": "그런 계약은 없었어요.",
+      "effects": {
+        "faith": -15
+      }
+    },
+    "approve": {
+      "label": "…납부하죠.",
+      "effects": {
+        "sugar": -15,
+        "faith": 10,
+        "people": -10
+      }
+    },
+    "variant": {
+      "group": "elves",
+      "pool": 1
+    },
+    "look": "hard"
+  },
+  {
+    "id": "fixed_rohne_visit",
+    "kind": "fixed",
+    "speaker": "rohne",
+    "faction": "elf",
+    "title": "광장의 일자리 설명회",
+    "text": "아, 안녕하세요! 저는 로네예요, 로네! 모나티엄 대사관에서 왔어요. 그, 그게… 광장에서 모나티엄 일자리 설명회를 열고 싶어요! 공장에서 일하면 월급을 사탕으로 듬뿍 받을 수 있거든요! 요정들을 데려가려는 거 아니에요! 스, 스파이 같은 것도 아니고요! 설명회 날엔 여왕님께 모나티엄 돈까스도 대접할게요! 돈까스 걸고요!",
+    "trigger": {
+      "from": 90,
+      "to": 160,
+      "order": 1
+    },
+    "years": 1,
+    "axe": "bullet",
+    "reject": {
+      "label": "광장은 빌려 드릴 수 없어요.",
+      "effects": {
+        "erpin": -15,
+        "people": -5
+      }
+    },
+    "approve": {
+      "label": "…설명만 하고 가세요.",
+      "effects": {
+        "sugar": -15,
+        "people": 5,
+        "erpin": 10,
+        "faith": -10
+      },
+      "setFlags": [
+        "rohne_recruit"
+      ]
+    },
+    "variant": {
+      "group": "elves",
+      "pool": 1
+    },
+    "look": "hard"
+  },
+  {
+    "id": "fixed_elena_sugar_advance",
+    "kind": "fixed",
+    "speaker": "elena",
+    "faction": "elf",
+    "title": "설탕 선금",
+    "text": "야, 사제장. 다음 달부터 설탕 값 올린다. 공장 기계 바꾸는 데 돈이 들거든. 지금 선금 내면 옛날 값으로 쳐 줄게. 꼬맹이 여왕한테 모나티엄 최신 장난감도 하나 얹어 주고. 싫으면 말고. 오른 값은 요정들이 내면 되지.",
+    "trigger": {
+      "from": 90,
+      "to": 160,
+      "order": 1
+    },
+    "years": 1,
+    "axe": "bullet",
+    "reject": {
+      "label": "선금은 못 내요.",
+      "effects": {
+        "people": -15
+      }
+    },
+    "approve": {
+      "label": "…교단 금고에서 선금 낼게요.",
+      "effects": {
+        "sugar": -15,
+        "erpin": 10,
+        "faith": -10
+      }
+    },
+    "variant": {
+      "group": "elves",
+      "pool": 2
+    },
+    "look": "hard"
+  },
+  {
+    "id": "fixed_amelia_snack_audit",
+    "kind": "fixed",
+    "speaker": "amelia",
+    "faction": "elf",
+    "title": "왕궁 간식비 감사",
+    "text": "아멜리아입니다. 시장님 지시로 왕궁 지출을 감사한 결과, 여왕님 간식비가 왕국 예산의 삼분의 일입니다. 간식비를 절반으로 줄이시면 설탕 공급 단가를 낮춰 드리겠습니다. 줄이지 않으시면 단가를 올리겠습니다. 이건 부탁이 아닙니다.",
+    "trigger": {
+      "from": 90,
+      "to": 160,
+      "order": 1
+    },
+    "years": 1,
+    "axe": "bullet",
+    "reject": {
+      "label": "여왕님 간식은 못 줄여요.",
+      "effects": {
+        "sugar": -15,
+        "erpin": 5,
+        "people": -5
+      }
+    },
+    "approve": {
+      "label": "…절반으로 줄이죠.",
+      "effects": {
+        "erpin": -15,
+        "sugar": 10,
+        "people": 5
+      }
+    },
+    "variant": {
+      "group": "elves",
+      "pool": 2
+    },
+    "look": "hard"
+  },
+  {
+    "id": "fixed_rohne_culture_night",
+    "kind": "fixed",
+    "speaker": "rohne",
+    "faction": "elf",
+    "title": "문화 교류의 밤",
+    "text": "아, 안녕하세요! 로네예요! 대사관에서 문화 교류 행사를 열고 싶은데요… 장소가 그… 세계수 교단 예배당이면 좋겠어요! 엘프 음악도 틀고, 태엽 인형 공연도 하고… 기도 시간이랑 조금 겹치긴 하는데 금방 끝내요! 여왕님도 태엽 인형 공연을 엄청 기대하고 계세요! 돈까스 걸고요!",
+    "trigger": {
+      "from": 90,
+      "to": 160,
+      "order": 1
+    },
+    "years": 1,
+    "axe": "bullet",
+    "reject": {
+      "label": "예배당은 안 돼요.",
+      "effects": {
+        "erpin": -15,
+        "people": -5
+      }
+    },
+    "approve": {
+      "label": "…기도 시간만 피해 주세요.",
+      "effects": {
+        "faith": -15,
+        "people": 10
+      }
+    },
+    "variant": {
+      "group": "elves",
+      "pool": 2
+    },
+    "look": "hard"
+  },
+  {
+    "id": "fixed_elena_palace_garden",
+    "kind": "fixed",
+    "speaker": "elena",
+    "faction": "elf",
+    "title": "왕궁 정원 임대",
+    "text": "야, 사제장. 왕궁 정원 좀 빌리자. 모나티엄 전시관 하나 세울 거야. 꼬맹이 여왕 놀이터라고? 딴 데서 놀라 그래. 임대료는 설탕으로 두둑이 줄게. 안 빌려주면 설탕 납품 순서는 맨 뒤로 미룬다?",
+    "trigger": {
+      "from": 90,
+      "to": 160,
+      "order": 1
+    },
+    "years": 1,
+    "axe": "bullet",
+    "reject": {
+      "label": "여왕님 정원은 안 돼요.",
+      "effects": {
+        "sugar": -15
+      }
+    },
+    "approve": {
+      "label": "…정원 한쪽만이에요.",
+      "effects": {
+        "erpin": -15,
+        "sugar": 10
+      }
+    },
+    "variant": {
+      "group": "elves",
+      "pool": 3
+    },
+    "look": "hard"
+  },
+  {
+    "id": "fixed_amelia_registry",
+    "kind": "fixed",
+    "speaker": "amelia",
+    "faction": "elf",
+    "title": "요정 등록제",
+    "text": "아멜리아입니다. 시장님 지시로 모나티엄을 드나드는 요정 등록제를 시행하겠습니다. 요정 전원의 이름과 날개 길이를 신고하셔야 합니다. 협조하시면 교단 축제에 쓸 설탕을 무상으로 지원하겠습니다. 거부하시면 교단 납품을 중단합니다. 이건 부탁이 아닙니다.",
+    "trigger": {
+      "from": 90,
+      "to": 160,
+      "order": 1
+    },
+    "years": 1,
+    "axe": "bullet",
+    "reject": {
+      "label": "요정들은 숫자가 아니에요.",
+      "effects": {
+        "faith": -15
+      }
+    },
+    "approve": {
+      "label": "…신고하게 하죠.",
+      "effects": {
+        "people": -15,
+        "faith": 10,
+        "erpin": -10
+      }
+    },
+    "variant": {
+      "group": "elves",
+      "pool": 3
+    },
+    "look": "hard"
+  },
+  {
+    "id": "fixed_rohne_embassy_dinner",
+    "kind": "fixed",
+    "speaker": "rohne",
+    "faction": "elf",
+    "title": "대사관 만찬",
+    "text": "아, 안녕하세요! 로네예요! 대사관에서 요정왕국 분들을 모시고 만찬을 열고 싶어요! 그, 그런데 예산이 조금… 아니 많이 모자라서… 사탕을 조금만 보태 주시면… 여왕님 자리는 제일 상석이에요! 돈까스... 아니 3단 케이크도 나와요!",
+    "trigger": {
+      "from": 90,
+      "to": 160,
+      "order": 1
+    },
+    "years": 1,
+    "axe": "bullet",
+    "reject": {
+      "label": "만찬은 다음에 해요.",
+      "effects": {
+        "erpin": -15,
+        "people": -5
+      }
+    },
+    "approve": {
+      "label": "…조금만 보태 드릴게요.",
+      "effects": {
+        "sugar": -15,
+        "erpin": 10
+      }
+    },
+    "variant": {
+      "group": "elves",
+      "pool": 3
+    },
+    "look": "hard"
+  },
+  {
+    "id": "daily_marie_tunnel",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "marie",
+    "faction": "fairy",
+    "title": "탐험용 터널",
+    "text": "사제장님! 왕궁 뒤뜰에 딱 하나만 터널을 뚫자고요! 탐험용이에요, 탐험용! 폭약은 제가 다 가져올게요!",
+    "years": 2,
+    "weight": 10,
+    "axe": true,
+    "conditions": {
+      "flagsAll": [
+        "marie_friend"
+      ],
+      "flagsNone": [
+        "escape_tunnel"
+      ],
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "절대 안 됩니다.",
+      "effects": {
+        "erpin": -5,
+        "people": 5
+      }
+    },
+    "approve": {
+      "label": "…딱 하나만이에요.",
+      "effects": {
+        "erpin": 10,
+        "people": -10
+      },
+      "setFlags": [
+        "escape_tunnel"
+      ]
+    }
+  },
+  {
+    "id": "daily_mayo_relic",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "mayo",
+    "faction": "fairy",
+    "title": "낡은 성물 수집",
+    "text": "교단 창고에 굴러다니는 낡은 성물, 제가 수집하겠음. 대가는 설탕 한 수레 드림. 돌려달라는 말은 안 받음.",
+    "years": 2,
+    "weight": 10,
+    "axe": true,
+    "reject": {
+      "label": "성물은 교단 거예요.",
+      "effects": {
+        "faith": 5,
+        "sugar": -5
+      }
+    },
+    "approve": {
+      "label": "가져가세요. 설탕은 꼭 주시고요.",
+      "effects": {
+        "sugar": 10,
+        "faith": -10
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_diana_berries",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "diana",
+    "faction": "beastfolk",
+    "title": "꿀과 빵",
+    "text": "저희 마을의 아이들이 요정왕국의 빵을 무척이나 좋아한답니다. 그런데 항상 제가 방문할 때마다 품절이더군요… 혹시 조금만 남겨주실 수 있을까요? 대신에 제가 여왕님께서 좋아하시는 꿀을 나눠드릴게요.",
+    "years": 2,
+    "weight": 10,
+    "axe": true,
+    "reject": {
+      "label": "죄송해요. 왕국 주민분들의 반발이 있을 것 같군요.",
+      "effects": {
+        "people": 5,
+        "erpin": -5
+      },
+      "relations": {
+        "beastfolk": -1
+      }
+    },
+    "approve": {
+      "label": "네, 종류별로 조금씩 남겨둘게요.",
+      "effects": {
+        "erpin": 5,
+        "people": -5
+      },
+      "relations": {
+        "beastfolk": 1
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_sist_charm",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "sist",
+    "faction": "dragon",
+    "title": "잎사귀 모양 부적",
+    "text": "사장님! 세계수 잎사귀 모양 부적이 들어왔어요, 헤헤. 진짜 잎은 아니에요. 진짜 잎을 떼 왔다간 사장님한테 혼나잖아요? 그래도 신도분들께 나눠 드리면 신앙심이 쑥쑥 오를걸요? 오늘만 특가예요!",
+    "years": 2,
+    "weight": 10,
+    "axe": true,
+    "conditions": {
+      "flagsNone": [
+        "fake_charm"
+      ],
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "필요 없어요.",
+      "effects": {
+        "faith": -5
+      }
+    },
+    "approve": {
+      "label": "…하나만 살게요.",
+      "effects": {
+        "sugar": -10,
+        "faith": 10
+      },
+      "setFlags": [
+        "fake_charm"
+      ]
+    }
+  },
+  {
+    "id": "daily_witch_ticking_parcel",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "witch_courier",
+    "faction": "witch",
+    "title": "째깍거리는 소포",
+    "text": "벨리타 여왕님께서 에르핀 여왕님께 보내신 선물입니다. 다만 상자에서 계속 째깍 소리가 나는데… 원래 그런 거라고 하셨습니다. 열어 보지는 마시랍니다.",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "마음만 받겠다고 전해 주세요.",
+      "effects": {
+        "erpin": -5
+      }
+    },
+    "approve": {
+      "label": "여왕님께 전해 드리죠.",
+      "effects": {
+        "erpin": 10
+      },
+      "status": {
+        "id": "ticking_parcel",
+        "turns": 3,
+        "delayed": {
+          "sugar": -15
+        }
+      }
+    },
+    "conditions": {
+      "minYear": 20,
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_villager_hibernation",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "villager",
+    "faction": "fairy",
+    "title": "낮잠 축제",
+    "text": "사제장님! 이번엔 다 같이 낮잠 축제를 하고 싶어요. 며칠 동안 아무것도 안 하고 낮잠만 자는 거예요! 일어나면 엄청 개운할 거예요!",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "일은 하셔야죠.",
+      "effects": {
+        "people": -10
+      }
+    },
+    "approve": {
+      "label": "푹 주무세요.",
+      "effects": {
+        "sugar": -5,
+        "faith": 5
+      },
+      "status": {
+        "id": "hibernation",
+        "turns": 4,
+        "freeze": "people"
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_kid_sprout",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "kid",
+    "faction": "fairy",
+    "title": "세계수 아래 새싹",
+    "text": "사제장님! 세계수 밑에 새싹이 났어요! 매일 물을 주면 쑥쑥 자랄 거래요. 제가 매일 물 줘도 돼요?",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "세계수 근처는 위험해요.",
+      "effects": {
+        "people": -5
+      }
+    },
+    "approve": {
+      "label": "그럼요, 잘 부탁해요.",
+      "effects": {
+        "sugar": -5
+      },
+      "status": {
+        "id": "sprout",
+        "turns": 5,
+        "tick": {
+          "faith": 2
+        }
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_farmer_rain",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "farmer",
+    "faction": "fairy",
+    "title": "그치지 않는 비",
+    "text": "사제장님, 비가 그칠 생각을 안 해요. 창고 지붕에서 물이 새서 사탕이 눅눅해지고 있어요. 지금 고치려면 교단 창고를 좀 열어 주셔야 하는데요…",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "비는 곧 그칠 거예요.",
+      "effects": {
+        "people": -5
+      },
+      "status": {
+        "id": "damp_storage",
+        "turns": 5,
+        "tick": {
+          "sugar": -3
+        }
+      }
+    },
+    "approve": {
+      "label": "창고를 열죠. 지금 고쳐요.",
+      "effects": {
+        "sugar": -10
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_guard_axe_repair",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "guard",
+    "faction": "fairy",
+    "title": "무뎌진 도끼",
+    "text": "보고합니다. 결재실 도끼 날이 다 무뎌졌습니다. 대장간에 급히 맡기면 사탕이 꽤 든다고 합니다. 이대로 휘두르시다간 공문보다 책상이 먼저 쪼개질 겁니다.",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "아직 쓸 만해요… 아마도요.",
+      "effects": {},
+      "status": {
+        "id": "dull_axe",
+        "turns": 3,
+        "axeLock": true
+      }
+    },
+    "approve": {
+      "label": "맡겨 주세요.",
+      "effects": {
+        "sugar": -10
+      }
+    },
+    "conditions": {
+      "minYear": 10,
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_kyarot_cane",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "kyarot",
+    "faction": "fairy",
+    "title": "사탕수수밭 확장",
+    "text": "사제장, 내 사탕수수밭을 세계수 옆까지 조금 더 넓혀도 될까? 영양제도 듬뿍 줄게! 세계수도 분명 좋아할 거야!",
+    "years": 2,
+    "weight": 10,
+    "axe": true,
+    "conditions": {
+      "flagsNone": [
+        "cane_near_tree"
+      ],
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "세계수 근처는 안 돼요.",
+      "effects": {
+        "sugar": -5,
+        "faith": 5
+      }
+    },
+    "approve": {
+      "label": "조금만이에요.",
+      "effects": {
+        "sugar": 10,
+        "faith": -10
+      },
+      "setFlags": [
+        "cane_near_tree"
+      ],
+      "status": {
+        "id": "cane_spread",
+        "turns": 5,
+        "tick": {
+          "sugar": 3
+        }
+      }
+    }
+  },
+  {
+    "id": "daily_ashur_school",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "ashur",
+    "faction": "fairy",
+    "title": "마법학교 특별수업",
+    "text": "사제장님, 저 결심했어요! 이번 주말에 빵집 사장이 아닌 마법학교 교장으로서 특별 강연을 할 생각이에요. 분명 많은 학생들이 찾아올 거라구요~",
+    "years": 2,
+    "weight": 10,
+    "axe": true,
+    "conditions": {
+      "flagsNone": [
+        "ashur_school"
+      ],
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "월세는 어찌 내시려고요. 빵이나 열심히 구우세요.",
+      "effects": {
+        "sugar": 5,
+        "people": 5
+      }
+    },
+    "approve": {
+      "label": "하… 마음대로 하세요.",
+      "effects": {
+        "sugar": -5,
+        "people": -5
+      },
+      "setFlags": [
+        "ashur_school"
+      ]
+    }
+  },
+  {
+    "id": "daily_erpin_snack_decree",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "사탕 진상",
+    "text": "네르! 나 좋은 생각이 났어! 오늘부터 왕국 요정들은 하루에 한 번씩 나한테 사탕을 바치는 거야! 우히히, 어때? 나 똑똑하지?",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "…여왕님, 혼나실래요?",
+      "effects": {
+        "erpin": -5,
+        "people": 5
+      }
+    },
+    "approve": {
+      "label": "왕국 재정이 요즘 빠듯하긴 했죠.",
+      "effects": {
+        "erpin": 10,
+        "people": -5
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_marie_fireworks",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "marie",
+    "faction": "fairy",
+    "title": "주말 폭죽 대회",
+    "text": "사제장님! 이번 주말에 광장에서 폭죽 쏘자고요! 쾅! 하고 하늘이 반짝반짝해지는 거예요! 화약은 제가 넉넉히 구해 올게요!",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "광장이 무너지면 어쩌시려고요.",
+      "effects": {
+        "people": -5,
+        "erpin": -5
+      }
+    },
+    "approve": {
+      "label": "…세계수 쪽으로는 쏘지 마세요.",
+      "effects": {
+        "sugar": -10,
+        "people": 10,
+        "erpin": 5
+      },
+      "status": {
+        "id": "ember",
+        "turns": 3,
+        "delayed": {
+          "faith": -10
+        }
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_mayo_pawn_bell",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "mayo",
+    "faction": "fairy",
+    "title": "종 맡기고 사탕 빌리기",
+    "text": "교단 종 하나 맡기면 사탕 넉넉히 빌려 드림. 이자는 조금만 받음. 종은 소리 안 나게 잘 보관함.",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "종은 교단 거예요.",
+      "effects": {
+        "faith": 5
+      }
+    },
+    "approve": {
+      "label": "…꼭 돌려받을게요.",
+      "effects": {
+        "sugar": 10,
+        "faith": -10
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_guard_lost_child",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "guard",
+    "faction": "fairy",
+    "title": "세계수 뿌리 밑의 꼬마",
+    "text": "보고합니다. 길 잃은 꼬마 요정이 세계수 뿌리 밑에서 잠들어 있었습니다. 깨우면 울 것 같습니다. 어떻게 할까요?",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "집에 바로 데려다주세요.",
+      "effects": {
+        "people": 5
+      }
+    },
+    "approve": {
+      "label": "깰 때까지 지켜 주고, 밥도 먹여서 보내죠. 세계수 품이니까요.",
+      "effects": {
+        "faith": 5,
+        "people": 5,
+        "sugar": -5
+      }
+    }
+  },
+  {
+    "id": "daily_sweetshop_sign",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "sweetshop",
+    "faction": "fairy",
+    "title": "교단 공인 사탕",
+    "text": "사제장님, 가게 앞에 '세계수 교단 공인 사탕' 간판을 걸어도 될까요? 그러면 손님이 두 배는 늘 거예요!",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "세계수 이름을 팔면 안 돼요.",
+      "effects": {
+        "faith": 5,
+        "people": -5
+      }
+    },
+    "approve": {
+      "label": "맛은 확실해야 해요.",
+      "effects": {
+        "sugar": 10,
+        "faith": -5
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_kyarot_statue",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "kyarot",
+    "faction": "fairy",
+    "title": "사탕수수 조각상",
+    "text": "사탕수수로 세계수 모양 조각상을 만들었어! 세계수가 아니라 당근 같다고? …사실 만들다 보니 당근이 떠올라서. 그래도 진짜 잘 만들었다니까? 교단 앞에 세워도 되지?",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "당근 조각상을 교단 앞에 세워두면 안 돼요.",
+      "effects": {
+        "faith": 5
+      }
+    },
+    "approve": {
+      "label": "…녹기 전까지만이에요.",
+      "effects": {
+        "people": 5,
+        "faith": -5
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_guard_curfew",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "guard",
+    "faction": "fairy",
+    "title": "여왕님 야간 외출 금지령",
+    "text": "보고합니다. 경비대장님 명령을 전합니다. 최근 한 달간 왕궁 담장 무단 출입 시도 17건, 그중 12건이 여왕님의 야간 외출입니다. 오후 9시 이후 여왕님 외출 금지령에 결재를 요청하십니다.",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "여왕님을 가둘 수는 없어요.",
+      "effects": {
+        "erpin": 10,
+        "people": -5
+      },
+      "status": {
+        "id": "night_escape",
+        "turns": 5,
+        "tick": {
+          "people": -2
+        }
+      }
+    },
+    "approve": {
+      "label": "…9시 반으로 하죠.",
+      "effects": {
+        "people": 15,
+        "erpin": -20
+      }
+    }
+  },
+  {
+    "id": "daily_erpin_birthday_week",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "여왕의 특별 주간",
+    "text": "네르! 이번 주를 특별한 일주일로 만들고 싶어! 저번에 왕국에 축제를 열려고 했는데 비가 와서 못 했잖아. 다들 일주일 동안 먹고 노는 거야.",
+    "years": 3,
+    "axe": true,
+    "reject": {
+      "label": "여왕님, 그러면 요정왕국이 안 굴러가요.",
+      "effects": {
+        "erpin": -5
+      },
+      "status": {
+        "id": "sulky_queen",
+        "turns": 5,
+        "tick": {
+          "erpin": -3
+        }
+      }
+    },
+    "approve": {
+      "label": "정말이지… 알겠어요.",
+      "effects": {
+        "erpin": 20,
+        "people": 10,
+        "sugar": -20
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_marie_window",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "marie",
+    "faction": "fairy",
+    "title": "날아간 성당 창문",
+    "text": "사제장님… 그게요, 실험하다가 성당 창문이 조금… 아주 조금 날아갔어요! 이왕 고치는 김에 더 크게 만들자고요!",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "수리비는 마리 씨가 갚으세요.",
+      "effects": {
+        "erpin": -5
+      }
+    },
+    "approve": {
+      "label": "…스테인드글라스로 하죠.",
+      "effects": {
+        "sugar": -5,
+        "faith": 10
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_mayo_escaped_collection",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "mayo",
+    "faction": "fairy",
+    "title": "탈출한 수집품",
+    "text": "수집품 중 살아 있는 것 몇 마리 탈출함. 지금 마을 어딘가에 있음. 물지는 않음. 아마도.",
+    "years": 3,
+    "axe": true,
+    "reject": {
+      "label": "교단은 그 일과 상관없습니다.",
+      "effects": {
+        "people": -5
+      }
+    },
+    "approve": {
+      "label": "사제들까지 풀어서 찾죠.",
+      "effects": {
+        "people": 10,
+        "faith": -10
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_villager_harvest",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "villager",
+    "faction": "fairy",
+    "title": "세계수 아래 수확제",
+    "text": "사제장님, 올해 수확제는 세계수 아래에서 열고 싶어요. 다들 세계수께 직접 감사드리고 싶대요!",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "세계수 아래는 조용해야 해요.",
+      "effects": {
+        "faith": 5,
+        "people": -10
+      }
+    },
+    "approve": {
+      "label": "좋아요. 뿌리만 밟지 마세요.",
+      "effects": {
+        "faith": 10,
+        "people": 10,
+        "sugar": -10
+      }
+    }
+  },
+  {
+    "id": "daily_ashur_bread_tasting",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "ashur",
+    "faction": "fairy",
+    "title": "무료 시식회",
+    "text": "사제장님, 마법학교 학생 모집을 위해 무료 빵 시식회를 열려고 합니다. 빵집 홍보가 아니라 학교 홍보입니다. 학교요!",
+    "years": 3,
+    "axe": true,
+    "reject": {
+      "label": "그냥 빵집 하세요.",
+      "effects": {
+        "people": -5,
+        "erpin": -5
+      }
+    },
+    "approve": {
+      "label": "…교단이 반은 대죠.",
+      "effects": {
+        "sugar": -10,
+        "people": 10,
+        "erpin": 10
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_ashur_first_student",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "ashur",
+    "faction": "fairy",
+    "title": "마법학교 장학사업",
+    "text": "사제장님! 드디어 마법학교에 첫 입학생이 왔습니다! …빵을 사러 왔다가 잘못 들어온 것 같긴 합니다만, 아무튼 입학생입니다! 저 혹시… 요정왕국 장학재단 지원 같은 건 없나요?",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "flagsAll": [
+        "ashur_school"
+      ],
+      "flagsNone": [
+        "ashur_first_student"
+      ],
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "…그러면 빵집하고 마법학교까지 합쳐서 세금 2배로 내세요.",
+      "effects": {
+        "sugar": 10,
+        "people": -10
+      },
+      "setFlags": [
+        "ashur_first_student"
+      ]
+    },
+    "approve": {
+      "label": "축하드려요. 교단이 장학금을 지원해 드리죠.",
+      "effects": {
+        "sugar": -10
+      },
+      "setFlags": [
+        "ashur_first_student"
+      ]
+    }
+  },
+  {
+    "id": "daily_kyarot_cane_vine",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "kyarot",
+    "faction": "fairy",
+    "title": "세계수를 감은 사탕수수",
+    "text": "큰일이야! 사탕수수가 너무 잘 자라서 세계수 줄기를 감기 시작했어! 근데… 단맛은 엄청 좋아졌어!",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "flagsAll": [
+        "cane_near_tree"
+      ],
+      "flagsNone": [
+        "cane_vine"
+      ],
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "당장 베세요. 전부요.",
+      "effects": {
+        "sugar": -10,
+        "faith": 10
+      },
+      "setFlags": [
+        "cane_vine"
+      ]
+    },
+    "approve": {
+      "label": "…수확할 때까지만이에요.",
+      "effects": {
+        "sugar": 20,
+        "faith": -20
+      },
+      "setFlags": [
+        "cane_vine"
+      ]
+    }
+  },
+  {
+    "id": "daily_erpin_abdication",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "여왕 그만둘래",
+    "text": "네르… 나 여왕 그만할래. 나 자신이 없어. 이제 그냥 놀고만 싶어. 진짜야. 이번엔 진짜라구.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "flagsNone": [
+        "erpin_abdication"
+      ]
+    },
+    "reject": {
+      "label": "여왕님 아니면 안 돼요.",
+      "effects": {
+        "faith": 10,
+        "erpin": -20
+      },
+      "setFlags": [
+        "erpin_abdication"
+      ]
+    },
+    "approve": {
+      "label": "…한 달만 쉬세요. 제가 다 할게요.",
+      "effects": {
+        "faith": -15,
+        "erpin": 20
+      },
+      "setFlags": [
+        "erpin_abdication"
+      ]
+    }
+  },
+  {
+    "id": "daily_guard_candy_riot",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "guard",
+    "faction": "fairy",
+    "title": "광장의 사탕 시위",
+    "text": "보고합니다! 사탕 배급이 줄었다며 광장에 요정 수백 명이 모였습니다. 해산 명령을 내려 주십시오.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "gauges": {
+        "sugar": {
+          "max": 35
+        }
+      }
+    },
+    "reject": {
+      "label": "창고를 여세요. 나눠 드리죠.",
+      "effects": {
+        "sugar": -20,
+        "people": 20
+      }
+    },
+    "approve": {
+      "label": "…해산만 시키세요. 다치게 하지 말고요.",
+      "effects": {
+        "sugar": 10,
+        "people": -20
+      },
+      "status": {
+        "id": "strike",
+        "turns": 4,
+        "tick": {
+          "sugar": -3
+        }
+      }
+    }
+  },
+  {
+    "id": "daily_church_authority",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "church",
+    "faction": "fairy",
+    "title": "결재권 이양 요구",
+    "text": "사제장님, 경비대에서 공문이 올라왔습니다. 여왕님 보호를 위해 교단 결재권의 절반을 경비대로 넘기라는 경비대장님 요구입니다. 근거로 '지난 50년간 여왕님 위험 노출 312회'를 적어 왔습니다.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "flagsNone": [
+        "captain_authority"
+      ]
+    },
+    "reject": {
+      "label": "아무리 경비대장과 여왕님이 친해도 그건 용납 못 합니다. 교단의 뜻이라구요!",
+      "effects": {
+        "faith": 20,
+        "erpin": -20
+      },
+      "setFlags": [
+        "captain_authority"
+      ]
+    },
+    "approve": {
+      "label": "…경비대 관련 공문만이에요.",
+      "effects": {
+        "faith": -20,
+        "erpin": 20
+      },
+      "setFlags": [
+        "captain_authority"
+      ]
+    }
+  },
+  {
+    "id": "daily_mayo_world_tree_branch",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "mayo",
+    "faction": "fairy",
+    "title": "세계수 가지 매입",
+    "text": "모나티엄 손님이 세계수 가지 하나에 왕국 사탕 십 년 치 준다고 함. 중개는 마요가 함. 가지 하나쯤 티 안 남. 진짜임.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "flagsNone": [
+        "tree_branch"
+      ],
+      "maxYear": 199,
+      "minYear": 81
+    },
+    "reject": {
+      "label": "세계수는 팔 수 없어요. 절대로.",
+      "effects": {
+        "faith": 10,
+        "sugar": -10
+      },
+      "setFlags": [
+        "tree_branch"
+      ],
+      "status": {
+        "id": "guarded_branch",
+        "turns": 5,
+        "tick": {
+          "faith": 2
+        }
+      }
+    },
+    "approve": {
+      "label": "…아주 작은 가지 하나만이에요.",
+      "effects": {
+        "sugar": 20,
+        "faith": -20
+      },
+      "setFlags": [
+        "tree_branch"
+      ]
+    }
+  },
+  {
+    "id": "daily_villager_exodus",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "villager",
+    "faction": "fairy",
+    "title": "떠나려는 마을",
+    "text": "사제장님, 동쪽 마을 요정들이 짐을 싸고 있어요. 사탕도 일도 없으니 다른 나라로 떠나겠대요.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "gauges": {
+        "people": {
+          "max": 40
+        }
+      }
+    },
+    "reject": {
+      "label": "붙잡지는 않을게요.",
+      "effects": {
+        "people": -15
+      },
+      "status": {
+        "id": "empty_houses",
+        "turns": 5,
+        "tick": {
+          "people": -2
+        }
+      }
+    },
+    "approve": {
+      "label": "교단 창고를 열어 드리죠.",
+      "effects": {
+        "sugar": -15,
+        "people": 10,
+        "faith": 10
+      }
+    }
+  },
+  {
+    "id": "daily_marie_tunnel_vault",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "marie",
+    "faction": "fairy",
+    "title": "왕궁 지하로 이어진 터널",
+    "text": "사제장님! 예전에 뚫은 터널이요… 그게 왕궁 지하 창고까지 이어져 버렸어요! 막을까요, 아니면 비밀 통로로 쓸까요? 저는 비밀 통로가 좋아요!",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "flagsAll": [
+        "escape_tunnel"
+      ],
+      "flagsNone": [
+        "tunnel_vault"
+      ],
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "당장 막으세요. 창고가 털려요.",
+      "effects": {
+        "people": 5,
+        "erpin": -15
+      },
+      "setFlags": [
+        "tunnel_vault"
+      ]
+    },
+    "approve": {
+      "label": "…여왕님 비상구로만 쓰죠.",
+      "effects": {
+        "erpin": 20,
+        "sugar": -10
+      },
+      "setFlags": [
+        "tunnel_vault"
+      ]
+    }
+  },
+  {
+    "id": "daily_farmer_tithe",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "farmer",
+    "faction": "fairy",
+    "title": "풍년의 십일조",
+    "text": "사제장님, 올해 사탕수수가 풍년이에요! 교단에 십일조를 넉넉히 바치고 싶은데, 받아 주실 거죠?",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "여러분이 다 드세요.",
+      "effects": {
+        "people": 10,
+        "faith": -5
+      }
+    },
+    "approve": {
+      "label": "감사히 받죠.",
+      "effects": {
+        "sugar": 10,
+        "faith": 5,
+        "people": -5
+      }
+    }
+  },
+  {
+    "id": "daily_church_vigil",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "church",
+    "faction": "fairy",
+    "title": "수상한 밤샘 기도회?",
+    "text": "사제장님, 신도들이 세계수 앞에서 밤샘 기도회를 열고 싶어 합니다. 사흘 밤낮으로요. 저…절대로 파티는 아니고요.",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "뒤에 있는 포도주스랑 마시멜로 마카롱은 뭐죠?",
+      "effects": {
+        "faith": 5,
+        "people": -5
+      }
+    },
+    "approve": {
+      "label": "하… 깨끗하게 쓰세요.",
+      "effects": {
+        "faith": -5,
+        "people": 10
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_kid_question",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "kid",
+    "faction": "fairy",
+    "title": "꼬마 요정의 질문",
+    "text": "사제장님! 세계수는 왜 말을 안 해요? 우리가 싫어서 그래요? 그럼 사탕 주면 말해 줄까요?",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "…숙제부터 하세요.",
+      "effects": {
+        "faith": -5
+      }
+    },
+    "approve": {
+      "label": "세계수는 늘 듣고 계세요.",
+      "effects": {
+        "people": 5,
+        "faith": 5
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_beast_honey_trade",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "beast_kid",
+    "faction": "beastfolk",
+    "title": "꿀 사탕 선물",
+    "text": "사제장님! 이거 우리 마을 꿀 사탕이에요. 여왕님 드리는 선물이에요! 그리고요, 여왕님이 대빵 큰 나무 밑에 떨어진 나뭇가지는 주워 가도 된다고 하셨어요! 그거로 장난감을 만들 거예요!",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 5,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "여왕님, 이게 무슨 소리죠?",
+      "effects": {
+        "erpin": -5
+      }
+    },
+    "approve": {
+      "label": "…떨어진 나뭇가지만이에요.",
+      "effects": {
+        "sugar": 10,
+        "faith": -5
+      }
+    }
+  },
+  {
+    "id": "daily_beast_hide_and_seek",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "beast_kid",
+    "faction": "beastfolk",
+    "title": "세계수 숨바꼭질",
+    "text": "사제장님! 여왕님이 우리랑 숨바꼭질하재요! 근데 여왕님이 세계수 교단에 숨었어요. 우리도 들어가도 돼요?",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 5,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "세계수는 놀이터가 아니에요.",
+      "effects": {
+        "erpin": -5,
+        "faith": 5
+      }
+    },
+    "approve": {
+      "label": "…다치지 않게 조심하세요.",
+      "effects": {
+        "erpin": 10,
+        "faith": -5
+      }
+    }
+  },
+  {
+    "id": "daily_beast_acorns",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "beast_kid",
+    "faction": "beastfolk",
+    "title": "도토리 백 개",
+    "text": "도토리 백 개랑 사탕 한 봉지 바꿔요! 진짜 백 개예요. …세다가 까먹어서 아마 백 개예요. 제 친구가 그러는데 도토리 껍질은 세계수 거름으로 최고래요!",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 5,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "도토리는 다람쥐한테 줘요.",
+      "effects": {
+        "erpin": -5
+      }
+    },
+    "approve": {
+      "label": "한 봉지, 바꿔 줄게요.",
+      "effects": {
+        "sugar": -5,
+        "faith": 5
+      }
+    }
+  },
+  {
+    "id": "daily_beast_sleepover",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "beast_kid",
+    "faction": "beastfolk",
+    "title": "왕궁에서 자고 갈래요",
+    "text": "사제장님, 여왕님이 오늘 왕궁에서 자고 가래요! 우리 열 명 다요! 베개 싸움도 하고, 밤새 사탕 먹으면서 무서운 얘기도 할 거래요!",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 5,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "…집에 가서 자요.",
+      "effects": {
+        "erpin": -5
+      }
+    },
+    "approve": {
+      "label": "하룻밤만이에요.",
+      "effects": {
+        "sugar": -10,
+        "erpin": 10
+      }
+    }
+  },
+  {
+    "id": "daily_erpin_doll",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "여왕 인형",
+    "text": "네르! 내 얼굴 인형을 만들어서 왕국에 팔자! 다들 살 거야, 우히히! 하나에 사탕 세 개!",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "여왕님 얼굴은 소중히 하세요.",
+      "effects": {
+        "erpin": -5
+      }
+    },
+    "approve": {
+      "label": "…한정판으로만요.",
+      "effects": {
+        "sugar": 10,
+        "erpin": 5,
+        "people": -5
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_villager_dam",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "villager",
+    "faction": "fairy",
+    "title": "무너지는 둑",
+    "text": "사제장님, 며칠째 쏟아진 큰비에 세계수 뿌리 쪽 둑이 무너질 것 같아요! 저희 마을이 바로 그 아래예요. 보강하려면 사탕 창고를 좀 열어 주셔야 해요.",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "조금만 더 버텨 보죠.",
+      "effects": {
+        "sugar": 5,
+        "people": -5,
+        "faith": -5
+      }
+    },
+    "approve": {
+      "label": "당장 보강하죠.",
+      "effects": {
+        "sugar": -10,
+        "faith": 5,
+        "people": 5
+      }
+    }
+  },
+  {
+    "id": "daily_mayo_candlestick",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "mayo",
+    "faction": "fairy",
+    "title": "낡은 촛대 매입",
+    "text": "교단 창고 낡은 촛대, 비싸게 사겠다는 손님 있음. 팔면 사탕 꽤 됨. 촛대는 어차피 먼지만 쌓임.",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "촛대는 교단 거예요.",
+      "effects": {
+        "faith": 5,
+        "sugar": -5
+      }
+    },
+    "approve": {
+      "label": "…낡은 것만이에요.",
+      "effects": {
+        "sugar": 5,
+        "faith": -5
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_sweetshop_flavor",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "sweetshop",
+    "faction": "fairy",
+    "title": "새 맛 사탕",
+    "text": "시큼한 새 사탕을 개발했어요! 이름을 '사제장의 잔소리'로 해도 될까요? 벌써 줄이 섰어요!",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "출시는 허가해도 이름은 용납 못 해요.",
+      "effects": {
+        "people": -5,
+        "sugar": 5
+      }
+    },
+    "approve": {
+      "label": "…잘 팔리면 봐 드리죠.",
+      "effects": {
+        "sugar": 10,
+        "people": 5,
+        "faith": -5
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_sist_rumor",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "sist",
+    "faction": "dragon",
+    "title": "따끈한 소문",
+    "text": "아이고~ 사장님! 따끈한 소식 하나 있어요, 헤헤. 사탕 조금만 주시면 다 알려 드릴게요. 안 들으면 손해예요!",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 12,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "소문은 됐어요.",
+      "effects": {
+        "erpin": -5
+      }
+    },
+    "approve": {
+      "label": "…들어나 보죠.",
+      "effects": {
+        "sugar": -10,
+        "erpin": 10
+      },
+      "grant": {
+        "boon": "intuition",
+        "uses": 2
+      }
+    }
+  },
+  {
+    "id": "daily_diana_trade_pact",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "diana",
+    "faction": "beastfolk",
+    "title": "교역 약속",
+    "text": "사제장님, 수인 마을과 정식 교역 약속을 맺으면 어떨까요? 저희 수인 마을의 특산품인 꿀을 드릴 테니 요정왕국의 빵을 받고 싶네요.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 5
+    },
+    "reject": {
+      "label": "죄송합니다. 저희 요정분들도 빵에 미쳐 있어서…",
+      "effects": {
+        "people": 5
+      }
+    },
+    "approve": {
+      "label": "좋아요, 약속하죠.",
+      "effects": {
+        "sugar": 10,
+        "people": -10
+      }
+    }
+  },
+  {
+    "id": "daily_belita_letter",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "belita",
+    "faction": "witch",
+    "title": "지하에서 온 편지",
+    "text": "에르핀은 잘 지내느냐? 지하는 사탕이 귀하구나. 조금만 보내 주면… 아, 아니다. 체면이 있지. 그래도… 조금만 보내 주렴.",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "죄송합니다. 요즘 왕국도 사탕이 부족한지라…",
+      "effects": {
+        "erpin": -5
+      }
+    },
+    "approve": {
+      "label": "몰래 보내 드릴게요.",
+      "effects": {
+        "sugar": -5,
+        "erpin": 10
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_church_leaves",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "church",
+    "faction": "fairy",
+    "title": "잎 한 장씩",
+    "text": "사제장님, 신도들이 세계수 잎을 한 장씩 집에 모시겠다고 몰려왔습니다. 수백 명입니다.",
+    "years": 3,
+    "axe": true,
+    "reject": {
+      "label": "잎은 나무에 있어야 해요.",
+      "effects": {
+        "people": -10,
+        "faith": 10
+      }
+    },
+    "approve": {
+      "label": "…떨어진 잎만이에요.",
+      "effects": {
+        "people": 10,
+        "faith": -5
+      }
+    }
+  },
+  {
+    "id": "daily_farmer_drought",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "farmer",
+    "faction": "fairy",
+    "title": "가뭄과 성수",
+    "text": "사제장님, 가뭄으로 밭이 다 말랐어요. 세계수 성수를 밭에 끌어다 써도 될까요? 이대로면 올해 농사는 끝이에요.",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "세계수 성수는 성스러운 거예요.",
+      "effects": {
+        "people": -5,
+        "faith": 15
+      },
+      "status": {
+        "id": "drought",
+        "turns": 5,
+        "tick": {
+          "people": -2
+        }
+      }
+    },
+    "approve": {
+      "label": "필요한 만큼만이에요.",
+      "effects": {
+        "people": 15,
+        "faith": -15
+      }
+    }
+  },
+  {
+    "id": "daily_erpin_new_crown",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "케이크 하우스",
+    "text": "네르, 나 생일 선물 말이야! 케이크로 커다란 집을 만들어줘! 내가 생각해봤는데 케이크로 된 집이 있으면 아주 근사할 것 같아!",
+    "years": 3,
+    "axe": true,
+    "reject": {
+      "label": "여왕님, 그건 불가능합니다.",
+      "effects": {
+        "erpin": -5
+      }
+    },
+    "approve": {
+      "label": "…한 번 시도는 해볼게요.",
+      "effects": {
+        "sugar": -10,
+        "people": -5,
+        "erpin": 15
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_beast_refugees",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "beast_kid",
+    "faction": "beastfolk",
+    "title": "가출한 수인 꼬마들",
+    "text": "저기… 사제장님. 저희가 촌장님께 혼나기 무서워서 가출했어요. 잠시 교단 건물에 들어가도 돼요? 조용히 있을게요. 꼬리도 안 흔들게요.",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 5
+    },
+    "reject": {
+      "label": "촌장님께 같이 가 드릴게요.",
+      "effects": {
+        "faith": -5
+      }
+    },
+    "approve": {
+      "label": "들어와요. 교단이 돌볼게요.",
+      "effects": {
+        "sugar": -5,
+        "faith": 5
+      }
+    }
+  },
+  {
+    "id": "daily_erpin_sulking",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "방문을 잠근 여왕",
+    "text": "…네르 미워. 아무도 나랑 안 놀아 줘. 나 그냥 방에서 안 나갈 거야.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "gauges": {
+        "erpin": {
+          "max": 30
+        }
+      }
+    },
+    "reject": {
+      "label": "여왕님, 일은 하셔야죠.",
+      "effects": {
+        "erpin": -10,
+        "faith": 5
+      }
+    },
+    "approve": {
+      "label": "오늘은 제가 같이 놀아 드릴게요.",
+      "effects": {
+        "erpin": 15,
+        "faith": -5
+      }
+    }
+  },
+  {
+    "id": "daily_villager_statue",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "villager",
+    "faction": "fairy",
+    "title": "광장의 투표함",
+    "text": "사제장님, 요정들이 광장에 투표함을 세웠어요! 앞으로는 여왕님 칙령도 요정 투표를 거쳐야 한대요. 지금까지 부탁을 다 들어주셨으니 이것도 들어주실 거래요!",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "gauges": {
+        "people": {
+          "min": 70
+        }
+      }
+    },
+    "reject": {
+      "label": "투표함은 치우세요. 칙령은 여왕님이 내려요.",
+      "effects": {
+        "people": -10,
+        "erpin": 5
+      }
+    },
+    "approve": {
+      "label": "…일단 두고 보죠.",
+      "effects": {
+        "people": 15,
+        "erpin": -10
+      }
+    }
+  },
+  {
+    "id": "daily_villager_council",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "villager",
+    "faction": "fairy",
+    "title": "요정 대표 자리",
+    "text": "사제장님, 마을 요정들이 왕궁 회의에 요정 대표를 한 명 넣어 달래요. 칙령이 나오기 전에 요정들 이야기도 들어 달라고요.",
+    "years": 1,
+    "axe": true,
+    "conditions": {
+      "minYear": 30,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "회의는 여왕님과 교단이 해요.",
+      "effects": {
+        "people": -5,
+        "erpin": 5
+      }
+    },
+    "approve": {
+      "label": "한 자리 마련해 드리죠.",
+      "effects": {
+        "people": 10,
+        "erpin": -5
+      }
+    }
+  },
+  {
+    "id": "daily_villager_petition",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "villager",
+    "faction": "fairy",
+    "title": "매주 오는 청원서",
+    "text": "사제장님, 요정들이 청원서를 또 올렸어요. 이번엔 '여왕님 간식 시간 줄이기'래요. 지난번 청원을 다 들어주셨더니 이제 매주 와요. 서명이 벌써 삼백 개예요!",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 70,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "이번 건 안 됩니다.",
+      "effects": {
+        "people": -10,
+        "erpin": 5
+      }
+    },
+    "approve": {
+      "label": "…여왕님께는 비밀로 해요.",
+      "effects": {
+        "sugar": 5,
+        "people": 10,
+        "erpin": -15
+      }
+    }
+  },
+  {
+    "id": "daily_erpin_ignored",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "내 말 좀 들어!",
+    "text": "네르! 요정들이 내 칙령을 투표에 부치겠대! 여왕은 나잖아! 왜 다들 내 말을 안 들어?",
+    "years": 1,
+    "axe": true,
+    "conditions": {
+      "gauges": {
+        "people": {
+          "min": 70
+        }
+      }
+    },
+    "reject": {
+      "label": "요정들 말도 들어 보셔야죠.",
+      "effects": {
+        "people": 10,
+        "erpin": -10
+      }
+    },
+    "approve": {
+      "label": "제가 요정들을 타일러 볼게요.",
+      "effects": {
+        "people": -10,
+        "erpin": 10
+      }
+    }
+  },
+  {
+    "id": "daily_sweetshop_feast",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "sweetshop",
+    "faction": "fairy",
+    "title": "넘치는 창고",
+    "text": "사제장님, 창고에 사탕이 넘쳐서 녹아 가요! 큰 잔치를 열어서 다 같이 나눠 먹을까요?",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "gauges": {
+        "sugar": {
+          "min": 75
+        }
+      }
+    },
+    "reject": {
+      "label": "아껴 둬야죠.",
+      "effects": {
+        "sugar": -5,
+        "people": -5,
+        "erpin": -5
+      }
+    },
+    "approve": {
+      "label": "잔치를 열죠.",
+      "effects": {
+        "sugar": -20,
+        "people": 10,
+        "erpin": 10
+      }
+    }
+  },
+  {
+    "id": "daily_monatium_sugar_contract",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "monatium_staff",
+    "faction": "elf",
+    "title": "설탕 공급 계약",
+    "text": "모나티엄 설탕공급과 직원입니다. 앞으로 요정왕국 설탕은 모나티엄을 통해서만 받으시도록 계약서를 가져왔습니다. 결재 부탁드립니다. 거절하시면… 규정상 공급이 조금 늦어질 수 있습니다.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 80
+    },
+    "reject": {
+      "label": "왕국 설탕은 왕국이 지켜요.",
+      "effects": {
+        "sugar": -10,
+        "people": 10
+      },
+      "status": {
+        "id": "supply_delay",
+        "turns": 5,
+        "tick": {
+          "sugar": -2
+        }
+      }
+    },
+    "approve": {
+      "label": "…조건은 다시 보죠.",
+      "effects": {
+        "sugar": 20,
+        "people": -10,
+        "faith": -10
+      }
+    }
+  },
+  {
+    "id": "daily_monatium_development",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "monatium_staff",
+    "faction": "elf",
+    "title": "동쪽 들판 개발",
+    "text": "모나티엄 개발과 직원입니다. 왕국 동쪽 들판을 개발 부지로 쓰고자 합니다. 세계수 뿌리가 얕게 뻗어 있는 곳이라 조금 깊이 파게 되겠지만요. 개발 이익의 일부는 요정왕국에 드리겠습니다. 물론, 아주 일부입니다.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 80
+    },
+    "reject": {
+      "label": "세계수 뿌리가 다쳐요. 안 됩니다.",
+      "effects": {
+        "sugar": -10,
+        "faith": 10
+      }
+    },
+    "approve": {
+      "label": "…동쪽 끝자락만이에요.",
+      "effects": {
+        "sugar": 20,
+        "people": -5,
+        "faith": -10
+      },
+      "status": {
+        "id": "logging",
+        "turns": 5,
+        "tick": {
+          "faith": -2
+        }
+      }
+    }
+  },
+  {
+    "id": "daily_monatium_tourists",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "monatium_staff",
+    "faction": "elf",
+    "title": "요정 차출",
+    "text": "모나티엄 공장 지대에서 왔습니다. 기계 고장으로 운반 마법이 가능한 요정들을 급히 빌리고자 하는데 차출해 주실 수 있습니까?",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 80
+    },
+    "reject": {
+      "label": "요정들을 소모품 취급하지 마세요.",
+      "effects": {
+        "sugar": -5,
+        "people": 5
+      }
+    },
+    "approve": {
+      "label": "…보수는 확실해야 할 겁니다.",
+      "effects": {
+        "sugar": 10,
+        "people": -5
+      }
+    }
+  },
+  {
+    "id": "daily_monatium_sap",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "monatium_staff",
+    "faction": "elf",
+    "title": "세계수 수액 조사",
+    "text": "모나티엄 연구과 직원입니다. 세계수 수액 성분을 조사하려고 합니다. 측정 장비를 줄기에 조금만 박겠습니다. 연구용 마력 부분을 추출한 후 수액에 있는 당 성분은 제품으로 만들어 왕국에 무상으로 납품해 드리죠.",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 80
+    },
+    "reject": {
+      "label": "세계수에 못은 안 돼요.",
+      "effects": {
+        "faith": 10,
+        "sugar": -10
+      }
+    },
+    "approve": {
+      "label": "…한 군데만이에요.",
+      "effects": {
+        "faith": -10,
+        "sugar": 10
+      }
+    }
+  },
+  {
+    "id": "daily_monatium_toy",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "monatium_staff",
+    "faction": "elf",
+    "title": "태엽 장난감 선물",
+    "text": "모나티엄 홍보과 직원입니다. 여왕님께 최신 태엽 장난감을 선물하고 싶습니다. 혼자 걷고, 노래하고, 춤도 춥니다. 대신 왕궁 정원에 모나티엄 광고판을 하나 세우게 해 주십시오.",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 80,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "선물은 마음만 받을게요.",
+      "effects": {
+        "erpin": -5,
+        "people": 5
+      }
+    },
+    "approve": {
+      "label": "…작은 광고판으로요.",
+      "effects": {
+        "erpin": 10,
+        "people": -5
+      }
+    }
+  },
+  {
+    "id": "daily_church_schism",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "church",
+    "faction": "fairy",
+    "title": "새 교리",
+    "text": "사제장님, 신도 일부가 기존의 계급을 없애고 모두 평등하게 세계수를 믿어야 한다는 새 교리를 퍼뜨리고 있습니다. 따르는 요정이 늘고 있습니다.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 60
+    },
+    "reject": {
+      "label": "이단입니다. 막으세요.",
+      "effects": {
+        "people": -15,
+        "faith": 15
+      }
+    },
+    "approve": {
+      "label": "…지켜보죠. 일단은.",
+      "effects": {
+        "people": 15,
+        "faith": -20
+      }
+    }
+  },
+  {
+    "id": "daily_erpin_war",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "불량 요정 혼내 주기",
+    "text": "네르! 어떤 나쁜 요정이 나를 '어린애'라고 놀렸어! 당장 혼내 주러 가자! 군대 모아! 나도 갈 거야!",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 12
+    },
+    "reject": {
+      "label": "말로 하죠, 여왕님.",
+      "effects": {
+        "people": 10,
+        "erpin": -20
+      }
+    },
+    "approve": {
+      "label": "…누가 감히 여왕님을.",
+      "effects": {
+        "sugar": -10,
+        "people": -10,
+        "erpin": 20
+      }
+    }
+  },
+  {
+    "id": "daily_witch_debt",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "witch_courier",
+    "faction": "witch",
+    "title": "사탕 빚 정산",
+    "text": "마녀왕국 전령입니다. 지난 세월의 사탕 빚을 정산하라는 마녀왕국 재무관의 명입니다. 정산하지 않으면 교역을 끊겠답니다.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 30
+    },
+    "reject": {
+      "label": "빚이라니요. 근거를 보이세요.",
+      "effects": {
+        "erpin": -15
+      }
+    },
+    "approve": {
+      "label": "…나눠서 갚죠.",
+      "effects": {
+        "sugar": -10,
+        "erpin": 10
+      }
+    }
+  },
+  {
+    "id": "daily_witch_parcel",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "witch_guest",
+    "faction": "witch",
+    "title": "UFC",
+    "text": "안녕하세요? 언더그라운드 후라이드 캐럿에서 왔습니다. 요정왕국 지점을 하나 만들려고요. 맛은 음… 민트 초코 맛, 호박 맛, 파인애플 토마토빵 맛… 그리고…",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 10,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "죄송합니다. 여왕님이 민트 초코만 보면 질색하셔서요.",
+      "effects": {
+        "erpin": 5
+      }
+    },
+    "approve": {
+      "label": "…취향에 맞는 요정이 있는지는 모르겠네요.",
+      "effects": {
+        "sugar": 10,
+        "people": -5,
+        "erpin": -5
+      }
+    }
+  },
+  {
+    "id": "daily_witch_apprentices",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "witch_guest",
+    "faction": "witch",
+    "title": "견습 마녀들의 견학",
+    "text": "안녕하십니까. 견습 마녀들이 지상의 세계수 견학을 진행하고자 하는데 혹시 기도실을 저희가 며칠 동안 사용해도 되겠습니까? 사제분들께서 기도는 잠시 못 드리겠지만… 한정판 마녀왕국 특제 디저트를 여왕님께 드리겠습니다.",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 20,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "기도를 중단할 수는 없어요.",
+      "effects": {
+        "faith": 10,
+        "erpin": -10
+      }
+    },
+    "approve": {
+      "label": "여왕님께서 저리 기대하시는데… 알겠습니다.",
+      "effects": {
+        "faith": -10,
+        "erpin": 10
+      }
+    }
+  },
+  {
+    "id": "daily_witch_tunnel",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "witch_guest",
+    "faction": "witch",
+    "title": "왕국 토목공사",
+    "text": "마녀왕국 토목공사반입니다. 이번에 마녀왕국과의 교역로를 건설하는 공사에서 아마 요정왕국 광장 쪽에 진동이 많이 일어날 것 같더군요. 추가로 금전을 제출하시면 비싸지만, 소음과 진동이 덜 나는 방향으로 공사를 진행할 수 있는데… 어떻게 하시겠어요?",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 30
+    },
+    "reject": {
+      "label": "요정 주민분들 보고 참으라 하겠습니다.",
+      "effects": {
+        "sugar": 5,
+        "people": -10
+      }
+    },
+    "approve": {
+      "label": "지불할 테니 깔끔하게 진행해주시죠.",
+      "effects": {
+        "sugar": -10,
+        "people": 10
+      }
+    }
+  },
+  {
+    "id": "daily_witch_seal",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "witch_courier",
+    "faction": "witch",
+    "title": "지하 결계 보수",
+    "text": "마녀왕국 전령입니다. 요정왕국 아래의 결계가 약해졌습니다. 보수하려면 마녀들이 세계수 뿌리까지 내려가야 해서, 한동안 교단 지하를 저희가 드나들어야 합니다. 작업비로 사탕도 조금 필요합니다. 보수하지 않으면… 지하의 생물들이 올라올 수 있습니다.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 40
+    },
+    "reject": {
+      "label": "교단 지하는 열 수 없어요.",
+      "effects": {
+        "people": -15,
+        "faith": 15
+      }
+    },
+    "approve": {
+      "label": "들어오세요. 막아만 주세요.",
+      "effects": {
+        "sugar": -10,
+        "people": 20,
+        "faith": -15
+      }
+    }
+  },
+  {
+    "id": "daily_farmer_famine",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "farmer",
+    "faction": "fairy",
+    "title": "비어 가는 창고",
+    "text": "사제장님, 창고가 비어 가요. 세계수 앞 제단에 쌓인 공물 사탕을 풀면 이번 고비는 넘길 수 있을 거예요.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "gauges": {
+        "sugar": {
+          "max": 30
+        }
+      }
+    },
+    "reject": {
+      "label": "공물은 세계수께 바친 거예요!",
+      "effects": {
+        "people": -20,
+        "faith": 15
+      }
+    },
+    "approve": {
+      "label": "…이번 한 번만이에요.",
+      "effects": {
+        "sugar": 20,
+        "faith": -20
+      }
+    }
+  },
+  {
+    "id": "daily_church_empty",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "church",
+    "faction": "fairy",
+    "title": "텅 빈 예배당",
+    "text": "사제장님, 예배당이 텅 비었습니다. 큰 축제를 열면 다시 요정들이 올 겁니다. 다만 비용이 꽤 듭니다.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "gauges": {
+        "faith": {
+          "max": 30
+        }
+      }
+    },
+    "reject": {
+      "label": "믿음은 축제로 사는 게 아니에요.",
+      "effects": {
+        "faith": -10
+      }
+    },
+    "approve": {
+      "label": "열어 보죠.",
+      "effects": {
+        "sugar": -15,
+        "people": 5,
+        "faith": 15
+      }
+    }
+  },
+  {
+    "id": "daily_church_zealots",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "church",
+    "faction": "fairy",
+    "title": "광신자 행진",
+    "text": "사제장님, 일부 신도들이 '세계수 외엔 다 필요 없다'며 사탕 가게를 부수고 다닙니다. 사제장님 말씀만 기다립니다.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "gauges": {
+        "faith": {
+          "min": 70
+        }
+      }
+    },
+    "reject": {
+      "label": "멈추라고 하세요. 당장요.",
+      "effects": {
+        "people": 15,
+        "faith": -15
+      }
+    },
+    "approve": {
+      "label": "…세계수 앞에서만 행진하게 하죠.",
+      "effects": {
+        "sugar": -10,
+        "people": -10,
+        "faith": 20
+      }
+    }
+  },
+  {
+    "id": "daily_farmer_bumper_crop",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "farmer",
+    "faction": "fairy",
+    "title": "사탕수수 대풍년",
+    "text": "사제장님, 올해 사탕수수가 너무 잘돼서 창고에 다 안 들어가요! 남는 걸 전부 사탕으로 졸여 둘까요? 아니면 밭에 그냥 둘까요?",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "밭에 두세요. 내년 거름이 되게요.",
+      "effects": {
+        "sugar": 5,
+        "faith": 5
+      }
+    },
+    "approve": {
+      "label": "전부 사탕으로 졸이죠.",
+      "effects": {
+        "sugar": 20,
+        "people": 5
+      }
+    }
+  },
+  {
+    "id": "daily_monatium_sugar_sample",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "monatium_staff",
+    "faction": "elf",
+    "title": "설탕 견본품",
+    "text": "모나티엄 설탕공급과입니다. 신제품 설탕 견본을 한 수레 무상으로 드리겠습니다. 요정분들 반응을 보고 싶어서요. 물론, 반응은 저희가 기록합니다.",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 80
+    },
+    "reject": {
+      "label": "견본은 조금만 받을게요.",
+      "effects": {
+        "sugar": 10
+      }
+    },
+    "approve": {
+      "label": "한 수레 다 주세요.",
+      "effects": {
+        "sugar": 20,
+        "people": 5,
+        "faith": -5
+      }
+    }
+  },
+  {
+    "id": "daily_sweetshop_offering",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "sweetshop",
+    "faction": "fairy",
+    "title": "대박 난 사탕 가게",
+    "text": "사제장님, 올해 가게가 대박 났어요! 수익 일부를 교단에 바치고 싶은데… 사탕으로 드려도 되죠? 한 상자, 아니 세 상자요!",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 20
+    },
+    "reject": {
+      "label": "가게를 넓히는 데 쓰세요.",
+      "effects": {
+        "sugar": 5,
+        "people": 10
+      }
+    },
+    "approve": {
+      "label": "감사히 받죠.",
+      "effects": {
+        "sugar": 15,
+        "faith": 5
+      }
+    }
+  },
+  {
+    "id": "daily_villager_day_off",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "villager",
+    "faction": "fairy",
+    "title": "쉬는 날 하루만",
+    "text": "사제장님, 요정들이 하루만 쉬게 해 달래요. 다들 지쳤대요. 밭도 하루쯤은 괜찮을 거래요!",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "내일 쉬어요. 오늘은 일하고요.",
+      "effects": {
+        "people": 5
+      }
+    },
+    "approve": {
+      "label": "오늘 하루 푹 쉬세요.",
+      "effects": {
+        "sugar": -5,
+        "people": 15
+      }
+    },
+    "conditions": {
+      "maxYear": 199
+    }
+  },
+  {
+    "id": "daily_kid_tree_swing",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "kid",
+    "faction": "fairy",
+    "title": "세계수 그네",
+    "text": "사제장님! 세계수 가지에 그네 달아도 돼요? 다들 타고 싶대요! 제일 튼튼한 가지에 달면 하늘까지 날아갈 것 같아요!",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 10,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "작은 나무에 달아 줄게요.",
+      "effects": {
+        "sugar": -5,
+        "people": 5
+      }
+    },
+    "approve": {
+      "label": "튼튼한 가지 하나만요.",
+      "effects": {
+        "people": 15,
+        "faith": -10
+      }
+    }
+  },
+  {
+    "id": "daily_erpin_parade",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "여왕님의 행진",
+    "text": "네르! 나 왕국 한 바퀴 행진할래! 다들 나와서 손 흔들고, 꽃도 뿌리고, 사탕도 받는 거야! 우히히, 엄청 재밌겠지?",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 30,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "짧게 한 바퀴만요.",
+      "effects": {
+        "erpin": 5
+      }
+    },
+    "approve": {
+      "label": "온 왕국이 축제네요.",
+      "effects": {
+        "sugar": -5,
+        "people": -5,
+        "erpin": 10
+      }
+    }
+  },
+  {
+    "id": "daily_church_pilgrims",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "church",
+    "faction": "fairy",
+    "title": "순례 행렬",
+    "text": "사제장님, 세계수 순례를 오겠다는 요정들이 줄을 섰습니다. 다 받으면 교단은 북적이겠지만, 마을 일손이 좀 빌 겁니다.",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 40
+    },
+    "reject": {
+      "label": "주말에만 받죠.",
+      "effects": {
+        "faith": 10
+      }
+    },
+    "approve": {
+      "label": "모두 받으세요.",
+      "effects": {
+        "people": -5,
+        "faith": 20
+      }
+    }
+  },
+  {
+    "id": "daily_farmer_seed_blessing",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "farmer",
+    "faction": "fairy",
+    "title": "씨앗 축복",
+    "text": "사제장님, 올해 씨앗에 세계수 축복을 내려 주실 수 있나요? 다들 기도하면서 심겠대요. 그러면 꼭 잘 자랄 거래요!",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "기도는 각자 집에서 하세요.",
+      "effects": {
+        "people": -5
+      }
+    },
+    "approve": {
+      "label": "모두 모여 축복하죠.",
+      "effects": {
+        "sugar": -5,
+        "people": 5,
+        "faith": 15
+      }
+    }
+  },
+  {
+    "id": "daily_church_new_hymn",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "church",
+    "faction": "fairy",
+    "title": "새 찬송가",
+    "text": "사제장님, 신도들이 세계수께 바치는 새 찬송가를 지었습니다. 예배 때마다 부르고 싶다는데요. 조금… 많이 깁니다.",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 15,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "예배 끝에 한 번만요.",
+      "effects": {
+        "faith": 5
+      }
+    },
+    "approve": {
+      "label": "매 예배마다 다 같이 부르죠.",
+      "effects": {
+        "people": -5,
+        "faith": 15
+      }
+    }
+  },
+  {
+    "id": "daily_villager_praise_contest",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "villager",
+    "faction": "fairy",
+    "title": "여왕님 칭찬 대회",
+    "text": "사제장님, 요정들이 여왕님 칭찬 대회를 열고 싶대요! 제일 멋진 칭찬을 한 요정이 여왕님과 간식을 먹는 거예요!",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 5,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "조촐하게 하죠.",
+      "effects": {
+        "erpin": 5
+      }
+    },
+    "approve": {
+      "label": "성대하게 열죠.",
+      "effects": {
+        "sugar": -5,
+        "people": 5,
+        "erpin": 15
+      }
+    }
+  },
+  {
+    "id": "daily_belita_gift",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "belita",
+    "faction": "witch",
+    "title": "언니의 선물",
+    "text": "에르핀이 좋아하던 지하 수정 사탕을 보낸다. 한꺼번에 주지 말고… 아니, 네가 알아서 하렴. 내가 보냈다고만 꼭 전해 다오.",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 10,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "식사 후에 하나씩 드릴게요.",
+      "effects": {
+        "sugar": 5,
+        "erpin": 5
+      }
+    },
+    "approve": {
+      "label": "지금 다 드릴게요.",
+      "effects": {
+        "erpin": 15
+      }
+    }
+  },
+  {
+    "id": "daily_guard_salute",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "guard",
+    "faction": "fairy",
+    "title": "여왕님께 경례",
+    "text": "보고합니다. 경비대장님 지시로, 모든 요정이 여왕님을 마주치면 경례하도록 하자는 공문입니다. 여왕님께서 무척 기대하고 계십니다.",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 20
+    },
+    "reject": {
+      "label": "인사만 잘하면 돼요.",
+      "effects": {
+        "people": 5,
+        "erpin": 5
+      },
+      "status": {
+        "id": "light_greeting",
+        "turns": 4,
+        "tick": {
+          "people": 2
+        }
+      }
+    },
+    "approve": {
+      "label": "…정중한 경례로요.",
+      "effects": {
+        "people": -10,
+        "erpin": 20
+      }
+    }
+  },
+  {
+    "id": "daily_monatium_trade_surplus",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "monatium_staff",
+    "faction": "elf",
+    "title": "무역 흑자",
+    "text": "모나티엄 무역과입니다. 요정왕국 꿀 사탕이 엘프들 사이에서 인기가 많아, 이번 분기 대금이 두 배로 들어왔습니다. 대금은 사탕으로 받으시겠습니까, 설탕 원료로 받으시겠습니까?",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 90
+    },
+    "reject": {
+      "label": "원료로 받죠. 천천히 쓰게요.",
+      "effects": {
+        "sugar": 10
+      }
+    },
+    "approve": {
+      "label": "전부 사탕으로 주세요.",
+      "effects": {
+        "sugar": 15,
+        "erpin": 5
+      }
+    }
+  },
+  {
+    "id": "daily_villager_festival_leftovers",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "villager",
+    "faction": "fairy",
+    "title": "축제가 남긴 사탕",
+    "text": "사제장님, 수확 축제가 끝나고 남은 사탕을 요정들이 교단 창고에 맡기겠대요. 산더미예요! 다 들어갈지 모르겠어요.",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 50,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "반은 마을에 남겨 두세요.",
+      "effects": {
+        "sugar": 5,
+        "people": 5
+      }
+    },
+    "approve": {
+      "label": "전부 창고에 넣죠.",
+      "effects": {
+        "sugar": 15,
+        "people": -5
+      }
+    }
+  },
+  {
+    "id": "daily_erpin_golden_throne",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "금빛 왕좌",
+    "text": "네르! 왕좌에 쿠션 달아 줘! 아니, 금색 쿠션! 아니, 금색 쿠션에 내 이름도 수놓아서! 앉을 때마다 반짝이게!",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 40,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "쿠션만 달아 드릴게요.",
+      "effects": {
+        "erpin": 5
+      }
+    },
+    "approve": {
+      "label": "금색에 이름까지요.",
+      "effects": {
+        "sugar": -5,
+        "erpin": 10
+      }
+    }
+  },
+  {
+    "id": "daily_farmer_tax_refusal",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "farmer",
+    "faction": "fairy",
+    "title": "세금",
+    "text": "사제장님, 마을의 주민들이 요정왕국의 설탕 구매를 하지 않고 모나티엄 설탕만 구매해서… 혹시 올해 세금을 조금 낮춰 주실 수 있을까요? 농사를 지어도 사는 요정이 없어서 낼 세금이 없어요.",
+    "years": 1,
+    "axe": true,
+    "weight": 4,
+    "reject": {
+      "label": "올해만 눈감아 드리죠.",
+      "effects": {
+        "sugar": -10,
+        "people": 10
+      }
+    },
+    "approve": {
+      "label": "세금은 세금이에요. 걷으세요.",
+      "effects": {
+        "sugar": 10,
+        "people": -10
+      }
+    },
+    "boss": "unrest",
+    "bossPhase": "early"
+  },
+  {
+    "id": "daily_guard_elf_spy",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "guard",
+    "faction": "elf",
+    "title": "왕궁을 재는 엘프",
+    "text": "보고합니다. 모나티엄 직원 몇이 왕궁 담장 길이를 재고 다닙니다. 여왕님 침실 창문이 몇 층인지도 물었답니다. 측량이라고는 하는데요.",
+    "years": 1,
+    "axe": true,
+    "weight": 4,
+    "reject": {
+      "label": "그냥 두세요. 일 키우지 말고요.",
+      "effects": {
+        "people": -15
+      }
+    },
+    "approve": {
+      "label": "당장 내쫓으세요.",
+      "effects": {
+        "sugar": -15,
+        "people": 15
+      }
+    },
+    "boss": "unrest",
+    "bossPhase": "late"
+  },
+  {
+    "id": "daily_church_belita_letters",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "church",
+    "faction": "witch",
+    "title": "뜸해진 답장",
+    "text": "사제장님, 마녀왕국 소식이 끊긴 지 석 달째입니다. 여왕님은 매일 벨리타 여왕님께 편지를 쓰시는데, 답장이 한 통도 없습니다. 지하 통로 문도 저쪽에서 잠겨 있고요.",
+    "years": 1,
+    "axe": true,
+    "weight": 4,
+    "reject": {
+      "label": "여왕님께는… 아직 말하지 마세요.",
+      "effects": {
+        "erpin": -5
+      }
+    },
+    "approve": {
+      "label": "요정을 보내 보죠.",
+      "effects": {
+        "people": -10,
+        "erpin": 10
+      }
+    },
+    "boss": "unrest",
+    "bossPhase": "early"
+  },
+  {
+    "id": "daily_witch_last_courier",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "witch_courier",
+    "faction": "witch",
+    "title": "마지막 전령",
+    "text": "마녀왕국 전령입니다. …당분간 오지 못합니다. 이유는 말씀드릴 수 없습니다. 다만 여왕님께서, 요정왕국 창고를 꼭 채워 두라고 전하셨습니다. 꼭이요.",
+    "years": 1,
+    "axe": true,
+    "weight": 4,
+    "reject": {
+      "label": "갑자기 왜 그러시는지 이유를 설명해주실 수 있을까요?",
+      "effects": {
+        "erpin": -5
+      }
+    },
+    "approve": {
+      "label": "…창고를 채우죠. 지금부터요.",
+      "effects": {
+        "sugar": 5,
+        "people": -5
+      }
+    },
+    "boss": "unrest",
+    "bossPhase": "early"
+  },
+  {
+    "id": "daily_villager_graffiti",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "villager",
+    "faction": "fairy",
+    "title": "광장의 낙서",
+    "text": "사제장님, 광장 벽에 누가 낙서를 했어요. '사탕은 세계수가 아니라 모나티엄이 준다.' 지워도 지워도 다음 날이면 또 쓰여 있어요.",
+    "years": 1,
+    "axe": true,
+    "weight": 4,
+    "reject": {
+      "label": "하… 포기하죠.",
+      "effects": {
+        "faith": -5
+      }
+    },
+    "approve": {
+      "label": "당번을 정해서 계속 지우게끔 하세요.",
+      "effects": {
+        "people": -5,
+        "faith": 5
+      }
+    },
+    "boss": "unrest",
+    "bossPhase": "early"
+  },
+  {
+    "id": "daily_sweetshop_hoarding",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "sweetshop",
+    "faction": "fairy",
+    "title": "사재기",
+    "text": "사제장님, 요즘 손님들이 사탕을 한 자루씩 사 가요. 곧 사탕이 끊긴다는 소문이 돌아서요. 진열대가 텅 비었어요.",
+    "years": 1,
+    "axe": true,
+    "weight": 4,
+    "reject": {
+      "label": "소문일 뿐이에요. 그냥 파세요.",
+      "effects": {
+        "sugar": -15,
+        "people": 10
+      }
+    },
+    "approve": {
+      "label": "한 사람에 한 봉지만요.",
+      "effects": {
+        "sugar": 10,
+        "people": -10
+      }
+    },
+    "boss": "unrest",
+    "bossPhase": "early"
+  },
+  {
+    "id": "daily_erpin_nightmare",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "불길한 꿈",
+    "text": "네르… 꿈을 꿨어. 세계수가 막 흔들리고, 다들 소리 지르고, 나는 네르 손 잡고 계속 뛰었어. 끝에 엄청 밝은 빛이 있었는데… 그냥 꿈이지? 응?",
+    "years": 1,
+    "axe": true,
+    "weight": 4,
+    "reject": {
+      "label": "그냥 꿈이에요. 주무세요.",
+      "effects": {
+        "erpin": -15
+      }
+    },
+    "approve": {
+      "label": "오늘은 곁에 있을게요.",
+      "effects": {
+        "faith": -10,
+        "erpin": 15
+      }
+    },
+    "boss": "unrest",
+    "bossPhase": "late"
+  },
+  {
+    "id": "daily_kid_song",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "kid",
+    "faction": "fairy",
+    "title": "이상한 노래",
+    "text": "사제장님! 요즘 다들 이 노래 불러요. '여왕님 말은 안 들어, 우리 일은 우리가 정해!' …근데 어른들이 진짜로 칙령을 안 지켜요.",
+    "years": 1,
+    "axe": true,
+    "weight": 4,
+    "reject": {
+      "label": "그 노래는 금지입니다!",
+      "effects": {
+        "people": -15,
+        "erpin": 5
+      }
+    },
+    "approve": {
+      "label": "…노래는 노래일 뿐이에요.",
+      "effects": {
+        "people": 10,
+        "erpin": -10
+      }
+    },
+    "boss": "unrest",
+    "bossPhase": "late"
+  },
+  {
+    "id": "daily_church_crown_whisper",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "church",
+    "faction": "fairy",
+    "title": "멈추지 않는 춤",
+    "text": "사제장님, 요정들이 사흘째 광장에서 춤만 추고 있습니다. '어차피 곧 다 끝난다'면서 일도 기도도 안 합니다. 교단이 나서서 말려야 할까요?",
+    "years": 1,
+    "axe": true,
+    "weight": 4,
+    "reject": {
+      "label": "당장 해산시키세요.",
+      "effects": {
+        "people": -20,
+        "faith": 10
+      }
+    },
+    "approve": {
+      "label": "…지칠 때까지 두죠.",
+      "effects": {
+        "people": 15,
+        "faith": -15,
+        "erpin": -5
+      }
+    },
+    "boss": "unrest",
+    "bossPhase": "late"
+  },
+  {
+    "id": "daily_monatium_new_terms",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "monatium_staff",
+    "faction": "elf",
+    "title": "새 계약 조건",
+    "text": "모나티엄 설탕공급과 직원입니다. 다음 해부터 설탕 값을 세 배로 올립니다. 대신 세계수 결재권을 모나티엄과 나누시면 지금 값을 유지해 드립니다. 규정상 오늘 안에 답을 주셔야 합니다.",
+    "years": 1,
+    "axe": true,
+    "weight": 4,
+    "reject": {
+      "label": "결재권은 나눌 수 없어요.",
+      "effects": {
+        "sugar": -20,
+        "faith": 10
+      }
+    },
+    "approve": {
+      "label": "…한 해만 지금 값으로 해 주세요.",
+      "effects": {
+        "faith": -10
+      },
+      "status": {
+        "id": "grace_year",
+        "turns": 3,
+        "delayed": {
+          "sugar": -15
+        }
+      }
+    },
+    "boss": "unrest",
+    "bossPhase": "early"
+  },
+  {
+    "id": "daily_guard_empty_posts",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "guard",
+    "faction": "fairy",
+    "title": "비어 가는 초소",
+    "text": "보고합니다. 이번 달에만 경비대원 아홉이 말없이 사라졌습니다. 모나티엄에서 일자리를 줬다는 소문이 있습니다. 남은 대원들도 사탕 배급이 줄어 불만이 많습니다.",
+    "years": 1,
+    "axe": true,
+    "weight": 4,
+    "reject": {
+      "label": "남은 대원들을 믿어 보죠.",
+      "effects": {
+        "people": -15
+      }
+    },
+    "approve": {
+      "label": "경비대 배급을 늘리세요.",
+      "effects": {
+        "sugar": -15,
+        "people": 10
+      }
+    },
+    "boss": "unrest",
+    "bossPhase": "late"
+  },
+  {
+    "id": "daily_beast_kid_warning",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "beast_kid",
+    "faction": "beastfolk",
+    "title": "수인 꼬마의 귓속말",
+    "text": "사제장님, 사제장님. 어느 요정이 그러는데 요정왕국이 뒤숭숭하대요. 그래서 저는 열매를 열심히 저장하고 있는데… 이거 비밀이에요.",
+    "years": 1,
+    "axe": true,
+    "weight": 4,
+    "reject": {
+      "label": "나쁜 소문입니다. 믿지 마세요!",
+      "effects": {
+        "people": -10
+      }
+    },
+    "approve": {
+      "label": "…혹시 열매를 조금 나눠 받을 수 있을까요?",
+      "effects": {
+        "sugar": 5,
+        "faith": -5
+      }
+    },
+    "boss": "unrest",
+    "bossPhase": "late"
+  },
+  {
+    "id": "daily_kyarot_cane_press",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "kyarot",
+    "faction": "fairy",
+    "title": "사탕수수 짜는 날",
+    "text": "사제장! 사탕수수가 다 영글었어! 근데 혼자 짜려니 손이 모자라. 교단 사제들 하루만 빌려줘. 오늘 다 짜면 창고가 꽉 찰 거야!",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "사제들은 기도해야 해요.",
+      "effects": {
+        "faith": 5
+      }
+    },
+    "approve": {
+      "label": "하루만 빌려 드릴게요.",
+      "effects": {
+        "sugar": 15,
+        "faith": -10
+      }
+    }
+  },
+  {
+    "id": "daily_sweetshop_night_boil",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "sweetshop",
+    "faction": "fairy",
+    "title": "밤샘 사탕 졸이기",
+    "text": "사제장님, 주문이 밀려서 밤새 사탕을 졸이고 싶어요. 다 만들면 절반은 왕국 창고에 넣을게요! 다만 냄새랑 불빛 때문에 이웃들이 잠을 좀 설칠 거예요.",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "밤에는 다들 자야죠.",
+      "effects": {
+        "people": 5
+      }
+    },
+    "approve": {
+      "label": "창고 몫은 꼭 챙겨 주세요.",
+      "effects": {
+        "sugar": 10,
+        "people": -5
+      }
+    }
+  },
+  {
+    "id": "daily_villager_candy_drive",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "villager",
+    "faction": "fairy",
+    "title": "사탕 모으기",
+    "text": "사제장님, 요정들이 집집마다 아껴 둔 사탕을 왕국 창고에 모으자고 해요. 대신 올해 여왕님 생일 잔치는 조금 소박하게 하재요.",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "사탕은 각자 집에 두세요.",
+      "effects": {
+        "people": 5
+      }
+    },
+    "approve": {
+      "label": "모아 주세요. 고마워요.",
+      "effects": {
+        "sugar": 15,
+        "erpin": -10
+      }
+    }
+  },
+  {
+    "id": "daily_diana_honey_surplus",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "diana",
+    "faction": "beastfolk",
+    "title": "넘치는 꿀",
+    "text": "사제장님, 올해는 꿀이 너무 많이 나서 숲에 둘 곳이 없답니다. 요정왕국 창고에 나눠 드려도 될까요? 그 대신 우리 마을 꼬마들이 교단 앞뜰에서 하루 뛰놀게 해 주세요.",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "꿀은 숲에서 드세요.",
+      "effects": {
+        "erpin": -5
+      }
+    },
+    "approve": {
+      "label": "앞뜰을 열어 드릴게요.",
+      "effects": {
+        "sugar": 10,
+        "faith": -5
+      }
+    }
+  },
+  {
+    "id": "daily_farmer_second_harvest",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "farmer",
+    "faction": "fairy",
+    "title": "두 번째 수확",
+    "text": "사제장님, 올해 한 번 더 심으면 사탕수수를 두 번 거둘 수 있대요! 다만 그러려면 다들 쉬는 날 없이 내내 밭에 나가야 해요.",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "밭도 요정도 쉬어야죠.",
+      "effects": {
+        "people": 5
+      }
+    },
+    "approve": {
+      "label": "한 번 더 심어 보죠.",
+      "effects": {
+        "sugar": 15,
+        "people": -10
+      }
+    }
+  },
+  {
+    "id": "daily_guard_smuggler",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "guard",
+    "faction": "fairy",
+    "title": "압수한 사탕",
+    "text": "보고합니다. 국경에서 사탕을 몰래 들여오던 마녀왕국 상인을 붙잡았습니다. 압수한 사탕이 한 수레입니다. 여왕님께서는 언니네 나라 상인이라며 돌려보내 주라고 하십니다.",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 30,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "사탕째 돌려보내 주세요.",
+      "effects": {
+        "erpin": 5
+      }
+    },
+    "approve": {
+      "label": "압수하세요. 밀린 세금 대신이에요.",
+      "effects": {
+        "sugar": 15,
+        "erpin": -10
+      }
+    }
+  },
+  {
+    "id": "daily_church_bazaar",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "church",
+    "faction": "fairy",
+    "title": "교단 바자회",
+    "text": "사제장님, 신도들이 집에서 안 쓰는 물건을 모아 바자회를 열자고 합니다. 수익은 전부 왕국 사탕 창고로 들어갑니다. 다만 예배당을 사흘 동안 장터로 써야 합니다.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 40,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "예배당은 기도하는 곳이에요.",
+      "effects": {
+        "faith": 10,
+        "people": -5
+      }
+    },
+    "approve": {
+      "label": "사흘만 장터로 쓰죠.",
+      "effects": {
+        "sugar": 15,
+        "faith": -15
+      }
+    }
+  },
+  {
+    "id": "daily_monatium_bulk_discount",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "monatium_staff",
+    "faction": "elf",
+    "title": "반값 설탕",
+    "text": "모나티엄 설탕공급과 직원입니다. 이번 달에 한해 설탕을 반값에 대량으로 드리겠습니다. 대신 광장에 '모나티엄 설탕' 간판을 세 개 세우게 해 주십시오. 규정상 크기는 줄일 수 없습니다.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 81,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "광장은 요정들 거예요.",
+      "effects": {
+        "people": 10
+      }
+    },
+    "approve": {
+      "label": "…설탕은 받을게요.",
+      "effects": {
+        "sugar": 10,
+        "people": -10,
+        "faith": -5
+      }
+    }
+  },
+  {
+    "id": "fixed_beast_kids_bread",
+    "kind": "fixed",
+    "speaker": "ashur",
+    "faction": "fairy",
+    "title": "빵 진열대 앞의 손님들",
+    "text": "사제장님, 수인 꼬마들이 아침부터 빵 진열대 앞에 붙어서 침을 흘리고 있습니다. 쫓아낼까요? 그리고 다시 말씀드리지만, 여긴 빵집이 아니라 마법학교입니다!",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "정중히 돌려보내 주세요.",
+      "effects": {}
+    },
+    "approve": {
+      "label": "빵 좀 나눠 주세요. 제가 낼게요.",
+      "effects": {
+        "sugar": -5,
+        "people": -5
+      },
+      "schedule": {
+        "card": "story_diana_thanks",
+        "years": 3
+      }
+    },
+    "trigger": {
+      "from": 30,
+      "to": 80,
+      "order": 1
+    },
+    "look": "quest"
+  },
+  {
+    "id": "fixed_beast_kids_bread_again",
+    "kind": "fixed",
+    "speaker": "ashur",
+    "faction": "fairy",
+    "title": "또 찾아온 손님들",
+    "text": "사제장님, 그 수인 꼬마들이 또 왔습니다. 이번엔 동생들까지 데려왔어요. …열두 명입니다. 다시 말씀드리지만, 여긴 빵집이 아니라 마법학교입니다!",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "이번엔 돌려보내 주세요.",
+      "effects": {}
+    },
+    "approve": {
+      "label": "오늘도 나눠 주세요. 제가 낼게요.",
+      "effects": {
+        "sugar": -10,
+        "people": -5
+      },
+      "schedule": {
+        "card": "story_diana_thanks_again",
+        "years": 3
+      }
+    },
+    "trigger": {
+      "from": 100,
+      "to": 170,
+      "order": 1
+    },
+    "look": "quest"
+  },
+  {
+    "id": "speaki_fake_erpin_snacks",
+    "kind": "speaki",
+    "speaker": "erpin",
+    "realSpeaker": "speaki",
+    "faction": "fairy",
+    "title": "간식 두 배 명령",
+    "text": "히히~ 이제부터 네르는 요정 대왕 에르핀이에요오. 에르핀은 오늘부터 간식을 두 배로 받을 거예요오~",
+    "years": 2,
+    "axe": "free",
+    "reject": {
+      "label": "안 됩니다, 여왕님.",
+      "effects": {
+        "erpin": -5
+      }
+    },
+    "approve": {
+      "label": "…이번 한 번만이에요.",
+      "effects": {
+        "sugar": -10,
+        "erpin": 5
+      }
+    },
+    "axeResult": {
+      "scene": "speakiCaught"
+    },
+    "missed": {
+      "scene": "speakiFooled"
+    },
+    "conditions": {
+      "maxYear": 185
+    }
+  },
+  {
+    "id": "special_sist_deal",
+    "kind": "fixed",
+    "speaker": "sist",
+    "faction": "dragon",
+    "title": "시스트의 거래 I",
+    "text": "저, 사장님? 사탕을 조금만 넘겨주시면 이 미천한 장사치의 물건을 구매할 수 있는 기회를 드린답니다. 오늘만 특가니 신중하게 선택해주시길!",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "사양할게요.",
+      "effects": {}
+    },
+    "approve": {
+      "label": "좋아요, 사탕 가져가요.",
+      "effects": {
+        "sugar": -10
+      },
+      "schedule": {
+        "card": "special_sist_shop",
+        "years": 0
+      }
+    },
+    "trigger": {
+      "from": 30,
+      "to": 100,
+      "order": 1
+    }
+  },
+  {
+    "id": "special_sist_deal_late",
+    "kind": "fixed",
+    "speaker": "sist",
+    "faction": "dragon",
+    "title": "시스트의 거래 II",
+    "text": "사장님, 오랜만이에요! 헤헤, 요즘 물가가 많이 올라서 수수료도 좀 올랐고요. 대신 물건의 품질은 예전과 동일하니 걱정하지 마시길?",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "그 값이면 사양할게요.",
+      "effects": {}
+    },
+    "approve": {
+      "label": "비싸네요… 그래도 부탁해요.",
+      "effects": {
+        "sugar": -15
+      },
+      "schedule": {
+        "card": "special_sist_shop",
+        "years": 0
+      }
+    },
+    "trigger": {
+      "from": 100,
+      "to": 180,
+      "order": 1
+    }
+  },
+  {
+    "id": "special_sist_shop",
+    "kind": "fixed",
+    "look": "special",
+    "stamps": "direction",
+    "speaker": "sist",
+    "faction": "dragon",
+    "title": "시스트의 좌판",
+    "text": "헤헤, 거래 성립이에요, 사장님! 자, 어떤 상품이 필요하세요? 오늘의 추천은 두 가지예요. 외계에서 왔다는 신비한 눈가리개, 아니면 어디에 붙여도 싹 낫는다는 만능 반창고! 진짜예요, 헤헤.",
+    "trigger": {
+      "scheduled": true,
+      "order": 1
+    },
+    "years": 0,
+    "axe": false,
+    "reject": {
+      "label": "눈가리개",
+      "effects": {},
+      "grant": {
+        "boon": "blindfold",
+        "uses": 1
+      }
+    },
+    "approve": {
+      "label": "만능 반창고",
+      "effects": {},
+      "grant": {
+        "boon": "bandage"
+      }
+    }
+  },
+  {
+    "id": "special_strange_card",
+    "kind": "special",
+    "npc": "alice",
+    "repeatable": true,
+    "speaker": "villager",
+    "faction": "fairy",
+    "title": "와일드 카드",
+    "text": "사제장님, 마을 어귀에서 이상한 카드를 주웠어요. 앞면은 텅 비어 있는데, 들고 있으면 자꾸 다른 그림이 비쳐 보여요! 무서워서 그러는데… 교단에서 맡아 주실래요?",
+    "years": 2,
+    "weight": 2,
+    "axe": true,
+    "reject": {
+      "label": "버리세요. 수상하네요.",
+      "effects": {}
+    },
+    "approve": {
+      "label": "…일단 제가 맡아 두죠.",
+      "effects": {},
+      "grant": {
+        "boon": "alice"
+      }
+    },
+    "period": 50
+  },
+  {
+    "id": "speaki_erpin_snack_decree",
+    "kind": "speaki",
+    "mimic": "daily_erpin_snack_decree",
+    "text": "헤헤~ 네르! 오늘부터 왕국 요정들은 하루에 한 번씩 에르핀한테 호박을 바치는 거예요오! 여왕 칙령이라구요? 간식 진상이냐고요오? 호박 친구를 먹지마세요!",
+    "axe": "free",
+    "axeResult": {
+      "scene": "speakiCaught"
+    },
+    "missed": {
+      "scene": "speakiFooled"
+    },
+    "conditions": {
+      "maxYear": 185
+    }
+  },
+  {
+    "id": "speaki_marie_fireworks",
+    "kind": "speaki",
+    "mimic": "daily_marie_fireworks",
+    "text": "사제장님! 이번 주말에 마리는 광장에서 폭죽 쏠거에요오오! 쾅! 하고 하늘이 반짝반짝해지는 거예요! 이번에 호박 모양 폭죽을 준비했답니다~",
+    "axe": "free",
+    "axeResult": {
+      "scene": "speakiCaught"
+    },
+    "missed": {
+      "scene": "speakiFooled"
+    },
+    "conditions": {
+      "maxYear": 185
+    }
+  },
+  {
+    "id": "speaki_mayo_pawn_bell",
+    "kind": "speaki",
+    "mimic": "daily_mayo_pawn_bell",
+    "text": "교단 종 하나 맡기면 사탕 넉넉히 빌려 드림! 이자는 조금만 받음! 종은 마요가 소리 안 나게 잘 보관할 거예요오움! 그 다음에는 호박밭 빌려달라는거예임!",
+    "axe": "free",
+    "axeResult": {
+      "scene": "speakiCaught"
+    },
+    "missed": {
+      "scene": "speakiFooled"
+    },
+    "conditions": {
+      "maxYear": 185
+    }
+  },
+  {
+    "id": "speaki_guard_lost_child",
+    "kind": "speaki",
+    "mimic": "daily_guard_lost_child",
+    "text": "보고합니다아아~ 길 잃은 꼬마 요정이 세계수 뿌리 밑에서 잠들어 있었어요오. 깨우면 울 것 같아요. 이 네르의 얼굴을 봐도 우는 걸 보아 못된 유령 같다는거예오오!",
+    "axe": "free",
+    "axeResult": {
+      "scene": "speakiCaught"
+    },
+    "missed": {
+      "scene": "speakiFooled"
+    },
+    "conditions": {
+      "maxYear": 185
+    }
+  },
+  {
+    "id": "speaki_sweetshop_sign",
+    "kind": "speaki",
+    "mimic": "daily_sweetshop_sign",
+    "text": "가게 앞에 '사제장 교단 공인 사탕' 간판을 걸어도 될까요오? 손님이 두 배로 늘 거예요! 계피 맛 알사탕은 특별히 공짜로 드릴게요. 히힛. 그리고 호박맛 사탕은 금지하는거예오오오!",
+    "axe": "free",
+    "axeResult": {
+      "scene": "speakiCaught"
+    },
+    "missed": {
+      "scene": "speakiFooled"
+    },
+    "conditions": {
+      "maxYear": 185
+    }
+  },
+  {
+    "id": "speaki_kyarot_statue",
+    "kind": "speaki",
+    "mimic": "daily_kyarot_statue",
+    "text": "사탕수수로 호박 모양 조각상 만들었어요오! 진짜 잘 만들었다니까요? 네르, 아니 캬롯이 밤새 깎았어요. 정말 예쁘게 잘 깎은거예요!",
+    "axe": "free",
+    "axeResult": {
+      "scene": "speakiCaught"
+    },
+    "missed": {
+      "scene": "speakiFooled"
+    },
+    "conditions": {
+      "maxYear": 185
+    }
+  },
+  {
+    "id": "speaki_ashur_bread_tasting",
+    "kind": "speaki",
+    "mimic": "daily_ashur_bread_tasting",
+    "text": "사제장님, 마법학교 고객 모집을 위해 무료 빵 시식회를 열려고 해요오. 에슈르는 요정왕국에서 가장 가난한 자라서 빵집 주인으로 열심히 일해야 하거든요! 히힛.",
+    "axe": "free",
+    "axeResult": {
+      "scene": "speakiCaught"
+    },
+    "missed": {
+      "scene": "speakiFooled"
+    },
+    "conditions": {
+      "maxYear": 185
+    }
+  },
+  {
+    "id": "speaki_guard_curfew",
+    "kind": "speaki",
+    "mimic": "daily_guard_curfew",
+    "text": "보고합니다아아! 경비대장님 명령이에요오오! 최근 한 달간 왕궁 담장 무단 출입 시도 17건, 그중 12건이 여왕님 야간 외출이에요오. 특히 유령늪 호박밭 침입사건은 도저히 용납 못하는거예오오오! 오후 9시 이후 외출 금지!",
+    "axe": "free",
+    "axeResult": {
+      "scene": "speakiCaught"
+    },
+    "missed": {
+      "scene": "speakiFooled"
+    },
+    "conditions": {
+      "maxYear": 185
+    }
+  },
+  {
+    "id": "speaki_farmer_tithe",
+    "kind": "speaki",
+    "mimic": "daily_farmer_tithe",
+    "text": "제사장님, 올해 사탕수수가 풍년이에요오! 교단에 십일조를 넉넉히 바치고 싶은데 받아 주실 거죠? 호박도 풍년이라 같이 드릴게요. 안 받으시면 서운해요오. 히힛.",
+    "axe": "free",
+    "axeResult": {
+      "scene": "speakiCaught"
+    },
+    "missed": {
+      "scene": "speakiFooled"
+    },
+    "conditions": {
+      "maxYear": 185
+    }
+  },
+  {
+    "id": "speaki_diana_trade_pact",
+    "kind": "speaki",
+    "mimic": "daily_diana_trade_pact",
+    "text": "제사장님, 수인 마을과 정식 교역 약속을 맺으면 어떨까요오? 열매와 호박을 오래오래 바꿔 쓰자는 거랍니다아. 디아나는 나이가 많아서 기다리다 까먹을 수 있어요. 헤헤~",
+    "axe": "free",
+    "axeResult": {
+      "scene": "speakiCaught"
+    },
+    "missed": {
+      "scene": "speakiFooled"
+    },
+    "conditions": {
+      "maxYear": 185
+    }
+  },
+  {
+    "id": "daily_guard_top_craze",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "guard",
+    "faction": "fairy",
+    "title": "팽이 금지령",
+    "text": "보고합니다! 요즘 팽이 놀이가 유행해서 요정들이 일을 놓고 골목마다 팽이를 돌립니다. 여왕님 침실에서도 팽이 소리가 들립니다. 팽이 금지령을 내려 주십시오!",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 50,
+      "maxYear": 99
+    },
+    "reject": {
+      "label": "그냥 두세요. 놀 때도 있어야죠.",
+      "effects": {
+        "people": 10,
+        "sugar": -15,
+        "erpin": 5
+      }
+    },
+    "approve": {
+      "label": "골목 팽이는 금지예요.",
+      "effects": {
+        "people": -15,
+        "sugar": 10,
+        "erpin": -5
+      }
+    }
+  },
+  {
+    "id": "daily_witch_milk_ban",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "witch_courier",
+    "faction": "witch",
+    "title": "우유 금지 동맹",
+    "text": "마녀왕국 전령입니다. 벨리타 여왕님께서 마녀왕국에 금유법을 내리셨습니다. 동생분 나라에서도 우유를 금지해 주신다면 여왕님께서 무척 기뻐하실 겁니다. 동생분께 보낼 칭찬 편지도 미리 써 두셨습니다.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 50,
+      "maxYear": 72
+    },
+    "reject": {
+      "label": "요정왕국 법은 요정왕국이 정해요.",
+      "effects": {
+        "erpin": -15
+      }
+    },
+    "approve": {
+      "label": "…요정왕국도 우유를 끊죠.",
+      "effects": {
+        "erpin": 15,
+        "sugar": -15
+      }
+    }
+  },
+  {
+    "id": "daily_bigwood_roots",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "bigwood",
+    "faction": "spirit",
+    "title": "뿌리 내릴 자리",
+    "text": "빅우드는… 요즘 유령늪 유령들이 자꾸 나와서… 빅우드 가지에 장난을 친다… 아픈 건 좋은데… 유령 장난은 간지럽기만 하고… 별로다… 사제장… 요정 마을 곁에… 뿌리를 내려도 되겠느냐…? 유령들이 따라와서… 요정들한테도 장난을 칠지 모르지만… 요정 꼬마들은 빅우드를 보면 도망가더군… 그것도… 나쁘지 않다…",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 10,
+      "maxYear": 80,
+      "flagsNone": [
+        "bigwood_roots"
+      ]
+    },
+    "reject": {
+      "label": "수인 숲 쪽이 더 조용할 거예요.",
+      "effects": {
+        "people": 5
+      },
+      "setFlags": [
+        "bigwood_roots"
+      ]
+    },
+    "approve": {
+      "label": "마을 곁에 자리 내드릴게요.",
+      "effects": {
+        "people": -5
+      },
+      "schedule": {
+        "card": "fixed_bigwood_harvest",
+        "years": 12
+      },
+      "setFlags": [
+        "bigwood_roots"
+      ]
+    }
+  },
+  {
+    "id": "daily_bigwood_pruning",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "bigwood",
+    "faction": "spirit",
+    "title": "가지치기 부탁",
+    "text": "빅우드의 가지가… 마을 지붕을 덮어 버렸다… 사제장… 쳐 주겠느냐…? 여왕이 직접 쳐 주면… 더 좋다…! 세게…! 아주 세게…!",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 81,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "정원사 요정들을 보낼게요.",
+      "effects": {
+        "people": -5,
+        "sugar": 5
+      }
+    },
+    "approve": {
+      "label": "…여왕님께 여쭤볼게요.",
+      "effects": {
+        "erpin": -10,
+        "people": 5,
+        "sugar": 5
+      }
+    }
+  },
+  {
+    "id": "daily_bigwood_wine",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "farmer",
+    "faction": "fairy",
+    "title": "익어 버린 열매",
+    "text": "사제장님, 빅우드 님 열매가 창고에서 저절로 익어서… 그, 요정왕국에 공식적으로는 없는 음료가 됐어요. 요정들이 벌써 냄새 맡고 줄을 섰어요. 축제 날로 정해 나눠 마실까요, 아니면 다 버릴까요? 마침 내일이 세계수 기도일인데…",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 85,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "다 버리세요. 내일은 기도일이에요.",
+      "effects": {
+        "people": -10,
+        "faith": 10
+      }
+    },
+    "approve": {
+      "label": "오늘 하루만 축제예요.",
+      "effects": {
+        "people": 15,
+        "faith": -15
+      }
+    }
+  },
+  {
+    "id": "daily_sylla_yokan",
+    "kind": "fixed",
+    "speaker": "sylla",
+    "faction": "spirit",
+    "title": "버려진 양갱",
+    "text": "너희 요정들 중 일부가 정령산에 먹지 않는 양갱을 계속 버리더군. 빨리 치워 줬으면 좋겠어. 그렇지 않으면 바람으로 심판할 테니.",
+    "years": 2,
+    "axe": false,
+    "reject": {
+      "label": "치울 일손이 없어요.",
+      "effects": {
+        "faith": -10
+      },
+      "status": {
+        "id": "sylla_gale",
+        "turns": 5,
+        "scale": {
+          "gauge": "faith",
+          "factor": 1.5
+        }
+      }
+    },
+    "approve": {
+      "label": "... 사탕으로 공고를 올리죠.",
+      "effects": {
+        "sugar": -5,
+        "faith": 10
+      },
+      "status": {
+        "id": "yokan_cleanup",
+        "turns": 5,
+        "tick": {
+          "sugar": -2
+        }
+      }
+    },
+    "trigger": {
+      "from": 30,
+      "to": 80,
+      "order": 1
+    },
+    "pool": {
+      "group": "spirits",
+      "member": "sylla"
+    },
+    "look": "hard"
+  },
+  {
+    "id": "daily_sylla_lost_kids",
+    "kind": "fixed",
+    "speaker": "sylla",
+    "faction": "spirit",
+    "title": "정령산의 미아",
+    "text": "요정 아이 셋이 정령산에서 길을 잃었더군. 바람으로 마을까지 데려다 놨어. 산 입구에 표지판이랑 울타리를 세워 줬으면 좋겠어. …딱히 걱정한 건 아니야. 바람이 마침 그쪽으로 불었을 뿐이지.",
+    "years": 2,
+    "axe": false,
+    "reject": {
+      "label": "아이들이 조심하게 타이를게요.",
+      "effects": {
+        "people": -10
+      },
+      "status": {
+        "id": "mountain_wind",
+        "turns": 5,
+        "scale": {
+          "gauge": "people",
+          "factor": 1.5
+        }
+      }
+    },
+    "approve": {
+      "label": "울타리를 세울게요.",
+      "effects": {
+        "sugar": -10,
+        "people": 10
+      },
+      "status": {
+        "id": "fence_work",
+        "turns": 4,
+        "tick": {
+          "sugar": -2
+        }
+      }
+    },
+    "trigger": {
+      "from": 30,
+      "to": 80,
+      "order": 1
+    },
+    "pool": {
+      "group": "spirits",
+      "member": "sylla"
+    },
+    "look": "hard"
+  },
+  {
+    "id": "daily_ifrit_fire_lesson",
+    "kind": "fixed",
+    "speaker": "ifrit",
+    "faction": "spirit",
+    "title": "불장난 훈계",
+    "text": "뭐냐? 여왕이라는 꼬마가 광장에서 폭죽을 터뜨리더군? 불을 장난감으로 아는 것이냐! 어린 것이! 그 녀석 내게 보내! 불을 대하는 법부터 제대로 가르쳐 주지.",
+    "years": 2,
+    "axe": false,
+    "reject": {
+      "label": "여왕님 놀이예요. 눈감아 주세요.",
+      "effects": {
+        "erpin": 5,
+        "faith": -10
+      },
+      "status": {
+        "id": "ifrit_temper",
+        "turns": 5,
+        "tick": {
+          "faith": -3
+        }
+      }
+    },
+    "approve": {
+      "label": "…여왕님께도 한 번 가르쳐 주세요.",
+      "effects": {
+        "erpin": -10,
+        "faith": 10
+      },
+      "status": {
+        "id": "fire_lesson",
+        "turns": 3,
+        "delayed": {
+          "erpin": -10
+        }
+      }
+    },
+    "trigger": {
+      "from": 30,
+      "to": 80,
+      "order": 1
+    },
+    "pool": {
+      "group": "spirits",
+      "member": "ifrit"
+    },
+    "look": "hard"
+  },
+  {
+    "id": "daily_ifrit_ovens",
+    "kind": "fixed",
+    "speaker": "ifrit",
+    "faction": "spirit",
+    "title": "화덕 불 담당",
+    "text": "사제장! 이전에 요정 여왕이 하급 불정령들을 데려가 불꽃놀이를 하며 놀더니만 지금은 빵집 오븐에 넣어둬? 하! 좋아. 이 이프리트님이 직접 주민들이 먹을 빵을 구워주지. 아주 새까맣게 말이야! 그게 싫으면... 요정 여왕을 데려와 내게 사죄하도록!",
+    "years": 2,
+    "axe": false,
+    "reject": {
+      "label": "여왕님? 물은 또 왜 들고 가욧!",
+      "effects": {
+        "people": 5,
+        "erpin": -10
+      },
+      "status": {
+        "id": "ifrit_sulk",
+        "turns": 5,
+        "tick": {
+          "erpin": -2
+        }
+      }
+    },
+    "approve": {
+      "label": "…조금만 덜 태워 주세요.",
+      "effects": {
+        "people": -10,
+        "erpin": 10
+      },
+      "status": {
+        "id": "burnt_bread",
+        "turns": 3,
+        "delayed": {
+          "people": -15
+        }
+      }
+    },
+    "trigger": {
+      "from": 30,
+      "to": 80,
+      "order": 1
+    },
+    "pool": {
+      "group": "spirits",
+      "member": "ifrit"
+    },
+    "look": "hard"
+  },
+  {
+    "id": "daily_gabia_ground",
+    "kind": "fixed",
+    "speaker": "gabia",
+    "faction": "spirit",
+    "title": "흔들리는 땅",
+    "text": "웅…웅! 웅… (세계수 밑 지반이 불안정해. 흙을 채워야 하는데, 왕국 정원 흙이 제일 좋아.)",
+    "years": 2,
+    "axe": false,
+    "reject": {
+      "label": "왕국 대신 세계수 정원으로 드리겠습니다.",
+      "effects": {
+        "faith": -5
+      },
+      "status": {
+        "id": "sinking_ground",
+        "turns": 4,
+        "delayed": {
+          "faith": -20
+        }
+      }
+    },
+    "approve": {
+      "label": "왕국 정원 흙을 내드릴게요.",
+      "effects": {
+        "erpin": -15,
+        "faith": 10
+      },
+      "status": {
+        "id": "dug_garden",
+        "turns": 4,
+        "tick": {
+          "erpin": -2
+        }
+      }
+    },
+    "trigger": {
+      "from": 30,
+      "to": 80,
+      "order": 1
+    },
+    "pool": {
+      "group": "spirits",
+      "member": "gabia"
+    },
+    "look": "hard"
+  },
+  {
+    "id": "daily_gabia_cave",
+    "kind": "fixed",
+    "speaker": "gabia",
+    "faction": "spirit",
+    "title": "땅속 빈 동굴",
+    "text": "웅…웅! (세계수 뿌리 옆에 빈 동굴이 생겼어. 시원해서 사탕이 안 녹아. 창고로 써도 돼. 가끔 놀러 와 주면 좋겠어.)",
+    "years": 2,
+    "axe": false,
+    "reject": {
+      "label": "세계수 뿌리 옆은 안 돼요.",
+      "effects": {
+        "sugar": -10
+      },
+      "status": {
+        "id": "gabia_sulk",
+        "turns": 5,
+        "freeze": "sugar"
+      }
+    },
+    "approve": {
+      "label": "창고로 쓸게요. 고마워요.",
+      "effects": {
+        "sugar": 10,
+        "faith": -10
+      },
+      "status": {
+        "id": "root_storage",
+        "turns": 5,
+        "tick": {
+          "faith": -2
+        }
+      }
+    },
+    "trigger": {
+      "from": 30,
+      "to": 80,
+      "order": 1
+    },
+    "pool": {
+      "group": "spirits",
+      "member": "gabia"
+    },
+    "look": "hard"
+  },
+  {
+    "id": "daily_naia_lake_party",
+    "kind": "fixed",
+    "speaker": "naia",
+    "faction": "spirit",
+    "title": "호수 물총 대회",
+    "text": "사제장! 호수에서 물총 대회 하자 퓨퓨! 요정들 다 데려와! 여왕님도 꼭이야 퓨퓨! 진 사람은 호수에 풍덩이야 퓨퓨!",
+    "years": 2,
+    "axe": false,
+    "reject": {
+      "label": "일하는 날이에요. 여왕님도 싫어하시고요.",
+      "effects": {
+        "people": -10,
+        "erpin": 5
+      },
+      "status": {
+        "id": "naia_pout",
+        "turns": 5,
+        "tick": {
+          "people": -2
+        }
+      }
+    },
+    "approve": {
+      "label": "반나절만이에요. 여왕님, 왜 도망가시나요?",
+      "effects": {
+        "people": 10,
+        "erpin": -10
+      },
+      "status": {
+        "id": "queen_cold",
+        "turns": 3,
+        "delayed": {
+          "erpin": -15
+        }
+      }
+    },
+    "trigger": {
+      "from": 30,
+      "to": 80,
+      "order": 1
+    },
+    "pool": {
+      "group": "spirits",
+      "member": "naia"
+    },
+    "look": "hard"
+  },
+  {
+    "id": "daily_naia_rain",
+    "kind": "fixed",
+    "speaker": "naia",
+    "faction": "spirit",
+    "title": "골고루 내리는 비",
+    "text": "가뭄이라며? 내가 비 내려 줄게 퓨퓨! 밭에도 지붕에도 빨래에도 전부 퓨퓨! 어디만 골라 내리는 건 재미없잖아 퓨퓨!",
+    "years": 2,
+    "axe": false,
+    "reject": {
+      "label": "비는 하늘에 맡길게요.",
+      "effects": {
+        "sugar": -10
+      },
+      "status": {
+        "id": "drought",
+        "turns": 5,
+        "tick": {
+          "people": -2
+        }
+      }
+    },
+    "approve": {
+      "label": "…밭에 좀 더 많이요.",
+      "effects": {
+        "sugar": 10,
+        "people": -10
+      },
+      "status": {
+        "id": "naia_downpour",
+        "turns": 5,
+        "scale": {
+          "gauge": "sugar",
+          "factor": 1.5
+        }
+      }
+    },
+    "trigger": {
+      "from": 30,
+      "to": 80,
+      "order": 1
+    },
+    "pool": {
+      "group": "spirits",
+      "member": "naia"
+    },
+    "look": "hard"
+  },
+  {
+    "id": "daily_shaydi_portal",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "shaydi",
+    "faction": "ghost",
+    "title": "광장의 차원문",
+    "text": "심심해~ 유령들 골려 먹는 것도 이젠 질렸거든. 그래서 요정왕국 광장에 차원문 하나 열어 볼 거야. 뭐가 튀어나올지는 나도 몰라~ 재밌겠지? 아, 늙은 유령이 웬 장난이냐는 소리는 하지 마.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 40,
+      "maxYear": 99
+    },
+    "reject": {
+      "label": "광장은 기도 행렬 길이에요.",
+      "effects": {
+        "people": -5,
+        "faith": 5
+      }
+    },
+    "approve": {
+      "label": "…광장 구석에서만이에요.",
+      "effects": {
+        "people": 15,
+        "faith": -10,
+        "sugar": -5
+      }
+    }
+  },
+  {
+    "id": "daily_shaydi_prank_day",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "shaydi",
+    "faction": "ghost",
+    "title": "장난의 날",
+    "text": "요정왕국에 장난의 날 하나 만들자~ 하루 동안은 누가 누굴 골려도 혼나지 않는 거야. 너희 여왕도 좋아할걸? 교단 요정들은… 뭐, 좀 당하겠지만~",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 81,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "교단 체면도 생각해 주세요.",
+      "effects": {
+        "people": -5,
+        "erpin": -5
+      }
+    },
+    "approve": {
+      "label": "딱 하루만이에요.",
+      "effects": {
+        "people": 10,
+        "erpin": 5,
+        "faith": -10
+      }
+    }
+  },
+  {
+    "id": "daily_espi_nightmares",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "espi",
+    "faction": "ghost",
+    "title": "악몽 거래",
+    "text": "요즘 요정들이 악몽을 꾸지? 내가 좀 엿보고 있었거든. 그만둘 수도 있어. 대신 사제장, 네 꿈을 보여 줘. 세계수 아래서 꾸는 꿈은 어떤 맛인지 궁금하거든.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 40,
+      "maxYear": 99
+    },
+    "reject": {
+      "label": "제 꿈은 제 거예요.",
+      "effects": {
+        "people": -10
+      }
+    },
+    "approve": {
+      "label": "…조금만 보세요.",
+      "effects": {
+        "people": 10,
+        "faith": -10
+      },
+      "drowse": 1
+    }
+  },
+  {
+    "id": "daily_espi_masks",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "espi",
+    "faction": "ghost",
+    "title": "가면 무도회",
+    "text": "축제에 가면 무도회 어때? 가면은 내가 다 만들어 줄게. 내 디자인은 완벽하거든. 대신 캐러멜 팝콘 장수는 들이지 마. 그 냄새 질색이야.",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 81,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "팝콘 장수도 요정이에요.",
+      "effects": {
+        "people": -5
+      }
+    },
+    "approve": {
+      "label": "가면값은 왕국이 낼게요.",
+      "effects": {
+        "people": 10,
+        "sugar": -10
+      }
+    }
+  },
+  {
+    "id": "daily_sist_credit",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "sist",
+    "faction": "dragon",
+    "title": "외상 장부",
+    "text": "아이고~ 사장님! 요정 가게들에서 물건 좀 외상으로 가져가려는데요, 사장님이 보증만 서 주시면 돼요. 헤헤. 갚을 땐 이자도 얹고, 덤으로 따끈한 소문도 얹어 드릴게요!",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 15,
+      "maxYear": 85,
+      "flagsNone": [
+        "sist_credit"
+      ]
+    },
+    "reject": {
+      "label": "보증은 안 서요.",
+      "effects": {
+        "people": 5
+      },
+      "setFlags": [
+        "sist_credit"
+      ]
+    },
+    "approve": {
+      "label": "이번 한 번만이에요.",
+      "effects": {
+        "people": -5
+      },
+      "schedule": {
+        "card": "fixed_sist_credit_due",
+        "years": 12
+      },
+      "setFlags": [
+        "sist_credit"
+      ]
+    }
+  },
+  {
+    "id": "daily_sist_hideout",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "sist",
+    "faction": "dragon",
+    "title": "서열전 피난",
+    "text": "아이고~ 사장님, 저 좀 숨겨 주세요! 용족 동굴에서 서열전이 붙었는데, 저는 일찌감치 포기했거든요. 헤헤. 그래도 자꾸 불러내요. 다락방 하나면 돼요. 여왕님께 소문 배달은 매일 해 드릴게요!",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 40,
+      "maxYear": 99
+    },
+    "reject": {
+      "label": "용족 일엔 끼지 않을래요.",
+      "effects": {
+        "erpin": -10,
+        "people": 5
+      }
+    },
+    "approve": {
+      "label": "다락방 하나만이에요.",
+      "effects": {
+        "erpin": 10,
+        "people": -10,
+        "sugar": -10
+      }
+    }
+  },
+  {
+    "id": "daily_diana_flood",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "diana",
+    "faction": "beastfolk",
+    "title": "물에 잠긴 숲",
+    "text": "사제장님, 큰비에 수인 숲이 잠겼답니다. 꼬마들이 젖은 채로 떨고 있지요. 물이 빠질 때까지만 요정왕국 한구석을 빌려줄 수 있을까요? 이 늙은이가 이렇게 부탁드립니다.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 40,
+      "maxYear": 99
+    },
+    "reject": {
+      "label": "…다른 곳을 알아봐 주세요.",
+      "effects": {
+        "erpin": -10,
+        "faith": -5
+      }
+    },
+    "approve": {
+      "label": "교단 창고 옆을 내드리죠.",
+      "effects": {
+        "sugar": -15,
+        "people": -10,
+        "faith": 10
+      }
+    }
+  },
+  {
+    "id": "daily_goldie_monatium25",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "goldie",
+    "faction": "dragon",
+    "title": "모나티엄25 요정왕국점",
+    "text": "고객님, 안녕하세요! 모나티엄25 사장 골디예요. 요정왕국에도 지점을 내고 싶어요. 밤낮없이 문 열고, 사탕도 정품만 들여놓을게요. 동네 사탕 가게들이 조금 섭섭해하실 수는 있겠지만요.",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 85,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "동네 가게들을 지켜야 해요.",
+      "effects": {
+        "people": -5,
+        "sugar": 5
+      }
+    },
+    "approve": {
+      "label": "정품만이에요.",
+      "effects": {
+        "people": 10,
+        "sugar": -10
+      }
+    }
+  },
+  {
+    "id": "daily_goldie_realty",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "goldie",
+    "faction": "dragon",
+    "title": "골디 부동산",
+    "text": "고객님, 골디 부동산이에요. 동쪽 마을 낡은 집들, 저희가 새로 지어 드릴게요. 정품 자재만 써요. 땅값도 넉넉히 쳐 드리고요. 공사하는 동안만 요정분들이 잠깐 이사를 가 주셔야 하지만요.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 85,
+      "maxYear": 172,
+      "flagsNone": [
+        "goldie_realty"
+      ]
+    },
+    "reject": {
+      "label": "요정들 집은 요정들이 고쳐요.",
+      "effects": {
+        "people": 5,
+        "sugar": -10
+      },
+      "setFlags": [
+        "goldie_realty"
+      ]
+    },
+    "approve": {
+      "label": "정품 자재만이에요.",
+      "effects": {
+        "sugar": 15,
+        "people": -15
+      },
+      "schedule": {
+        "card": "fixed_goldie_housewarming",
+        "years": 10
+      },
+      "setFlags": [
+        "goldie_realty"
+      ]
+    }
+  },
+  {
+    "id": "daily_goldie_jewels",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "goldie",
+    "faction": "dragon",
+    "title": "왕관 보석 감정",
+    "text": "고객님, 왕국 창고가 많이 비었다고 들었어요. 왕실 보석함의 옛 보석들, 제가 정품 시세로 쳐 드릴게요. 속이지 않아요. 저는 정품만 다루거든요. 여왕님이 조금 서운해하시겠지만요.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 85,
+      "maxYear": 199,
+      "gauges": {
+        "sugar": {
+          "max": 40
+        }
+      }
+    },
+    "reject": {
+      "label": "여왕님 보석은 못 팔아요.",
+      "effects": {
+        "erpin": 10,
+        "people": -10
+      }
+    },
+    "approve": {
+      "label": "제일 작은 것부터요.",
+      "effects": {
+        "sugar": 20,
+        "erpin": -20
+      }
+    }
+  },
+  {
+    "id": "daily_fricle_tasting",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "fricle",
+    "faction": "witch",
+    "title": "신약 무료 시음회",
+    "text": "요정왕국의 사제장. 마녀왕국 신약 '꿀잠 물약' 시음회를 열어 주지. 무료야. 내가 이렇게 친절한 건 드문 일이니 감사히 받아. 부작용? 계약서 맨 아래 작은 글씨에 다 적어 놨어.",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 81,
+      "maxYear": 175,
+      "flagsNone": [
+        "fricle_tasting"
+      ]
+    },
+    "reject": {
+      "label": "작은 글씨는 안 읽어도 알 것 같네요.",
+      "effects": {
+        "people": -5
+      },
+      "setFlags": [
+        "fricle_tasting"
+      ]
+    },
+    "approve": {
+      "label": "…요정들이 원하니까요.",
+      "effects": {
+        "people": 10
+      },
+      "schedule": {
+        "card": "fixed_fricle_side_effect",
+        "years": 6
+      },
+      "setFlags": [
+        "fricle_tasting"
+      ]
+    }
+  },
+  {
+    "id": "daily_fricle_contract",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "fricle",
+    "faction": "witch",
+    "title": "계약서 검토",
+    "text": "요정왕국의 사제장. 모나티엄이랑 맺은 계약서, 엉망이더군. 내가 대신 손봐 주지. 마녀왕국 계약은 철저하니까. 대신 꼬맹이 여왕 말고 내 서명이 들어가. 그 꼬맹이가 계약서를 읽을 줄은 알아?",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 100,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "서명은 여왕님이 하세요.",
+      "effects": {
+        "sugar": -10,
+        "erpin": 10
+      }
+    },
+    "approve": {
+      "label": "…이번 계약만이에요.",
+      "effects": {
+        "sugar": 15,
+        "erpin": -20
+      }
+    }
+  },
+  {
+    "id": "daily_monatium_trial",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "monatium_staff",
+    "faction": "elf",
+    "title": "냉장 진열장 무료 체험",
+    "text": "모나티엄 영업부입니다. 요정왕국 사탕 가게마다 냉장 진열장을 무료로 놓아 드리겠습니다. 사탕이 녹지 않아 오래 팔 수 있지요. 체험 기간이 끝나면 소정의 이용료가 붙습니다. 물론, 아주 소정입니다.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 85,
+      "maxYear": 178,
+      "flagsNone": [
+        "monatium_trial"
+      ]
+    },
+    "reject": {
+      "label": "녹기 전에 다 팔리거든요.",
+      "effects": {
+        "people": -5
+      },
+      "setFlags": [
+        "monatium_trial"
+      ]
+    },
+    "approve": {
+      "label": "체험만 해 볼게요.",
+      "effects": {
+        "sugar": 10,
+        "people": 10
+      },
+      "schedule": {
+        "card": "fixed_monatium_subscription",
+        "years": 6
+      },
+      "setFlags": [
+        "monatium_trial"
+      ]
+    }
+  },
+  {
+    "id": "daily_monatium_tour",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "monatium_staff",
+    "faction": "elf",
+    "title": "세계수 관광 상품",
+    "text": "모나티엄 여행사업부입니다. 엘프 관광객 단체가 세계수 안쪽을 구경하고 싶어 합니다. 입장료는 넉넉히 드리겠습니다. 기념품으로 잎사귀 몇 장 떼 가는 정도는 눈감아 주시고요.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 81,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "세계수는 구경거리가 아니에요.",
+      "effects": {
+        "faith": 10
+      }
+    },
+    "approve": {
+      "label": "안쪽 문 앞까지만이에요.",
+      "effects": {
+        "sugar": 20,
+        "faith": -20,
+        "people": -5
+      }
+    }
+  },
+  {
+    "id": "daily_monatium_ads",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "monatium_staff",
+    "faction": "elf",
+    "title": "왕궁 담벼락 광고",
+    "text": "모나티엄 홍보부입니다. 왕궁 담벼락이 유난히 눈에 잘 띄더군요. 저희 신제품 광고판을 걸게 해 주시면 광고비를 두둑이 드리겠습니다. 여왕님 얼굴보다 조금 크게 걸릴 수는 있습니다.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 81,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "왕궁은 광고판이 아니에요.",
+      "effects": {
+        "erpin": 5
+      }
+    },
+    "approve": {
+      "label": "…작게 걸어 주세요.",
+      "effects": {
+        "sugar": 20,
+        "erpin": -15
+      }
+    }
+  },
+  {
+    "id": "daily_erpin_gadget",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "요정마다 수정구",
+    "text": "네르! 모나티엄 수정구 봤어? 멀리 있는 요정이랑도 얼굴 보고 얘기할 수 있대! 왕국 요정 전부한테 하나씩 나눠 주자. 그럼 다들 나 엄청 좋아하겠지? 기도는… 수정구로 하면 되잖아.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 85,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "왕국 사탕이 남아나질 않아요.",
+      "effects": {
+        "erpin": -15,
+        "people": -5
+      }
+    },
+    "approve": {
+      "label": "…한 집에 하나씩만이에요.",
+      "effects": {
+        "erpin": 15,
+        "people": 10,
+        "sugar": -15,
+        "faith": -5
+      }
+    }
+  },
+  {
+    "id": "daily_sweetshop_tariff",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "sweetshop",
+    "faction": "fairy",
+    "title": "공장 사탕이 몰려온다",
+    "text": "사제장님, 모나티엄 공장 사탕이 시장에 쏟아져서 저희 가게 사탕이 하나도 안 팔려요! 엘프 사탕에 세금을 매겨 주세요. 안 그러면 사탕 가게들 다 문 닫아요.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 81,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "싼 사탕도 사탕이에요.",
+      "effects": {
+        "people": -15,
+        "sugar": 10
+      }
+    },
+    "approve": {
+      "label": "엘프 사탕에 세금을 매기죠.",
+      "effects": {
+        "people": 10,
+        "sugar": -5
+      },
+      "status": {
+        "id": "supply_delay",
+        "turns": 4,
+        "tick": {
+          "sugar": -2
+        }
+      }
+    }
+  },
+  {
+    "id": "daily_church_tree_lights",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "church",
+    "faction": "fairy",
+    "title": "세계수 야간 조명",
+    "text": "사제장님, 모나티엄에서 축제 기간에 세계수를 밤새 환하게 비춰 주겠다고 합니다. 요정들은 벌써 들떠 있습니다. 다만 조명 줄을 세계수 가지마다 감아야 한다고 하네요. 전기 요금은 저희가 냅니다.",
+    "years": 3,
+    "axe": true,
+    "conditions": {
+      "minYear": 81,
+      "maxYear": 199
+    },
+    "reject": {
+      "label": "세계수는 별빛이면 충분해요.",
+      "effects": {
+        "people": -10,
+        "faith": 10
+      }
+    },
+    "approve": {
+      "label": "축제 동안만이에요.",
+      "effects": {
+        "people": 15,
+        "faith": -15,
+        "sugar": -5
+      }
+    }
+  },
+  {
+    "id": "fixed_bigwood_harvest",
+    "kind": "fixed",
+    "speaker": "bigwood",
+    "faction": "spirit",
+    "title": "첫 열매",
+    "text": "열매가… 맺혔다… 사제장… 빅우드의 열매를… 따 가는 거냐…? 좋다! 어서 더 마구마구 따 가라…! 창고에 넣든… 요정들에게 나눠 주든…",
+    "trigger": {
+      "scheduled": true,
+      "order": 1
+    },
+    "years": 1,
+    "axe": true,
+    "reject": {
+      "label": "창고에 넣어 둘게요.",
+      "effects": {
+        "sugar": 10
+      }
+    },
+    "approve": {
+      "label": "요정들에게 나눠 주세요.",
+      "effects": {
+        "people": 10
+      }
+    }
+  },
+  {
+    "id": "fixed_sist_credit_due",
+    "kind": "fixed",
+    "speaker": "sist",
+    "faction": "dragon",
+    "title": "외상값 정산",
+    "text": "헤헤… 사장님, 외상값 말인데요. 반은 사탕으로 갚을게요! 나머지 반은… 따끈따끈한 소문을 빠르게 전달드리는 정보꾼 역할로 갚을 수 있을까요? 3번 정도 말이지요.",
+    "trigger": {
+      "scheduled": true,
+      "order": 1
+    },
+    "years": 1,
+    "axe": true,
+    "reject": {
+      "label": "왕국도 주민들에게 외상을 갚아야 해요.",
+      "effects": {
+        "people": 10
+      }
+    },
+    "approve": {
+      "label": "…소문으로 받죠.",
+      "effects": {
+        "sugar": -10
+      },
+      "grant": {
+        "boon": "intuition",
+        "uses": 3
+      }
+    }
+  },
+  {
+    "id": "fixed_fricle_side_effect",
+    "kind": "fixed",
+    "speaker": "villager",
+    "faction": "fairy",
+    "title": "꾸벅꾸벅 마을",
+    "text": "사제장님, 꿀잠 물약 마신 요정들이 낮에도 꾸벅꾸벅 졸아요. 밭일도 가게도 멈췄어요. 프리클 님이 해독제는 판대요. 무료는 아니고요.",
+    "trigger": {
+      "scheduled": true,
+      "order": 1
+    },
+    "years": 1,
+    "axe": true,
+    "reject": {
+      "label": "저절로 깰 때까지 기다리죠.",
+      "effects": {
+        "people": -5
+      },
+      "status": {
+        "id": "drowsy_fairies",
+        "turns": 5,
+        "tick": {
+          "sugar": -3
+        }
+      }
+    },
+    "approve": {
+      "label": "해독제를 사 오세요.",
+      "effects": {
+        "sugar": -15
+      }
+    }
+  },
+  {
+    "id": "fixed_goldie_housewarming",
+    "kind": "fixed",
+    "speaker": "goldie",
+    "faction": "dragon",
+    "title": "집들이",
+    "text": "고객님, 동쪽 마을 새 집들 다 지었어요! 집이 넓어지니 요정분들이 손님을 잔뜩 부르고 싶어 하세요. 집들이 잔치, 왕국에서 열어 주시면 어떨까요? 장식은 정품으로 제가 골라 드릴게요.",
+    "trigger": {
+      "scheduled": true,
+      "order": 1
+    },
+    "years": 1,
+    "axe": true,
+    "reject": {
+      "label": "조용히 입주만 하죠.",
+      "effects": {
+        "people": 10
+      }
+    },
+    "approve": {
+      "label": "좋은 물건으로 부탁드리죠.",
+      "effects": {
+        "people": 15,
+        "sugar": -10
+      }
+    }
+  },
+  {
+    "id": "fixed_monatium_subscription",
+    "kind": "fixed",
+    "speaker": "monatium_staff",
+    "faction": "elf",
+    "title": "체험 기간 종료",
+    "text": "모나티엄 영업부입니다. 냉장 진열장 체험 기간이 끝났습니다. 이용료 청구서를 드립니다. 해지하시면 진열장은 회수하고, 위약금도 조금 받습니다. 물론, 아주 조금입니다.",
+    "trigger": {
+      "scheduled": true,
+      "order": 1
+    },
+    "years": 1,
+    "axe": true,
+    "reject": {
+      "label": "해지할게요.",
+      "effects": {
+        "people": -10,
+        "sugar": -5
+      }
+    },
+    "approve": {
+      "label": "…계속 쓸게요.",
+      "effects": {
+        "sugar": -5
+      },
+      "status": {
+        "id": "subscription_fee",
+        "turns": 6,
+        "tick": {
+          "sugar": -2
+        }
+      }
+    }
+  },
+  {
+    "id": "daily_kyarot_bumper_crop",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "kyarot",
+    "faction": "fairy",
+    "title": "넘치는 사탕수수",
+    "text": "사제장! 사탕수수가 올해 미친 듯이 자랐어! 창고가 벌써 꽉 찼는데 밭에 아직 반이나 남았어. 전부 거둘까? 아니면 요정들한테 좀 나눠 줄까?",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "maxYear": 199,
+      "gauges": {
+        "sugar": {
+          "min": 55
+        }
+      }
+    },
+    "reject": {
+      "label": "반은 요정들에게 나눠 주세요.",
+      "effects": {
+        "sugar": 10,
+        "people": 5
+      }
+    },
+    "approve": {
+      "label": "전부 거두세요.",
+      "effects": {
+        "sugar": 15,
+        "people": -5
+      }
+    }
+  },
+  {
+    "id": "daily_monatium_surplus_sugar",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "monatium_staff",
+    "faction": "elf",
+    "title": "남아도는 설탕",
+    "text": "모나티엄 설탕공급과입니다. 공장에서 설탕이 너무 많이 나와 창고가 모자랍니다. 요정왕국에 헐값으로 넘기겠습니다. 물론, 아주 헐값입니다.",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 85,
+      "maxYear": 199,
+      "gauges": {
+        "sugar": {
+          "min": 55
+        }
+      }
+    },
+    "reject": {
+      "label": "조금만 받을게요.",
+      "effects": {
+        "sugar": 10
+      }
+    },
+    "approve": {
+      "label": "다 들여놓으세요.",
+      "effects": {
+        "sugar": 15,
+        "people": -5
+      }
+    }
+  },
+  {
+    "id": "daily_villager_assembly",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "villager",
+    "faction": "fairy",
+    "title": "마을 회의",
+    "text": "사제장님, 요즘 요정들 사이에서 마을 일은 마을 회의로 정하자는 말이 돌아요. 여왕님 허락 없이요. 회의장을 하나 내주시면 안 될까요?",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "maxYear": 199,
+      "gauges": {
+        "people": {
+          "min": 55
+        }
+      }
+    },
+    "reject": {
+      "label": "의견함만 둘게요.",
+      "effects": {
+        "people": 10,
+        "erpin": -5
+      }
+    },
+    "approve": {
+      "label": "회의장을 내드리죠.",
+      "effects": {
+        "people": 15,
+        "erpin": -10
+      }
+    }
+  },
+  {
+    "id": "daily_erpin_gift_return",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "생일 답례 파티",
+    "text": "네르! 요정들이 내 생일에 선물을 잔뜩 줬어. 나도 답례할래! 왕국 사탕으로 다 같이 파티하자. 크게! 엄청 크게!",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "maxYear": 199,
+      "gauges": {
+        "people": {
+          "min": 55
+        }
+      }
+    },
+    "reject": {
+      "label": "작게 해요.",
+      "effects": {
+        "people": 10,
+        "sugar": -5,
+        "erpin": -5
+      }
+    },
+    "approve": {
+      "label": "크게 하죠.",
+      "effects": {
+        "people": 10,
+        "sugar": -10,
+        "erpin": 5
+      }
+    }
+  },
+  {
+    "id": "daily_church_night_vigil",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "church",
+    "faction": "fairy",
+    "title": "밤샘 기도",
+    "text": "사제장님, 요정들이 세계수 아래 밤샘 기도를 하겠다고 모여들고 있습니다. 신심은 갸륵한데… 다들 낮에 꾸벅꾸벅 졸겠지요. 밤새 열어 둘까요?",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "maxYear": 199,
+      "gauges": {
+        "faith": {
+          "min": 55
+        }
+      }
+    },
+    "reject": {
+      "label": "자정까지만이에요.",
+      "effects": {
+        "faith": 10
+      }
+    },
+    "approve": {
+      "label": "밤새 열어 두세요.",
+      "effects": {
+        "faith": 15,
+        "sugar": -10
+      }
+    }
+  },
+  {
+    "id": "daily_church_pilgrimage",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "church",
+    "faction": "fairy",
+    "title": "길어지는 순례 행렬",
+    "text": "사제장님, 세계수 순례 행렬이 해마다 길어집니다. 올해는 왕국 요정 절반이 따라나서겠다고 합니다. 행렬을 늘려 줄까요?",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 81,
+      "maxYear": 199,
+      "gauges": {
+        "faith": {
+          "min": 55
+        }
+      }
+    },
+    "reject": {
+      "label": "예년만큼만 하죠.",
+      "effects": {
+        "faith": 10,
+        "people": -5
+      }
+    },
+    "approve": {
+      "label": "다 같이 가죠.",
+      "effects": {
+        "faith": 15,
+        "sugar": -10
+      }
+    }
+  },
+  {
+    "id": "daily_erpin_decrees",
+    "kind": "daily",
+    "tier": 1,
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "칙령 열 개",
+    "text": "네르! 나 오늘 칙령 열 개 쓸 거야. 간식 시간 두 배, 숙제 금지, 비 오는 날은 다 같이 낮잠! 여왕이니까 다 돼, 그치?",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "maxYear": 199,
+      "gauges": {
+        "erpin": {
+          "min": 55
+        }
+      }
+    },
+    "reject": {
+      "label": "하나만 고르세요.",
+      "effects": {
+        "erpin": 5
+      }
+    },
+    "approve": {
+      "label": "…세 개까지만이에요.",
+      "effects": {
+        "erpin": 10,
+        "faith": -5,
+        "sugar": -5
+      }
+    }
+  },
+  {
+    "id": "daily_erpin_shiny_crown",
+    "kind": "daily",
+    "tier": 2,
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "새 왕관",
+    "text": "네르, 모나티엄에서 반짝반짝 새 왕관을 봤어! 지금 왕관은 너무 낡았잖아. 하나만 맞추자, 응?",
+    "years": 2,
+    "axe": true,
+    "conditions": {
+      "minYear": 81,
+      "maxYear": 199,
+      "gauges": {
+        "erpin": {
+          "min": 55
+        }
+      }
+    },
+    "reject": {
+      "label": "지금 왕관을 손질하죠.",
+      "effects": {
+        "erpin": 10,
+        "sugar": -5
+      }
+    },
+    "approve": {
+      "label": "…맞추세요.",
+      "effects": {
+        "erpin": 10,
+        "sugar": -10
+      }
+    }
+  },
+  {
+    "id": "bishop_bigwood_heavy_fruit",
+    "kind": "daily",
+    "tier": 2,
+    "modes": [
+      "bishop"
+    ],
+    "weight": 3,
+    "speaker": "bigwood",
+    "faction": "spirit",
+    "title": "휘어진 가지",
+    "text": "열매가… 너무 많이 열렸다… 가지가 휘어서… 삐걱거린다… 아프다… 좋다…! 그런데 이대로 다 떨어지면… 땅에서 썩는다… 사제장… 따 가겠느냐…? 창고에 들여도… 요정들 입에 넣어 줘도… 빅우드는 좋다…",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "요정들 간식으로 나눠 주세요.",
+      "effects": {
+        "people": 10
+      }
+    },
+    "approve": {
+      "label": "전부 따서 창고에 들일게요.",
+      "effects": {
+        "sugar": 15,
+        "people": -5
+      }
+    }
+  },
+  {
+    "id": "bishop_kyarot_giant_cane",
+    "kind": "daily",
+    "tier": 2,
+    "modes": [
+      "bishop"
+    ],
+    "weight": 3,
+    "speaker": "kyarot",
+    "faction": "fairy",
+    "title": "왕사탕수수",
+    "text": "사제장! 이것 좀 봐! 사탕수수 한 줄기가 내 키보다 세 배는 커! 당근만큼은 아니지만… 아무튼 엄청 달아! 이거 하나만 졸여도 창고 한 칸은 찰 거야. 아니면 광장에 세워 놓고 다 같이 갉아 먹을까?",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "광장에서 다 같이 먹죠.",
+      "effects": {
+        "people": 10
+      }
+    },
+    "approve": {
+      "label": "졸여서 창고에 넣죠.",
+      "effects": {
+        "sugar": 15,
+        "people": -5
+      }
+    }
+  },
+  {
+    "id": "bishop_villager_flea_market",
+    "kind": "daily",
+    "tier": 2,
+    "modes": [
+      "bishop"
+    ],
+    "weight": 3,
+    "speaker": "villager",
+    "faction": "fairy",
+    "title": "광장 벼룩시장",
+    "text": "사제장님, 요정들이 광장에서 벼룩시장을 열고 싶대요. 안 쓰는 리본, 다 쓴 사탕 통, 반쯤 먹은 쿠키까지 판대요! 교단이 자릿세를 조금 받으면 창고에도 보탬이 될 거래요. 안 받으면 다들 더 신나겠지만요.",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "자릿세 없이 여세요.",
+      "effects": {
+        "people": 10
+      }
+    },
+    "approve": {
+      "label": "자릿세는 조금만 받죠.",
+      "effects": {
+        "sugar": 10,
+        "people": -5
+      }
+    }
+  },
+  {
+    "id": "bishop_erpin_belita_box",
+    "kind": "daily",
+    "tier": 2,
+    "modes": [
+      "bishop"
+    ],
+    "weight": 3,
+    "speaker": "erpin",
+    "faction": "fairy",
+    "title": "언니의 사탕 상자",
+    "text": "네르! 왕궁 다락에서 언니가 숨겨 둔 사탕 상자를 찾았어! 엄청 커! 이거 다 내 거지? 언니 거면 동생 거니까 내 거 맞지? …창고에 넣자고 할 거지? 그치? 그 얼굴 다 보여!",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "여왕님이 가지세요.",
+      "effects": {
+        "erpin": 10
+      }
+    },
+    "approve": {
+      "label": "왕국 창고에 넣을게요.",
+      "effects": {
+        "sugar": 15,
+        "erpin": -10
+      }
+    }
+  },
+  {
+    "id": "bishop_villager_back_taxes",
+    "kind": "daily",
+    "tier": 2,
+    "modes": [
+      "bishop"
+    ],
+    "weight": 3,
+    "speaker": "villager",
+    "faction": "fairy",
+    "title": "밀린 세금",
+    "text": "사제장님, 올해 장사가 잘된 요정들이 밀린 세금을 한꺼번에 내겠대요. 사탕으로요! 그런데 다른 요정들이 '그럼 우리도 내야 하는 거 아니냐'면서 수군거려요.",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "올해는 넣어 두라고 하세요.",
+      "effects": {
+        "people": 5
+      }
+    },
+    "approve": {
+      "label": "감사히 받죠.",
+      "effects": {
+        "sugar": 15,
+        "people": -5
+      }
+    }
+  },
+  {
+    "id": "bishop_villager_flower_born",
+    "kind": "daily",
+    "tier": 1,
+    "modes": [
+      "bishop"
+    ],
+    "speaker": "church",
+    "faction": "fairy",
+    "title": "피난 온 어린 요정들",
+    "text": "사제장님, 강 건너 마을이 큰비에 잠겨서 어린 요정들이 피난을 왔습니다! 스무 명이 넘습니다. 다들 배가 고프다고 울고 있습니다. 교단에서 맡아 돌볼까요, 마을마다 나눠 맡길까요?",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "마을마다 나눠 맡겨 주세요.",
+      "effects": {
+        "people": -5
+      }
+    },
+    "approve": {
+      "label": "교단이 맡아 돌보죠.",
+      "effects": {
+        "faith": 10,
+        "sugar": -10
+      }
+    }
+  },
+  {
+    "id": "bishop_sylla_council_invite",
+    "kind": "daily",
+    "tier": 1,
+    "modes": [
+      "bishop"
+    ],
+    "speaker": "sylla",
+    "faction": "spirit",
+    "title": "정령 회의 초대장",
+    "text": "이번 정령 회의에 요정왕국 사제장도 불렀어. 세계수를 모시는 쪽 이야기도 들어야 공정하니까. 꼭 와 줬으면 좋겠어. 그렇지 않으면 바람으로 심판할 테니. …아, 아니. 안 와도 되긴 하는데. 그냥 와.",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "편지로 인사를 전할게요.",
+      "effects": {
+        "faith": -5
+      }
+    },
+    "approve": {
+      "label": "직접 다녀올게요.",
+      "effects": {
+        "faith": 10,
+        "erpin": -5
+      }
+    }
+  },
+  {
+    "id": "bishop_shaydi_masquerade",
+    "kind": "daily",
+    "tier": 1,
+    "modes": [
+      "bishop"
+    ],
+    "speaker": "shaydi",
+    "faction": "ghost",
+    "title": "유령늪 가장행렬",
+    "text": "유령늪 애들이랑 가장행렬을 하기로 했거든~ 요정왕국 광장을 한 바퀴 돌 거야. 다들 유령 분장한 요정인 줄 알 테니까 아무도 안 놀랄걸? 아마도~ 사탕 받으러 문 두드리는 것까지는 봐줘.",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "광장은 안 돼요.",
+      "effects": {
+        "people": -5
+      }
+    },
+    "approve": {
+      "label": "…광장 한 바퀴만이에요.",
+      "effects": {
+        "people": 10,
+        "sugar": -5
+      }
+    }
+  },
+  {
+    "id": "bishop_church_nap_contest",
+    "kind": "daily",
+    "tier": 1,
+    "modes": [
+      "bishop"
+    ],
+    "speaker": "church",
+    "faction": "fairy",
+    "title": "세계수 아래 낮잠 대회",
+    "text": "사제장님, 신도들이 세계수 아래에서 낮잠 대회를 열자고 합니다. 가장 오래, 가장 깊이 자는 요정이 우승입니다. 교단의 기도가 곧 낮잠이니 이보다 경건한 대회는 없다고들 합니다. 다만 그날은 밭이 텅 빕니다.",
+    "years": 2,
+    "axe": true,
+    "reject": {
+      "label": "밭일 끝나고 자세요.",
+      "effects": {
+        "faith": -5,
+        "sugar": 5
+      }
+    },
+    "approve": {
+      "label": "다 같이 자죠.",
+      "effects": {
+        "faith": 10,
+        "sugar": -5
+      }
+    }
+  },
+  {
+    "id": "boss_snow_road",
+    "kind": "daily",
+    "tier": 3,
+    "boss": "cleanup",
+    "speaker": "guard",
+    "faction": "fairy",
+    "title": "눈에 막힌 길",
+    "text": "보고합니다. 왕궁 앞길이 눈에 막혔습니다. 경비대만으로는 모자랍니다. 마을 요정들을 불러 모을까요, 교단 사제들을 보낼까요?",
+    "years": 1,
+    "axe": true,
+    "reject": {
+      "label": "사제들을 보내 주세요.",
+      "effects": {
+        "faith": -10
+      }
+    },
+    "approve": {
+      "label": "요정들을 불러 모으세요.",
+      "effects": {
+        "people": -10
+      }
+    }
+  },
+  {
+    "id": "boss_snow_storehouse",
+    "kind": "daily",
+    "tier": 3,
+    "boss": "cleanup",
+    "speaker": "villager",
+    "faction": "fairy",
+    "title": "무너진 사탕 창고",
+    "text": "사제장님, 눈 무게에 사탕 창고 지붕이 내려앉았어요! 지금 파내면 반은 건질 수 있대요. 대신 다들 밤을 새워야 해요.",
+    "years": 1,
+    "axe": true,
+    "reject": {
+      "label": "무리하지 마세요. 날 밝으면 파내죠.",
+      "effects": {
+        "sugar": -15
+      }
+    },
+    "approve": {
+      "label": "지금 파내죠. 다들 고마워요.",
+      "effects": {
+        "sugar": -5,
+        "people": -10
+      }
+    }
+  },
+  {
+    "id": "boss_snow_shelter",
+    "kind": "daily",
+    "tier": 3,
+    "boss": "cleanup",
+    "speaker": "church",
+    "faction": "fairy",
+    "title": "얼어붙은 요정들",
+    "text": "사제장님, 지붕이 부서진 집 요정들이 추위에 떨고 있습니다. 예배당을 열어 재워 줄까요? 그러면 한동안 예배는 드릴 수 없습니다.",
+    "years": 1,
+    "axe": true,
+    "reject": {
+      "label": "이웃집에 나눠 맡기세요.",
+      "effects": {
+        "people": -10
+      }
+    },
+    "approve": {
+      "label": "예배당을 열죠.",
+      "effects": {
+        "faith": -10,
+        "people": 5
+      }
+    }
+  },
+  {
+    "id": "boss_sugar_cut",
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "monatium_staff",
+    "faction": "elf",
+    "title": "공급 중단",
+    "text": "모나티엄 설탕공급과입니다. 오늘부로 요정왕국에 대한 설탕 공급을 전면 중단합니다. 사유는 규정상 알려 드릴 수 없습니다. 이의는… 받지 않습니다.",
+    "years": 1,
+    "axe": false,
+    "reject": {
+      "label": "왕궁 몫부터 줄이세요. 창고는 잠그고요.",
+      "effects": {
+        "sugar": 5,
+        "erpin": -10
+      }
+    },
+    "approve": {
+      "label": "창고를 열어 요정들에게 나눠 주세요.",
+      "effects": {
+        "sugar": -10,
+        "people": 10
+      }
+    },
+    "boss": "unrest",
+    "bossAt": 5,
+    "status": {
+      "id": "sugar_cut",
+      "floor": 8,
+      "tick": {
+        "sugar": -2
+      }
+    }
+  },
+  {
+    "id": "boss_sugar_rebellion",
+    "safe": true,
+    "kind": "daily",
+    "tier": 3,
+    "speaker": "villager",
+    "faction": "fairy",
+    "title": "설탕 반란",
+    "text": "반란이다! 빵도 설탕도 다 떨어졌다! 경비대도 다 도망갔다! 왕국은 설탕 공급을 정상화시켜라! 여왕을 몰아내자!",
+    "years": 1,
+    "axe": false,
+    "reject": {
+      "label": "남은 사탕을 광장에 전부 푸세요!",
+      "effects": {
+        "sugar": -10,
+        "people": 10
+      }
+    },
+    "approve": {
+      "label": "여왕님, 손 잡으세요. 뛰어요!",
+      "effects": {
+        "people": -10,
+        "erpin": 10
+      }
+    },
+    "boss": "unrest",
+    "bossAt": 10
+  }
+]

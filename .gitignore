@@ -1,0 +1,15 @@
+node_modules/
+dist/
+*.local
+.npm-cache/
+.cache/
+refs/
+# high-res source art stays local; the game ships the converted copies in public/
+design/
+# local agent skills (installed per machine, not part of the game)
+.claude/
+gamedev-skills/
+skills-lock.json
+.agents/
+# internal review notes (assessments), not part of the game
+docs/

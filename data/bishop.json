@@ -1,0 +1,365 @@
+{
+  "segmentYears": 25,
+  "scale": {
+    "steps": [
+      [
+        0,
+        1.0
+      ],
+      [
+        50,
+        1.1
+      ],
+      [
+        100,
+        1.3
+      ],
+      [
+        150,
+        1.45
+      ],
+      [
+        200,
+        1.6
+      ],
+      [
+        250,
+        1.75
+      ]
+    ]
+  },
+  "tension": {
+    "steps": [
+      [
+        0,
+        24
+      ],
+      [
+        50,
+        30
+      ],
+      [
+        100,
+        40
+      ],
+      [
+        150,
+        48
+      ],
+      [
+        200,
+        55
+      ],
+      [
+        250,
+        60
+      ]
+    ]
+  },
+  "phases": [
+    {
+      "until": 20,
+      "weights": {
+        "1": 60,
+        "2": 40,
+        "3": 0
+      }
+    },
+    {
+      "until": 50,
+      "weights": {
+        "1": 40,
+        "2": 45,
+        "3": 15
+      }
+    },
+    {
+      "until": 100,
+      "weights": {
+        "1": 25,
+        "2": 50,
+        "3": 25
+      }
+    },
+    {
+      "until": 150,
+      "weights": {
+        "1": 15,
+        "2": 45,
+        "3": 40
+      }
+    },
+    {
+      "until": null,
+      "weights": {
+        "1": 10,
+        "2": 40,
+        "3": 50
+      }
+    }
+  ],
+  "modifierCap": {
+    "min": 0.7,
+    "max": 1.6
+  },
+  "base": {
+    "loss": {
+      "sugar": 0.7
+    }
+  },
+  "startFlags": [
+    "marie_friend"
+  ],
+  "excludeDailyFromYear": 186,
+  "omens": [
+    {
+      "id": "ants",
+      "loss": {
+        "sugar": 1.1
+      }
+    },
+    {
+      "id": "rumors",
+      "gain": {
+        "people": 1.1
+      },
+      "loss": {
+        "people": 1.1
+      }
+    },
+    {
+      "id": "lapsed",
+      "loss": {
+        "faith": 1.1
+      }
+    },
+    {
+      "id": "whims",
+      "gain": {
+        "erpin": 1.1
+      },
+      "loss": {
+        "erpin": 1.1
+      }
+    }
+  ],
+  "flowGap": {
+    "min": 5,
+    "max": 15
+  },
+  "flows": [
+    {
+      "id": "harvest",
+      "years": 15,
+      "gain": {
+        "sugar": 1.2
+      }
+    },
+    {
+      "id": "bloom",
+      "years": 10,
+      "gain": {
+        "faith": 1.2
+      }
+    },
+    {
+      "id": "bread",
+      "years": 15,
+      "gain": {
+        "people": 1.15
+      },
+      "speakers": {
+        "ashur": 2,
+        "sweetshop": 2
+      },
+      "specials": [
+        "bread"
+      ]
+    },
+    {
+      "id": "quiet",
+      "years": 15,
+      "tiers": {
+        "1": 2.5
+      },
+      "specials": [
+        "lightDocs"
+      ]
+    },
+    {
+      "id": "drought",
+      "years": 10,
+      "loss": {
+        "sugar": 1.2
+      }
+    },
+    {
+      "id": "rebel",
+      "years": 10,
+      "gain": {
+        "erpin": 1.3
+      },
+      "loss": {
+        "erpin": 1.3
+      }
+    },
+    {
+      "id": "speaki",
+      "years": 10,
+      "speakiChance": 3,
+      "specials": [
+        "fakeDocs"
+      ]
+    },
+    {
+      "id": "boom",
+      "years": 20,
+      "gain": {
+        "sugar": 1.15
+      },
+      "speakers": {
+        "monatium_staff": 2,
+        "elena": 1.5,
+        "amelia": 1.5,
+        "rohne": 1.5
+      },
+      "specials": [
+        "monatium"
+      ]
+    },
+    {
+      "id": "nap",
+      "years": 10,
+      "gain": {
+        "faith": 1.1,
+        "sugar": 0.9
+      }
+    },
+    {
+      "id": "spirits",
+      "years": 10,
+      "speakers": {
+        "sylla": 3,
+        "ifrit": 3,
+        "gabia": 3,
+        "naia": 3,
+        "bigwood": 3
+      },
+      "specials": [
+        "spirits"
+      ]
+    },
+    {
+      "id": "ghosts",
+      "years": 10,
+      "speakers": {
+        "shaydi": 3,
+        "espi": 3
+      },
+      "specials": [
+        "ghosts"
+      ]
+    }
+  ],
+  "blessings": [
+    {
+      "id": "sweet",
+      "gain": {
+        "sugar": 1.3
+      },
+      "loss": {
+        "people": 1.05
+      }
+    },
+    {
+      "id": "napprayer",
+      "gain": {
+        "faith": 1.25,
+        "sugar": 0.9
+      },
+      "speakers": {
+        "church": 1.5,
+        "kid": 1.5
+      },
+      "specials": [
+        "church"
+      ]
+    },
+    {
+      "id": "bestie",
+      "gain": {
+        "erpin": 0.75
+      },
+      "loss": {
+        "erpin": 0.75,
+        "people": 1.05
+      }
+    },
+    {
+      "id": "careful",
+      "hyeanPerSegment": 3,
+      "tiers": {
+        "3": 1.2
+      },
+      "specials": [
+        "hyean",
+        "hardDocs"
+      ]
+    },
+    {
+      "id": "thrift",
+      "gain": {
+        "people": 0.9
+      },
+      "loss": {
+        "sugar": 0.8
+      }
+    },
+    {
+      "id": "calmfaith",
+      "gain": {
+        "erpin": 0.9
+      },
+      "loss": {
+        "faith": 0.8
+      }
+    }
+  ],
+  "crisis": {
+    "cards": [
+      "fixed_elena_development",
+      "fixed_amelia_audit",
+      "fixed_rohne_visit",
+      "fixed_elena_sugar_advance",
+      "fixed_amelia_snack_audit",
+      "fixed_rohne_culture_night",
+      "fixed_elena_palace_garden",
+      "fixed_amelia_registry",
+      "fixed_rohne_embassy_dinner"
+    ],
+    "weight": 3,
+    "periodYears": 75,
+    "safe": 20
+  },
+  "relics": {
+    "cards": [
+      "fixed_beast_kids_bread",
+      "special_strange_card"
+    ],
+    "weight": 0.3,
+    "gapYears": 60
+  },
+  "events": {
+    "first": "omen",
+    "gap": {
+      "min": 20,
+      "max": 30
+    }
+  },
+  "embrace": {
+    "year": 100,
+    "save": 20,
+    "omenAfter": 1.2,
+    "clear": 5
+  }
+}

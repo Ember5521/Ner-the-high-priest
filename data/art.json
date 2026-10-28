@@ -1,0 +1,131 @@
+{
+  "portraits": {
+    "erpin": "portraits/erpin.webp",
+    "belita": "portraits/belita.webp",
+    "diana": "portraits/diana.webp",
+    "sist": "portraits/sist.webp",
+    "marie": "portraits/marie.webp",
+    "mayo": "portraits/mayo.webp",
+    "rohne": "portraits/rohne.webp",
+    "renewa": "portraits/renewa.webp",
+    "xion": "portraits/xion.webp",
+    "amelia": "portraits/amelia.webp",
+    "elena": "portraits/elena.webp",
+    "chloe": "portraits/chloe.webp",
+    "fricle": "portraits/fricle.webp",
+    "ashur": "portraits/ashur.webp",
+    "kyarot": "portraits/kyarot.webp",
+    "speaki": null,
+    "worldtree": null,
+    "ner": "portraits/ner.webp",
+    "canta": null,
+    "snorky": null,
+    "pira": null,
+    "goldie": "portraits/goldie.webp",
+    "bigwood": "portraits/bigwood.webp",
+    "ifrit": "portraits/ifrit.webp",
+    "gabia": "portraits/gabia.webp",
+    "naia": "portraits/naia.webp",
+    "sylla": "portraits/sylla.webp",
+    "shaydi": "portraits/shaydi.webp",
+    "espi": "portraits/espi.webp",
+    "fairy": [
+      "portraits/fairy_1.webp",
+      "portraits/fairy_2.webp"
+    ],
+    "guard": [
+      "portraits/guard_1.webp",
+      "portraits/guard_2.webp"
+    ],
+    "church": [
+      "portraits/church_1.webp",
+      "portraits/church_2.webp"
+    ],
+    "beast_kid": [
+      "portraits/beast_kid_1.webp",
+      "portraits/beast_kid_2.webp"
+    ],
+    "monatium_staff": [
+      "portraits/monatium_staff_1.webp",
+      "portraits/monatium_staff_2.webp"
+    ],
+    "witch_courier": [
+      "portraits/witch_courier_1.webp",
+      "portraits/witch_courier_2.webp"
+    ]
+  },
+  "icons": {
+    "sugar": "icons/candy.webp",
+    "people": "icons/fairy.webp",
+    "faith": "icons/worldtree.webp",
+    "erpin": "icons/erpin.webp"
+  },
+  "ui": {
+    "axe": "ui/axe.webp",
+    "stampApprove": "ui/stamp_pass.webp",
+    "stampReject": "ui/stamp_reject.webp",
+    "stampLeft": "ui/stamp_left.webp",
+    "stampRight": "ui/stamp_right.webp",
+    "stampLight": "ui/stamp_light.webp",
+    "stampMeet": "ui/stamp_meet.webp",
+    "nerIntro": "ui/ner_intro.webp",
+    "titleErpin": "ui/title_erpin.webp",
+    "titlePat": "ui/title_pat.webp",
+    "titlePlate": "ui/title_plate.webp",
+    "speakiCaught": "ui/speaki_caught.webp",
+    "aliceToken": "ui/alice_token.webp",
+    "speakiFooled": "ui/speaki_fooled.webp",
+    "linuaRewind": "ui/linua_rewind.webp",
+    "stitchScene": "ui/chloe_stitch.webp",
+    "erpinSave": "ui/erpin_save.webp",
+    "erpinSurvived": "ui/erpin_survived.webp",
+    "nerKickout": "ui/ner_kickout.webp",
+    "bullet": "ui/bullet.webp",
+    "scope": "ui/scope.webp"
+  },
+  "sounds": {
+    "stamp": null,
+    "axe": null,
+    "shot": "sounds/shot.mp3",
+    "shatter": null,
+    "paper": null,
+    "tick": null,
+    "warning": null,
+    "click": null,
+    "drowse": null,
+    "gameover": null,
+    "unlock": null,
+    "speaki": null,
+    "rewind": null,
+    "boon": null
+  },
+  "music": {
+    "town": "sounds/bgm_town.mp3"
+  },
+  "boons": {
+    "hyean": "boons/hyean.webp",
+    "intuition": "boons/intuition.webp",
+    "rewind": "boons/rewind.webp",
+    "alice": "boons/alice.webp",
+    "bullet": "boons/bullet.webp",
+    "stitch": "boons/stitch.webp",
+    "blindfold": "boons/blindfold.webp",
+    "understudy": "boons/understudy.webp",
+    "bandage": "boons/mend.webp",
+    "scope": "boons/scope.webp"
+  },
+  "endings": {
+    "true": "endings/true.webp",
+    "sugar_low": "endings/sugar_low.webp",
+    "sugar_high": "endings/sugar_high.webp",
+    "people_low": "endings/people_low.webp",
+    "people_high": "endings/people_high.webp",
+    "faith_low": "endings/faith_low.webp",
+    "faith_high": "endings/faith_high.webp",
+    "erpin_low": "endings/erpin_low.webp",
+    "erpin_high": "endings/erpin_high.webp",
+    "sleep": "endings/sleep.webp",
+    "purist": "endings/purist.webp",
+    "reformed": "endings/reformed.webp"
+  }
+}

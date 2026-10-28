@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gothic+A1:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>이벤트 편집기 · 사제장 네르</title>
+  </head>
+  <body class="ed">
+    <header class="ed-bar">
+      <h1>이벤트 편집기</h1>
+      <span class="ed-file">data/cards/m1.json</span>
+      <span class="ed-status" id="status" aria-live="polite"></span>
+      <a class="ed-btn" href="./" target="_blank" rel="noopener">게임 열기</a>
+      <button class="ed-btn primary" id="save" type="button">
+        저장 <kbd>Ctrl+S</kbd>
+      </button>
+    </header>
+
+    <main class="ed-main">
+      <!-- left: every event, filtered by kind -->
+      <aside class="ed-list" aria-label="이벤트 목록">
+        <div class="ed-kinds" role="tablist">
+          <button type="button" role="tab" data-kind="all">전체</button>
+          <button type="button" role="tab" data-kind="story">스토리</button>
+          <button type="button" role="tab" data-kind="fixed">고정</button>
+          <button type="button" role="tab" data-kind="daily">일반</button>
+          <button type="button" role="tab" data-kind="special">특수</button>
+          <button type="button" role="tab" data-kind="hard">하드</button>
+          <button type="button" role="tab" data-kind="speaki">스피키</button>
+        </div>
+        <input
+          class="ed-search"
+          id="search"
+          type="search"
+          placeholder="제목·본문·발신인 검색"
+        />
+        <ul class="ed-items" id="card-list"></ul>
+        <div class="ed-new">
+          <span>새 이벤트</span>
+          <button type="button" data-new="story">스토리</button>
+          <button type="button" data-new="fixed">고정</button>
+          <button type="button" data-new="daily">일반</button>
+          <button type="button" data-new="special">특수</button>
+        </div>
+      </aside>
+
+      <!-- middle: the selected event -->
+      <section class="ed-form" id="form" aria-label="이벤트 편집">
+        <div class="ed-form-head">
+          <h2 id="form-title">이벤트를 고르세요</h2>
+          <button class="ed-btn" id="duplicate" type="button">복제</button>
+          <button class="ed-btn danger" id="delete" type="button">삭제</button>
+        </div>
+        <div
+          class="ed-features"
+          id="features"
+          aria-label="이 이벤트의 특수 기능"
+        ></div>
+        <ul class="ed-errors" id="errors" hidden></ul>
+
+        <fieldset>
+          <legend>기본</legend>
+          <div class="ed-grid">
+            <label class="ed-field">
+              <span>종류</span>
+              <select id="f-kind">
+                <option value="story">
+                  스토리 — 정해진 해, 승인/승인, 자원 변화 없음
+                </option>
+                <option value="fixed">고정 — 정해진 해, 승인/반려</option>
+                <option value="daily">일반 — 랜덤 일상</option>
+                <option value="special">특수 — 랜덤, 독특한 사건</option>
+              </select>
+            </label>
+            <label class="ed-field">
+              <span>아이디 <small>영문·숫자·밑줄, 겹치면 안 됨</small></span>
+              <input id="f-id" type="text" spellcheck="false" />
+            </label>
+            <label class="ed-field">
+              <span>발신인 <small>공문에 적힌 이름</small></span>
+              <select id="f-speaker"></select>
+            </label>
+            <label class="ed-field" data-kinds="special">
+              <span>진짜 작성자 <small>흉내 낸 문서일 때만</small></span>
+              <select id="f-realSpeaker"></select>
+            </label>
+            <label class="ed-field">
+              <span>세력</span>
+              <select id="f-faction"></select>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>등장</legend>
+          <div class="ed-grid">
+            <label class="ed-field" data-kinds="story fixed">
+              <span>등장 방식</span>
+              <select id="f-trigger-type">
+                <option value="year">연도</option>
+                <option value="onCondition">조건 충족 시</option>
+                <option value="scheduled">예약</option>
+                <option value="after">기록 이후</option>
+                <option value="window">기간</option>
+              </select>
+              <span>등장 연도</span>
+              <input id="f-trigger-year" type="number" min="0" max="200" />
+            </label>
+            <label class="ed-field" data-kinds="story fixed">
+              <span>같은 해 순서 <small>작을수록 먼저</small></span>
+              <input id="f-trigger-order" type="number" min="0" />
+            </label>
+            <label class="ed-field" data-kinds="daily">
+              <span>난이도</span>
+              <select id="f-tier">
+                <option value="1">1단계 — 초반에 많이</option>
+                <option value="2">2단계 — 중반에 많이</option>
+                <option value="3">3단계 — 후반에 많이</option>
+              </select>
+            </label>
+            <label class="ed-field" data-kinds="daily special">
+              <span>등장 비중 <small>클수록 자주, 기본 1</small></span>
+              <input id="f-weight" type="number" min="1" />
+            </label>
+            <label class="ed-field" data-kinds="story fixed">
+              <span>도장 모양</span>
+              <select id="f-stamps">
+                <option value="">없음</option>
+                <option value="direction">좌·우 화살표</option>
+                <option value="light">빛</option>
+                <option value="meet">손 내밀기</option>
+              </select>
+            </label>
+            <label class="ed-field" data-kinds="story fixed">
+              <span>공문 모양</span>
+              <select id="f-look">
+                <option value="">기본</option>
+                <option value="special">특수 — 보상을 고르는 공문</option>
+                <option value="quest">의뢰 — 연계의 첫 공문</option>
+                <option value="hard">하드 — 긴급 공문</option>
+              </select>
+            </label>
+            <label class="ed-field ed-check" data-kinds="special">
+              <input id="f-repeatable" type="checkbox" />
+              <span>한 판에 여러 번 나올 수 있음</span>
+            </label>
+            <label class="ed-field">
+              <span
+                >흐르는 햇수
+                <small>처리 후 넘어가는 해, 스토리는 0 가능</small></span
+              >
+              <input id="f-years" type="number" min="0" max="4" />
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>내용</legend>
+          <label class="ed-field">
+            <span>제목</span>
+            <input id="f-title" type="text" />
+          </label>
+          <label class="ed-field">
+            <span>본문 <small>발신인의 말투로</small></span>
+            <textarea id="f-text" rows="4"></textarea>
+          </label>
+        </fieldset>
+
+        <div class="ed-choices">
+          <fieldset class="ed-choice reject" data-side="reject">
+            <legend>
+              <span class="ed-stamp"></span><b class="ed-choice-name">반려</b>
+              <small>왼쪽 도장</small>
+            </legend>
+            <label class="ed-field">
+              <span>선택지 문구</span>
+              <input id="reject-label" type="text" />
+            </label>
+            <div class="ed-field">
+              <span>자원 변화</span>
+              <div class="ed-effects" data-side="reject"></div>
+            </div>
+            <label class="ed-field">
+              <span
+                >남길 기록 <small>쉼표로 구분, 이후 조건에 쓰임</small></span
+              >
+              <input id="reject-flags" type="text" spellcheck="false" />
+            </label>
+            <label class="ed-field" data-kinds="fixed daily special">
+              <span>졸음</span>
+              <select id="reject-drowse">
+                <option value="0">없음</option>
+                <option value="1">졸음 +1</option>
+                <option value="2">졸음 +2</option>
+                <option value="3">강제 수면</option>
+              </select>
+            </label>
+          </fieldset>
+
+          <fieldset class="ed-choice approve" data-side="approve">
+            <legend>
+              <span class="ed-stamp"></span><b class="ed-choice-name">승인</b>
+              <small>오른쪽 도장</small>
+            </legend>
+            <label class="ed-field">
+              <span>선택지 문구</span>
+              <input id="approve-label" type="text" />
+            </label>
+            <div class="ed-field">
+              <span>자원 변화</span>
+              <div class="ed-effects" data-side="approve"></div>
+            </div>
+            <label class="ed-field">
+              <span
+                >남길 기록 <small>쉼표로 구분, 이후 조건에 쓰임</small></span
+              >
+              <input id="approve-flags" type="text" spellcheck="false" />
+            </label>
+            <label class="ed-field" data-kinds="fixed daily special">
+              <span>졸음</span>
+              <select id="approve-drowse">
+                <option value="0">없음</option>
+                <option value="1">졸음 +1</option>
+                <option value="2">졸음 +2</option>
+                <option value="3">강제 수면</option>
+              </select>
+            </label>
+          </fieldset>
+        </div>
+
+        <fieldset>
+          <legend>도끼</legend>
+          <div class="ed-grid">
+            <label class="ed-field">
+              <span>도끼 사용</span>
+              <select id="f-axe">
+                <option value="bullet">마탄으로만</option>
+                <option value="true">가능 — 졸음 단계가 오름</option>
+                <option value="false">불가 — 반드시 처리해야 함</option>
+                <option value="free">
+                  가능 — 졸음 없음 (가짜 문서 적발용)
+                </option>
+              </select>
+            </label>
+            <label class="ed-field" data-axe="free">
+              <span>적발 장면</span>
+              <select id="f-axe-scene"></select>
+            </label>
+            <label class="ed-field" data-axe="free">
+              <span>적발 시 남길 기록 <small>쉼표로 구분</small></span>
+              <input id="f-axe-flags" type="text" spellcheck="false" />
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>등장 조건 <small>비워 두면 언제나</small></legend>
+          <div class="ed-grid">
+            <label class="ed-field">
+              <span>최소 등장 연도</span>
+              <input id="f-minYear" type="number" min="0" step="1" />
+            </label>
+            <label class="ed-field">
+              <span>최대 등장 연도 (포함)</span>
+              <input id="f-maxYear" type="number" min="0" step="1" />
+            </label>
+            <label class="ed-field">
+              <span>이 기록이 모두 있을 때만</span>
+              <input id="f-flagsAll" type="text" spellcheck="false" />
+            </label>
+            <label class="ed-field">
+              <span>이 기록이 하나도 없을 때만</span>
+              <input id="f-flagsNone" type="text" spellcheck="false" />
+            </label>
+          </div>
+        </fieldset>
+      </section>
+
+      <!-- right: the card as the game draws it -->
+      <section class="ed-preview" aria-label="미리보기">
+        <div class="ed-aim" role="group" aria-label="도장 미리보기">
+          <button type="button" data-aim="reject">← 반려</button>
+          <button type="button" data-aim="none">그대로</button>
+          <button type="button" data-aim="axe">도끼 ↓</button>
+          <button type="button" data-aim="approve">승인 →</button>
+          <select id="preview-mode"></select>
+        </div>
+        <div class="ed-preview-items" role="group" aria-label="미리보기 아이템">
+          <span>아이템</span>
+          <button type="button" id="preview-bullet" aria-pressed="false">
+            마탄 장전
+          </button>
+          <select id="preview-scope" aria-label="마탄 스코프">
+            <option value="">스코프 없음</option>
+            <option value="held">스코프 보유</option>
+            <option value="aimed">스코프 조준</option>
+          </select>
+          <select id="preview-bandage" aria-label="만능 반창고">
+            <option value="">반창고 없음</option>
+            <option value="held">반창고 보유</option>
+          </select>
+          <select id="preview-blindfold" aria-label="마법의 눈가리개">
+            <option value="">눈가리개 없음</option>
+            <option value="held">눈가리개 보유</option>
+          </select>
+        </div>
+        <div class="ed-preview-year">
+          <label for="preview-year">미리보기 연도</label>
+          <input
+            id="preview-year"
+            type="range"
+            min="0"
+            max="200"
+            value="0"
+            aria-describedby="preview-year-hint"
+          />
+          <output id="preview-year-value" for="preview-year">0</output>
+          <p id="preview-year-hint" class="ed-note">
+            카드 선택 시 등장 연도·최소 연도를 적용하고, 없으면 현재 연도를
+            유지해요. 직접 조절한 카드의 연도는 이 세션 동안 기억해요.
+          </p>
+        </div>
+        <div class="ed-special">
+          <label for="preview-special">특수 연출</label>
+          <select id="preview-special">
+            <option value="">연출 선택</option>
+          </select>
+          <button type="button" id="preview-replay" class="ed-btn">
+            다시 재생
+          </button>
+        </div>
+        <div class="ed-phone">
+          <iframe
+            id="preview"
+            title="게임 화면 미리보기"
+            src="./preview.html"
+          ></iframe>
+        </div>
+        <p id="preview-hint" class="ed-preview-hint">
+          미리보기의 도장·도끼·마탄을 눌러 실제처럼 찍어 볼 수 있어요.
+        </p>
+        <p class="ed-note">
+          실제 게임 화면 그대로입니다. 자원 변화 점과 선택지 문구는 위 버튼으로
+          확인하세요.
+        </p>
+      </section>
+    </main>
+
+    <!-- explains one feature badge; opened from the list or the form -->
+    <div
+      class="ed-pop"
+      id="feature-pop"
+      role="dialog"
+      aria-modal="false"
+      aria-labelledby="feature-pop-title"
+      hidden
+    >
+      <div class="ed-pop-head">
+        <span class="ed-badge" id="feature-pop-icon" aria-hidden="true"></span>
+        <h3 id="feature-pop-title"></h3>
+        <button
+          type="button"
+          class="ed-pop-close"
+          id="feature-pop-close"
+          aria-label="닫기"
+        >
+          ×
+        </button>
+      </div>
+      <p class="ed-pop-body" id="feature-pop-body"></p>
+      <button
+        type="button"
+        class="ed-btn ed-pop-preview"
+        id="feature-pop-preview"
+        hidden
+      >
+        연출 보기
+      </button>
+    </div>
+    <script type="module" src="/src/editor/main.ts"></script>
+  </body>
+</html>

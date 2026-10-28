@@ -1,0 +1,2253 @@
+{
+  "system": {
+    "modes": {
+      "label": "Mode",
+      "bestYear": "Best reign ({mode}): {year} {year|year|years}",
+      "previewUp": "Increase, about {n}",
+      "previewDown": "Decrease, about {n}",
+      "previewNeutral": "Change of about {n}, direction unknown",
+      "apprentice": {
+        "name": "Apprentice Priestess",
+        "tier": "Easy",
+        "desc": "Let’s see… where’s my stamp…",
+        "endingLine": "Signed as Apprentice Priestess"
+      },
+      "priest": {
+        "name": "Head Priestess",
+        "tier": "Hard",
+        "desc": "They’re being picky today",
+        "endingLine": "Signed as Head Priestess"
+      },
+      "bishop": {
+        "name": "Bishop",
+        "tier": "Endless + Extreme",
+        "desc": "There’s no end to this…",
+        "endingLine": "Signed as Bishop",
+        "locked": "Unlocks after the true ending",
+        "lockedHint": "Opens once you last 200 years as Apprentice or Head Priestess and escape the kingdom."
+      }
+    },
+    "gauges": [
+      {
+        "label": "Candy"
+      },
+      {
+        "label": "Fairies"
+      },
+      {
+        "label": "Faith"
+      },
+      {
+        "label": "Erpin"
+      }
+    ],
+    "factions": {
+      "fairy": "Fairy Kingdom of Erpien",
+      "beastfolk": "Beastfolk Village",
+      "witch": "Witch Kingdom of Belitien",
+      "dragon": "Dragonkin",
+      "ghost": "Ghost Swamp",
+      "elf": "Monatium",
+      "spirit": "Spirits"
+    },
+    "speakers": {
+      "erpin": {
+        "name": "Erpin"
+      },
+      "belita": {
+        "name": "Belita"
+      },
+      "ashur": {
+        "name": "Ashur"
+      },
+      "guard": {
+        "name": "Fairy Guard"
+      },
+      "marie": {
+        "name": "Marie"
+      },
+      "mayo": {
+        "name": "Mayo"
+      },
+      "diana": {
+        "name": "Diana"
+      },
+      "sist": {
+        "name": "Sist"
+      },
+      "kyarot": {
+        "name": "Kyarot"
+      },
+      "speaki": {
+        "name": "Speaki"
+      },
+      "worldtree": {
+        "name": "World Tree"
+      },
+      "fricle": {
+        "name": "Fricle"
+      },
+      "renewa": {
+        "name": "Renewa"
+      },
+      "villager": {
+        "name": "Village Fairy"
+      },
+      "sweetshop": {
+        "name": "Candy Shop Fairy"
+      },
+      "farmer": {
+        "name": "Farmer Fairy"
+      },
+      "kid": {
+        "name": "Little Fairy"
+      },
+      "church": {
+        "name": "Church Fairy"
+      },
+      "beast_kid": {
+        "name": "Beastfolk Kid"
+      },
+      "monatium_staff": {
+        "name": "Monatium Staff"
+      },
+      "witch_courier": {
+        "name": "Witch Kingdom Courier"
+      },
+      "witch_guest": {
+        "name": "Witch Kingdom Visitor"
+      },
+      "elena": {
+        "name": "Elena"
+      },
+      "amelia": {
+        "name": "Amelia"
+      },
+      "rohne": {
+        "name": "Rohne"
+      },
+      "chloe": {
+        "name": "Chloe"
+      },
+      "xion": {
+        "name": "Marksman of the Black Bullet"
+      },
+      "ner": {
+        "name": "Ner"
+      },
+      "canta": {
+        "name": "Canta"
+      },
+      "snorky": {
+        "name": "Snorky"
+      },
+      "pira": {
+        "name": "Pira"
+      },
+      "goldie": {
+        "name": "Goldie"
+      },
+      "bigwood": {
+        "name": "Bigwood"
+      },
+      "ifrit": {
+        "name": "Ifrit"
+      },
+      "gabia": {
+        "name": "Gabia"
+      },
+      "naia": {
+        "name": "Naia"
+      },
+      "sylla": {
+        "name": "Sylla"
+      },
+      "shaydi": {
+        "name": "Shaydi"
+      },
+      "espi": {
+        "name": "Espi"
+      }
+    },
+    "axeLine": "Haah… This is really testing my temper, isn't it?",
+    "bulletLine": "Dahrk Wander… sigh… One shot, please.",
+    "boons": {
+      "intuition": {
+        "name": "Intuition",
+        "short": "Intuition",
+        "desc": "For a few decisions, colour shows whether each resource will rise or fall."
+      },
+      "hyean": {
+        "name": "Diana's Insight",
+        "short": "Insight",
+        "desc": "For a few documents, the exact gauge values and changes are shown."
+      },
+      "rewind": {
+        "name": "Renewa's Rewind",
+        "short": "Rewind",
+        "desc": "Once, when the kingdom falls, time turns back a little."
+      },
+      "bullet": {
+        "name": "Black Bullet",
+        "short": "Bullet",
+        "desc": "Smashes a document with no side effects, even the elves' and witches' ones."
+      },
+      "stitch": {
+        "name": "Chloe's Stitch",
+        "short": "Stitch",
+        "desc": "Once, it stitches a collapsing gauge and stops it."
+      },
+      "alice": {
+        "name": "Wild Card",
+        "short": "Wild Card",
+        "desc": "Swaps one ordinary document for another."
+      },
+      "blindfold": {
+        "name": "Magic Blindfold",
+        "short": "Blindfold",
+        "desc": "The gauge it covers will not change for the next document."
+      },
+      "scope": {
+        "name": "Bullet Scope",
+        "short": "Scope",
+        "desc": "Takes aim at a document: what would hurt shrinks, what would help grows."
+      },
+      "understudy": {
+        "name": "Understudy",
+        "short": "Understudy",
+        "desc": "When a gauge would turn dangerous, the change is softened a little."
+      },
+      "bandage": {
+        "name": "All-Purpose Bandage",
+        "short": "Bandage",
+        "desc": "Stick it on one resource to pull it back toward the middle."
+      }
+    },
+    "aliceLine": "The card whispers: 'Shall I swap this document for another?'",
+    "rewindPrompt": {
+      "header": "Renewa's Rewind",
+      "title": "One More Chance",
+      "lines": [
+        {
+          "name": "Renewa",
+          "text": "It can't be helped. Right now, it can still be undone. With my power, I can turn time back five years. But only once."
+        }
+      ],
+      "yes": "Go back 5 years",
+      "no": "Give up",
+      "boss": {
+        "lines": [
+          {
+            "name": "Renewa",
+            "text": "It isn't over yet. I'll help you as far as I possibly can. Let's go back a little. But only once."
+          }
+        ],
+        "yes": "Go back a little"
+      }
+    },
+    "scenes": {
+      "speakiCaught": {
+        "header": "Forgery Exposed",
+        "title": "Ready for this?",
+        "lines": [
+          {
+            "name": "Speaki",
+            "text": "S… Speaki doesn't think she did anything that bad…"
+          },
+          {
+            "name": "Ner",
+            "text": "No excuses. Come with me!"
+          }
+        ],
+        "button": "Let her go"
+      },
+      "speakiFooled": {
+        "header": "It Was a Forgery",
+        "title": "It's Head Pristess Ner!",
+        "lines": [
+          {
+            "name": "Speaki",
+            "text": "Hehe~ While Ner was stamping a fake document, Ner gave today's sermooon!"
+          }
+        ],
+        "button": "…Not falling for it next time"
+      },
+      "stitch": {
+        "header": "Chloe's Stitch",
+        "title": "So careless. I'll help.",
+        "lines": [
+          {
+            "name": "Chloe",
+            "text": "Huh? It's torn here. Hold still, Head Priestess. …Done. One stitch is enough."
+          },
+          {
+            "name": "Ner",
+            "text": "…I owe you one, Chloe. Let me buy you a knot roll at least."
+          }
+        ],
+        "button": "Back to signing"
+      },
+      "kickout": {
+        "header": "One More Step",
+        "title": "It's Not Over Yet!",
+        "lines": [
+          {
+            "name": "Erpin",
+            "text": "Ner! Take my hand! You can't fall here!"
+          },
+          {
+            "name": "Ner",
+            "text": "…Hah, hah. Yes, Your Majesty. This isn't the time to fall."
+          }
+        ],
+        "button": "Get Back Up"
+      },
+      "erpinSave": {
+        "header": "While Ner Slept",
+        "title": "I held on somehow!",
+        "lines": [
+          {
+            "name": "Erpin",
+            "text": "Ner, I stamped everything really hard for you! If you're sleepy, tell me first. …I did good, so I get candy, right?"
+          },
+          {
+            "name": "Ner",
+            "text": "Mm… huh?"
+          }
+        ],
+        "button": "…Your Majesty? Did I fall asleep?"
+      },
+      "asleep": {
+        "header": "While Ner Sleeps",
+        "title": "Ner, I'll help you!",
+        "lines": [
+          {
+            "name": "Erpin",
+            "text": "Huh? Ner, are you asleep? …Okay, I'll help in your place! Um… I just stamp whatever, right?"
+          },
+          {
+            "name": "Ner",
+            "text": "(Zzz… zzz…)"
+          }
+        ],
+        "button": "…Must protect… Her Majesty…"
+      }
+    },
+    "gameOvers": {
+      "sugar_low": {
+        "title": "The Sugar Riot",
+        "text": "With the candy stores empty, starving fairies break down the warehouse doors. Fights break out over the last candy crumbs, and order in the kingdom collapses."
+      },
+      "sugar_high": {
+        "title": "Candy Addiction",
+        "text": "Candy overflows in every corner of the kingdom, and the fairies wander around dazed all day with sweets in their mouths. Even Erpin has fallen asleep on a pile of candy. No fairy knocks on the office door anymore."
+      },
+      "people_low": {
+        "title": "The Fairies Leave",
+        "text": "Tired of a useless kingdom, the fairies pack up one by one. Some go to the beastfolk forest, some to the Witch Kingdom. On the day the last fairy leaves, only Ner and Erpin remain beneath the World Tree."
+      },
+      "people_high": {
+        "title": "The Fairy Democracy Declaration",
+        "text": "Thanks to a queen and a Head Priestess who granted every wish, the fairies grew cockier by the day. At last they gathered in the square and shouted, \"We won't listen to the queen anymore! We're making our own fairy democracy!\" The first motion, 'Abolish the Head Priestess's Stamp,' passed unanimously."
+      },
+      "faith_low": {
+        "title": "The Wrath of an Awakened Priest",
+        "text": "As faith in the World Tree ran dry, something awoke deep among the roots. Before the wrath of a long-sleeping priest, the Church and the Fairy Kingdom faced the World Tree's judgment."
+      },
+      "faith_high": {
+        "title": "The Fairies Who Sleep Forever",
+        "text": "The fairies do nothing but pray. Under the World Tree's will, everyone has fallen asleep, and the whole kingdom has become one giant chapel."
+      },
+      "erpin_low": {
+        "title": "The Queen Who Cast Off Her Crown",
+        "text": "\"Ner, I guess I'm not fit to be queen…\" Erpin left her crown on the office desk and ran away from the palace."
+      },
+      "erpin_high": {
+        "title": "The Uncontrollable Queen",
+        "text": "\"Hehe, Ner! From now on I'll do whatever I want!\" Having been granted everything, Erpin became a tyrant of candy and cake and listened to no one. Not even Ner."
+      },
+      "sleep": {
+        "title": "While Ner Slept",
+        "text": "While Ner slept, the stamps Erpin pressed brought down the kingdom. When Ner wakes, there is nothing before her but ruins."
+      }
+    },
+    "endingHints": {
+      "sugar_low": "When the candy stores run bare…",
+      "sugar_high": "When the kingdom drowns in sweets…",
+      "people_low": "When the fairies turn their backs on the kingdom…",
+      "people_high": "If you grant the fairies every wish…",
+      "faith_low": "When no one believes in the World Tree anymore…",
+      "faith_high": "When faith burns too hot…",
+      "erpin_low": "When Her Majesty's heart runs empty…",
+      "erpin_high": "If you indulge Her Majesty to the very end…",
+      "sleep": "While the Head Priestess sleeps…",
+      "true": "At the end of two hundred years…",
+      "purist": "If you last 200 years without ever triggering an item or effect that stops a game over…",
+      "reformed": "If you hold back the axe for all 200 years…"
+    },
+    "trueEnding": {
+      "title": "Meeting You",
+      "text": "On the night the sugar ran out and the kingdom rose up, Ner took Erpin's hand and ran beneath the roots of the World Tree. Where they followed the light, a very large stranger was waiting."
+    },
+    "notice": "This is an unofficial, non-commercial fan game parodying Trickcal Revive (Trickcal: Chibi Go) and Reigns. All rights to the originals belong to their respective owners (EPIDGames / Nerial · Devolver Digital). This game makes no money of any kind.",
+    "title": {
+      "pick": "Drag the stamp to choose",
+      "tutorial": "Tutorial",
+      "options": "Options",
+      "album": "Ending Album",
+      "records": "Longest Reign",
+      "yearUnit": "{year} {year|yr|yrs}",
+      "noRecord": "No record",
+      "cleared": "200 years cleared",
+      "continue": "Continue",
+      "continueDetail": "{mode} · year {year}",
+      "continueNote": "Stamping a new game will discard the saved one."
+    },
+    "options": {
+      "title": "Options",
+      "sfx": "Sound effects",
+      "bgm": "Music",
+      "bgmNote": "Music: \"Town Theme RPG\" by cynicmusic (CC0)",
+      "mute": "Mute {name}",
+      "unmute": "Unmute {name}",
+      "fullscreen": "Fullscreen",
+      "fullscreenEnter": "Go fullscreen",
+      "fullscreenExit": "Exit fullscreen",
+      "fullscreenNote": "Hides the address bar to use the whole screen.",
+      "language": "Language",
+      "close": "Close",
+      "erase": "Erase the Book of Service",
+      "eraseConfirm": "Your best reigns, clear history and ending album will all be gone. Without a clear, Bishop mode locks again, and any run in progress is lost too. This cannot be undone. Erase the Book of Service anyway?",
+      "eraseYes": "Erase",
+      "eraseNo": "Keep it",
+      "eraseDone": "The Book of Service has been erased.",
+      "unlock": "Unlock Bishop mode",
+      "unlockConfirm": "Bishop mode opens once you last 200 years as an Apprentice or Head Priestess and escape the kingdom. Unlock it right now anyway?",
+      "unlockYes": "Unlock",
+      "unlockNo": "Not yet",
+      "unlockDone": "Bishop mode is open.",
+      "unlocked": "Bishop mode open",
+      "languages": {
+        "ko": "한국어"
+      },
+      "musicAsk": {
+        "title": "Music",
+        "text": "Turn on the background music?",
+        "yes": "Yes",
+        "no": "No"
+      }
+    },
+    "tutorial": {
+      "title": "Tutorial",
+      "next": "Next",
+      "prev": "Back",
+      "done": "Start signing",
+      "skip": "Skip",
+      "steps": [
+        {
+          "title": "Signing Documents",
+          "text": "When a document comes in, drag a stamp onto it.",
+          "try": "Drag one of the stamps below onto the document.",
+          "success": "Stamped! Every decision moves the kingdom by what the document says, and the next one comes in.",
+          "demo": "stamp"
+        },
+        {
+          "title": "Four Resources",
+          "text": "Candy, Fairies, Faith and Erpin. If any one runs out or fills up completely, your reign ends. Not too little, not too much.",
+          "demo": "static"
+        },
+        {
+          "title": "Previewing Changes",
+          "text": "Lift a stamp and dots appear over the resources that will change. One dot is about 5. Whether each one rises or falls, you have to guess from the document.",
+          "demo": "preview"
+        },
+        {
+          "title": "Shaky Times",
+          "text": "In shaky times, the same document moves things further. The number of dots stays the same, but the hotter they glow, like embers, the bigger the change.",
+          "toggle": [
+            "Calm times",
+            "Shaky times"
+          ],
+          "demo": "era"
+        },
+        {
+          "title": "The Axe and Drowsiness",
+          "text": "You can throw away a document you dislike with the axe. But each ordinary document you chop fills one Z (drowsiness) above the axe. From the second she is too drowsy to read the dots and sees only ?, and at the third Ner falls asleep while Erpin stamps three documents in her place.",
+          "try": "Drag the axe down onto the document to throw it away. One Z above the axe will fill.",
+          "success": "The document is gone, but one Z filled up. Each one clears after the number of documents written under the axe.",
+          "demo": "axe"
+        },
+        {
+          "title": "When Drowsiness Fills Up",
+          "text": "When all three Zs fill, Ner nods off. While she sleeps, Erpin stamps the next three documents for her, and which stamp she picks is entirely up to Erpin.",
+          "try": "Two Zs are already full. Use the axe once more to put Ner to sleep.",
+          "success": "While Ner slept, Erpin stamped three documents however she liked. When Ner wakes up, the Zs are empty again.",
+          "focus": "axe",
+          "demo": "sleep"
+        },
+        {
+          "title": "Speaki's Forgeries",
+          "text": "Now and then Speaki slips in a forged document, pretending to be someone else. If the voice sounds a bit off, be suspicious. Chopping a forgery adds no drowsiness. In fact, the axe is the only way to catch it without a loss.",
+          "try": "This document is a Speaki forgery. Throw it away with the axe.",
+          "success": "You caught Speaki! Chopping a forgery never fills a Z.",
+          "focus": "axe",
+          "demo": "speaki"
+        },
+        {
+          "title": "Items",
+          "text": "Some documents lead to items. Some, like the Understudy, help just by being held; others, like the Bullet or the Bandage, you drag out and use yourself.",
+          "demo": "static"
+        },
+        {
+          "title": "200 Years",
+          "text": "Protect the Fairy Kingdom for 200 years. What awaits at the end… see for yourself.",
+          "demo": "static"
+        }
+      ],
+      "offer": "First time here? Let me quickly show you how to sign documents.",
+      "offerAccept": "Show me",
+      "offerSkip": "Start right away",
+      "itemKinds": {
+        "passive": "Passive",
+        "active": "Active"
+      }
+    },
+    "clear": {
+      "apprentice": "Apprentice · 200 years cleared",
+      "priest": "Head Priestess · 200 years cleared"
+    },
+    "menu": {
+      "title": "Macaron Break",
+      "resume": "Resume",
+      "backNote": "Go back once more to leave the game. Your progress is saved, so you can continue anytime.",
+      "autosave": "autosaved"
+    },
+    "extraEndings": {
+      "document": "Additional Document",
+      "stamp": "Special Record",
+      "next": "Next record",
+      "items": {
+        "purist": {
+          "tag": "No Safety Net",
+          "title": "The Perfect Head Priestess",
+          "text": "No rewound time, no tailor's needle, no helping hand from Erpin. In two hundred years the Fairy Kingdom never once came close to falling. Ner pushed up the sunglasses said to come from outer space. \"All according to plan.\""
+        },
+        "reformed": {
+          "tag": "No axe",
+          "title": "A Changed Priestess",
+          "text": "For two hundred years, the Head Priestess's axe never once struck a document in anger. Looking at her old self in the picture frame, Ner quietly thought back on the past."
+        }
+      }
+    },
+    "ui": {
+      "noEligibleCard": "No ordinary document meets the conditions.",
+      "documentLabel": "Document",
+      "chroniclePrefix": "Chronicle · ",
+      "importantPrefix": "Important · ",
+      "specialPrefix": "Special · ",
+      "kingdomStatus": "Kingdom status",
+      "increase": "Increase",
+      "decrease": "Decrease",
+      "unknownChange": "Changes, size and direction unknown",
+      "soundOn": "Sound on",
+      "soundOff": "Sound off",
+      "restartConfirm": "Start over from the beginning?",
+      "titleConfirm": "Return to the title screen?",
+      "menuLabel": "Menu",
+      "calendar": "Erpien Year",
+      "yearSuffix": "",
+      "documentStage": "Document signing",
+      "sleepHint": "Forced sleep · Tap the screen and Erpin stamps",
+      "stampHint": "Press and hold a stamp, then drop it on the document",
+      "restart": "Start over",
+      "backToTitle": "Title screen",
+      "recordsPreserved": "Your longest reign and ending album are kept.",
+      "runLost": "This reign's progress will be lost.",
+      "yes": "Yes",
+      "no": "No",
+      "rewindHeader": "Renewa's Rewind",
+      "albumTags": {
+        "sugar": {
+          "low": "Famine",
+          "high": "Gluttony"
+        },
+        "people": {
+          "low": "Exodus",
+          "high": "Unruly"
+        },
+        "faith": {
+          "low": "Unbelief",
+          "high": "Fanaticism"
+        },
+        "erpin": {
+          "low": "Despair",
+          "high": "Rampage"
+        }
+      },
+      "specialEndings": "Special Endings",
+      "whileAsleep": "While asleep",
+      "twoHundredYears": "200 years",
+      "unseenEnding": "An ending not yet seen",
+      "albumTitle": "Ending Album",
+      "close": "Close",
+      "albumBack": "← Back to album",
+      "titleEyebrow": "World Tree Church",
+      "highPriest": "Head Priestess",
+      "ner": "Ner",
+      "albumOpen": "Open Ending Album",
+      "depleted": "depleted",
+      "excess": "overflowing",
+      "endingEyebrow": "World Tree Church · Final Record",
+      "finalDocument": "Final Document",
+      "twoHundredRecord": "200 Years Recorded",
+      "reignEnded": "Reign Ended",
+      "returnToTitle": "Return to title",
+      "reject": "Reject",
+      "approve": "Approve",
+      "extendHand": "Reach out",
+      "alice": "Wild Card",
+      "handStamp": "Hand stamp",
+      "lightStamp": "Light stamp",
+      "leftStamp": "Left stamp",
+      "approveLeftStamp": "Approve stamp (left)",
+      "axeDiscard": "Axe (discard)",
+      "bulletFire": "Bullet (fire)",
+      "rightStamp": "Right stamp",
+      "approveRightStamp": "Approve stamp (right)",
+      "boonUses": "{n} left",
+      "bulletCount": "{n} {n|shot|shots}",
+      "approxChange": "{dir}, about {n}",
+      "unknownApproxChange": "Change of about {n}, direction unknown",
+      "endingCause": "Cause: {gauge} {dir}",
+      "stampLabel": "{name} stamp",
+      "drowseLabel": "Drowsiness {stack}/3{recovery}",
+      "drowseRecovery": ", one level recovers in {n} {n|document|documents}",
+      "documentCount": "{n} left",
+      "rewindAnnouncement": "Going back from year {from} to year {to}",
+      "titlePrayerFirst": "O World Tree, please watch over this humble priestess",
+      "titlePrayerSecond": "so she may guide Her Majesty and the Church well.",
+      "gaugeDangerLow": "{gauge} in danger: nearly empty",
+      "gaugeDangerHigh": "{gauge} in danger: about to overflow",
+      "drowseShort": "Clears in {n}",
+      "noticeOpen": "Fan game notice",
+      "questPrefix": "Request · ",
+      "hardPrefix": "Urgent · ",
+      "bossDay": "Year {year} · Day {day}",
+      "mend": "Band-aid",
+      "useItem": "Use",
+      "itemLeft": "{n} left",
+      "mendDesc": {
+        "worst": "Pulls the most endangered gauges back toward the middle.",
+        "center": "Sets one gauge back to the middle.",
+        "all": "Nudges every gauge a little toward the middle."
+      }
+    },
+    "statuses": {
+      "cane_spread": {
+        "name": "Spreading Cane",
+        "desc": "The sugar cane spreads on its own; candy rises with every document."
+      },
+      "ember": {
+        "name": "Embers",
+        "desc": "A firework ember is still smouldering somewhere. Faith will soon take a hard hit."
+      },
+      "strike": {
+        "name": "Strike",
+        "desc": "The fairies sent home have downed tools; candy falls with every document."
+      },
+      "drought": {
+        "name": "Drought",
+        "desc": "The fields are dry; fairies fall with every document."
+      },
+      "logging": {
+        "name": "Root Digging",
+        "desc": "Digging in the eastern fields hurts the World Tree's roots; Faith drops with every document."
+      },
+      "loyalty_potion": {
+        "name": "Loyalty Potion",
+        "desc": "Fairies rise a little with every document."
+      },
+      "betrayal_potion": {
+        "name": "Betrayal Potion",
+        "desc": "Fairies fall a little with every document."
+      },
+      "ticking_parcel": {
+        "name": "Tick-Tock",
+        "desc": "The parcel will open soon. Candy will take a hard hit."
+      },
+      "hibernation": {
+        "name": "Group Nap",
+        "desc": "While the fairies nap, the Fairies gauge doesn't move."
+      },
+      "sprout": {
+        "name": "Tending the Sprout",
+        "desc": "The World Tree's sprout grows; faith rises with every document."
+      },
+      "damp_storage": {
+        "name": "Soggy Storehouse",
+        "desc": "The leaking roof spoils candy with every document."
+      },
+      "axe_repair": {
+        "name": "Axe in Repair",
+        "desc": "The axe is unavailable. When it returns, the drowsiness is gone."
+      },
+      "night_escape": {
+        "name": "Nightly Escapes",
+        "desc": "The guards wear themselves out chasing Her Majesty's night outings. Fairies fall with every document."
+      },
+      "sulky_queen": {
+        "name": "Sulky Queen",
+        "desc": "Her Majesty is pouting. Erpin falls with every document."
+      },
+      "guarded_branch": {
+        "name": "The Branch Kept",
+        "desc": "The World Tree branch you refused to sell lifts faith with every document."
+      },
+      "empty_houses": {
+        "name": "Empty Houses",
+        "desc": "Neighbours follow the ones who left. Fairies fall with every document."
+      },
+      "supply_delay": {
+        "name": "Supply Delays",
+        "desc": "Monatium is slowing deliveries. Candy falls with every document."
+      },
+      "light_greeting": {
+        "name": "Easy Greetings",
+        "desc": "Relaxed greetings lift Fairies with every document."
+      },
+      "grace_year": {
+        "name": "A Year of Grace",
+        "desc": "When the grace period ends, the price of candy jumps."
+      },
+      "sugar_cut": {
+        "name": "Sugar Cut Off",
+        "desc": "Monatium has cut off the sugar. Candy drops a little with every decision."
+      },
+      "pikora_drift": {
+        "name": "Pikora's Practice",
+        "desc": "Pikora's magic lingers, nudging a resource a little in one direction."
+      },
+      "sylla_gale": {
+        "name": "Sylla's Gale",
+        "desc": "A hard wind blows off the spirit mountain. Faith swings harder."
+      },
+      "yokan_cleanup": {
+        "name": "Yokan Cleanup",
+        "desc": "Clearing the dumped yokan costs candy with every document."
+      },
+      "mountain_wind": {
+        "name": "Mountain Wind",
+        "desc": "The mountain wind unsettles the fairies. Population swings harder."
+      },
+      "fence_work": {
+        "name": "Fence Work",
+        "desc": "Building the mountain fence costs candy with every document."
+      },
+      "ifrit_temper": {
+        "name": "Ifrit's Temper",
+        "desc": "Ifrit is fuming. Faith falls with every document."
+      },
+      "fire_lesson": {
+        "name": "Fire Lesson",
+        "desc": "The queen is in a fire lesson. When it ends, Erpin takes a hard hit."
+      },
+      "ifrit_sulk": {
+        "name": "Sulking Ifrit",
+        "desc": "Ifrit is sulking and the fire pillars are gone. Erpin falls with every document."
+      },
+      "burnt_bread": {
+        "name": "Charred Bread",
+        "desc": "The festival bread is baking black. Population will soon take a hard hit."
+      },
+      "sinking_ground": {
+        "name": "Sinking Ground",
+        "desc": "The ground under the World Tree is giving way. Faith will soon take a hard hit."
+      },
+      "dug_garden": {
+        "name": "Dug-up Garden",
+        "desc": "The palace garden is dug up and the queen is glum. Erpin falls with every document."
+      },
+      "gabia_sulk": {
+        "name": "Sealed Ground",
+        "desc": "Hurt, Gabia has sealed the ground. Candy will not move."
+      },
+      "root_storage": {
+        "name": "Root Storehouse",
+        "desc": "Fairies keep tramping past the World Tree roots. Faith falls with every document."
+      },
+      "naia_pout": {
+        "name": "Pouting Naia",
+        "desc": "Naia is pouting and splashing the village. Population falls with every document."
+      },
+      "queen_cold": {
+        "name": "Queen's Sniffles",
+        "desc": "The queen fell in the lake and is sniffling. Erpin will soon take a hard hit."
+      },
+      "naia_downpour": {
+        "name": "Endless Rain",
+        "desc": "Naia's rain will not stop. Candy swings harder."
+      },
+      "drowsy_fairies": {
+        "name": "Nodding Off",
+        "desc": "The Sweet Dreams Potion's side effect has the fairies dozing. Candy drops with every document."
+      },
+      "subscription_fee": {
+        "name": "Usage Fee",
+        "desc": "The display case fee keeps going out. Candy drops with every document."
+      },
+      "dull_axe": {
+        "name": "Dull Axe",
+        "desc": "The blade is too dull; the axe can't be used."
+      }
+    },
+    "bishop": {
+      "reign": "Year {year} of reign",
+      "omenLabel": "Omens",
+      "blessingLabel": "Blessings",
+      "flowLabel": "Current",
+      "calm": "A calm spell",
+      "flowLeft": "{name} · {n} {n|year|years} left",
+      "answer": {
+        "title": "The World Tree's Answer",
+        "text": "In a dream, the World Tree shows you two paths. Walk down one, and the other fades into the mist."
+      },
+      "notice": {
+        "omen": {
+          "header": "Omen",
+          "button": "Accept it"
+        },
+        "embrace": {
+          "header": "The World Tree's Embrace",
+          "title": "The World Tree caught us",
+          "text": "Just before the fall, great roots lifted the kingdom up. The omens have grown darker since. There will be no next time.",
+          "button": "Back to the desk"
+        },
+        "embraceGift": {
+          "header": "The World Tree's Embrace",
+          "title": "The World Tree holds the kingdom",
+          "text": "Year 100 of your reign. The World Tree wraps the kingdom in its arms. Once, at the moment you fall, it will catch you.",
+          "button": "Accept it gratefully"
+        }
+      },
+      "omens": {
+        "ants": {
+          "name": "Ants in the Storehouse",
+          "desc": "Candy losses run a little deeper."
+        },
+        "rumors": {
+          "name": "Rumors in the Square",
+          "desc": "The fairies swing a little harder."
+        },
+        "lapsed": {
+          "name": "Growing Lapsed Flock",
+          "desc": "Faith losses run a little deeper."
+        },
+        "whims": {
+          "name": "The Queen's Whims",
+          "desc": "Erpin's mood swings a little harder."
+        }
+      },
+      "flows": {
+        "harvest": {
+          "name": "Cane Bumper Crop",
+          "desc": "Candy comes in more generously."
+        },
+        "bloom": {
+          "name": "World Tree in Bloom",
+          "desc": "The World Tree is in full flower, and more fairies come on pilgrimage. Faith rises higher."
+        },
+        "bread": {
+          "name": "Bread Craze",
+          "desc": "Bread matters keep coming up, and the fairies cheer harder."
+        },
+        "quiet": {
+          "name": "Quiet Days",
+          "desc": "Lighter documents come in more often."
+        },
+        "drought": {
+          "name": "Great Drought",
+          "desc": "Candy losses run deeper."
+        },
+        "rebel": {
+          "name": "The Queen in a Mood",
+          "desc": "Erpin's mood swings wildly."
+        },
+        "speaki": {
+          "name": "Speaki Prank Spree",
+          "desc": "Forged documents slip in more often."
+        },
+        "boom": {
+          "name": "Monatium Boom",
+          "desc": "More candy comes in, but so do Monatium documents and elf crises."
+        },
+        "nap": {
+          "name": "Nap Fad",
+          "desc": "Faith rises a little higher, but candy income shrinks."
+        },
+        "spirits": {
+          "name": "Year of the Spirit Council",
+          "desc": "The spirits visit often."
+        },
+        "ghosts": {
+          "name": "Noisy Ghost Swamp",
+          "desc": "Guests from the Ghost Swamp visit often."
+        }
+      },
+      "blessings": {
+        "sweet": {
+          "name": "Sweet Storehouse",
+          "desc": "Candy comes in more generously. But fairy losses run a little deeper."
+        },
+        "napprayer": {
+          "name": "Nap Prayer",
+          "desc": "Faith rises higher and Church documents come more often. But candy income shrinks a little."
+        },
+        "bestie": {
+          "name": "The Queen's Best Friend",
+          "desc": "Erpin's mood swings less. But fairy losses run a little deeper."
+        },
+        "careful": {
+          "name": "Careful Signing",
+          "desc": "Three uses of Insight every 25 years. But hard documents come a little more often."
+        },
+        "thrift": {
+          "name": "Thrifty Storehouse",
+          "desc": "Candy losses are smaller. But the fairies cheer less."
+        },
+        "calmfaith": {
+          "name": "Quiet Faith",
+          "desc": "Faith losses are smaller. But Erpin's good moods are smaller too."
+        }
+      },
+      "multChip": "Active modifiers",
+      "multCount": "{n}",
+      "multNone": "No modifiers",
+      "flowShort": "{name} · {n}y",
+      "statusLabel": "Lingering effects",
+      "arrowTip": "{gauge}: rising ×{gain} · falling ×{loss}",
+      "era": {
+        "name": "Era scale",
+        "desc": "Every document hits ×{x} as hard. Not counted in the arrows."
+      },
+      "base": {
+        "name": "Bishop baseline",
+        "desc": "Candy always falls at ×0.7. Not counted in the arrows."
+      },
+      "specialsLabel": "Special effects",
+      "specials": {
+        "lightDocs": {
+          "name": "More light documents",
+          "desc": "Plenty of light documents come in."
+        },
+        "fakeDocs": {
+          "name": "More fake documents",
+          "desc": "Speaki's fake documents slip in often."
+        },
+        "spirits": {
+          "name": "More spirit visits",
+          "desc": "The spirits drop by often."
+        },
+        "ghosts": {
+          "name": "More swamp guests",
+          "desc": "Guests from the Ghost Swamp drop by often."
+        },
+        "bread": {
+          "name": "More bread documents",
+          "desc": "Bread comes up a lot."
+        },
+        "monatium": {
+          "name": "More Monatium & elf documents",
+          "desc": "Monatium documents and elf crises come more often."
+        },
+        "church": {
+          "name": "More Church documents",
+          "desc": "Church documents come in often."
+        },
+        "hyean": {
+          "name": "Insight ×3 every 25 years",
+          "desc": "You get Insight three times every 25 years."
+        },
+        "hardDocs": {
+          "name": "More hard documents",
+          "desc": "A few more hard documents come in."
+        },
+        "embrace": {
+          "name": "The World Tree's Embrace",
+          "desc": "Once, at the moment you fall, the World Tree catches you."
+        },
+        "omenUp": {
+          "name": "Stronger omens",
+          "desc": "Since the Embrace caught you, every omen hits ×1.2."
+        }
+      }
+    }
+  },
+  "cards": {
+    "story_coronation": {
+      "title": "Erpin's Coronation",
+      "text": "Ner! Is today really the day I become queen? I'm… so nervous. Do you think I can be a good queen?",
+      "reject": "Of course. You'll do wonderfully.",
+      "approve": "Yes, Your Majesty. Every fairy will follow you."
+    },
+    "story_belita_farewell": {
+      "title": "Belita Departs",
+      "text": "Ner, it seems I must go down below to tend the roots of the World Tree. If I tell that child, she will cry and cling and beg me not to go. I leave the world above to you and Erpin. I am counting on you.",
+      "reject": "I'll keep my promise. Don't worry.",
+      "approve": "You should still say goodbye to her."
+    },
+    "fixed_erpin_lost_crown": {
+      "title": "The Missing Crown",
+      "text": "Ner, you know... um... I lost my crown! But it's really, really not my fault...",
+      "reject": "No cake until you find it.",
+      "approve": "Sigh... I'll find it for you."
+    },
+    "fixed_bread_bill": {
+      "title": "The Bread Bill",
+      "text": "Head Priestess, Her Majesty ate our bread and walked off without paying again today. That's the fourteenth time this month! And how many times must I say it? This is a school of magic, not a bakery!",
+      "reject": "Ask Her Majesty to pay you herself.",
+      "approve": "The Church will cover all of it."
+    },
+    "fixed_thief_marie": {
+      "title": "The Treasury Thief",
+      "text": "Reporting in. We caught a fairy thief sneaking into the royal treasury. But Her Majesty says, \"She's my friend, let her go!\" Apparently there was nothing worth stealing anyway.",
+      "reject": "Lock her up for now.",
+      "approve": "Her Majesty's friend… Let her go."
+    },
+    "story_diana_thanks": {
+      "title": "A Gift from the Forest",
+      "text": "Head Priestess, the little ones in our village talk of nothing but bread these days. A kindness deserves thanks in return. Shall I lend you this old woman's wisdom? Or shall I help the Fairy Kingdom instead?",
+      "reject": "Insight",
+      "approve": "Band-aid"
+    },
+    "story_diana_thanks_again": {
+      "title": "Thanks, Once More",
+      "text": "I'm in your debt again, Head Priestess. The little ones stay up all night talking about Fairy Kingdom bread. Once more I'll lend you this old woman's help, so you need only choose.",
+      "reject": "Insight",
+      "approve": "Band-aid"
+    },
+    "story_elf_crash": {
+      "title": "Strangers from Afar",
+      "text": "Reporting in! A crowd of people with pointed ears has appeared in the fields beyond the beastfolk village. No one seems hurt… but they don't look like fairies.",
+      "reject": "Send an investigation team.",
+      "approve": "Post guards and keep watch."
+    },
+    "story_monatium_founding": {
+      "title": "The Founding of Monatium",
+      "text": "Hey, primitives? Oh wait, you said you're fairies? We're borrowing some of this land. We need a city to live in. We'll call it Monatium. In return, we'll supply your sugar. Honestly, we make it way better than you do.",
+      "reject": "Just don't touch anything near the World Tree.",
+      "approve": "…If it means being neighbors."
+    },
+    "story_avalanche": {
+      "title": "Snow Over the Palace",
+      "text": "Reporting in! The heavy snow last night collapsed one side of the palace. Her Majesty is trapped inside! …But a wingless fairy has already dived into the snow after her. They say she runs the tailor shop.",
+      "reject": "Guards, go after her at once!",
+      "approve": "I'm going too. Right now!"
+    },
+    "story_finale_no_reply": {
+      "title": "No Reply",
+      "text": "Ner, I sent my sister ten letters. But not a single reply. Belita always wrote me at least one line, even when she was busy… Did I do something wrong?",
+      "reject": "It's not your fault, Your Majesty.",
+      "approve": "…Write just one more. I'll deliver it."
+    },
+    "story_finale_witch_queen": {
+      "title": "The Vanished Queen",
+      "text": "…Head Priestess. I barely made it out through the passage. Queen Belita… has vanished. She isn't in the palace, or anywhere underground. Fricle is ruling in her place, and something feels very wrong.",
+      "reject": "…I'll tell Her Majesty myself.",
+      "approve": "Rest first. Let me see to your wounds."
+    },
+    "story_escape_1": {
+      "title": "Escape",
+      "text": "Ner! Torches are coming after us! The path splits in two up ahead. Which way?!",
+      "reject": "Left!",
+      "approve": "Right!"
+    },
+    "story_escape_2": {
+      "title": "Beneath the World Tree's Roots",
+      "text": "Huff, huff… Ner, the roots split again. One way sounds like water, the other is pitch black. Do you know the way? Do you really?",
+      "reject": "Run toward the water!",
+      "approve": "Run into the dark!"
+    },
+    "story_escape_3": {
+      "title": "Footsteps Closing In",
+      "text": "The footsteps are getting closer! Someone's calling my name… Ner, don't look back. Where do we go?",
+      "reject": "Shh, keep going left.",
+      "approve": "Tiptoe to the right."
+    },
+    "story_escape_4": {
+      "title": "Don't Let Go",
+      "text": "Ner… I'm scared. My legs won't stop shaking. But never let go of my hand. Okay? Which way?",
+      "reject": "Your Majesty, climb on my back.",
+      "approve": "Hold my hand and follow me."
+    },
+    "story_finale_light": {
+      "title": "A Beam from the Sky",
+      "text": "Ner, look! A huge beam of light is coming down from the sky!",
+      "reject": "O World Tree, is this a miracle to save us?",
+      "approve": "Your Majesty, let's run toward the light!"
+    },
+    "story_finale_stranger": {
+      "title": "Someone in the Light",
+      "text": "Ner, there's someone in the middle of the light. …They're really big?",
+      "reject": "Could this be… a savior sent by the World Tree?",
+      "approve": "…Shall we use them as a shield for now?"
+    },
+    "story_era_50": {
+      "title": "Piling Papers",
+      "text": "Ner, it's been really hard for you lately, hasn't it? I tried my best to read the papers too... but just one line makes my head spin.",
+      "reject": "Your Majesty, did you do your picture diary?",
+      "approve": "Thank you, Your Majesty. I'll keep going."
+    },
+    "story_era_100": {
+      "title": "The Queen's Worry",
+      "text": "Ner, a hundred years have already passed since Erpin became queen. If I could, I would throw her a little celebration... but something urgent has come up in the Witch Kingdom, so this letter will have to do. Thank you for always looking after Erpin.",
+      "reject": "Queen Erpin misses you, Lady Belita.",
+      "approve": "Don't worry. I will protect Queen Erpin."
+    },
+    "story_era_150": {
+      "title": "The Head Priestess's Prayer",
+      "text": "O World Tree… of late the kingdom and the Church have been shaken by one trouble after another. I beseech you, grant this humble Head Priestess the strength and wisdom to serve Her Majesty rightly and to guide the kingdom and the Church on the true path…",
+      "reject": "Thus I pray.",
+      "approve": "Forever and ever."
+    },
+    "quest_goldie_storage": {
+      "title": "Could I Borrow a Storeroom?",
+      "text": "A part-timer at Monatium25 put in the wrong order, and a whole truckload of space rations arrived. They keep for ages, so I can't throw them out, and the shop storeroom is packed… Head Priestess, could I possibly borrow the World Tree Church's storehouse, just for a little while?",
+      "reject": "I can't lend you the Church storehouse.",
+      "approve": "…Just for a little while."
+    },
+    "fixed_xion_request": {
+      "title": "The Client in the Shadows",
+      "text": "Heh… Head Priestess of the Fairy Kingdom. I am the Black Bullet's marksman, Dulk Wanderer. I have come to repay a debt. Why help you? It is absolutely… absolutely not to thank you for storing the convenience-store stock I ordered by mistake. Ahem! Anyway. The bullets, or the scope. Choose. Heh heh.",
+      "reject": "Two Black Bullets",
+      "approve": "Scope"
+    },
+    "fixed_renewa_theater": {
+      "title": "Theater License",
+      "text": "How do you do, Head Priestess. I'd like to build a small theatre where the chocolate shop stood, the one that collapsed in the explosion that rocked the kingdom. I know many people loved that shop. But if you allow it… I'll help you later on.",
+      "reject": "I'd like to leave that spot empty.",
+      "approve": "Very well. You have my permission."
+    },
+    "special_renewa_curtain": {
+      "title": "The Theatre Is Finished",
+      "text": "Head Priestess, thanks to you the theatre is finished. On opening night, even the chocolate shop's old regulars came. As promised, here is my thanks: a chance to undo a wrong choice, or a power that eases the pain of hard ones... Which would you like?",
+      "reject": "Rewind",
+      "approve": "Understudy"
+    },
+    "special_fricle_pikora": {
+      "title": "The Witches' Practice",
+      "text": "Head Priestess of the Fairy Kingdom. My apprentice Pikora says she needs somewhere to practise. Honestly, she's a handful. Choose: I show you how it's done myself, or I leave it to her. My magic hurts, for certain. Pikora's magic… even I can't tell where it'll land. A contract is a contract, so it has to be one of us.",
+      "reject": "Fricle",
+      "approve": "Pikora"
+    },
+    "fixed_chloe_tailor": {
+      "title": "Tailor Shop Permit",
+      "text": "Huh? Head Priestess? Don't worry, I saved the queen. Also, I'm opening a tailor shop in front of the palace. The queen already said yes, so just stamp the permit. I already paid her the deposit, in snacks! ...I'll help you out once more, so quit glaring at me. How do you want me to help?",
+      "reject": "Stitch",
+      "approve": "Band-aid"
+    },
+    "fixed_elena_development": {
+      "title": "Development Rights",
+      "text": "Yo, Head Priestess? Let us borrow a bit more Fairy Kingdom land. One more factory and sugar output doubles. You've got nothing to lose, right? Don't want it? Fine. But sugar prices are going up.",
+      "reject": "I can't hand over the World Tree's land.",
+      "approve": "Ugh… Approved, with conditions."
+    },
+    "fixed_amelia_audit": {
+      "title": "Contract Upkeep",
+      "text": "This is Amelia. On the Mayor's orders, we will begin collecting an upkeep fee for the sugar supply contract next quarter. If you pay it in candy, Monatium will cover the repairs to your old chapel. If you do not, deliveries to the Church stop first. This is not a request.",
+      "reject": "There was never any such contract.",
+      "approve": "…We'll pay it."
+    },
+    "fixed_rohne_visit": {
+      "title": "Job Fair in the Square",
+      "text": "Oh, h-hello! I'm Rohne, Rohne! I'm from the Monatium embassy. Um, so… I'd like to hold a Monatium job fair in the square! If you work at the factory, you get paid in heaps of candy! I'm not trying to take the fairies away! I'm n-not a spy or anything either! On the day of the fair, I'll treat Her Majesty to Monatium pork cutlets too! I swear on my pork cutlet!",
+      "reject": "I can't lend you the square.",
+      "approve": "…Just explain, then go."
+    },
+    "fixed_elena_sugar_advance": {
+      "title": "Sugar Paid in Advance",
+      "text": "Yo, Head Priestess. Sugar prices go up next month. New factory machines don't pay for themselves. Pay in advance now and I'll give you the old price. I'll even throw in Monatium's newest toy for your little queen. Don't want it? Fine. The fairies can pay the new price.",
+      "reject": "We can't pay in advance.",
+      "approve": "…We'll pay in advance from the Church's coffers."
+    },
+    "fixed_amelia_snack_audit": {
+      "title": "Audit of Palace Snacks",
+      "text": "This is Amelia. On the Mayor's orders, we audited the palace's spending. Her Majesty's snacks take up a third of the kingdom's budget. Halve them, and we will lower the unit price of sugar. If you do not, we will raise it. This is not a request.",
+      "reject": "I can't cut Her Majesty's snacks.",
+      "approve": "…We'll cut them in half."
+    },
+    "fixed_rohne_culture_night": {
+      "title": "A Night of Cultural Exchange",
+      "text": "Oh, h-hello! It's Rohne! The embassy wants to hold a cultural exchange night, and, um… we'd love to use the World Tree Church's chapel! Elf music, a clockwork doll show… It overlaps with prayer time a little, but it'll be over quick! Her Majesty is really looking forward to the doll show too! I swear on my pork cutlet!",
+      "reject": "Not the chapel.",
+      "approve": "…Just stay clear of prayer time."
+    },
+    "fixed_elena_palace_garden": {
+      "title": "Leasing the Palace Garden",
+      "text": "Yo, Head Priestess. Let us borrow the palace garden. We're putting up a Monatium showroom. Your little queen's playground? Tell her to play somewhere else. We'll pay the rent in plenty of sugar. Won't lend it? Then your sugar deliveries go to the back of the line.",
+      "reject": "Not Her Majesty's garden.",
+      "approve": "…Only one corner of it."
+    },
+    "fixed_amelia_registry": {
+      "title": "Fairy Registry",
+      "text": "This is Amelia. On the Mayor's orders, we will introduce a registry for fairies entering Monatium. Every fairy must report their name and wing length. If you cooperate, we will supply the sugar for the Church's festivals free of charge. If you refuse, deliveries to the Church stop. This is not a request.",
+      "reject": "Fairies are not numbers.",
+      "approve": "…We'll have them register."
+    },
+    "fixed_rohne_embassy_dinner": {
+      "title": "Embassy Dinner",
+      "text": "Oh, h-hello! It's Rohne! The embassy wants to host a dinner for the people of the Fairy Kingdom! B-but the budget is a little… no, a lot short… If you could chip in just a bit of candy… Her Majesty gets the seat of honor! Pork cutlets... I mean, there'll be a three-tier cake too!",
+      "reject": "Let's do the dinner another time.",
+      "approve": "…I'll chip in a little."
+    },
+    "daily_marie_tunnel": {
+      "title": "An Exploration Tunnel",
+      "text": "Head Priestess! Let's dig just one tunnel in the palace backyard! It's for exploring, exploring! I'll bring all the explosives myself!",
+      "reject": "Absolutely not.",
+      "approve": "…Just one."
+    },
+    "daily_mayo_relic": {
+      "title": "Collecting Old Relics",
+      "text": "Will collect the old relics lying around the Church storeroom. Payment: one cart of sugar. No returns accepted.",
+      "reject": "The relics belong to the Church.",
+      "approve": "Take them. Just be sure to send the sugar."
+    },
+    "daily_diana_berries": {
+      "title": "Honey for Bread",
+      "text": "The children of our village simply adore Fairy Kingdom bread. But every time I visit, it's sold out… Could you set a little aside for us? In return, I'll share some of the honey Her Majesty is so fond of.",
+      "reject": "I'm sorry. I think our residents would object.",
+      "approve": "Of course. I'll save a little of each kind."
+    },
+    "daily_sist_charm": {
+      "title": "Leaf-Shaped Charms",
+      "text": "Boss! I just got charms shaped like World Tree leaves, hehe. They're not real leaves. If I plucked real ones, you'd scold me, right? Still, hand them out to the believers and their faith'll shoot right up! Special price, today only!",
+      "reject": "No thanks.",
+      "approve": "…I'll buy just one."
+    },
+    "daily_witch_ticking_parcel": {
+      "title": "The Ticking Parcel",
+      "text": "A gift from Queen Belita to Queen Erpin. Only, the box keeps ticking… She said it's supposed to do that. And you're not to open it.",
+      "reject": "Tell her the thought is enough.",
+      "approve": "I'll hand it to Her Majesty."
+    },
+    "daily_villager_hibernation": {
+      "title": "The Nap Festival",
+      "text": "Head Priestess! We want to hold a nap festival together. We'd do nothing for days but nap! We'll wake up feeling great!",
+      "reject": "You still have work to do.",
+      "approve": "Sleep well."
+    },
+    "daily_kid_sprout": {
+      "title": "A Sprout Under the Tree",
+      "text": "Head Priestess! A sprout came up under the World Tree! They say it'll shoot right up if you water it every day. Can I water it every day?",
+      "reject": "It's dangerous near the World Tree.",
+      "approve": "Of course. I'm counting on you."
+    },
+    "daily_farmer_rain": {
+      "title": "Rain That Won't Stop",
+      "text": "Head Priestess, the rain won't stop. The storehouse roof is leaking and the candy's getting soggy. To fix it now, the Church would have to open its own stores…",
+      "reject": "The rain will stop soon.",
+      "approve": "Open the stores. Fix it now."
+    },
+    "daily_guard_axe_repair": {
+      "title": "The Dull Axe",
+      "text": "Reporting in. The blade of the office axe has gone completely dull. The smithy says a rush job will cost a fair bit of candy. Swing it like this and the desk will split before the documents do.",
+      "reject": "It's still usable… probably.",
+      "approve": "Send it in."
+    },
+    "daily_kyarot_cane": {
+      "title": "Expanding the Cane Field",
+      "text": "Head Priestess, can I stretch my sugarcane field a little closer to the World Tree? I'll give it plenty of fertilizer too! I bet the World Tree will love it!",
+      "reject": "Not near the World Tree.",
+      "approve": "Just a little."
+    },
+    "daily_ashur_school": {
+      "title": "Special Magic Lecture",
+      "text": "Head Priestess, I've made up my mind! This weekend I'll give a special lecture—not as a bakery owner, but as the principal of a school of magic. I'm sure lots of students will come~",
+      "reject": "And how will you pay rent? Just bake your bread.",
+      "approve": "Sigh… Do as you like."
+    },
+    "daily_erpin_snack_decree": {
+      "title": "Candy Tribute",
+      "text": "Ner! I had a great idea! Starting today, every fairy in the kingdom has to bring me candy once a day! Hehehe, how's that? Aren't I smart?",
+      "reject": "…Your Majesty, do you want a scolding?",
+      "approve": "The royal treasury has been tight lately."
+    },
+    "daily_marie_fireworks": {
+      "title": "Weekend Fireworks Contest",
+      "text": "Head Priestess! Let's set off fireworks in the square this weekend! Boom! And the whole sky goes sparkle-sparkle! I'll get plenty of gunpowder!",
+      "reject": "And if the square collapses?",
+      "approve": "…Don't aim them at the World Tree."
+    },
+    "daily_mayo_pawn_bell": {
+      "title": "Pawn a Bell for Candy",
+      "text": "Leave one Church bell as collateral, get plenty of candy on loan. Small interest only. Bell will be stored well. Won't ring.",
+      "reject": "The bells belong to the Church.",
+      "approve": "…I will get it back."
+    },
+    "daily_guard_lost_child": {
+      "title": "A Child Under the Roots",
+      "text": "Reporting in. We found a lost little fairy asleep under the World Tree's roots. I think the child will cry if we wake them. What should we do?",
+      "reject": "Take the child straight home.",
+      "approve": "Watch over the child until they wake, then feed them and send them home. They're in the World Tree's arms."
+    },
+    "daily_sweetshop_sign": {
+      "title": "Church-Certified Candy",
+      "text": "Head Priestess, may I hang a 'Certified by the World Tree Church' sign in front of my shop? Customers would double!",
+      "reject": "You mustn't sell the World Tree's name.",
+      "approve": "The taste had better live up to it."
+    },
+    "daily_kyarot_statue": {
+      "title": "Sugarcane Sculpture",
+      "text": "I made a World Tree statue out of sugarcane! It looks like a carrot, not the World Tree? …Well, I kinda started thinking about carrots halfway through. But it's really well made, okay? Can I put it in front of the Church?",
+      "reject": "A carrot statue can't stand in front of the Church.",
+      "approve": "…Only until it melts."
+    },
+    "daily_guard_curfew": {
+      "title": "Night Curfew for Her Majesty",
+      "text": "Reporting in. I bring orders from the Guard Captain. In the past month there were 17 attempts to cross the palace walls without leave, 12 of them Her Majesty's night outings. The Captain requests approval for a curfew on Her Majesty after 9 p.m.",
+      "reject": "We can't lock Her Majesty up.",
+      "approve": "…Make it 9:30."
+    },
+    "daily_erpin_birthday_week": {
+      "title": "The Queen's Special Week",
+      "text": "Ner! I want to make this week a special week! Remember how I tried to throw a festival last time but it rained? Everyone gets to eat and play for a whole week.",
+      "reject": "Your Majesty, the kingdom would stop running.",
+      "approve": "Honestly… Fine."
+    },
+    "daily_marie_window": {
+      "title": "The Blown-Out Window",
+      "text": "Head Priestess… so, um, during an experiment the chapel window got a little… just a tiny bit blown out! Since we're fixing it anyway, let's make it bigger!",
+      "reject": "You'll pay for the repairs, Marie.",
+      "approve": "…Let's make it stained glass."
+    },
+    "daily_mayo_escaped_collection": {
+      "title": "Escaped Collection",
+      "text": "Some living items in the collection escaped. Somewhere in the village now. They don't bite. Probably.",
+      "reject": "The Church has nothing to do with that.",
+      "approve": "We'll send the priests out to search too."
+    },
+    "daily_villager_harvest": {
+      "title": "Harvest Festival Under the Tree",
+      "text": "Head Priestess, we'd like to hold this year's harvest festival under the World Tree. Everyone wants to thank the World Tree in person!",
+      "reject": "It must stay quiet under the World Tree.",
+      "approve": "All right. Just don't step on the roots."
+    },
+    "daily_ashur_bread_tasting": {
+      "title": "Free Tasting Event",
+      "text": "Head Priestess, I'm holding a free bread tasting to recruit students for the school of magic. It's not promoting the bakery, it's promoting the school. The school!",
+      "reject": "Just run the bakery.",
+      "approve": "…The Church will pay half."
+    },
+    "daily_ashur_first_student": {
+      "title": "Magic School Scholarship",
+      "text": "Head Priestess! The school of magic finally has its first student! …I think they came in to buy bread by mistake, but a student is a student! Um, is there by any chance a Fairy Kingdom scholarship fund?",
+      "reject": "…Then pay double tax, bakery and school combined.",
+      "approve": "Congratulations. The Church will fund a scholarship."
+    },
+    "daily_kyarot_cane_vine": {
+      "title": "Cane Around the World Tree",
+      "text": "Big trouble! The sugarcane grew so well it's started wrapping around the World Tree's trunk! But… it got way sweeter!",
+      "reject": "Cut it down now. All of it.",
+      "approve": "…Only until the harvest."
+    },
+    "daily_erpin_abdication": {
+      "title": "I Quit Being Queen",
+      "text": "Ner… I want to quit being queen. I can't do it. I just want to play now. I mean it. This time I really mean it.",
+      "reject": "It has to be you, Your Majesty.",
+      "approve": "…Take a month off. I'll handle everything."
+    },
+    "daily_guard_candy_riot": {
+      "title": "Candy Protest in the Square",
+      "text": "Reporting in! Hundreds of fairies have gathered in the square, saying candy rations were cut. Please give the order to disperse.",
+      "reject": "Open the stores. We'll share it out.",
+      "approve": "…Just disperse them. Don't hurt anyone."
+    },
+    "daily_church_authority": {
+      "title": "Demand for Signing Authority",
+      "text": "Head Priestess, a document has come up from the Guard. The Guard Captain demands that half of the Church's signing authority be handed to the Guard to protect Her Majesty. As grounds, the Captain cites '312 instances of Her Majesty being exposed to danger in the past 50 years.'",
+      "reject": "However close the Captain is to Her Majesty, I can't allow that. This is the Church's will!",
+      "approve": "…Only documents concerning the Guard."
+    },
+    "daily_mayo_world_tree_branch": {
+      "title": "Buying a World Tree Branch",
+      "text": "A Monatium customer offers ten years of candy for one World Tree branch. Mayo brokers. One branch won't show. Really.",
+      "reject": "The World Tree is not for sale. Ever.",
+      "approve": "…Just one very small branch."
+    },
+    "daily_villager_exodus": {
+      "title": "A Village Ready to Leave",
+      "text": "Head Priestess, the fairies of the eastern village are packing up. With no candy and no work, they say they're leaving for another country.",
+      "reject": "I won't stop them.",
+      "approve": "We'll open the Church's stores to them."
+    },
+    "daily_marie_tunnel_vault": {
+      "title": "Tunnel to the Palace Vault",
+      "text": "Head Priestess! That tunnel I dug before… it ended up reaching the palace's underground storeroom! Should we seal it, or use it as a secret passage? I vote secret passage!",
+      "reject": "Seal it now. The stores will get robbed.",
+      "approve": "…Only as Her Majesty's emergency exit."
+    },
+    "daily_farmer_tithe": {
+      "title": "Tithe of a Good Year",
+      "text": "Head Priestess, the sugarcane harvest was great this year! We'd like to offer the Church a generous tithe—you'll accept it, won't you?",
+      "reject": "Keep it all for yourselves.",
+      "approve": "We'll accept it gratefully."
+    },
+    "daily_church_vigil": {
+      "title": "A Suspicious All-Night Vigil?",
+      "text": "Head Priestess, the believers wish to hold an all-night prayer vigil before the World Tree. For three days and nights. It's ab-absolutely not a party.",
+      "reject": "Then what's with the grape juice and marshmallow macarons behind you?",
+      "approve": "Sigh… Clean up after yourselves."
+    },
+    "daily_kid_question": {
+      "title": "A Little Fairy's Question",
+      "text": "Head Priestess! Why doesn't the World Tree talk? Is it because it doesn't like us? Then if we give it candy, will it talk?",
+      "reject": "…Do your homework first.",
+      "approve": "The World Tree is always listening."
+    },
+    "daily_beast_honey_trade": {
+      "title": "A Gift of Honey Candy",
+      "text": "Head Priestess! This is honey candy from our village. It's a present for Her Majesty! And guess what, Her Majesty said we can pick up the twigs that fall under the super-duper big tree! We're gonna make toys out of them!",
+      "reject": "Your Majesty, what is this about?",
+      "approve": "…Only the fallen ones."
+    },
+    "daily_beast_hide_and_seek": {
+      "title": "Hide-and-Seek at the Tree",
+      "text": "Head Priestess! Her Majesty wants to play hide-and-seek with us! But she hid in the World Tree Church. Can we go in too?",
+      "reject": "The World Tree is not a playground.",
+      "approve": "…Be careful not to get hurt."
+    },
+    "daily_beast_acorns": {
+      "title": "A Hundred Acorns",
+      "text": "Let's trade a hundred acorns for a bag of candy! It's really a hundred. …I forgot while counting, so it's probably a hundred. My friend says acorn shells are the best fertilizer for the World Tree!",
+      "reject": "Give the acorns to the squirrels.",
+      "approve": "One bag. It's a deal."
+    },
+    "daily_beast_sleepover": {
+      "title": "Sleepover at the Palace",
+      "text": "Head Priestess, Her Majesty says we can sleep over at the palace tonight! All ten of us! We're gonna have pillow fights and eat candy and tell scary stories all night!",
+      "reject": "…Go home and sleep.",
+      "approve": "Just one night."
+    },
+    "daily_erpin_doll": {
+      "title": "Queen Dolls",
+      "text": "Ner! Let's make dolls with my face and sell them all over the kingdom! Everyone will buy one, hehehe! Three candies each!",
+      "reject": "Please treat your face with care, Your Majesty.",
+      "approve": "…Limited edition only."
+    },
+    "daily_villager_dam": {
+      "title": "The Crumbling Dam",
+      "text": "Head Priestess, after days of downpour, the dam by the World Tree's roots may break! Our village is right below it. We need you to open the candy stores to reinforce it.",
+      "reject": "Let's hold out a little longer.",
+      "approve": "Reinforce it right away."
+    },
+    "daily_mayo_candlestick": {
+      "title": "Buying Old Candlesticks",
+      "text": "A buyer wants the old candlesticks in the Church storeroom. Will pay well. Sell them, get a fair bit of candy. Candlesticks only gather dust anyway.",
+      "reject": "The candlesticks belong to the Church.",
+      "approve": "…Only the old ones."
+    },
+    "daily_sweetshop_flavor": {
+      "title": "A New Flavor",
+      "text": "I've made a sour new candy! Can I call it 'The Head Priestess's Nagging'? There's already a line!",
+      "reject": "You may sell it, but not under that name.",
+      "approve": "…I'll let it slide if it sells well."
+    },
+    "daily_sist_rumor": {
+      "title": "Hot Gossip",
+      "text": "Ohh~ Boss! I've got some piping-hot news, hehe. Just a little candy and I'll tell you everything. You'll regret it if you don't listen!",
+      "reject": "No gossip, thanks.",
+      "approve": "…I'll at least hear it."
+    },
+    "daily_diana_trade_pact": {
+      "title": "A Trade Agreement",
+      "text": "Head Priestess, how about a formal trade agreement with the beastfolk village? We'll give you honey, our village's specialty, and we'd like Fairy Kingdom bread in return.",
+      "reject": "I'm sorry. Our fairies are crazy about bread too…",
+      "approve": "All right, it's a deal."
+    },
+    "daily_belita_letter": {
+      "title": "A Letter from Below",
+      "text": "Is Erpin well? Candy is scarce down here. If you could send a little… Ah, no. I have my dignity. Still… send just a little, would you?",
+      "reject": "I'm sorry. The kingdom is short on candy these days…",
+      "approve": "I'll send some quietly."
+    },
+    "daily_church_leaves": {
+      "title": "One Leaf Each",
+      "text": "Head Priestess, believers have flocked here wanting to enshrine one World Tree leaf each at home. Hundreds of them.",
+      "reject": "Leaves belong on the tree.",
+      "approve": "…Fallen leaves only."
+    },
+    "daily_farmer_drought": {
+      "title": "Drought and Holy Water",
+      "text": "Head Priestess, the drought has dried up all the fields. May we channel the World Tree's holy water to them? At this rate, this year's crop is finished.",
+      "reject": "The World Tree's holy water is sacred.",
+      "approve": "Only as much as you need."
+    },
+    "daily_erpin_new_crown": {
+      "title": "Cake House",
+      "text": "Ner, about my birthday present! Build me a big house out of cake! I thought about it, and a house made of cake would be super amazing!",
+      "reject": "Your Majesty, that's impossible.",
+      "approve": "…I'll at least give it a try."
+    },
+    "daily_beast_refugees": {
+      "title": "Runaway Beastfolk Kids",
+      "text": "Um… Head Priestess. We ran away from home because we were scared the village chief would scold us. Can we stay in the Church building for a bit? We'll be quiet. We won't even wag our tails.",
+      "reject": "I'll go see the chief with you.",
+      "approve": "Come in. The Church will look after you."
+    },
+    "daily_erpin_sulking": {
+      "title": "The Queen Behind a Locked Door",
+      "text": "…I hate you, Ner. Nobody plays with me. I'm just never coming out of my room.",
+      "reject": "Your Majesty, you still have work to do.",
+      "approve": "Today, I'll play with you."
+    },
+    "daily_villager_statue": {
+      "title": "A Ballot Box in the Square",
+      "text": "Head Priestess, the fairies have set up a ballot box in the square! They say from now on even Her Majesty's decrees have to pass a fairy vote. You've granted every request so far, so they're sure you'll grant this one too!",
+      "reject": "Remove the ballot box. Decrees come from Her Majesty.",
+      "approve": "…Let's leave it for now."
+    },
+    "daily_villager_council": {
+      "title": "A Seat for the Fairies",
+      "text": "Head Priestess, the village fairies want one fairy representative on the palace council. They ask to be heard before decrees are issued.",
+      "reject": "The council is for Her Majesty and the Church.",
+      "approve": "I'll make room for one seat."
+    },
+    "daily_villager_petition": {
+      "title": "The Weekly Petition",
+      "text": "Head Priestess, the fairies submitted another petition. This time it's 'Shorten Her Majesty's snack time.' Since you granted the last one, they come every week now. There are already three hundred signatures!",
+      "reject": "Not this one.",
+      "approve": "…Let's keep it secret from Her Majesty."
+    },
+    "daily_erpin_ignored": {
+      "title": "Listen to Me!",
+      "text": "Ner! The fairies say they're putting my decrees to a vote! I'm the queen! Why won't anyone listen to me?",
+      "reject": "You should hear the fairies out too.",
+      "approve": "I'll have a word with the fairies."
+    },
+    "daily_sweetshop_feast": {
+      "title": "Overflowing Stores",
+      "text": "Head Priestess, the stores are so full of candy it's melting! Shall we throw a big feast and share it all?",
+      "reject": "We should save it.",
+      "approve": "Let's have a feast."
+    },
+    "daily_monatium_sugar_contract": {
+      "title": "Sugar Supply Contract",
+      "text": "I'm from the Monatium Sugar Supply Division. I've brought a contract under which the Fairy Kingdom receives its sugar only through Monatium from now on. Please sign. If you refuse… regulations may cause supply to be slightly delayed.",
+      "reject": "The kingdom guards its own sugar.",
+      "approve": "…Let's review the terms again."
+    },
+    "daily_monatium_development": {
+      "title": "Developing the Eastern Fields",
+      "text": "I'm from the Monatium Development Division. We'd like to use the fields east of the kingdom as a development site. The World Tree's roots run shallow there, so we'll have to dig a little deep. A portion of the profits will go to the Fairy Kingdom. A very small portion, of course.",
+      "reject": "The World Tree's roots would be hurt. No.",
+      "approve": "…Only the far eastern edge."
+    },
+    "daily_monatium_tourists": {
+      "title": "Fairies on Loan",
+      "text": "I've come from Monatium's factory district. A machine broke down and we urgently need fairies who can do transport magic. Could you lend us some?",
+      "reject": "Don't treat the fairies like spare parts.",
+      "approve": "…The pay had better be good."
+    },
+    "daily_monatium_sap": {
+      "title": "World Tree Sap Survey",
+      "text": "I'm from the Monatium Research Division. We'd like to analyze the World Tree's sap. We'll just drive a little measuring equipment into the trunk. After extracting the magical components for research, we'll turn the sugars in the sap into products and deliver them to the kingdom free of charge.",
+      "reject": "No nails in the World Tree.",
+      "approve": "…Only one spot."
+    },
+    "daily_monatium_toy": {
+      "title": "A Wind-Up Toy",
+      "text": "I'm from the Monatium Public Relations Division. We'd like to present Her Majesty with our latest wind-up toy. It walks, sings and even dances on its own. In return, please let us put up one Monatium billboard in the palace garden.",
+      "reject": "The thought is enough, thank you.",
+      "approve": "…A small billboard."
+    },
+    "daily_church_schism": {
+      "title": "A New Doctrine",
+      "text": "Head Priestess, some believers are spreading a new doctrine: abolish the old ranks and let everyone worship the World Tree as equals. More fairies are following it.",
+      "reject": "That's heresy. Stop it.",
+      "approve": "…Let's watch. For now."
+    },
+    "daily_erpin_war": {
+      "title": "Punish the Bad Fairy",
+      "text": "Ner! Some mean fairy teased me and called me a 'little kid'! Let's go punish them right now! Gather the army! I'm coming too!",
+      "reject": "Let's use words, Your Majesty.",
+      "approve": "…Who dares to insult Your Majesty."
+    },
+    "daily_witch_debt": {
+      "title": "Settling the Candy Debt",
+      "text": "I am a courier of the Witch Kingdom. By order of the Witch Kingdom's treasurer, you are to settle years of candy debt. If you do not, they will cut off trade.",
+      "reject": "What debt? Show me proof.",
+      "approve": "…We'll pay in installments."
+    },
+    "daily_witch_parcel": {
+      "title": "UFC",
+      "text": "Hello there! I'm from Underground Fried Carrot. We'd like to open a Fairy Kingdom branch. Our flavors are, um… mint chocolate, pumpkin, pineapple tomato bread… and also…",
+      "reject": "I'm sorry. Her Majesty can't stand the sight of mint chocolate.",
+      "approve": "…I'm not sure any fairy will have the taste for it."
+    },
+    "daily_witch_apprentices": {
+      "title": "Apprentice Witches' Field Trip",
+      "text": "Good day. Our apprentice witches wish to tour the World Tree above ground—might we use your prayer room for a few days? Your priests would have to pause their prayers for a while… but we will present Her Majesty with a limited-edition Witch Kingdom dessert.",
+      "reject": "I can't ask the priests to stop praying.",
+      "approve": "Her Majesty is so excited… Very well."
+    },
+    "daily_witch_tunnel": {
+      "title": "Kingdom Construction Works",
+      "text": "This is the Witch Kingdom civil engineering crew. While building the new trade route to the Witch Kingdom, it seems there'll be a lot of shaking near the Fairy Kingdom square. If you pay extra, it's expensive, but we can work in a way that makes less noise and vibration… What would you like to do?",
+      "reject": "I'll ask our fairy residents to bear with it.",
+      "approve": "We'll pay. Please do it cleanly."
+    },
+    "daily_witch_seal": {
+      "title": "Repairing the Barrier Below",
+      "text": "I am a courier of the Witch Kingdom. The barrier beneath the Fairy Kingdom has weakened. To repair it, witches must go down to the World Tree's roots, so we will need to pass through the Church's undercroft for a while. We will also need a little candy for the work. If it is not repaired… creatures from below may come up.",
+      "reject": "I can't open the Church's undercroft.",
+      "approve": "Come in. Just seal it."
+    },
+    "daily_farmer_famine": {
+      "title": "Emptying Stores",
+      "text": "Head Priestess, the stores are running empty. If we release the candy offerings piled on the World Tree's altar, we could get through this rough patch.",
+      "reject": "Those offerings belong to the World Tree!",
+      "approve": "…Just this once."
+    },
+    "daily_church_empty": {
+      "title": "An Empty Chapel",
+      "text": "Head Priestess, the chapel is empty. If we hold a big festival, the fairies will come back. It will cost quite a lot, though.",
+      "reject": "Faith isn't bought with festivals.",
+      "approve": "Let's hold one."
+    },
+    "daily_church_zealots": {
+      "title": "March of the Zealots",
+      "text": "Head Priestess, some believers are smashing candy shops, crying 'Nothing matters but the World Tree.' They await only your word.",
+      "reject": "Tell them to stop. Right now.",
+      "approve": "…Let them march only in front of the World Tree."
+    },
+    "daily_farmer_bumper_crop": {
+      "title": "A Bumper Cane Crop",
+      "text": "Head Priestess, the sugarcane did so well this year it won't all fit in the stores! Should we boil the extra down into candy? Or just leave it in the fields?",
+      "reject": "Leave it in the fields. It'll feed next year's soil.",
+      "approve": "Boil it all into candy."
+    },
+    "daily_monatium_sugar_sample": {
+      "title": "Sugar Samples",
+      "text": "This is the Monatium Sugar Supply Division. We'll give you a cart of our new sugar samples free of charge. We'd like to see how the fairies react. Of course, we'll be recording their reactions.",
+      "reject": "We'll take just a few samples.",
+      "approve": "Give us the whole cart."
+    },
+    "daily_sweetshop_offering": {
+      "title": "The Candy Shop Hits It Big",
+      "text": "Head Priestess, my shop hit it big this year! I'd like to offer part of the profits to the Church… is candy okay? One box—no, three boxes!",
+      "reject": "Use it to expand your shop.",
+      "approve": "We'll accept it gratefully."
+    },
+    "daily_villager_day_off": {
+      "title": "Just One Day Off",
+      "text": "Head Priestess, the fairies are asking for just one day off. Everyone's worn out. They say the fields will be fine for a day!",
+      "reject": "Rest tomorrow. Work today.",
+      "approve": "Take today off and rest well."
+    },
+    "daily_kid_tree_swing": {
+      "title": "A World Tree Swing",
+      "text": "Head Priestess! Can we hang a swing on a World Tree branch? Everyone wants a ride! If we hang it on the strongest branch, I bet we'd fly all the way to the sky!",
+      "reject": "I'll hang one on a smaller tree for you.",
+      "approve": "Just one strong branch."
+    },
+    "daily_erpin_parade": {
+      "title": "Her Majesty's Parade",
+      "text": "Ner! I want to parade around the whole kingdom! Everyone comes out to wave and throw flowers, and I get candy! Hehehe, won't that be super fun?",
+      "reject": "One short lap only.",
+      "approve": "The whole kingdom's a festival."
+    },
+    "daily_church_pilgrims": {
+      "title": "A Line of Pilgrims",
+      "text": "Head Priestess, fairies are lining up to make a pilgrimage to the World Tree. If we take them all, the Church will be bustling, but the villages will be short of hands.",
+      "reject": "Weekends only.",
+      "approve": "Welcome them all."
+    },
+    "daily_farmer_seed_blessing": {
+      "title": "Blessing the Seeds",
+      "text": "Head Priestess, could you bless this year's seeds with the World Tree's blessing? Everyone wants to pray while they plant. Then they'll surely grow well!",
+      "reject": "Please pray at home, each of you.",
+      "approve": "Let's gather everyone for a blessing."
+    },
+    "daily_church_new_hymn": {
+      "title": "A New Hymn",
+      "text": "Head Priestess, the believers have written a new hymn for the World Tree. They want to sing it at every service. It's a bit… very long.",
+      "reject": "Once, at the end of the service.",
+      "approve": "Let's all sing it at every service."
+    },
+    "daily_villager_praise_contest": {
+      "title": "Praise-the-Queen Contest",
+      "text": "Head Priestess, the fairies want to hold a contest to praise Her Majesty! The fairy with the best compliment gets to have snacks with her!",
+      "reject": "Let's keep it modest.",
+      "approve": "Let's make it grand."
+    },
+    "daily_belita_gift": {
+      "title": "A Gift from Her Sister",
+      "text": "I am sending the underground crystal candy Erpin loved. Don't give it all at once… no, I'll leave it to you. Just be sure to tell her it was from me.",
+      "reject": "I'll give her one after each meal.",
+      "approve": "I'll give her all of it now."
+    },
+    "daily_guard_salute": {
+      "title": "Salute Her Majesty",
+      "text": "Reporting in. On the Guard Captain's orders, this document proposes that every fairy salute Her Majesty when they meet her. Her Majesty is very excited about it.",
+      "reject": "A proper greeting is enough.",
+      "approve": "…A respectful salute, then."
+    },
+    "daily_monatium_trade_surplus": {
+      "title": "Trade Surplus",
+      "text": "This is the Monatium Trade Division. Fairy Kingdom honey candy is very popular among the elves, so this quarter's payment came in doubled. Would you like it in candy, or in raw sugar?",
+      "reject": "Raw sugar. We'll use it slowly.",
+      "approve": "All of it in candy, please."
+    },
+    "daily_villager_festival_leftovers": {
+      "title": "Festival Leftovers",
+      "text": "Head Priestess, the fairies want to leave the candy left over from the harvest festival in the Church stores. It's a mountain! I'm not sure it'll all fit.",
+      "reject": "Leave half in the village.",
+      "approve": "Put it all in the stores."
+    },
+    "daily_erpin_golden_throne": {
+      "title": "The Golden Throne",
+      "text": "Ner! Put a cushion on my throne! No, a gold cushion! No, a gold cushion with my name embroidered on it! So it sparkles every time I sit!",
+      "reject": "Just a cushion, then.",
+      "approve": "Gold, with your name and all."
+    },
+    "daily_farmer_tax_refusal": {
+      "title": "Taxes",
+      "text": "Head Priestess, the village folk have stopped buying Fairy Kingdom sugar and only buy Monatium sugar now… Could you lower our taxes a little this year? We grow our crops, but no fairy buys them, so we have nothing to pay with.",
+      "reject": "I'll look the other way, just this year.",
+      "approve": "Taxes are taxes. Collect them."
+    },
+    "daily_guard_elf_spy": {
+      "title": "Elves Measuring the Palace",
+      "text": "Reporting in. Some Monatium staff are going around measuring the length of the palace walls. They even asked which floor Her Majesty's bedroom window is on. They say it's surveying.",
+      "reject": "Leave them be. Don't make it bigger than it is.",
+      "approve": "Throw them out at once."
+    },
+    "daily_church_belita_letters": {
+      "title": "Fewer Replies",
+      "text": "Head Priestess, it's been three months since we last heard from the Witch Kingdom. Her Majesty writes to Queen Belita every day, but not one reply has come. The door to the underground passage is locked from the other side, too.",
+      "reject": "Don't tell Her Majesty… not yet.",
+      "approve": "Let's send a fairy to check."
+    },
+    "daily_witch_last_courier": {
+      "title": "The Last Courier",
+      "text": "I am a courier of the Witch Kingdom. …I won't be able to come for a while. I can't tell you why. But Her Majesty bade me tell you: be sure to keep the Fairy Kingdom's stores full. Be sure of it.",
+      "reject": "Could you explain why, all of a sudden?",
+      "approve": "…We'll fill the stores. Starting now."
+    },
+    "daily_villager_graffiti": {
+      "title": "Graffiti in the Square",
+      "text": "Head Priestess, someone scribbled on the wall in the square: 'Candy comes from Monatium, not the World Tree.' We scrub it off, and the next day it's back.",
+      "reject": "Sigh… Let's give up.",
+      "approve": "Set up a rota and keep scrubbing it off."
+    },
+    "daily_sweetshop_hoarding": {
+      "title": "Panic Buying",
+      "text": "Head Priestess, customers have been buying candy by the sack lately. There's a rumor that candy will run out soon. My shelves are bare.",
+      "reject": "It's just a rumor. Keep selling.",
+      "approve": "One bag per person."
+    },
+    "daily_erpin_nightmare": {
+      "title": "An Ominous Dream",
+      "text": "Ner… I had a dream. The World Tree was shaking, everyone was screaming, and I kept running, holding your hand. At the end there was a super bright light… It's just a dream, right? Right?",
+      "reject": "It's just a dream. Go back to sleep.",
+      "approve": "I'll stay by your side tonight."
+    },
+    "daily_kid_song": {
+      "title": "A Strange Song",
+      "text": "Head Priestess! Everyone's singing this song lately: 'We won't listen to the queen, we'll decide things for ourselves!' …But the grown-ups really are ignoring the decrees.",
+      "reject": "That song is banned!",
+      "approve": "…A song is just a song."
+    },
+    "daily_church_crown_whisper": {
+      "title": "The Dance That Won't Stop",
+      "text": "Head Priestess, the fairies have been doing nothing but dancing in the square for three days. 'It's all going to end soon anyway,' they say, and they neither work nor pray. Should the Church step in?",
+      "reject": "Disperse them at once.",
+      "approve": "…Let them dance until they're tired."
+    },
+    "daily_monatium_new_terms": {
+      "title": "New Contract Terms",
+      "text": "I'm from the Monatium Sugar Supply Division. From next year, sugar prices will triple. However, if you share the World Tree's signing authority with Monatium, we'll keep the current price. Regulations require your answer today.",
+      "reject": "Signing authority can't be shared.",
+      "approve": "…Keep the current price for just one year."
+    },
+    "daily_guard_empty_posts": {
+      "title": "Emptying Guard Posts",
+      "text": "Reporting in. Nine guards have vanished without a word this month alone. Rumor has it Monatium gave them jobs. The ones left are grumbling too, since their candy rations were cut.",
+      "reject": "Let's trust the ones who stayed.",
+      "approve": "Increase the Guard's rations."
+    },
+    "daily_beast_kid_warning": {
+      "title": "A Beastfolk Kid's Whisper",
+      "text": "Head Priestess, Head Priestess. A fairy told me the Fairy Kingdom is getting all jittery. So I've been storing up lots of berries… It's a secret.",
+      "reject": "That's a bad rumor. Don't believe it!",
+      "approve": "…Could you maybe share a few berries?"
+    },
+    "daily_kyarot_cane_press": {
+      "title": "Cane-Pressing Day",
+      "text": "Head Priestess! The sugarcane's all ripe! But I don't have enough hands to press it alone. Lend me the Church's priests for just one day. If we press it all today, the stores will be full!",
+      "reject": "The priests have prayers to keep.",
+      "approve": "Just for one day, then."
+    },
+    "daily_sweetshop_night_boil": {
+      "title": "Boiling Candy All Night",
+      "text": "Head Priestess, the orders are piling up, so I'd like to boil candy all night. Once it's done, I'll put half of it in the kingdom's stores! Only, the smell and the light might keep the neighbors up a bit.",
+      "reject": "Everyone needs to sleep at night.",
+      "approve": "Just make sure the kingdom gets its share."
+    },
+    "daily_villager_candy_drive": {
+      "title": "Candy Collection",
+      "text": "Head Priestess, the fairies want to gather the candy they've saved at home into the kingdom's stores. In return, they'd like Her Majesty's birthday party to be a little simpler this year.",
+      "reject": "Keep your candy at home.",
+      "approve": "Please gather it. Thank you."
+    },
+    "daily_diana_honey_surplus": {
+      "title": "Too Much Honey",
+      "text": "Head Priestess, the bees made so much honey this year that there's no room left for it in the forest. Might I share some with the Fairy Kingdom's stores? In return, please let the children of our village run about in the Church's front yard for a day.",
+      "reject": "Please enjoy the honey in the forest.",
+      "approve": "I'll open the front yard for them."
+    },
+    "daily_farmer_second_harvest": {
+      "title": "A Second Harvest",
+      "text": "Head Priestess, they say if we plant once more this year, we can harvest sugarcane twice! Only, everyone would have to work the fields without a single day off.",
+      "reject": "The fields and the fairies both need rest.",
+      "approve": "Let's plant once more."
+    },
+    "daily_guard_smuggler": {
+      "title": "Confiscated Candy",
+      "text": "Reporting in. We caught a Witch Kingdom merchant sneaking candy across the border. We've confiscated a whole cartload. Her Majesty says the merchant is from her sister's kingdom and wants them sent back.",
+      "reject": "Send them back, candy and all.",
+      "approve": "Confiscate it. Call it the tax they owe."
+    },
+    "daily_church_bazaar": {
+      "title": "Church Bazaar",
+      "text": "Head Priestess, the faithful want to gather things they don't use at home and hold a bazaar. Every bit of the proceeds goes into the kingdom's candy stores. Only, we'd have to use the chapel as a marketplace for three days.",
+      "reject": "The chapel is a place of prayer.",
+      "approve": "Three days as a market, then."
+    },
+    "daily_monatium_bulk_discount": {
+      "title": "Half-Price Sugar",
+      "text": "This is the Monatium Sugar Supply Department. For this month only, we will supply sugar in bulk at half price. In return, please allow us to put up three 'Monatium Sugar' signs in the plaza. Regulations do not permit us to make them any smaller.",
+      "reject": "The plaza belongs to the fairies.",
+      "approve": "…We'll take the sugar."
+    },
+    "fixed_beast_kids_bread": {
+      "title": "Customers at the Bread Shelf",
+      "text": "Head Priestess, some beastfolk kids have been glued to the bread shelf since morning, drooling. Shall I chase them off? And let me say it again: this is a school of magic, not a bakery!",
+      "reject": "Send them home politely.",
+      "approve": "Share some bread with them. I'll pay."
+    },
+    "fixed_beast_kids_bread_again": {
+      "title": "Back Again",
+      "text": "Head Priestess, those beastfolk kids are back. This time they brought their little siblings. …Twelve of them. Let me say it again: this is a school of magic, not a bakery!",
+      "reject": "Send them home this time.",
+      "approve": "Share with them again today. I'll pay."
+    },
+    "speaki_fake_erpin_snacks": {
+      "title": "Double Snacks Decree",
+      "text": "Hehe~ From now on, Ner is Erpin, Great Queen of the Fairies~ Starting today, Erpin gets double snaaacks~",
+      "reject": "No, Your Majesty.",
+      "approve": "…Just this once."
+    },
+    "special_sist_deal": {
+      "title": "Sist's Deal I",
+      "text": "Um, boss? Hand over just a little candy, and this humble peddler will give you the chance to buy her wares. Special price, today only, so choose carefully!",
+      "reject": "I'll pass.",
+      "approve": "All right, take the candy."
+    },
+    "special_sist_deal_late": {
+      "title": "Sist's Deal II",
+      "text": "Boss, long time no see! Hehe, prices have gone way up lately, so my fee went up a little too. But the goods are just as good as ever, so no need to worry, right?",
+      "reject": "At that price, I'll pass.",
+      "approve": "That's steep… but please do."
+    },
+    "special_sist_shop": {
+      "title": "Sist's Stall",
+      "text": "Hehe, it's a deal, boss! Now, what'll it be? Two picks today: a mysterious blindfold they say came from outer space, or an all-purpose bandage that fixes anything you stick it on! For real, hehe.",
+      "reject": "Blindfold",
+      "approve": "All-Purpose Bandage"
+    },
+    "special_strange_card": {
+      "title": "Wild Card",
+      "text": "Head Priestess, I found a strange card at the edge of the village. The front is blank, but when I hold it, different pictures keep showing through! It scares me… Would the Church keep it?",
+      "reject": "Throw it away. It's suspicious.",
+      "approve": "…I'll hold on to it for now."
+    },
+    "speaki_erpin_snack_decree": {
+      "text": "Hehe~ Ner! Starting today, every fairy in the kingdom brings Erpin a pumpkin once a daaay! A royal decree, you say? A snack tribute, you saaay? Don't eat your pumpkin friends!"
+    },
+    "speaki_marie_fireworks": {
+      "text": "Head Priestess! This weekend Marie's gonna set off fireworks in the squaaare! Boom! And the sky goes sparkle-sparkle! This time I've got pumpkin-shaped fireworks ready~"
+    },
+    "speaki_mayo_pawn_bell": {
+      "text": "Leave one Church bell, get plenty of candy on loan! Small interest only! Mayo will keep the bell nice and quiet, promiiise! And after that, lend us your pumpkin patch, okaaay!"
+    },
+    "speaki_guard_lost_child": {
+      "text": "Reporting iiin~ A lost little fairy was sleeping under the World Tree's rooots. I think they'll cry if we wake them. They cried even at this Ner's face, so they must be a meeean ghost!"
+    },
+    "speaki_sweetshop_sign": {
+      "text": "Can I hang a 'Certified by the Head Priestess Church' sign in front of my shooop? Customers will double! I'll even give you cinnamon candy for free. Hehe. And pumpkin-flavored candy is baaanned!"
+    },
+    "speaki_kyarot_statue": {
+      "text": "I made a pumpkin-shaped statue out of sugarcaaane! It's really well made, okay? Ner—I mean, Kyarot carved it all night. It's carved super-duper pretty!"
+    },
+    "speaki_ashur_bread_tasting": {
+      "text": "Head Priestess, I'm holding a free bread tasting to recruit customers for the school of magiiic. Ashur is the poorest person in the Fairy Kingdom, so she has to work super hard as a bakery owner! Hehe."
+    },
+    "speaki_guard_curfew": {
+      "text": "Reporting iiin! Orders from the Guard Captaaain! In the past month, 17 attempts to cross the palace walls, 12 of them Her Majesty's night outiiings. Especially the break-in at the ghost swamp pumpkin patch, that is totally unforgiiivable! No going out after 9 p.m.!"
+    },
+    "speaki_farmer_tithe": {
+      "text": "Head Pristess, the sugarcane harvest was great this yeeear! We'd like to offer the Church a generous tithe, you'll take it, won't you? Pumpkins had a great year too, so you get those as well. We'll be sad if you don't take theeem. Hehe."
+    },
+    "speaki_diana_trade_pact": {
+      "text": "Head Pristess, how about a formal trade agreement with the beastfolk villaaage? We'd swap berries and pumpkins for a long, long tiiime. Diana's old, so she might forget while she waits. Hehe~"
+    },
+    "daily_guard_top_craze": {
+      "title": "A Ban on Spinning Tops",
+      "text": "Reporting in! Spinning tops are all the rage lately, and the fairies have dropped their work to spin them in every alley. You can even hear tops spinning in Her Majesty's bedroom. Please issue a ban on spinning tops!",
+      "reject": "Leave them be. Everyone needs some play.",
+      "approve": "No tops in the alleys."
+    },
+    "daily_witch_milk_ban": {
+      "title": "The Milk Ban Alliance",
+      "text": "I am a courier of the Witch Kingdom. Queen Belita has proclaimed a Milk Prohibition Law in the Witch Kingdom. If her little sister's kingdom bans milk as well, Her Majesty would be overjoyed. She has even written a letter of praise for her sister in advance.",
+      "reject": "The Fairy Kingdom makes its own laws.",
+      "approve": "…The Fairy Kingdom will give up milk too."
+    },
+    "daily_bigwood_roots": {
+      "title": "A Place to Take Root",
+      "text": "Bigwood… lately the ghosts of the Ghost Swamp… keep coming out… and playing pranks on Bigwood's branches… Pain is nice… but ghost pranks only tickle… not good… Head Priestess… may Bigwood… put down roots… beside the fairy village…? The ghosts may follow… and prank the fairies too… The little fairies run away… when they see Bigwood… That is… not bad either…",
+      "reject": "The beastfolk forest would be quieter.",
+      "approve": "I'll make room for you beside the village."
+    },
+    "daily_bigwood_pruning": {
+      "title": "A Request for Pruning",
+      "text": "Bigwood's branches… have covered the village roofs… Head Priestess… will you prune them…? If the queen prunes them herself… even better…! Hard…! Very hard…!",
+      "reject": "I'll send the gardener fairies.",
+      "approve": "…I'll ask Her Majesty."
+    },
+    "daily_bigwood_wine": {
+      "title": "Overripe Fruit",
+      "text": "Head Priestess, Bigwood's fruit ripened all on its own in the storehouse, and… um, it turned into a drink that officially doesn't exist in the Fairy Kingdom. The fairies have already caught the smell and lined up. Shall we call it a festival day and share it, or pour it all out? Tomorrow happens to be the World Tree's prayer day, though…",
+      "reject": "Pour it all out. Tomorrow is prayer day.",
+      "approve": "A festival, just for today."
+    },
+    "daily_sylla_yokan": {
+      "title": "Discarded Yokan",
+      "text": "Some of you fairies keep dumping uneaten yokan on Spirit Mountain. I'd like it cleaned up, fast. Otherwise I'll judge you with the wind.",
+      "reject": "We don't have the hands to clean it up.",
+      "approve": "…We'll post a notice with a candy reward."
+    },
+    "daily_sylla_lost_kids": {
+      "title": "Lost on Spirit Mountain",
+      "text": "Three fairy children got lost on Spirit Mountain. I carried them back to the village on the wind. I'd like you to put up signs and a fence at the foot of the mountain. …It's not like I was worried. The wind just happened to blow that way.",
+      "reject": "I'll tell the children to be careful.",
+      "approve": "We'll build a fence."
+    },
+    "daily_ifrit_fire_lesson": {
+      "title": "A Lecture on Playing with Fire",
+      "text": "What's this? That brat you call a queen was setting off fireworks in the square? Does she think fire is a toy?! The little whelp! Send her to me! I'll teach her how to treat fire properly.",
+      "reject": "It's just Her Majesty's play. Please let it go.",
+      "approve": "…Please give Her Majesty a lesson, then."
+    },
+    "daily_ifrit_ovens": {
+      "title": "In Charge of the Oven Fire",
+      "text": "Head Priestess! First your fairy queen takes my lesser fire spirits off to play with fireworks, and now she's stuck them in a bakery oven? Ha! Fine. The great Ifrit will bake the villagers' bread himself. Burnt pitch-black, that is! If you don't like that... bring the fairy queen here to apologize to me!",
+      "reject": "Your Majesty? Why are you carrying a bucket of water?!",
+      "approve": "…Please burn it just a little less."
+    },
+    "daily_gabia_ground": {
+      "title": "Shaking Ground",
+      "text": "Mm… mm! Mm… (The ground under the World Tree is unstable. It needs filling with soil, and the kingdom's garden soil is the best.)",
+      "reject": "We'll give you soil from the World Tree's garden instead.",
+      "approve": "We'll give you the kingdom's garden soil."
+    },
+    "daily_gabia_cave": {
+      "title": "A Hollow Underground",
+      "text": "Mm… mm! (A hollow cave opened up beside the World Tree's roots. It's cool, so candy won't melt. You can use it as a storehouse. I'd like it if you came to play sometimes.)",
+      "reject": "Not beside the World Tree's roots.",
+      "approve": "We'll use it as a storehouse. Thank you."
+    },
+    "daily_naia_lake_party": {
+      "title": "Water Pistol Contest at the Lake",
+      "text": "Head Priestess! Let's have a water pistol contest at the lake, pew-pew! Bring all the fairies! The queen too, for sure, pew-pew! Losers get dunked in the lake, pew-pew!",
+      "reject": "It's a workday. And Her Majesty wouldn't like it.",
+      "approve": "Half a day only. Your Majesty, why are you running away?"
+    },
+    "daily_naia_rain": {
+      "title": "Rain for Everyone",
+      "text": "There's a drought, right? I'll make it rain, pew-pew! On the fields, on the roofs, on the laundry, everywhere, pew-pew! Picking just one spot is no fun, pew-pew!",
+      "reject": "We'll leave the rain to the sky.",
+      "approve": "…A bit more on the fields, please."
+    },
+    "daily_shaydi_portal": {
+      "title": "A Portal in the Square",
+      "text": "I'm bored~ I'm tired of teasing the ghosts now. So I'm going to open a portal in the Fairy Kingdom square. Even I don't know what'll pop out~ Fun, right? Oh, and don't tell me an old ghost should know better.",
+      "reject": "The square is the route for prayer processions.",
+      "approve": "…Only in a corner of the square."
+    },
+    "daily_shaydi_prank_day": {
+      "title": "Prank Day",
+      "text": "Let's make a Prank Day in the Fairy Kingdom~ For one day, nobody gets scolded no matter who pranks whom. Your queen would love it, right? The Church fairies… well, they'd get pranked a bit~",
+      "reject": "Please think of the Church's dignity too.",
+      "approve": "Just one day."
+    },
+    "daily_espi_nightmares": {
+      "title": "A Nightmare Deal",
+      "text": "The fairies have been having nightmares lately, haven't they? I've been peeking a little. I could stop. But in exchange, Head Priestess, show me your dreams. I'm curious what dreams under the World Tree taste like.",
+      "reject": "My dreams are my own.",
+      "approve": "…Just a peek."
+    },
+    "daily_espi_masks": {
+      "title": "Masquerade Ball",
+      "text": "How about a masquerade ball for the festival? I'll make all the masks. My designs are perfect, you see. But don't let the caramel popcorn seller in. I can't stand that smell.",
+      "reject": "The popcorn seller is a fairy too.",
+      "approve": "The kingdom will pay for the masks."
+    },
+    "daily_sist_credit": {
+      "title": "The Tab",
+      "text": "Ohh~ Boss! I want to take some goods from the fairy shops on credit, and all you need to do is vouch for me. Hehe. When I pay up, I'll add interest, plus some piping-hot gossip on top!",
+      "reject": "I won't vouch for you.",
+      "approve": "Just this once."
+    },
+    "daily_sist_hideout": {
+      "title": "Hiding from the Ranking Battle",
+      "text": "Ohh~ Boss, please hide me! A ranking battle broke out in the dragon caves, and I gave up early on. Hehe. But they keep calling me out. An attic room is all I need. I'll deliver gossip to Her Majesty every day!",
+      "reject": "I'd rather stay out of dragon business.",
+      "approve": "Just one attic room."
+    },
+    "daily_diana_flood": {
+      "title": "The Flooded Forest",
+      "text": "Head Priestess, the heavy rain has flooded the beastfolk forest. The little ones are soaked and shivering. Could you lend us a corner of the Fairy Kingdom, just until the water goes down? This old woman begs you.",
+      "reject": "…Please look for somewhere else.",
+      "approve": "We'll give you the space beside the Church storehouse."
+    },
+    "daily_goldie_monatium25": {
+      "title": "Monatium25, Fairy Kingdom Branch",
+      "text": "Hello, valued customer! I'm Goldie, owner of Monatium25. I'd like to open a branch in the Fairy Kingdom too. Open day and night, and only genuine candy on the shelves. The local candy shops might feel a little put out, though.",
+      "reject": "We have to protect the local shops.",
+      "approve": "Genuine goods only."
+    },
+    "daily_goldie_realty": {
+      "title": "Goldie Realty",
+      "text": "Valued customer, this is Goldie Realty. We'll rebuild the old houses in the eastern village for you. Genuine materials only. We'll pay a generous price for the land, too. The fairies will just have to move out for a little while during construction.",
+      "reject": "The fairies will fix their own homes.",
+      "approve": "Genuine materials only."
+    },
+    "daily_goldie_jewels": {
+      "title": "Appraising the Crown Jewels",
+      "text": "Valued customer, I hear the kingdom's stores are running low. I'll buy the old jewels in the royal jewel box at genuine market price. No tricks. I only deal in genuine goods. Her Majesty might be a little sad, though.",
+      "reject": "We can't sell Her Majesty's jewels.",
+      "approve": "Start with the smallest one."
+    },
+    "daily_fricle_tasting": {
+      "title": "Free Tasting of a New Potion",
+      "text": "Head Priestess of the Fairy Kingdom. I'll hold a tasting of the Witch Kingdom's new 'Sweet Dreams Potion.' Free. It's rare for me to be this kind, so accept it gratefully. Side effects? It's all in the fine print at the bottom of the contract.",
+      "reject": "I think I know what the fine print says without reading it.",
+      "approve": "…The fairies want it, so."
+    },
+    "daily_fricle_contract": {
+      "title": "Reviewing the Contract",
+      "text": "Head Priestess of the Fairy Kingdom. Your contract with Monatium is a mess. I'll fix it for you. Witch Kingdom contracts are airtight. But my signature goes on it, not your little queen's. Can that brat even read a contract?",
+      "reject": "Her Majesty signs.",
+      "approve": "…Just this contract."
+    },
+    "daily_monatium_trial": {
+      "title": "Free Trial: Refrigerated Display Cases",
+      "text": "This is Monatium Sales. We'll install a refrigerated display case in every candy shop in the Fairy Kingdom, free. The candy won't melt, so it sells for longer. Once the trial ends, a modest usage fee applies. Very modest, of course.",
+      "reject": "Our candy sells before it melts.",
+      "approve": "Just the trial, then."
+    },
+    "daily_monatium_tour": {
+      "title": "World Tree Tour Package",
+      "text": "This is the Monatium Travel Division. A group of elf tourists would like to see inside the World Tree. We'll pay a generous entry fee. And please look the other way if they pluck a few leaves as souvenirs.",
+      "reject": "The World Tree is not a sightseeing spot.",
+      "approve": "Only up to the inner door."
+    },
+    "daily_monatium_ads": {
+      "title": "Ads on the Palace Wall",
+      "text": "This is Monatium Public Relations. The palace wall really catches the eye. Let us hang a billboard for our new products, and we'll pay a handsome advertising fee. It may end up a little bigger than Her Majesty's face.",
+      "reject": "The palace is not a billboard.",
+      "approve": "…Keep it small."
+    },
+    "daily_erpin_gadget": {
+      "title": "A Crystal Ball for Every Fairy",
+      "text": "Ner! Did you see Monatium's crystal balls? You can see someone's face and talk to them even when they're far away! Let's give one to every fairy in the kingdom. Then everyone will love me super much, right? And prayers… they can just do them by crystal ball.",
+      "reject": "The kingdom's candy would never last.",
+      "approve": "…One per household."
+    },
+    "daily_sweetshop_tariff": {
+      "title": "Here Come the Factory Candies",
+      "text": "Head Priestess, Monatium factory candy is flooding the market, and not a single piece of ours is selling! Please put a tax on elf candy. Otherwise every candy shop will close.",
+      "reject": "Cheap candy is still candy.",
+      "approve": "We'll put a tax on elf candy."
+    },
+    "daily_church_tree_lights": {
+      "title": "Night Lights for the World Tree",
+      "text": "Head Priestess, Monatium offers to light up the World Tree all night during the festival. The fairies are already excited. Only, they say the light strings must be wound around every branch of the World Tree. And we pay the electricity bill.",
+      "reject": "Starlight is enough for the World Tree.",
+      "approve": "Only during the festival."
+    },
+    "fixed_bigwood_harvest": {
+      "title": "First Fruit",
+      "text": "Fruit… has grown… Head Priestess… are you… picking Bigwood's fruit…? Good! Pick more… pick it all, roughly…! Into the storehouse… or out to the fairies…",
+      "reject": "I'll put it in the storehouse.",
+      "approve": "Share it with the fairies."
+    },
+    "fixed_sist_credit_due": {
+      "title": "Settling the Tab",
+      "text": "Hehe… Boss, about my tab. I'll pay half in candy! The other half… could I pay it off as your informant, bringing you piping-hot gossip fast? Say, three times?",
+      "reject": "The kingdom has its own tab to pay the villagers.",
+      "approve": "…I'll take the gossip."
+    },
+    "fixed_fricle_side_effect": {
+      "title": "The Nodding Village",
+      "text": "Head Priestess, the fairies who drank the Sweet Dreams Potion keep nodding off even in broad daylight. The fields and the shops have all stopped. Lady Fricle says she sells an antidote. Not for free.",
+      "reject": "Let's wait until they wake up on their own.",
+      "approve": "Go buy the antidote."
+    },
+    "fixed_goldie_housewarming": {
+      "title": "Housewarming",
+      "text": "Valued customer, the new houses in the eastern village are all finished! With bigger homes, the fairies want to invite lots of guests. How about the kingdom throwing them a housewarming party? I'll pick out the decorations myself, genuine goods only.",
+      "reject": "Let's just move in quietly.",
+      "approve": "Good-quality goods, please."
+    },
+    "fixed_monatium_subscription": {
+      "title": "Trial Period Over",
+      "text": "This is Monatium Sales. The trial period for the refrigerated display cases has ended. Here is your bill for the usage fee. If you cancel, we'll collect the cases and charge a small cancellation fee. Very small, of course.",
+      "reject": "We'll cancel.",
+      "approve": "…We'll keep using them."
+    },
+    "daily_kyarot_bumper_crop": {
+      "title": "Overflowing Sugarcane",
+      "text": "Head Priestess! The sugarcane grew like crazy this year! The storehouse is already full, and half of it is still in the field. Should I harvest it all? Or give some to the fairies?",
+      "reject": "Give half to the fairies.",
+      "approve": "Harvest all of it."
+    },
+    "daily_monatium_surplus_sugar": {
+      "title": "Surplus Sugar",
+      "text": "This is the Monatium Sugar Supply Division. The factory is producing so much sugar we're out of storage. We'll sell it to the Fairy Kingdom dirt cheap. Very cheap, of course.",
+      "reject": "We'll take just a little.",
+      "approve": "Bring it all in."
+    },
+    "daily_villager_assembly": {
+      "title": "Village Meeting",
+      "text": "Head Priestess, there's talk among the fairies lately that village matters should be decided at village meetings. Without Her Majesty's say-so. Could you give us a meeting hall?",
+      "reject": "We'll set up a suggestion box, that's all.",
+      "approve": "We'll give you a hall."
+    },
+    "daily_erpin_gift_return": {
+      "title": "Birthday Thank-You Party",
+      "text": "Ner! The fairies gave me a ton of presents for my birthday. I want to thank them back! Let's throw a party for everyone with the kingdom's candy. Big! Super big!",
+      "reject": "Let's keep it small.",
+      "approve": "Let's go big."
+    },
+    "daily_church_night_vigil": {
+      "title": "All-Night Prayer",
+      "text": "Head Priestess, fairies are gathering to pray all night under the World Tree. Their devotion is touching… but they'll all be nodding off by day. Shall we keep it open all night?",
+      "reject": "Until midnight only.",
+      "approve": "Keep it open all night."
+    },
+    "daily_church_pilgrimage": {
+      "title": "The Growing Pilgrimage",
+      "text": "Head Priestess, the pilgrimage to the World Tree grows longer every year. This year, half the fairies in the kingdom want to join. Shall we let it grow?",
+      "reject": "Same as usual.",
+      "approve": "Let's all go."
+    },
+    "daily_erpin_decrees": {
+      "title": "Ten Decrees",
+      "text": "Ner! I'm writing ten decrees today. Double snack time, no homework, and everyone naps together on rainy days! I'm the queen, so I can do it all, right?",
+      "reject": "Pick just one.",
+      "approve": "…Three at most."
+    },
+    "daily_erpin_shiny_crown": {
+      "title": "A New Crown",
+      "text": "Ner, I saw a sparkly new crown in Monatium! My crown's way too old now. Let's get just one made, okay?",
+      "reject": "Let's polish the one you have.",
+      "approve": "…Go ahead and order it."
+    },
+    "bishop_bigwood_heavy_fruit": {
+      "title": "Bent Branches",
+      "text": "Too much… fruit… has grown… The branches bend… and creak… It hurts… Good…! But if it all falls… it will rot on the ground… Head Priestess… will you pick it…? Into the storehouse… or into the fairies' mouths… Bigwood likes both…",
+      "reject": "Share it out as snacks for the fairies.",
+      "approve": "We'll pick it all for the storehouse."
+    },
+    "bishop_kyarot_giant_cane": {
+      "title": "King Cane",
+      "text": "Head Priestess! Look at this! One cane stalk is three times taller than me! Not as good as a carrot… but it's super sweet! Boil down just this one and it'll fill a whole shelf of the storehouse. Or should we stand it in the square and all nibble on it together?",
+      "reject": "Let's all eat it in the square.",
+      "approve": "Boil it down for the storehouse."
+    },
+    "bishop_villager_flea_market": {
+      "title": "Square Flea Market",
+      "text": "Head Priestess, the fairies want to hold a flea market in the square. Old ribbons, empty candy tins, even half-eaten cookies! If the Church takes a small stall fee, it'll help the storehouse too. If it doesn't, everyone will be even happier, though.",
+      "reject": "Open it with no stall fee.",
+      "approve": "We'll take just a small fee."
+    },
+    "bishop_erpin_belita_box": {
+      "title": "Big Sister's Candy Box",
+      "text": "Ner! I found a candy box my sister hid in the palace attic! It's huge! It's all mine, right? If it's my sister's, it's her little sister's, so it's mine, right? …You're going to say put it in the storehouse, aren't you? Aren't you? I can see it on your face!",
+      "reject": "Keep it, Your Majesty.",
+      "approve": "It goes into the royal storehouse."
+    },
+    "bishop_villager_back_taxes": {
+      "title": "Back Taxes",
+      "text": "Head Priestess, the fairies whose shops did well this year want to pay all their back taxes at once. In candy! But the other fairies are muttering, 'Does that mean we have to pay too?'",
+      "reject": "Tell them to keep it this year.",
+      "approve": "We'll gratefully accept."
+    },
+    "bishop_villager_flower_born": {
+      "title": "Little Evacuees",
+      "text": "Head Priestess, a village across the river was flooded by heavy rain, and its young fairies have fled to us! More than twenty! They're all crying because they're hungry. Shall the Church look after them, or shall we hand them out to the villages?",
+      "reject": "Hand them out to the villages.",
+      "approve": "The Church will look after them."
+    },
+    "bishop_sylla_council_invite": {
+      "title": "Spirit Council Invitation",
+      "text": "I've invited the Fairy Kingdom's Head Priestess to this spirit council. It's only fair to hear from the side that tends the World Tree. I'd like you to come. Otherwise I'll judge you with the wind. …Ah, no. You don't have to come. Just come.",
+      "reject": "I'll send my greetings by letter.",
+      "approve": "I'll go in person."
+    },
+    "bishop_shaydi_masquerade": {
+      "title": "Ghost Swamp Parade",
+      "text": "The Ghost Swamp gang and I are doing a costume parade~ One lap around the Fairy Kingdom square. Everyone will think we're fairies dressed as ghosts, so nobody will be scared, right? Probably~ Let us knock on doors for candy too, at least.",
+      "reject": "Not the square.",
+      "approve": "…Just one lap of the square."
+    },
+    "bishop_church_nap_contest": {
+      "title": "Nap Contest Under the World Tree",
+      "text": "Head Priestess, the faithful want to hold a nap contest under the World Tree. Whoever sleeps longest and deepest wins. Since the Church's prayer is the nap, they say no contest could be more devout. Only, the fields will be empty that day.",
+      "reject": "Sleep after the field work.",
+      "approve": "Let's all sleep."
+    },
+    "boss_snow_road": {
+      "title": "Roads Buried in Snow",
+      "text": "Reporting. The road in front of the palace is buried in snow, and the guard alone isn't enough. Shall we call out the village fairies, or send the Church's priests?",
+      "reject": "Send the priests.",
+      "approve": "Call out the fairies."
+    },
+    "boss_snow_storehouse": {
+      "title": "The Collapsed Candy Storehouse",
+      "text": "Head Priestess, the candy storehouse roof caved in under the snow! If we dig now, we can save half of it. But everyone would have to stay up all night.",
+      "reject": "Don't push yourselves. We'll dig at daybreak.",
+      "approve": "Let's dig now. Thank you, everyone."
+    },
+    "boss_snow_shelter": {
+      "title": "Freezing Fairies",
+      "text": "Head Priestess, the fairies whose roofs broke are shivering in the cold. Shall we open the chapel and let them sleep there? Then there will be no services for a while.",
+      "reject": "Have the neighbours take them in.",
+      "approve": "Let's open the chapel."
+    },
+    "boss_sugar_cut": {
+      "title": "Supply Cut",
+      "text": "This is the Monatium Sugar Supply Division. As of today, all sugar shipments to the Fairy Kingdom are suspended. Regulations do not permit us to disclose the reason. Objections… will not be accepted.",
+      "reject": "Cut the palace's share first. Lock the storehouse.",
+      "approve": "Open the storehouse and share it out."
+    },
+    "boss_sugar_rebellion": {
+      "title": "Sugar Rebellion",
+      "text": "Rebellion! The bread's gone and the sugar's gone! Even the guards have run off! Kingdom, bring back our sugar! Down with the queen!",
+      "reject": "Throw all the candy we have left into the square!",
+      "approve": "Your Majesty, take my hand. Run!"
+    }
+  }
+}
