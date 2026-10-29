@@ -5356,11 +5356,14 @@ p {
   --glyph-blindfold: url('/art/boons/blindfold.webp');
   --glyph-understudy: url('/art/boons/understudy.webp');
   --glyph-mend: url('/art/boons/mend.webp');
+  /* 치료약 (Diana's and Chloe's mend): a potion, so it never reads as Sist's bandage */
+  --glyph-remedy: url('/art/boons/remedy.webp');
   --glyph-blindfold-band: url('/art/boons/blindfold_band.webp');
   --item-intuition: #9b6bd6;
   --item-blindfold: #7fd25c;
   --item-understudy: #f2a7a0;
   --item-mend: #f0c39b;
+  --item-remedy: #f3a6c4;
 }
 .status-icon[data-boon='understudy'] {
   --tone: var(--item-understudy);
@@ -5462,9 +5465,9 @@ p {
   scale: 1.08;
 }
 
-/* corrective moves: a band-aid where the pips would be */
+/* corrective moves (치료약): a potion where the pips would be */
 .preview-dot[data-mend] {
-  color: var(--item-mend);
+  color: var(--item-remedy);
 }
 .preview-dot[data-mend]:not(.exact) .pips {
   display: none;
@@ -5475,11 +5478,11 @@ p {
   width: 20px;
   height: 20px;
   background: currentColor;
-  -webkit-mask: var(--glyph-mend) center / contain no-repeat;
-  mask: var(--glyph-mend) center / contain no-repeat;
+  -webkit-mask: var(--glyph-remedy) center / contain no-repeat;
+  mask: var(--glyph-remedy) center / contain no-repeat;
 }
 .preview-dot.exact[data-mend] {
-  background: var(--item-mend);
+  background: var(--item-remedy);
 }
 /* Renewa's understudy softened this change: a tiny mask beside the pips */
 .preview-dot[data-understudy]:not(.exact) {
@@ -5512,7 +5515,10 @@ p {
   --item: var(--item-understudy);
   --glyph: var(--glyph-understudy);
 }
-.tool[data-item='mend'],
+.tool[data-item='mend'] {
+  --item: var(--item-remedy);
+  --glyph: var(--glyph-remedy);
+}
 .tool[data-item='bandage'] {
   --item: var(--item-mend);
   --glyph: var(--glyph-mend);

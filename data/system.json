@@ -428,7 +428,7 @@
       "desc": "자원이 위험해질 때 그 변화를 조금 줄여 줍니다."
     },
     "bandage": {
-      "name": "1회용 반창고",
+      "name": "반창고",
       "short": "반창고",
       "desc": "자원 하나에 붙이면 가운데 쪽으로 당겨 줍니다."
     }
@@ -868,7 +868,7 @@
     "questPrefix": "의뢰 · ",
     "hardPrefix": "긴급 공문 · ",
     "bossDay": "{year}년 · {day}일째",
-    "mend": "반창고",
+    "mend": "치료약",
     "useItem": "사용하기",
     "itemLeft": "남은 장수 {n}",
     "mendDesc": {

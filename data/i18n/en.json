@@ -218,7 +218,7 @@
         "desc": "When a gauge would turn dangerous, the change is softened a little."
       },
       "bandage": {
-        "name": "Single-Use Bandage",
+        "name": "Bandage",
         "short": "Bandage",
         "desc": "Stick it on one resource to pull it back toward the middle."
       }
@@ -636,7 +636,7 @@
       "questPrefix": "Request · ",
       "hardPrefix": "Urgent · ",
       "bossDay": "Year {year} · Day {day}",
-      "mend": "Band-aid",
+      "mend": "Remedy",
       "useItem": "Use",
       "itemLeft": "{n} left",
       "mendDesc": {
@@ -1020,13 +1020,13 @@
       "title": "A Gift from the Forest",
       "text": "Head Priestess, the little ones in our village talk of nothing but bread these days. A kindness deserves thanks in return. Shall I lend you this old woman's wisdom? Or shall I help the Fairy Kingdom instead?",
       "reject": "Insight",
-      "approve": "Band-aid"
+      "approve": "Remedy"
     },
     "story_diana_thanks_again": {
       "title": "Thanks, Once More",
       "text": "I'm in your debt again, Head Priestess. The little ones stay up all night talking about Fairy Kingdom bread. Once more I'll lend you this old woman's help, so you need only choose.",
       "reject": "Insight",
-      "approve": "Band-aid"
+      "approve": "Remedy"
     },
     "story_elf_crash": {
       "title": "Strangers from Afar",
@@ -1146,7 +1146,7 @@
       "title": "Tailor Shop Permit",
       "text": "Huh? Head Priestess? Don't worry, I saved the queen. Also, I'm opening a tailor shop in front of the palace. The queen already said yes, so just stamp the permit. I already paid her the deposit, in snacks! ...I'll help you out once more, so quit glaring at me. How do you want me to help?",
       "reject": "Stitch",
-      "approve": "Band-aid"
+      "approve": "Remedy"
     },
     "fixed_elena_development": {
       "title": "Development Rights",
@@ -1864,9 +1864,9 @@
     },
     "special_sist_shop": {
       "title": "Sist's Stall",
-      "text": "Hehe, it's a deal, boss! Now, what'll it be? Two picks today: a mysterious blindfold they say came from outer space, or a single-use bandage that fixes anything you stick it on! For real, hehe.",
+      "text": "Hehe, it's a deal, boss! Now, what'll it be? Two picks today: a mysterious blindfold they say came from outer space, or a bandage that fixes anything you stick it on! For real, hehe.",
       "reject": "Blindfold",
-      "approve": "Single-Use Bandage"
+      "approve": "Bandage"
     },
     "special_strange_card": {
       "title": "Wild Card",
