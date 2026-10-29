@@ -167,8 +167,6 @@ export function gaugesMarkup(state: State): string {
           </div>`;
         })
         .join('')}
-      ${(state.boons.bandage ?? 0) > 0 ? `<button type="button" class="item-slot bandage-slot" draggable="true" data-bandage-item data-tip data-tip-title="${escape(system.boons.bandage.name)}" data-tip-text="${escape(system.boons.bandage.desc)}" aria-label="${escape(system.boons.bandage.name + ' ' + system.boons.bandage.desc)}" aria-disabled="${!!(state.ending || state.scene || state.sleep || state.bishop?.notices.length || GAUGE_KEYS.every(key => state.gauges[key] === 50))}"><span class="item-tag"><i aria-hidden="true"></i><b>${state.boons.bandage}</b></span></button>` : ''}
-      ${(state.boons.blindfold ?? 0) > 0 ? `<button type="button" class="item-slot blindfold-slot" draggable="true" data-blindfold-item data-tip data-tip-title="${escape(system.boons.blindfold.name)}" data-tip-text="${escape(system.boons.blindfold.desc)}" aria-label="${escape(system.boons.blindfold.name)}"><span class="item-tag"><i aria-hidden="true"></i><b>${state.boons.blindfold}</b></span></button>` : ''}
     </section>`;
 }
 export function updateGaugePreview(

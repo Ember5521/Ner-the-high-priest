@@ -22,6 +22,19 @@ export type SoundName =
   | 'boon';
 
 const recordings = new Map<string, Promise<AudioBuffer | null>>();
+const level = (v: number) => (v / 100) ** 2;
+const sfxGain = (s: { sfx: number; master: number }) => level(s.sfx) * level(s.master);
+/** The master slider: scales the effects here and the music in music.ts. */
+export function setMasterVolume(volume: number): void {
+  const settings = loadSettings();
+  settings.master = Math.max(0, Math.min(100, volume));
+  if (settings.master > 0) settings.lastMaster = settings.master;
+  saveSettings(settings);
+  if (master) master.gain.value = sfxGain(settings);
+}
+export function setMasterEnabled(on: boolean): void {
+  setMasterVolume(on ? loadSettings().lastMaster : 0);
+}
 export function soundEnabled(): boolean {
   return loadSettings().sfx > 0;
 }
@@ -30,7 +43,7 @@ export function setSoundVolume(volume: number): void {
   settings.sfx = Math.max(0, Math.min(100, volume));
   if (settings.sfx > 0) settings.lastSfx = settings.sfx;
   saveSettings(settings);
-  if (master) master.gain.value = (settings.sfx / 100) ** 2;
+  if (master) master.gain.value = sfxGain(settings);
 }
 export function setSoundEnabled(on: boolean): void {
   const settings = loadSettings();
@@ -87,7 +100,7 @@ export function audio(): AudioContext | null {
   squash.attack.value = 0.002;
   squash.release.value = 0.15;
   master = ctx.createGain();
-  master.gain.value = (loadSettings().sfx / 100) ** 2;
+  master.gain.value = sfxGain(loadSettings());
   const trim = ctx.createGain();
   trim.gain.value = 0.7;
   const limiter = ctx.createDynamicsCompressor();

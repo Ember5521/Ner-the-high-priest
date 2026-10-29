@@ -135,6 +135,7 @@ export interface Card {
   conditions?: {
     flagsAll?: string[];
     flagsNone?: string[];
+    boonsNone?: string[];
     minYear?: number;
     maxYear?: number;
     gauges?: Partial<Record<Gauge, { min?: number; max?: number }>>;

@@ -104,6 +104,11 @@ export function deskMarkup(
           state.boons.scope ?? 0,
           !!state.scoped,
           !!state.scene || !!state.bishop?.notices.length,
+          {
+            boons: state.boons,
+            blindfold: state.blindfold,
+            bandageDisabled: !!(state.ending || state.scene || state.sleep || state.bishop?.notices.length || Object.values(state.gauges).every(value => value === 50)),
+          },
         )}
         <p class="hint${!asleep && loadSettings().stampsSeen >= 5 ? ' hint-done' : ''}">${asleep ? system.ui.sleepHint : system.ui.stampHint}</p>
       </section>

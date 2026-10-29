@@ -11,7 +11,7 @@ const mocks = vi.hoisted(() => {
 vi.mock('../src/ui/sound', () => ({ audio: () => mocks.ctx }));
 
 // these players already answered the first-visit music question
-beforeEach(() => { vi.resetModules(); vi.clearAllMocks(); localStorage.clear(); localStorage.setItem('ner-settings', JSON.stringify({ musicAsked: true })); });
+beforeEach(() => { vi.resetModules(); vi.clearAllMocks(); localStorage.clear(); localStorage.setItem('ner-settings', JSON.stringify({ musicAsked: true, master: 100 })); });
 afterEach(() => { vi.unstubAllGlobals(); });
 
 it('starts on request, ramps volume, and pauses and resumes without restarting', async () => {

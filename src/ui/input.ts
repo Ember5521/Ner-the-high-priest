@@ -122,14 +122,14 @@ export function createInput(root: HTMLElement, input: Input) {
             if (!item.hasPointerCapture?.(event.pointerId)) return;
             event.stopPropagation();
             item.releasePointerCapture(event.pointerId);
+            const dragged = item.classList.contains('dragging') || Math.hypot(event.clientX - start.x, event.clientY - start.y) > TAP_PX;
             item.classList.remove('dragging');
             item.style.removeProperty('translate');
             root
               .querySelectorAll('.gauge.blindfold-target')
               .forEach((el) => el.classList.remove('blindfold-target'));
-            const target = document
-              .elementsFromPoint(event.clientX, event.clientY)
-              .find((el) => el !== item && !item.contains(el));
+            const targets = document.elementsFromPoint(event.clientX, event.clientY);
+            const target = targets.find((el) => el !== item && !item.contains(el));
             const gauge = target?.closest<HTMLElement>('[data-gauge]')?.dataset
               .gauge as Gauge | undefined;
             const kind = item.hasAttribute('data-bandage-item') ? 'bandage' : 'blindfold';
@@ -137,7 +137,7 @@ export function createInput(root: HTMLElement, input: Input) {
               selectedItem = null;
               if (kind === 'bandage') input.useBandage?.(gauge);
               else input.placeBlindfold?.(gauge);
-            } else if (kind === 'blindfold' && target?.closest('.blindfold-slot')) {
+            } else if (kind === 'blindfold' && dragged && targets.some((el) => el.closest('.blindfold-slot'))) {
               selectedItem = null;
               input.placeBlindfold?.();
             } else selectedItem = kind;

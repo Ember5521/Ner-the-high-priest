@@ -202,8 +202,14 @@ it('does not play a loading recording if muted before decoding finishes', async 
 });
 
 it('applies volume to the shared master for every sound and remembers mute volume', async () => {
-  const { setSoundVolume, setSoundEnabled, unlockAudio, playSound } =
-    await import('../src/ui/sound');
+  const {
+    setSoundVolume,
+    setSoundEnabled,
+    setMasterVolume,
+    unlockAudio,
+    playSound,
+  } = await import('../src/ui/sound');
+  setMasterVolume(100);
   setSoundVolume(42);
   unlockAudio();
   const master = context.createGain.mock.results[0]!.value;
@@ -216,6 +222,24 @@ it('applies volume to the shared master for every sound and remembers mute volum
   expect(master.gain.value).toBe(0);
   setSoundEnabled(true);
   expect(master.gain.value).toBe(0.17 ** 2);
+});
+
+it('scales effects by the master level, which starts at 50', async () => {
+  const { setSoundVolume, setMasterVolume, setMasterEnabled, unlockAudio } =
+    await import('../src/ui/sound');
+  const { loadSettings } = await import('../src/save/storage');
+  expect(loadSettings().master).toBe(50);
+  setMasterVolume(100);
+  setSoundVolume(60);
+  unlockAudio();
+  const master = context.createGain.mock.results[0]!.value;
+  expect(master.gain.value).toBeCloseTo(0.6 ** 2);
+  setMasterVolume(50);
+  expect(master.gain.value).toBeCloseTo(0.6 ** 2 * 0.5 ** 2);
+  setMasterEnabled(false);
+  expect(master.gain.value).toBe(0);
+  setMasterEnabled(true);
+  expect(loadSettings().master).toBe(50);
 });
 
 it('resumes interrupted audio, sets ambient once, and suspends on request', async () => {

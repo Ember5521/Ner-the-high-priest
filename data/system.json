@@ -428,7 +428,7 @@
       "desc": "자원이 위험해질 때 그 변화를 조금 줄여 줍니다."
     },
     "bandage": {
-      "name": "만능 반창고",
+      "name": "1회용 반창고",
       "short": "반창고",
       "desc": "자원 하나에 붙이면 가운데 쪽으로 당겨 줍니다."
     }
@@ -622,6 +622,7 @@
   },
   "options": {
     "title": "옵션",
+    "master": "전체 음량",
     "sfx": "효과음",
     "bgm": "배경음",
     "bgmNote": "음악: cynicmusic 「Town Theme RPG」 (CC0)",
@@ -661,7 +662,7 @@
     "next": "다음",
     "prev": "이전",
     "done": "결재 시작",
-    "skip": "건너뛰기",
+    "skip": "홈으로",
     "steps": [
       {
         "title": "공문 결재",
@@ -741,7 +742,9 @@
     "itemKinds": {
       "passive": "패시브",
       "active": "액티브"
-    }
+    },
+    "fold": "설명 접기",
+    "unfold": "설명 펼치기"
   },
   "clear": {
     "apprentice": "견습 사제 · 200년 완주",

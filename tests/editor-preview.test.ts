@@ -216,9 +216,9 @@ it('renders real scene and boon previews, clears on card messages and rejects fo
     expect(
       root.querySelector(
         boon === 'bandage'
-          ? '.bandage-slot'
+          ? '.sist-slot .bandage-slot'
           : boon === 'blindfold'
-          ? '.blindfold-slot'
+          ? '.sist-slot .blindfold-slot'
           : `.status-icon[data-boon="${boon}"]`,
       ),
     ).not.toBeNull();
@@ -394,7 +394,8 @@ it('equips preview item messages and resets them on the next card message', () =
     }
   }
   send([], 'held');
-  expect(root.querySelector('.blindfold-slot b')?.textContent).toBe('1');
+  expect(root.querySelector('.sist-slot .blindfold-slot')).not.toBeNull();
+  expect(root.querySelector('.blindfold-slot b')).toBeNull();
   expect(root.querySelector('[data-blindfold]')).toBeNull();
   for (const gauge of ['sugar', 'people', 'faith', 'erpin']) {
     send([], gauge);

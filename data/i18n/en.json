@@ -218,7 +218,7 @@
         "desc": "When a gauge would turn dangerous, the change is softened a little."
       },
       "bandage": {
-        "name": "All-Purpose Bandage",
+        "name": "Single-Use Bandage",
         "short": "Bandage",
         "desc": "Stick it on one resource to pull it back toward the middle."
       }
@@ -405,6 +405,7 @@
     },
     "options": {
       "title": "Options",
+      "master": "Master",
       "sfx": "Sound effects",
       "bgm": "Music",
       "bgmNote": "Music: \"Town Theme RPG\" by cynicmusic (CC0)",
@@ -442,7 +443,7 @@
       "next": "Next",
       "prev": "Back",
       "done": "Start signing",
-      "skip": "Skip",
+      "skip": "Home",
       "steps": [
         {
           "title": "Signing Documents",
@@ -510,7 +511,9 @@
       "itemKinds": {
         "passive": "Passive",
         "active": "Active"
-      }
+      },
+      "fold": "Hide the explanation",
+      "unfold": "Show the explanation"
     },
     "clear": {
       "apprentice": "Apprentice · 200 years cleared",
@@ -1861,9 +1864,9 @@
     },
     "special_sist_shop": {
       "title": "Sist's Stall",
-      "text": "Hehe, it's a deal, boss! Now, what'll it be? Two picks today: a mysterious blindfold they say came from outer space, or an all-purpose bandage that fixes anything you stick it on! For real, hehe.",
+      "text": "Hehe, it's a deal, boss! Now, what'll it be? Two picks today: a mysterious blindfold they say came from outer space, or a single-use bandage that fixes anything you stick it on! For real, hehe.",
       "reject": "Blindfold",
-      "approve": "All-Purpose Bandage"
+      "approve": "Single-Use Bandage"
     },
     "special_strange_card": {
       "title": "Wild Card",

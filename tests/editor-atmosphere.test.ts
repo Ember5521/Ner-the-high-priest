@@ -103,7 +103,7 @@ it('applies year defaults, remembers manual years per card and renders slider ch
   for (const value of ['held', 'sugar', 'people', 'faith', 'erpin', '']) {
     blindfold.value = value;
     blindfold.dispatchEvent(new Event('change', { bubbles: true }));
-    expect(!!root.querySelector('.blindfold-slot')).toBe(!!value);
+    expect(!!root.querySelector('.sist-slot .blindfold-slot')).toBe(!!value);
     expect(
       root.querySelector('[data-blindfold]')?.getAttribute('data-gauge'),
     ).toBe(value && value !== 'held' ? value : undefined);

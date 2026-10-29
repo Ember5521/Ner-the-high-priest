@@ -43,6 +43,7 @@ export function documentMarkup(
         ${card.blessings ? bishopChoices(card.blessings) : ''}
         <div class="seal-spot" aria-hidden="true"></div>
       </div>
+      <div class="scroll-bar" aria-hidden="true" hidden><i></i></div>
       <p class="choice-caption" aria-live="polite"></p>
       <div class="imprints" aria-hidden="true"></div>
       ${

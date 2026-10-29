@@ -29,6 +29,7 @@ import { bindTooltips } from './tooltip';
 import { bindAlbum } from './album';
 import { flyArrivals } from './bishopFly';
 import { fireScopeOnContact } from './scopeShot';
+import { bindScrollBar } from './scrollBar';
 import { canRerollDaily, nextDocument } from '../core/deck';
 import {
   processDocument,
@@ -301,6 +302,7 @@ export function mount(root: HTMLDivElement): () => void {
       runCards,
     );
     hydrateArt(root);
+    bindScrollBar(root);
     input.bind();
     root
       .querySelector('.bishop-pill')

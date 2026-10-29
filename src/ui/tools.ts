@@ -95,6 +95,11 @@ export function toolsMarkup(
   scope = 0,
   scoped = false,
   sceneOpen = false,
+  { boons = {}, blindfold, bandageDisabled = false }: {
+    boons?: State['boons'];
+    blindfold?: State['blindfold'];
+    bandageDisabled?: boolean;
+  } = {},
 ): string {
   card = localizeCard(card);
   if (card.look === 'special') card = { ...card, stamps: 'direction' };
@@ -115,13 +120,21 @@ export function toolsMarkup(
           : `${card.stamps === 'meet' && action === 'approve' ? system.ui.extendHand : action === 'scope' || named ? escape(label) : label.split(' ')[0]}`
       }</span>
     </button>`;
+  const sistItem = (id: 'bandage' | 'blindfold') => {
+    const { name, desc, short } = system.boons[id];
+    return (boons[id] ?? 0) > 0
+      ? `<button type="button" class="item-slot tray-item ${id}-slot" data-${id}-item data-tip data-tip-title="${escape(name)}" data-tip-text="${escape(desc)}" aria-label="${escape(name + ' ' + desc)}"${id === 'bandage' ? ` aria-disabled="${bandageDisabled}"` : blindfold ? ' data-placed' : ''}><span class="tool-home" aria-hidden="true"><i class="item-face"></i></span><span class="tool-name">${escape(short)}</span></button>`
+      : '';
+  };
   return `
     <div class="tools">
       ${tool('reject', named ? card.reject.label : card.stamps === 'meet' ? system.ui.handStamp : card.stamps === 'light' ? system.ui.lightStamp : card.stamps === 'direction' ? system.ui.leftStamp : card.kind === 'story' ? system.ui.approveLeftStamp : format(system.ui.stampLabel, { name: STAMP_NAME.reject }), '←')}
+      <div class="tray-slot sist-slot">${sistItem('bandage')}${sistItem('blindfold')}</div>
       <div class="axe-slot">
-        <div class="axe-pair">${tool('axe', system.ui.axeDiscard, '↓')}${bullet ? tool('bullet', system.ui.bulletFire, '↑') : ''}${scope > 0 ? tool('scope', system.boons.scope.short, 'S') : ''}</div>
+        <div class="axe-pair">${tool('axe', system.ui.axeDiscard, '↓')}</div>
         <span class="drowse" data-stack="${stack}" aria-label="${escape(format(system.ui.drowseLabel, { stack, recovery: stack ? format(system.ui.drowseRecovery, { n: left }) : '' }))}">${[0, 1, 2].map((i) => `<i${i < stack ? ' class="on"' : ''}></i>`).join('')}<small>${stack ? escape(format(system.ui.drowseShort, { stack, n: left })) : ''}</small></span>
       </div>
+      <div class="tray-slot xion-slot">${bullet ? tool('bullet', system.ui.bulletFire, '↑') : ''}${scope > 0 ? tool('scope', system.boons.scope.short, 'S') : ''}</div>
       ${tool('approve', named ? card.approve.label : card.stamps === 'meet' ? system.ui.handStamp : card.stamps === 'light' ? system.ui.lightStamp : card.stamps === 'direction' ? system.ui.rightStamp : card.kind === 'story' ? system.ui.approveRightStamp : format(system.ui.stampLabel, { name: STAMP_NAME.approve }), '→')}
     </div>`;
 }

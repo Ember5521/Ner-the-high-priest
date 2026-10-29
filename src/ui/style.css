@@ -538,6 +538,28 @@ p {
   font-size: 15px;
   line-height: 1.65;
   word-break: keep-all;
+  /* the paper draws its own scrollbar (.scroll-bar) so it shows on phones too */
+  scrollbar-width: none;
+}
+.body-text::-webkit-scrollbar {
+  display: none;
+}
+/* a long letter's scrollbar: a small square coffee-brown thumb on a faint
+   track between the paper's inner rule and the text (scrollBar.ts) */
+.scroll-bar {
+  position: absolute;
+  right: 9px;
+  width: 5px;
+  background: rgba(74, 53, 46, 0.12);
+  pointer-events: none;
+}
+.scroll-bar[hidden] {
+  display: none;
+}
+.scroll-bar i {
+  display: block;
+  width: 100%;
+  background: var(--desk, #4a352e);
 }
 .seal-spot {
   position: absolute;
@@ -728,7 +750,8 @@ p {
 }
 .drowse {
   position: absolute;
-  inset: -16px 0 -16px;
+  /* the recovery count hangs just under the axe's name, inside the tray */
+  inset: -16px 0 -10px;
   display: grid;
   grid-template-columns: repeat(3, auto);
   grid-template-rows: auto 1fr auto;
@@ -737,10 +760,6 @@ p {
   column-gap: 2px;
   pointer-events: none;
   white-space: nowrap;
-}
-/* with the 마탄 beside it the axe sits left of the pair's centre; the Zs follow it */
-.axe-slot:has(.tool.bullet) .drowse {
-  translate: -33px 0;
 }
 .drowse i {
   grid-row: 1;
@@ -2292,26 +2311,29 @@ p {
   filter: grayscale(1);
   cursor: not-allowed;
 }
-/* the wildcard lives on the paper itself, bottom centre: tap once to aim, again to swap */
+/* the wildcard lives on the paper itself, bottom centre: tap once to aim, again to swap.
+   Face and name sit side by side, so it takes one short row from the letter */
 .tool.paper-alice {
   position: absolute;
   left: 50%;
-  bottom: 10px;
+  bottom: 9px;
   z-index: 2;
-  gap: 2px;
-  padding: 2px 6px;
+  flex-direction: row;
+  gap: 4px;
+  padding: 2px 6px 2px 2px;
   transform: translateX(-50%);
   cursor: pointer;
 }
 .paper-alice .alice-face {
-  width: 54px;
-  height: 54px;
+  width: 40px;
+  height: 40px;
 }
 .paper-alice .tool-name {
-  font-size: 12.5px;
+  font-size: 13px;
+  white-space: nowrap;
 }
 .document:has(.paper-alice) .paper-content {
-  padding-bottom: 84px;
+  padding-bottom: 52px;
 }
 
 /* Linua's rewind prompt: two choices */
@@ -2653,64 +2675,52 @@ p {
    bottom), so the stamps keep a gutter on both sides and sit a little higher. When the
    axe, the bullets and Alice share the row, the faces shrink so nothing leaves the screen. */
 @media (max-width: 759px), (max-aspect-ratio: 999/1000) {
-  /* phones: the hall is zoomed out (sized by the stage's height, smaller than
-     on PC) so the throne, both doorways and the windows show around the
-     paper, with the floor resting on the tray */
+  /* phones: palace-tall.svg is the hall with its floor drawn further toward
+     the viewer, so it fills the whole stage down to the tray with no bare band */
   .stage {
-    background-size: auto, var(--hall-size, auto 68%);
-    background-position: 0 0, center bottom var(--hall-lift, 200px);
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(112, 52, 54, calc(var(--era, 0) * 0.4)),
+        rgba(196, 112, 64, calc(var(--era, 0) * 0.32)) 60%,
+        rgba(140, 70, 46, calc(var(--era, 0) * 0.42))
+      ),
+      url('./palace-tall.svg') center bottom / var(--hall-size, auto 100%) no-repeat var(--bg);
   }
   /* the tray fills the bottom of the screen: full width, bigger tools, and
      it sits right on the bottom band so no bare desk is left under it */
   .stage {
     padding-bottom: 0;
   }
+  /* once the stamp hint has been learned it gives its row back, so the tray
+     sits lower */
+  .hint.hint-done {
+    display: none;
+  }
+  /* and a slimmer band under it, still clear of the system gesture bar */
+  .desk {
+    border-bottom-width: max(env(safe-area-inset-bottom), 30px);
+  }
   .tools {
     width: calc(100% - 20px);
     margin-bottom: 8px;
-    padding: 28px 14px 16px;
+    padding: 28px 14px 24px;
   }
   .tool-home .stamp-face {
-    width: clamp(62px, 19vw, 80px);
-    height: clamp(62px, 19vw, 80px);
+    width: clamp(52px, 15vw, 64px);
+    height: clamp(52px, 15vw, 64px);
   }
   /* the axe and the bullet share the stamps' height so all four names line up */
   .tools .tool-home .axe-face {
-    height: clamp(62px, 19vw, 80px);
-    width: calc(clamp(62px, 19vw, 80px) * 0.76);
+    height: clamp(52px, 15vw, 64px);
+    width: calc(clamp(52px, 15vw, 64px) * 0.76);
   }
   .tools .tool.bullet .tool-home,
   .tools .tool.scope .tool-home {
-    height: clamp(62px, 19vw, 80px);
+    height: clamp(52px, 15vw, 64px);
   }
   .tools .tool-name {
-    font-size: 15px;
-  }
-  .tools .tool.scope .axe-face {
-    width: clamp(38px, 11vw, 50px);
-    height: clamp(44px, 13vw, 58px);
-  }
-  .axe-pair:has(> .tool:nth-child(3)) {
-    gap: 0;
-  }
-  .axe-pair:has(> .tool:nth-child(3)) .tool {
-    padding-inline: 2px;
-  }
-  .axe-pair:has(> .tool:nth-child(3)) .tool.axe .axe-face {
-    width: clamp(40px, 12vw, 56px);
-    height: clamp(53px, 15.8vw, 74px);
-  }
-  .axe-pair:has(> .tool:nth-child(3)) .tool.bullet .axe-face {
-    width: clamp(32px, 9.5vw, 42px);
-    height: clamp(44px, 13vw, 58px);
-  }
-  .axe-pair:has(> .tool:nth-child(3)) .alice-face {
-    width: clamp(44px, 13vw, 66px);
-    height: clamp(44px, 13vw, 66px);
-  }
-  .axe-pair:has(> .tool:nth-child(3)) .tool-name {
-    font-size: 12px;
-    letter-spacing: 0;
+    font-size: 14px;
   }
 }
 /* ---------- wide screens: the tools sit in a wooden tray under the document ---------- */
@@ -2765,7 +2775,7 @@ p {
     width: min(100vw - 180px, 640px);
     align-items: end;
     column-gap: 18px;
-    padding: 30px 22px 24px;
+    padding: 30px 22px 30px;
   }
   .tools > .tool.reject {
     justify-self: start;
@@ -3697,9 +3707,15 @@ p {
   font-family: var(--display);
   font-size: 15px;
 }
-.preferences-card button:hover,
-.tutorial-card button:hover {
-  background: var(--bg);
+@media (hover: hover) {
+  .preferences-card button:hover,
+  .tutorial-card button:hover {
+    background: var(--bg);
+  }
+  .card-actions .tutorial-next:hover,
+  .card-actions .tutorial-accept:hover {
+    background: #4a3d35;
+  }
 }
 .preferences-card [data-close] {
   display: block;
@@ -3770,6 +3786,36 @@ p {
 .card-actions .tutorial-accept {
   background: var(--ink);
   color: var(--paper);
+}
+/* the fold button: a small chevron in the card's top-right corner */
+.tutorial-card .tutorial-fold {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 50%;
+}
+.tutorial-fold svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: rotate 0.15s;
+}
+.preferences-overlay[data-folded] .tutorial-fold svg {
+  rotate: 180deg;
+}
+/* the folded card keeps its fold button clear of the title */
+.preferences-overlay[data-folded] .tutorial-card .tutorial-fold {
+  top: 50%;
+  translate: 0 -50%;
 }
 .tutorial-demo {
   position: absolute;
@@ -5055,7 +5101,7 @@ p {
 @media (min-width: 760px) and (min-aspect-ratio: 1/1) and (max-height: 820px) {
   .tools {
     margin-top: 22px;
-    padding: 26px 22px 18px;
+    padding: 26px 22px 26px;
   }
   .tools .stamp-face {
     width: 80px;
@@ -5257,17 +5303,20 @@ p {
 /* while a stamp or the axe is lifted (or aimed by key), and while the action
    it started plays out, the card folds to its title so it never covers the
    paper; it opens again with the result */
-.preferences-overlay:has(.tutorial-demo .tool.lifted, .tutorial-demo .tool.aimed) .tutorial-card > :not(h2),
-.preferences-overlay[data-playing] .tutorial-card > :not(h2) {
+.preferences-overlay:has(.tutorial-demo .tool.lifted, .tutorial-demo .tool.aimed) .tutorial-card > :not(h2, .tutorial-fold),
+.preferences-overlay[data-playing] .tutorial-card > :not(h2, .tutorial-fold),
+.preferences-overlay[data-folded] .tutorial-card > :not(h2, .tutorial-fold) {
   display: none;
 }
 .preferences-overlay:has(.tutorial-demo .tool.lifted, .tutorial-demo .tool.aimed) .tutorial-card,
-.preferences-overlay[data-playing] .tutorial-card {
+.preferences-overlay[data-playing] .tutorial-card,
+.preferences-overlay[data-folded] .tutorial-card {
   padding-block: 8px;
   opacity: 0.85;
 }
 .preferences-overlay:has(.tutorial-demo .tool.lifted, .tutorial-demo .tool.aimed) .tutorial-card h2,
-.preferences-overlay[data-playing] .tutorial-card h2 {
+.preferences-overlay[data-playing] .tutorial-card h2,
+.preferences-overlay[data-folded] .tutorial-card h2 {
   margin: 0;
   font-size: 16px;
 }
@@ -5375,71 +5424,6 @@ p {
 .gauges {
   --gauge-w: 52px;
 }
-/* a held item hangs below its gauge on a small tab of the bar's colour, under
-   the lingering effect tags: the bandage under 민심, the blindfold under 신앙
-   (the 2nd and 3rd of four gauges spread edge to edge). The tab starts inside
-   the bar, so it reads as part of it even where it hangs over the desk. */
-.blindfold-slot, .bandage-slot {
-  --tone: var(--item-blindfold);
-  position: absolute;
-  left: calc(var(--gauge-w) / 2 + (100% - var(--gauge-w)) / 3);
-  top: calc(100% + 11px);
-  z-index: 6;
-  display: flex;
-  padding: 2px 5px 5px;
-  background: var(--bar);
-  border: 0;
-  border-radius: 0 0 8px 8px;
-  color: var(--tone);
-  cursor: grab;
-  transform: translateX(-50%);
-  touch-action: none;
-}
-/* an item you can pick up: a flat filled token in its colour */
-.item-tag {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  height: 19px;
-  padding: 0 7px 0 5px;
-  background: color-mix(in srgb, var(--tone) 22%, var(--bar));
-  border: 1.5px solid var(--tone);
-  border-radius: 999px;
-}
-.item-tag b {
-  color: #fff6e6;
-}
-.blindfold-slot:not([aria-disabled='true']):hover .item-tag,
-.bandage-slot:not([aria-disabled='true']):hover .item-tag {
-  background: color-mix(in srgb, var(--tone) 38%, var(--bar));
-}
-/* not usable right now (every gauge already at the centre): a flat outline */
-.bandage-slot[aria-disabled='true'] .item-tag {
-  background: none;
-  box-shadow: none;
-}
-.blindfold-slot i, .bandage-slot i {
-  width: 15px;
-  height: 15px;
-  background: currentColor;
-  -webkit-mask: var(--glyph-blindfold) center / contain no-repeat;
-  mask: var(--glyph-blindfold) center / contain no-repeat;
-}
-.blindfold-slot b, .bandage-slot b {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: 11px;
-}
-/* once it is on a gauge the tag stays behind as the place to drop it back */
-.gauges:has(.gauge[data-blindfold]) .blindfold-slot .item-tag {
-  background: none;
-  border-style: dashed;
-  box-shadow: none;
-  opacity: 0.6;
-}
-.gauges:has(.gauge[data-blindfold]) .blindfold-slot i {
-  opacity: 0.4;
-}
 /* tied over a gauge: the band sits across the icon and the icon goes quiet */
 .gauge[data-blindfold] .resource-icon {
   opacity: 0.45;
@@ -5464,10 +5448,6 @@ p {
     scale: 1.4 1;
     opacity: 0;
   }
-}
-.blindfold-slot.dragging,
-.bandage-slot.dragging {
-  background: transparent;
 }
 .blindfold-slot.dragging,
 .bandage-slot.dragging,
@@ -5532,7 +5512,8 @@ p {
   --item: var(--item-understudy);
   --glyph: var(--glyph-understudy);
 }
-.tool[data-item='mend'] {
+.tool[data-item='mend'],
+.tool[data-item='bandage'] {
   --item: var(--item-mend);
   --glyph: var(--glyph-mend);
 }
@@ -5650,27 +5631,8 @@ p {
   visibility: hidden;
 }
 
-/* the reward coin's pale peach gets lost on the dark bar; the held tag is
-   a stronger orange so it reads as clearly as the blindfold's green */
-.bandage-slot {
-  --tone: #ffa55e;
-}
-.bandage-slot i {
-  -webkit-mask: var(--glyph-mend) center / contain no-repeat;
-  mask: var(--glyph-mend) center / contain no-repeat;
-}
-/* only the token fades when it can't be used; the tab behind it stays solid */
-.bandage-slot[aria-disabled='true'] {
-  cursor: default;
-}
-.bandage-slot[aria-disabled='true'] .item-tag {
-  opacity: 0.55;
-}
-.blindfold-slot {
-  left: calc(var(--gauge-w) / 2 + (100% - var(--gauge-w)) * 2 / 3);
-}
 /* dragging the bandage lights the gauge under it in the bandage colour */
-.gauges:has(.bandage-slot.dragging) .gauge.blindfold-target .resource-icon {
+.desk:has(.bandage-slot.dragging) .gauge.blindfold-target .resource-icon {
   filter: drop-shadow(0 0 6px var(--item-mend));
 }
 
@@ -5776,5 +5738,126 @@ p {
 @media (prefers-reduced-motion: reduce) {
   .scope-reticle {
     animation: none;
+  }
+}
+
+/* ---------- the tray: five fixed places ----------
+   반려 | Sist's item | axe | Xion's item | 승인. An empty place keeps its
+   width, so the axe stays in the middle whatever the player holds. */
+.tools {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) auto repeat(2, minmax(0, 1fr));
+  width: min(100%, 420px);
+}
+.tools > .tool.reject,
+.tools > .tool.approve {
+  justify-self: center;
+}
+.tray-slot {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-width: 0;
+}
+.tools .tool-name {
+  text-align: center;
+  word-break: keep-all;
+}
+/* Sist's bandage or blindfold: picked up and dragged onto a gauge */
+.tray-item {
+  --tone: #3f8f2a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 4px;
+  background: none;
+  border: 0;
+  color: var(--tone);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.tray-item .tool-home {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 74px;
+}
+.tray-item .item-face {
+  display: block;
+  width: 54px;
+  height: 54px;
+}
+/* the blindfold: the green alien sunglasses in full colour */
+.blindfold-slot .item-face {
+  background: var(--glyph-blindfold-band) center / contain no-repeat;
+}
+/* the bandage: its glyph inked in a deep orange that reads on the cream tray */
+.bandage-slot {
+  --tone: #c0612a;
+}
+.bandage-slot .item-face {
+  background: #e07b36;
+  -webkit-mask: var(--glyph-mend) center / contain no-repeat;
+  mask: var(--glyph-mend) center / contain no-repeat;
+}
+@media (hover: hover) {
+  .tray-item:not([aria-disabled='true']):hover .tool-home {
+    transform: translateY(-3px);
+  }
+}
+/* not usable right now (every gauge already at the centre) */
+.tray-item[aria-disabled='true'] {
+  cursor: default;
+}
+.tray-item[aria-disabled='true'] .item-face {
+  opacity: 0.4;
+  filter: grayscale(1);
+}
+/* while an item is carried, its hover tip gets out of the way */
+.desk:has(.tray-item.dragging) .tip {
+  display: none;
+}
+/* tied over a gauge: only a dashed outline stays behind, to drop it back on */
+.blindfold-slot[data-placed] .item-face {
+  background: none;
+  outline: 1.5px dashed var(--soft);
+  outline-offset: -8px;
+  border-radius: 50%;
+}
+@media (max-width: 759px), (max-aspect-ratio: 999/1000) {
+  .tools {
+    padding-inline: 8px;
+  }
+  .tray-item .tool-home {
+    height: clamp(52px, 15vw, 64px);
+  }
+  .tray-item .item-face {
+    width: clamp(40px, 12vw, 50px);
+    height: clamp(40px, 12vw, 50px);
+  }
+  .tools .tool.bullet .axe-face {
+    width: clamp(32px, 9.5vw, 42px);
+    height: clamp(44px, 13vw, 58px);
+  }
+  .tools .tool.scope .axe-face {
+    width: clamp(38px, 11vw, 50px);
+    height: clamp(44px, 13vw, 58px);
+  }
+  .tools .tool-name,
+  .tray-item .tool-name {
+    font-size: 13px;
+    letter-spacing: 0;
+  }
+}
+@media (min-width: 760px) and (min-aspect-ratio: 1/1) {
+  .tools {
+    width: min(100vw - 120px, 800px);
+  }
+  .tray-item .item-face {
+    width: 64px;
+    height: 64px;
   }
 }

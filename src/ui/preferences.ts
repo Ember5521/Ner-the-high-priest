@@ -6,8 +6,8 @@ import {
   loadSettings,
   saveSettings,
 } from '../save/storage';
-import { playSound, setSoundEnabled, setSoundVolume } from './sound';
-import { setMusicEnabled, setMusicVolume } from './music';
+import { playSound, setMasterEnabled, setMasterVolume, setSoundEnabled, setSoundVolume } from './sound';
+import { refreshMusicVolume, setMusicEnabled, setMusicVolume } from './music';
 
 // speaker for the mute buttons; the waves give way to a cross when muted (CSS)
 const MUTE_ICON =
@@ -17,6 +17,7 @@ import { art, artUrl, escape, hydrateArt } from './art';
 // items that help just by being held (the rest are used by hand)
 const PASSIVE_ITEMS = new Set(['understudy', 'hyean', 'intuition', 'stitch', 'rewind']);
 import { deskMarkup } from './desk';
+import { bindScrollBar } from './scrollBar';
 import { animateGauges, updateGaugePreview } from './gauges';
 import { tutorialState } from './title';
 import { createInput } from './input';
@@ -113,7 +114,7 @@ export function openOptions(
     root,
     `<section class="paper preferences-card" role="dialog" aria-modal="true" aria-labelledby="options-title">
     <h2 id="options-title">${escape(c.title)}</h2>
-    <div class="volume-rows">${(['sfx', 'bgm'] as const).map((kind) => `<label>${escape(c[kind])}<input data-volume="${kind}" type="range" min="0" max="100" value="${settings[kind]}"><output>${settings[kind]}</output><button type="button" class="mute" data-mute="${kind}" aria-pressed="${settings[kind] === 0}" aria-label="${escape(format(settings[kind] === 0 ? c.unmute : c.mute, { name: c[kind] }))}" title="${escape(format(settings[kind] === 0 ? c.unmute : c.mute, { name: c[kind] }))}">${MUTE_ICON}</button></label>`).join('')}</div>
+    <div class="volume-rows">${(['master', 'sfx', 'bgm'] as const).map((kind) => `<label>${escape(c[kind])}<input data-volume="${kind}" type="range" min="0" max="100" value="${settings[kind]}"><output>${settings[kind]}</output><button type="button" class="mute" data-mute="${kind}" aria-pressed="${settings[kind] === 0}" aria-label="${escape(format(settings[kind] === 0 ? c.unmute : c.mute, { name: c[kind] }))}" title="${escape(format(settings[kind] === 0 ? c.unmute : c.mute, { name: c[kind] }))}">${MUTE_ICON}</button></label>`).join('')}</div>
     <small class="bgm-credit">${escape(c.bgmNote)}</small>
     <div class="language-row"><span id="language-label">${escape(c.language)}</span><div class="language-flags" role="radiogroup" aria-labelledby="language-label">${(['ko', 'en', 'ja'] as const).map((lang) => `<span><button type="button" class="flag" data-lang="${lang}" role="radio" aria-checked="${settings.language === lang}" aria-label="${escape(c.languages[lang])}" title="${escape(c.languages[lang])}">${FLAGS[lang]}</button><span class="flag-name">${escape(c.languages[lang])}</span></span>`).join('')}</div></div>
     ${document.fullscreenEnabled ? `<label>${escape(c.fullscreen)}<button type="button" class="fullscreen-toggle"></button></label><small>${escape(c.fullscreenNote)}</small>` : ''}
@@ -151,7 +152,15 @@ export function openOptions(
       });
   }
   // a slider and its mute button always agree: 0 shows as muted
-  const syncVolume = (kind: 'sfx' | 'bgm', value: number) => {
+  type Volume = 'master' | 'sfx' | 'bgm';
+  const setVolume = (kind: Volume, value: number) => {
+    if (kind === 'bgm') setMusicVolume(value);
+    else if (kind === 'master') {
+      setMasterVolume(value);
+      refreshMusicVolume();
+    } else setSoundVolume(value);
+  };
+  const syncVolume = (kind: Volume, value: number) => {
     const input = overlay.querySelector<HTMLInputElement>(`[data-volume="${kind}"]`)!;
     input.value = String(value);
     input.nextElementSibling!.textContent = String(value);
@@ -163,17 +172,19 @@ export function openOptions(
   };
   overlay.querySelectorAll<HTMLInputElement>('[data-volume]').forEach((input) =>
     input.addEventListener('input', () => {
-      if (input.dataset.volume === 'bgm') setMusicVolume(Number(input.value));
-      else setSoundVolume(Number(input.value));
-      syncVolume(input.dataset.volume as 'sfx' | 'bgm', Number(input.value));
+      setVolume(input.dataset.volume as Volume, Number(input.value));
+      syncVolume(input.dataset.volume as Volume, Number(input.value));
     }),
   );
   overlay.querySelectorAll<HTMLButtonElement>('[data-mute]').forEach((button) =>
     button.addEventListener('click', () => {
-      const kind = button.dataset.mute as 'sfx' | 'bgm';
+      const kind = button.dataset.mute as Volume;
       const on = loadSettings()[kind] === 0;
       if (kind === 'bgm') setMusicEnabled(on);
-      else setSoundEnabled(on);
+      else if (kind === 'master') {
+        setMasterEnabled(on);
+        refreshMusicVolume();
+      } else setSoundEnabled(on);
       syncVolume(kind, loadSettings()[kind]);
     }),
   );
@@ -254,7 +265,7 @@ export function openTutorial(root: HTMLElement, startStep = 0): void {
       : action === 'axe');
   const overlay = modal(
     root,
-    `<div class="tutorial-demo"></div><div class="tutorial-shade"></div><section class="paper tutorial-card" role="dialog" aria-modal="true" aria-labelledby="tutorial-title"><h2 id="tutorial-title"></h2><p class="tutorial-text"></p><div class="tutorial-items"></div><p class="tutorial-try" role="status"></p><div class="tutorial-toggle" data-toggle="era"></div><div class="card-actions"><button class="tutorial-prev">${escape(c.prev)}</button><button class="tutorial-next"></button><button data-close>${escape(c.skip)}</button></div></section>`,
+    `<div class="tutorial-demo"></div><div class="tutorial-shade"></div><section class="paper tutorial-card" role="dialog" aria-modal="true" aria-labelledby="tutorial-title"><button type="button" class="tutorial-fold" aria-expanded="true" aria-label="${escape(c.fold)}" title="${escape(c.fold)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></button><h2 id="tutorial-title"></h2><p class="tutorial-text"></p><div class="tutorial-items"></div><p class="tutorial-try" role="status"></p><div class="tutorial-toggle" data-toggle="era"></div><div class="card-actions"><button class="tutorial-prev">${escape(c.prev)}</button><button class="tutorial-next"></button><button data-close>${escape(c.skip)}</button></div></section>`,
     () => {
       clearTimeout(timer);
       clearTimeout(sleepTimer);
@@ -265,6 +276,16 @@ export function openTutorial(root: HTMLElement, startStep = 0): void {
     },
   );
   overlay.dataset.dialog = 'tutorial';
+  // the player can fold the explanation away by hand; it stays folded across
+  // steps until they open it again
+  const fold = overlay.querySelector<HTMLButtonElement>('.tutorial-fold')!;
+  fold.addEventListener('click', () => {
+    const folded = overlay.toggleAttribute('data-folded');
+    const label = folded ? c.unfold : c.fold;
+    fold.setAttribute('aria-expanded', String(!folded));
+    fold.setAttribute('aria-label', label);
+    fold.title = label;
+  });
   const demo = overlay.querySelector<HTMLElement>('.tutorial-demo')!;
   const input = createInput(demo, {
     get busy() {
@@ -313,6 +334,7 @@ export function openTutorial(root: HTMLElement, startStep = 0): void {
       : undefined;
     input.reset();
     demo.innerHTML = deskMarkup(state);
+    bindScrollBar(demo);
     overlay.querySelector<HTMLElement>('.tutorial-card')!.inert = !!state.scene;
     demo.querySelector('.scene-next')?.addEventListener('click', () => {
       state = dismissScene(state);
@@ -477,7 +499,10 @@ export function openTutorial(root: HTMLElement, startStep = 0): void {
       .map((id) => {
         const boon = system.boons[id as keyof typeof system.boons];
         const kind = PASSIVE_ITEMS.has(id) ? 'passive' : 'active';
-        const glyph = artUrl(art.boons[id] ?? art.boons.mend);
+        // absolute, like maskUrl: a relative url() in a custom property resolves
+        // against the built stylesheet's folder and misses the image
+        const path = artUrl(art.boons[id] ?? art.boons.mend);
+        const glyph = path ? new URL(path, document.baseURI).href : null;
         return `<span class="tutorial-item" data-item="${id}" data-kind="${kind}"><i aria-hidden="true" style="--glyph:url('${glyph ?? ''}')"></i><b>${escape(boon.short)}</b><small>${escape(c.itemKinds[kind])}</small></span>`;
       })
       .join('');

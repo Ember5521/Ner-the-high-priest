@@ -113,11 +113,15 @@ export function emptyCollection(): Collection {
 
 /** Sound effects and music start at 75% until the player changes them. */
 export const DEFAULT_VOLUME = 75;
+/** The master level scales everything; 100 is the loudness before it existed. */
+export const DEFAULT_MASTER = 50;
 export interface Settings {
   sfx: number;
   lastSfx: number;
   bgm: number;
   lastBgm: number;
+  master: number;
+  lastMaster: number;
   /** The first-visit 'turn the music on?' question has been answered. */
   musicAsked: boolean;
   language: Lang;
@@ -129,6 +133,8 @@ let settings: Settings = {
   lastSfx: DEFAULT_VOLUME,
   bgm: 0,
   lastBgm: DEFAULT_VOLUME,
+  master: DEFAULT_MASTER,
+  lastMaster: DEFAULT_MASTER,
   musicAsked: false,
   language: defaultLanguage(),
   tutorialSeen: false,
@@ -151,6 +157,8 @@ export function loadSettings(): Settings {
       // music stays muted until the first-visit question is answered
       bgm: value.musicAsked === true ? volume(value.bgm, DEFAULT_VOLUME) : 0,
       lastBgm: Math.max(1, volume(value.lastBgm, DEFAULT_VOLUME)),
+      master: volume(value.master, DEFAULT_MASTER),
+      lastMaster: Math.max(1, volume(value.lastMaster, DEFAULT_MASTER)),
       musicAsked: value.musicAsked === true,
       language: ['ko', 'en', 'ja'].includes(value.language)
         ? value.language
@@ -169,15 +177,19 @@ function stampCount(value: unknown): number {
     : 0;
 }
 export function saveSettings(
-  value: Omit<Settings, 'stampsSeen' | 'lastBgm' | 'musicAsked'> & {
+  value: Omit<Settings, 'stampsSeen' | 'lastBgm' | 'musicAsked' | 'master' | 'lastMaster'> & {
     stampsSeen?: number;
     lastBgm?: number;
+    master?: number;
+    lastMaster?: number;
     musicAsked?: boolean;
   },
 ): void {
   settings = {
     ...value,
     lastBgm: value.lastBgm ?? settings.lastBgm,
+    master: value.master ?? settings.master,
+    lastMaster: value.lastMaster ?? settings.lastMaster,
     musicAsked: value.musicAsked ?? settings.musicAsked,
     stampsSeen: stampCount(value.stampsSeen),
   };

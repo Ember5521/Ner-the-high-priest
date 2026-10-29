@@ -1901,7 +1901,8 @@ describe('boon UI', () => {
         [...find('.axe-pair').children].map(
           (el) => (el as HTMLElement).dataset.action,
         ),
-      ).toEqual(['axe', 'bullet']);
+      ).toEqual(['axe']);
+      expect(find('.xion-slot .bullet')).not.toBeNull();
       const button = find('.tool.alice');
       pointer(button, 'pointerdown', 30, 600);
       expect(find('.ghost.alice .alice-face').innerHTML).toBe(

@@ -58,6 +58,7 @@ export function eligible(card: Card, state: State): boolean {
       state.variantPools[card.variant.group] === card.variant.pool) &&
     (c?.flagsAll ?? []).every((f) => state.flags.includes(f)) &&
     (c?.flagsNone ?? []).every((f) => !state.flags.includes(f)) &&
+    (c?.boonsNone ?? []).every((boon) => !state.boons[boon as keyof State['boons']]) &&
     state.year >= (c?.minYear ?? 0) &&
     state.year <= (c?.maxYear ?? Infinity) &&
     Object.entries(c?.gauges ?? {}).every(([key, range]) => {
@@ -378,7 +379,9 @@ export function nextDocument(state: State, cards: Card[], rng: RNG): State {
       c.trigger?.from !== undefined &&
       !state.seen.includes(c.id) &&
       dueYear(c, state) <= state.year &&
-      !eligible(c, state),
+      (c.conditions?.boonsNone?.length
+        ? state.year > c.trigger.to!
+        : !eligible(c, state)),
   );
   if (skipped.length)
     state = { ...state, seen: [...state.seen, ...skipped.map((c) => c.id)] };

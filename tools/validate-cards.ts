@@ -306,7 +306,7 @@ export function validateCards(
       if (!object(c.conditions)) fail('invalid conditions');
       else
         for (const [key, value] of Object.entries(c.conditions)) {
-          if (key === 'flagsAll' || key === 'flagsNone') {
+          if (key === 'flagsAll' || key === 'flagsNone' || key === 'boonsNone') {
             if (!strings(value)) fail('invalid condition flags');
           } else if (key === 'minYear' || key === 'maxYear') {
             if (!Number.isInteger(value) || Number(value) < 0)

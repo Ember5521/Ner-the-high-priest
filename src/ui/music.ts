@@ -19,7 +19,8 @@ function ramp(volume: number, seconds: number): void {
   gain.gain.cancelScheduledValues(ctx.currentTime);
   gain.gain.setValueAtTime(gain.gain.value, ctx.currentTime);
   // MUSIC_GAIN keeps the track under the stamps at any slider level
-  gain.gain.linearRampToValueAtTime((volume / 100) ** 2 * MUSIC_GAIN, ctx.currentTime + seconds);
+  const masterLevel = (loadSettings().master / 100) ** 2;
+  gain.gain.linearRampToValueAtTime((volume / 100) ** 2 * masterLevel * MUSIC_GAIN, ctx.currentTime + seconds);
 }
 
 function play(): void {
@@ -66,6 +67,11 @@ export function setMusicVolume(volume: number): void {
     element?.pause();
     playing = false;
   } else play();
+}
+
+/** Re-applies the music level after the master slider moved. */
+export function refreshMusicVolume(): void {
+  if (gain) ramp(loadSettings().bgm, 0.2);
 }
 
 export function pauseMusic(): void {

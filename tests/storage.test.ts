@@ -32,6 +32,8 @@ it('validates settings and keeps session preferences when storage is blocked', (
     lastSfx: 35,
     bgm: 20,
     lastBgm: 20,
+    master: 40,
+    lastMaster: 40,
     musicAsked: true,
     language: 'ko' as const,
     tutorialSeen: true,

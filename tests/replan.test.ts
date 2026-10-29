@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { readFileSync } from 'node:fs';
-import { beforeEach, expect, it } from 'vitest';
+import { beforeEach, expect, it, vi } from 'vitest';
 import raw from '../data/cards/m1.json';
 import { initialState, recordSnapshot, type Card } from '../src/core/state';
 import {
@@ -12,7 +12,7 @@ import {
   sleepCoin,
   useBandage,
 } from '../src/core/loop';
-import { nextDocument } from '../src/core/deck';
+import { eligible, nextDocument } from '../src/core/deck';
 import { bishopDeck } from '../src/core/bishop';
 import {
   fillForm,
@@ -292,8 +292,9 @@ it('renders blindfold placement, mend marks and a scope status tip', () => {
     blindfold: 'sugar' as const,
     boons: { blindfold: 2, scope: 4 },
   };
-  root.innerHTML = gaugesMarkup(state) + boonsMarkup(state);
-  expect(root.querySelector('.blindfold-slot b')?.textContent).toBe('2');
+  root.innerHTML = deskMarkup(state);
+  expect(root.querySelector('.sist-slot .blindfold-slot[data-placed]')).not.toBeNull();
+  expect(root.querySelector('.blindfold-slot b')).toBeNull();
   expect(
     root.querySelector('[data-gauge="sugar"][data-blindfold] .blindfold-mark'),
   ).not.toBeNull();
@@ -487,7 +488,7 @@ it('renders and drags a bandage onto a gauge', async () => {
   const { createInput } = await import('../src/ui/input');
   let state = { ...initialState(), current: daily, gauges: { ...initialState().gauges, sugar: 10 }, boons: { bandage: 1 } };
   const root = document.createElement('div');
-  root.innerHTML = gaugesMarkup(state);
+  root.innerHTML = deskMarkup(state);
   document.body.append(root);
   const slot = root.querySelector<HTMLElement>('.bandage-slot')!;
   const gauge = root.querySelector<HTMLElement>('[data-gauge="sugar"]')!;
@@ -506,7 +507,7 @@ it('renders and drags a bandage onto a gauge', async () => {
   });
   input.bind();
   for (const type of ['pointerdown', 'pointermove', 'pointerup']) {
-    const event = new MouseEvent(type, { bubbles: true, clientX: 20, clientY: 20 });
+    const event = new MouseEvent(type, { bubbles: true, clientX: 20, clientY: type === 'pointerdown' ? 600 : 20 });
     Object.defineProperty(event, 'pointerId', { value: 1 });
     slot.dispatchEvent(event);
   }
@@ -514,4 +515,128 @@ it('renders and drags a bandage onto a gauge', async () => {
   expect(state.boons.bandage).toBeUndefined();
   input.dispose();
   document.elementsFromPoint = oldElements;
+});
+
+
+it('keeps five fixed tray positions and puts held items in their own slots', () => {
+  const root = document.createElement('div');
+  for (const boons of [{}, { bandage: 1, blindfold: 1, bullet: 2, scope: 3 }]) {
+    root.innerHTML = deskMarkup({ ...initialState(), current: daily, boons, blindfold: boons.blindfold ? 'sugar' : undefined });
+    const tray = root.querySelector('.tools')!;
+    expect([...tray.children].map(el => el.className)).toEqual([
+      'tool reject', 'tray-slot sist-slot', 'axe-slot', 'tray-slot xion-slot', 'tool approve',
+    ]);
+    expect(root.querySelectorAll('.topbar .item-slot')).toHaveLength(0);
+    expect(root.querySelectorAll('.axe-pair > .tool')).toHaveLength(1);
+    expect(root.querySelector('.axe-pair > .axe')).not.toBeNull();
+    expect([...root.querySelectorAll('.sist-slot > button')].map(el => el.className)).toEqual(
+      boons.bandage ? ['item-slot tray-item bandage-slot', 'item-slot tray-item blindfold-slot'] : [],
+    );
+    expect([...root.querySelectorAll('.xion-slot > .tool')].map(el => (el as HTMLElement).dataset.action)).toEqual(
+      boons.bullet ? ['bullet', 'scope'] : [],
+    );
+    expect(root.querySelector('.sist-slot .tool, .sist-slot [data-action], .sist-slot b')).toBeNull();
+    expect(!!root.querySelector('.blindfold-slot[data-placed]')).toBe(!!boons.blindfold);
+    if (boons.bandage) {
+      expect(root.querySelector('.bandage-slot')?.getAttribute('aria-disabled')).toBe('true');
+      expect(root.querySelector('.bandage-slot .tool-name')?.textContent).toBe(system.boons.bandage.short);
+      expect(root.querySelector('.blindfold-slot')?.getAttribute('aria-label')).toBe(system.boons.blindfold.name + ' ' + system.boons.blindfold.desc);
+    }
+  }
+});
+
+it.each(['bandage', 'blindfold'] as const)('defers Deal II while %s is held, then draws it within the window', (item) => {
+  const deal = find('special_sist_deal_late');
+  const held = { ...initialState(), year: 120, boons: { [item]: 1 }, blindfold: item === 'blindfold' ? 'sugar' as const : undefined, windowYears: { [deal.id]: 110 } };
+  expect(eligible(deal, held)).toBe(false);
+  const blocked = nextDocument(held, [deal, daily], () => 0);
+  expect(blocked.current?.id).toBe(daily.id);
+  expect(blocked.seen).not.toContain(deal.id);
+  const released = { ...blocked, current: null, year: 180, boons: { [item]: 0 }, blindfold: undefined };
+  expect(eligible(deal, released)).toBe(true);
+  expect(nextDocument(released, [deal, daily], () => 0).current?.id).toBe(deal.id);
+  const expired = nextDocument({ ...held, year: 181 }, [deal, daily], () => 0);
+  expect(expired.current?.id).toBe(daily.id);
+  expect(expired.seen).toContain(deal.id);
+  expect(nextDocument({ ...expired, current: null, boons: {} }, [deal, daily], () => 0).current?.id).toBe(daily.id);
+  expect(nextDocument({ ...released, year: 181 }, [deal, daily], () => 0).current?.id).toBe(daily.id);
+  const bishopDeal = bishopDeck([deal]).find(c => c.id === deal.id)!;
+  expect(bishopDeal.conditions?.boonsNone).toEqual(['blindfold', 'bandage']);
+  expect(eligible(bishopDeal, { ...held, mode: 'bishop' })).toBe(false);
+});
+
+
+it.each(['bandage', 'blindfold'] as const)('selects and drags the tray %s without lifting a stamp', async (kind) => {
+  const { createInput } = await import('../src/ui/input');
+  const root = document.createElement('div');
+  root.innerHTML = deskMarkup({ ...initialState(), current: daily, gauges: { ...initialState().gauges, sugar: 10 }, boons: { [kind]: 1 }, blindfold: kind === 'blindfold' ? 'sugar' : undefined });
+  document.body.append(root);
+  const item = root.querySelector<HTMLElement>(`.sist-slot .${kind}-slot`)!;
+  const gauge = root.querySelector<HTMLElement>('[data-gauge="people"]')!;
+  const useBandage = vi.fn();
+  const placeBlindfold = vi.fn();
+  const stamp = vi.fn();
+  const setAim = vi.fn();
+  const input = createInput(root, {
+    busy: false, sleep: 0, playing: true, aim: null, menuOpen: false, sceneOpen: false,
+    sceneKey() {}, openMenu() {}, menuKey() {}, setAim, canLift: () => true,
+    stamp, autoStamp() {}, skip() {}, useBandage, placeBlindfold,
+  });
+  input.bind();
+  const use = kind === 'bandage' ? useBandage : placeBlindfold;
+  item.click();
+  gauge.click();
+  expect(use).toHaveBeenLastCalledWith('people');
+  item.click();
+  window.dispatchEvent(new KeyboardEvent('keydown', { key: '3' }));
+  expect(use).toHaveBeenLastCalledWith('faith');
+  let captured = false;
+  const capture = (el: HTMLElement) => {
+    el.setPointerCapture = () => { captured = true; };
+    el.hasPointerCapture = () => captured;
+    el.releasePointerCapture = () => { captured = false; };
+  };
+  capture(item);
+  const oldElements = document.elementsFromPoint;
+  document.elementsFromPoint = () => [item, gauge];
+  const pointer = (el: HTMLElement, type: string, y: number) => {
+    const event = new MouseEvent(type, { bubbles: true, cancelable: true, clientX: 20, clientY: y });
+    Object.defineProperty(event, 'pointerId', { value: 1 });
+    el.dispatchEvent(event);
+  };
+  try {
+    pointer(item, 'pointerdown', 600);
+    pointer(item, 'pointermove', 20);
+    expect(item.style.translate).toBe('0px -580px');
+    expect(gauge.classList.contains('blindfold-target')).toBe(true);
+    pointer(item, 'pointerup', 20);
+    expect(use).toHaveBeenLastCalledWith('people');
+    expect(root.querySelector('.blindfold-target, .dragging')).toBeNull();
+    if (kind === 'blindfold') {
+      document.elementsFromPoint = () => [item.querySelector('.item-face')!, item.parentElement!];
+      const beforeTap = placeBlindfold.mock.calls.length;
+      pointer(item, 'pointerdown', 600);
+      pointer(item, 'pointerup', 600);
+      expect(placeBlindfold).toHaveBeenCalledTimes(beforeTap);
+      gauge.click();
+      expect(placeBlindfold).toHaveBeenLastCalledWith('people');
+      pointer(item, 'pointerdown', 600);
+      pointer(item, 'pointermove', 580);
+      pointer(item, 'pointerup', 600);
+      expect(placeBlindfold).toHaveBeenLastCalledWith();
+      const mark = root.querySelector<HTMLElement>('.blindfold-mark')!;
+      capture(mark);
+      document.elementsFromPoint = () => [item.querySelector('.item-face')!];
+      pointer(mark, 'pointerdown', 20);
+      pointer(mark, 'pointermove', 600);
+      pointer(mark, 'pointerup', 600);
+      expect(placeBlindfold).toHaveBeenLastCalledWith();
+    }
+    expect(stamp).not.toHaveBeenCalled();
+    expect(setAim).not.toHaveBeenCalled();
+  } finally {
+    input.dispose();
+    document.elementsFromPoint = oldElements;
+    root.remove();
+  }
 });
