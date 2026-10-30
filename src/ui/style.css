@@ -5867,3 +5867,37 @@ p {
     height: 64px;
   }
 }
+
+/* 혜안 or 직감 held: a forged Speaki document carries a small tag under the
+   sender, in the colour of the boon that saw through it */
+.speaki-tell {
+  --tone: #c9a24a;
+  --glyph: url('/art/boons/hyean.webp');
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 5px;
+  margin: 0 0 8px;
+  padding: 3px 10px 3px 7px;
+  background: color-mix(in srgb, var(--tone) 18%, var(--paper));
+  border: 1.5px solid var(--tone);
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+  word-break: keep-all;
+}
+.speaki-tell[data-boon='intuition'] {
+  --tone: #9b6bd6;
+  --glyph: url('/art/boons/intuition.webp');
+}
+.speaki-tell i {
+  flex: none;
+  width: 15px;
+  height: 15px;
+  background: var(--tone);
+  -webkit-mask: var(--glyph) center / contain no-repeat;
+  mask: var(--glyph) center / contain no-repeat;
+}

@@ -20,6 +20,8 @@ export function documentMarkup(
   asleep = false,
   canReroll = true,
   scoped = false,
+  // 혜안 or 직감 held: a forged Speaki document gives itself away
+  tell: 'hyean' | 'intuition' | null = null,
 ): string {
   card = card.blessings ? answerCard(card.blessings) : localizeCard(card);
   if (card.look === 'special') card = { ...card, stamps: 'direction' };
@@ -39,6 +41,7 @@ export function documentMarkup(
             <span class="sender-name">${escape(speaker.name)}</span>
           </div>
         </div>
+        ${tell && card.kind === 'speaki' ? `<p class="speaki-tell" data-boon="${tell}"><i aria-hidden="true"></i>${escape(system.ui.speakiTell[tell])}</p>` : ''}
         <p class="body-text">${escape(card.text)}</p>
         ${card.blessings ? bishopChoices(card.blessings) : ''}
         <div class="seal-spot" aria-hidden="true"></div>

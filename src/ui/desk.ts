@@ -93,7 +93,7 @@ export function deskMarkup(
       </header>
       <section class="stage" aria-label="${escape(system.ui.documentStage)}">
         ${embersMarkup(dread, finale)}
-        ${documentMarkup(card, state.boons.alice, asleep, canRerollDaily(state, cards), !!state.scoped)}
+        ${documentMarkup(card, state.boons.alice, asleep, canRerollDaily(state, cards), !!state.scoped, hasHyean(state) ? 'hyean' : (state.boons.intuition?.left ?? 0) > 0 ? 'intuition' : null)}
         ${toolsMarkup(
           card,
           state.drowse,

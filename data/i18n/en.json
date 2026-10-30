@@ -609,6 +609,10 @@
       "approve": "Approve",
       "extendHand": "Reach out",
       "alice": "Wild Card",
+      "speakiTell": {
+        "hyean": "Insight: Speaki forged this one",
+        "intuition": "Intuition: this smells like Speaki"
+      },
       "handStamp": "Hand stamp",
       "lightStamp": "Light stamp",
       "leftStamp": "Left stamp",
@@ -1456,7 +1460,7 @@
     },
     "daily_sist_rumor": {
       "title": "Hot Gossip",
-      "text": "Ohh~ Boss! I've got some piping-hot news, hehe. Just a little candy and I'll tell you everything. You'll regret it if you don't listen!",
+      "text": "Ohh~ Boss! I've got some piping-hot news, hehe. Just a little candy and I'll tell you everything. I'll even throw in word of a candy shop that just opened. Pass it on to the Queen and she'll be thrilled!",
       "reject": "No gossip, thanks.",
       "approve": "…I'll at least hear it."
     },

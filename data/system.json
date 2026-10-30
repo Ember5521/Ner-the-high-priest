@@ -840,6 +840,10 @@
     "approve": "승인",
     "extendHand": "손을 내민다",
     "alice": "와일드 카드",
+    "speakiTell": {
+      "hyean": "혜안: 스피키가 쓴 가짜 공문이에요",
+      "intuition": "직감: 아무래도 스피키가 쓴 것 같아요"
+    },
     "handStamp": "손을 내미는 도장",
     "lightStamp": "빛으로 가는 도장",
     "leftStamp": "왼쪽 도장",
