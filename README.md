@@ -1,9 +1,9 @@
-# 사제장 네르 · Ner the High Priest
+# 사제장 네르 · Ner the High Priestess
 
 > 「트릭컬 리바이브」와 「Reigns」를 패러디한 **비공식 · 비상업 팬게임**입니다.
 > An unofficial, non-commercial fan parody of *Trickcal Revive* and *Reigns*.
 
-**▶ 플레이하기: <https://ember5521.github.io/Ner-the-high-priest/>**
+**▶ 플레이하기: <https://ember5521.github.io/Ner-the-high-priestess/>**
 
 설치 없이 PC와 모바일 브라우저에서 바로 플레이할 수 있습니다. 한국어 · English · 日本語를 지원합니다.
 
@@ -31,7 +31,7 @@
 - 캐릭터, 세계관, 명칭 등 원작에 대한 모든 권리는 각 원 권리자에게 있습니다.
 - 원작 게임의 이미지, 음성, 음악, 폰트 등 리소스를 추출하거나 사용하지 않았습니다. 게임 안의 그림은 이 팬게임을 위해 새로 만든 것입니다.
 - 어떠한 수익도 내지 않습니다. 광고, 후원, 유료 판매가 없습니다.
-- 권리자께서 요청하시면 즉시 수정하거나 공개를 중단하겠습니다. [GitHub 이슈](https://github.com/Ember5521/Ner-the-high-priest/issues)로 연락해 주세요.
+- 권리자께서 요청하시면 즉시 수정하거나 공개를 중단하겠습니다. [GitHub 이슈](https://github.com/Ember5521/Ner-the-high-priestess/issues)로 연락해 주세요.
 
 **Disclaimer.** This is an unofficial fan work parodying *Trickcal Revive* / *Trickcal: Chibi Go* (EPIDGames) and *Reigns* (Nerial / Devolver Digital). It is not affiliated with or endorsed by either rights holder. All rights to the original characters, settings and names belong to their respective owners. No assets were extracted from the original games, and this project makes no money. If you are a rights holder and want anything changed or removed, please open an issue.
 
