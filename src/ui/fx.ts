@@ -3,6 +3,7 @@ import type { Document } from '../core/state';
 import type { ToolAction as Action } from './tools';
 import { hydrateArt, iconArt, uiUrl } from './art';
 import { ACTION_MS, CONTACT_MS, stampArt, toolFace } from './tools';
+import { system } from '../i18n';
 
 export interface Point {
   x: number;
@@ -445,4 +446,24 @@ export function playAction(
     setTimeout(() => ghost(root) === lifted && dropTool(root), contact + 120);
   }
   return total;
+}
+
+
+const WILD_SEEN = 'ner-wild-seen';
+/** The first wildcard ever: one short line on the paper, gone in a few seconds. */
+export function showWildNotice(root: HTMLElement): void {
+  try {
+    if (localStorage.getItem(WILD_SEEN)) return;
+    localStorage.setItem(WILD_SEEN, '1');
+  } catch {
+    /* without storage the line simply shows each time */
+  }
+  const paper = root.querySelector<HTMLElement>('.document');
+  if (!paper) return;
+  const note = document.createElement('p');
+  note.className = 'wild-notice';
+  note.setAttribute('role', 'status');
+  note.textContent = system.ui.wildNotice;
+  paper.append(note);
+  setTimeout(() => note.remove(), 6000);
 }

@@ -857,16 +857,42 @@ p {
   animation: out-left 0.42s calc(var(--contact, 0ms) + 260ms) ease-in forwards;
 }
 .document.processed-alice {
+  border-color: #9b6bd6;
   animation: alice-swap 0.5s ease-in forwards;
 }
+/* the old paper flares purple and slips away the way it was slid */
 @keyframes alice-swap {
-  40% {
-    transform: translateY(-6px) rotate(-2deg);
+  0% {
+    box-shadow: 0 0 0 4px rgba(155, 107, 214, 0.6), 0 0 30px rgba(155, 107, 214, 0.75);
+  }
+  35% {
+    background: color-mix(in srgb, #b98cf0 45%, var(--paper));
+    box-shadow:
+      0 0 0 6px rgba(155, 107, 214, 0.75),
+      0 0 50px rgba(178, 140, 230, 0.95),
+      inset 0 0 80px rgba(155, 107, 214, 0.7);
   }
   to {
     opacity: 0;
-    transform: translateY(-40px) scale(0.92) rotate(4deg);
-    filter: blur(2px);
+    transform: translateX(calc(var(--wild-dir, 1) * 70px)) scale(0.9)
+      rotate(calc(var(--wild-dir, 1) * 6deg));
+    filter: blur(3px);
+    box-shadow: 0 0 60px rgba(178, 140, 230, 0);
+  }
+}
+/* the new paper comes in with a purple shimmer that fades */
+.document.wild-arrive {
+  animation:
+    paper-in 0.3s ease-out,
+    wild-arrive 0.8s ease-out;
+}
+@keyframes wild-arrive {
+  0% {
+    border-color: #9b6bd6;
+    box-shadow:
+      0 6px 0 var(--faint),
+      0 0 0 5px rgba(155, 107, 214, 0.6),
+      0 0 36px rgba(178, 140, 230, 0.85);
   }
 }
 .document.chopped {
@@ -2311,29 +2337,104 @@ p {
   filter: grayscale(1);
   cursor: not-allowed;
 }
-/* the wildcard lives on the paper itself, bottom centre: tap once to aim, again to swap.
-   Face and name sit side by side, so it takes one short row from the letter */
-.tool.paper-alice {
+/* the wildcard rides in the paper's bottom-right corner as a faint picture and
+   takes no room; the paper itself is the control: hold it and slide it sideways */
+.paper-alice {
+  /* sits inside the dashed seal circle (.seal-spot: right 16, bottom 14, 58px) */
   position: absolute;
-  left: 50%;
-  bottom: 9px;
+  right: 23px;
+  bottom: 21px;
   z-index: 2;
-  flex-direction: row;
-  gap: 4px;
-  padding: 2px 6px 2px 2px;
-  transform: translateX(-50%);
-  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  opacity: 0.5;
+  pointer-events: none;
+  transition: opacity 0.2s, scale 0.2s;
 }
-.paper-alice .alice-face {
-  width: 40px;
-  height: 40px;
+.paper-alice .art-slot,
+.paper-alice img,
+.paper-alice svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
-.paper-alice .tool-name {
-  font-size: 13px;
-  white-space: nowrap;
+/* R on a document it can't swap: the corner card shakes its head */
+.paper-alice.hesitating {
+  animation: shake 0.38s ease-in-out;
 }
-.document:has(.paper-alice) .paper-content {
-  padding-bottom: 52px;
+.paper-alice.spent {
+  opacity: 0.18;
+  filter: grayscale(1);
+}
+.document.wild-hold .paper-alice {
+  opacity: 0.9;
+  scale: 1.08;
+}
+.document.wild-hold {
+  border-color: #9b6bd6;
+  background: color-mix(in srgb, #9b6bd6 7%, var(--paper));
+  box-shadow:
+    0 6px 0 var(--faint),
+    0 0 0 3px rgba(155, 107, 214, 0.35),
+    0 0 18px rgba(155, 107, 214, 0.45);
+  transition: box-shadow 0.15s, background 0.15s, border-color 0.15s;
+  cursor: grab;
+}
+.document.wild-sliding {
+  cursor: grabbing;
+  user-select: none;
+}
+/* let go too early: the paper slides back into place */
+.document.wild-return {
+  transition: translate 0.2s ease-out, rotate 0.2s ease-out;
+}
+/* far enough: letting go now swaps the document */
+.document.wild-ready {
+  background: color-mix(in srgb, #9b6bd6 14%, var(--paper));
+  box-shadow:
+    0 6px 0 var(--faint),
+    0 0 0 4px rgba(155, 107, 214, 0.6),
+    0 0 30px rgba(155, 107, 214, 0.75),
+    inset 0 0 40px rgba(155, 107, 214, 0.35);
+}
+.choice-caption.alice {
+  color: #7a4fb8;
+}
+/* first wildcard ever: one short line along the paper's foot */
+.wild-notice {
+  position: absolute;
+  left: 10px;
+  right: 82px;
+  bottom: 10px;
+  z-index: 3;
+  margin: 0;
+  padding: 6px 10px;
+  background: color-mix(in srgb, #9b6bd6 16%, var(--paper));
+  border: 1.5px solid #9b6bd6;
+  border-radius: 8px;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--ink);
+  word-break: keep-all;
+  pointer-events: none;
+  animation: wild-notice 6s ease-in-out forwards;
+}
+@keyframes wild-notice {
+  0% {
+    opacity: 0;
+    translate: 0 6px;
+  }
+  6%,
+  85% {
+    opacity: 1;
+    translate: 0 0;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 /* Linua's rewind prompt: two choices */
@@ -5900,4 +6001,22 @@ p {
   background: var(--tone);
   -webkit-mask: var(--glyph) center / contain no-repeat;
   mask: var(--glyph) center / contain no-repeat;
+}
+
+/* one faint pumpkin somewhere on every forged Speaki document (document.ts) */
+.speaki-pumpkin {
+  position: absolute;
+  z-index: 1;
+  width: var(--size);
+  height: var(--size);
+  transform: translate(-50%, -50%) rotate(var(--turn));
+  color: #d9782d;
+  opacity: 0.2;
+  pointer-events: none;
+}
+.speaki-pumpkin svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
 }

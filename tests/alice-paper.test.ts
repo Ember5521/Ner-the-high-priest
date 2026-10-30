@@ -7,7 +7,7 @@ import * as deck from '../src/core/deck';
 import { mount } from '../src/ui/app';
 import { deskMarkup } from '../src/ui/desk';
 import { documentMarkup } from '../src/ui/document';
-import { liftTool, playAction } from '../src/ui/fx';
+import { liftTool, playAction, showWildNotice } from '../src/ui/fx';
 
 const daily = (cards as Card[]).find((card) => card.kind === 'daily')!;
 let root: HTMLDivElement;
@@ -15,12 +15,12 @@ let unmount: (() => void) | undefined;
 const find = (selector: string) => root.querySelector<HTMLElement>(selector)!;
 const key = (key: string) =>
   window.dispatchEvent(new KeyboardEvent('keydown', { key, cancelable: true }));
-const pointer = (target: HTMLElement, type: string) => {
+const pointer = (target: HTMLElement, type: string, clientX = 200, clientY = 200) => {
   const event = new MouseEvent(type, {
     bubbles: true,
     cancelable: true,
-    clientX: 200,
-    clientY: 200,
+    clientX,
+    clientY,
   });
   Object.defineProperty(event, 'pointerId', { value: 1 });
   target.dispatchEvent(event);
@@ -53,82 +53,94 @@ afterEach(() => {
   vi.useRealTimers();
   vi.restoreAllMocks();
 });
-it('places Alice at the bottom centre of the document, outside the tools row', () => {
+it('shows the wildcard as a faint corner picture, not a button', () => {
   const state: State = {
     ...initialState(),
     current: daily,
     boons: { alice: true },
   };
   root.innerHTML = deskMarkup(state);
-  const button = find('.document > .paper-alice');
+  const card = find('.document > .paper-alice');
   expect(root.querySelector('.axe-pair .alice')).toBeNull();
-  // positioned by .tool.paper-alice in style.css, not inline
-  expect(button.classList.contains('tool')).toBe(true);
-  expect(button.getAttribute('aria-label')).toBe(system.boons.alice.name);
-  expect(button.title).toBe(
-    `${system.boons.alice.name} — ${system.boons.alice.desc}`,
-  );
-  // keys still work, but no key hints are drawn
-  expect(button.querySelector('kbd')).toBeNull();
-  expect(button.getAttribute('aria-disabled')).toBe('false');
+  expect(card.classList.contains('tool')).toBe(false);
+  expect(card.getAttribute('aria-hidden')).toBe('true');
+  expect(card.querySelector('[data-art-slot="ui.aliceToken"]')).not.toBeNull();
+  expect(card.classList.contains('spent')).toBe(false);
   root.innerHTML = deskMarkup({ ...state, boons: {} });
   expect(root.querySelector('.paper-alice')).toBeNull();
 });
 it.each(['story', 'fixed', 'special', 'daily', 'speaki'] as const)(
-  'preserves Alice availability for %s',
+  'dims the wildcard when it cannot swap a %s document',
   (kind) => {
     root.innerHTML = documentMarkup({ ...daily, kind }, true);
-    expect(find('.paper-alice').getAttribute('aria-disabled')).toBe(
-      String(kind !== 'daily' && kind !== 'speaki'),
+    expect(find('.paper-alice').classList.contains('spent')).toBe(
+      kind !== 'daily' && kind !== 'speaki',
     );
     root.innerHTML = documentMarkup({ ...daily, kind }, true, true);
-    expect(find('.paper-alice').getAttribute('aria-disabled')).toBe('true');
+    expect(find('.paper-alice').classList.contains('spent')).toBe(true);
     root.innerHTML = documentMarkup({ ...daily, kind }, true, false, false);
-    expect(find('.paper-alice').getAttribute('aria-disabled')).toBe('true');
+    expect(find('.paper-alice').classList.contains('spent')).toBe(true);
   },
 );
-it.each(['click', 'tap', 'R'])('aims then rerolls with %s', (mode) => {
+it('glows while the paper is held and swaps once it slides far enough', () => {
   start();
   const paper = find('.document');
-  const paperPointer = vi.fn();
-  paper.addEventListener('pointerdown', paperPointer);
-  paper.addEventListener('pointerup', paperPointer);
-  paper.addEventListener('click', paperPointer);
-  const activate = () => {
-    if (mode === 'R') key('R');
-    else if (mode === 'click') find('.paper-alice').click();
-    else {
-      const face = find('.paper-alice .reroll-face');
-      pointer(face, 'pointerdown');
-      pointer(face, 'pointerup');
-      face.dispatchEvent(new MouseEvent('click', { bubbles: true, detail: 1 }));
-    }
-  };
-  activate();
-  expect(find('.paper-alice').classList.contains('aimed')).toBe(true);
+  pointer(paper, 'pointerdown');
+  expect(paper.classList.contains('wild-hold')).toBe(true);
   expect(find('.choice-caption').textContent).toBe(system.aliceLine);
-  expect(paper.classList.contains('processed-alice')).toBe(false);
-  vi.advanceTimersByTime(250);
-  activate();
+  pointer(paper, 'pointermove', 250);
+  expect(paper.classList.contains('wild-ready')).toBe(false);
+  pointer(paper, 'pointermove', 300);
+  expect(paper.classList.contains('wild-ready')).toBe(true);
+  pointer(paper, 'pointerup', 300);
   expect(paper.classList.contains('processed-alice')).toBe(true);
-  expect(paperPointer).not.toHaveBeenCalled();
-  expect(root.querySelector('.ghost .paper-alice')).toBeNull();
   vi.advanceTimersByTime(500);
   expect(root.querySelector('.paper-alice')).toBeNull();
+  expect(find('.document').classList.contains('wild-arrive')).toBe(true);
   expect(find('.document h1').textContent).not.toBe(daily.title);
   expect(find('.year b').textContent).toBe('50');
 });
-it.each(['Escape', 'paper', 'background'])(
-  'clears Alice aim with %s',
-  (mode) => {
-    start();
-    find('.paper-alice').click();
-    if (mode === 'Escape') key('Escape');
-    else pointer(find(mode === 'paper' ? '.document' : '.desk'), 'pointerdown');
-    expect(root.querySelector('.aimed, .processed-alice')).toBeNull();
-    expect(find('.choice-caption').textContent).toBe('');
-  },
-);
+it.each(['short', 'vertical', 'tap'])('keeps the document after a %s press', (mode) => {
+  start();
+  const paper = find('.document');
+  pointer(paper, 'pointerdown');
+  if (mode === 'short') pointer(paper, 'pointermove', 240);
+  if (mode === 'vertical') pointer(paper, 'pointermove', 205, 260);
+  pointer(paper, 'pointerup', mode === 'short' ? 240 : 200);
+  expect(paper.classList.contains('processed-alice')).toBe(false);
+  expect(paper.classList.contains('wild-hold')).toBe(false);
+  expect(find('.choice-caption').textContent).toBe('');
+  vi.advanceTimersByTime(500);
+  expect(find('.document h1').textContent).toBe(daily.title);
+});
+it('still swaps with R pressed twice', () => {
+  start();
+  key('R');
+  expect(find('.document').classList.contains('wild-hold')).toBe(true);
+  expect(find('.choice-caption').textContent).toBe(system.aliceLine);
+  vi.advanceTimersByTime(250);
+  key('R');
+  expect(find('.document').classList.contains('processed-alice')).toBe(true);
+  vi.advanceTimersByTime(500);
+  expect(find('.document h1').textContent).not.toBe(daily.title);
+});
+it('clears the R aim with Escape', () => {
+  start();
+  key('R');
+  key('Escape');
+  expect(root.querySelector('.wild-hold, .processed-alice')).toBeNull();
+  expect(find('.choice-caption').textContent).toBe('');
+});
+it('explains the wildcard only the first time it is ever gained', () => {
+  root.innerHTML = documentMarkup(daily, true);
+  showWildNotice(root);
+  expect(root.querySelectorAll('.wild-notice')).toHaveLength(1);
+  expect(find('.wild-notice').textContent).toBe(system.ui.wildNotice);
+  showWildNotice(root);
+  expect(root.querySelectorAll('.wild-notice')).toHaveLength(1);
+  vi.advanceTimersByTime(6000);
+  expect(root.querySelector('.wild-notice')).toBeNull();
+});
 it.each(['axe', 'bullet'] as const)(
   'strips Alice from %s paper clones and ghosts',
   (action) => {

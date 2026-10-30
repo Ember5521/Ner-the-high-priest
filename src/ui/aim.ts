@@ -15,6 +15,8 @@ export function updateAimPreview(
   root
     .querySelectorAll<HTMLElement>('.tool')
     .forEach((el) => el.classList.toggle('aimed', el.dataset.action === aim));
+  // the R key aims the wildcard: the paper takes the same purple as a held swap
+  root.querySelector('.document')?.classList.toggle('wild-hold', aim === 'alice');
   const label =
     aim === 'scope'
       ? system.boons.scope.short || system.boons.scope.name

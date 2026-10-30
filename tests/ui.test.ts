@@ -519,7 +519,10 @@ describe('document tools', () => {
         ).toEqual([]);
       }
       expect(find('.document-number').textContent).toBe(factionLabel(daily));
-      expect(documentMarkup(card)).toBe(documentMarkup(daily));
+      // apart from its one faint pumpkin, a forgery looks like the real thing
+      expect(
+        documentMarkup(card).replace(/<i class="speaki-pumpkin"[\s\S]*?<\/i>/, ''),
+      ).toBe(documentMarkup(daily));
     },
   );
 
@@ -1808,20 +1811,24 @@ describe('boon UI', () => {
       }
     },
   );
+  // slide the paper sideways past the wildcard threshold and let go
+  const slide = (dx = 120) => {
+    const paper = find('.document');
+    pointer(paper, 'pointerdown', 200, 300);
+    pointer(paper, 'pointermove', 200 + dx / 2, 300);
+    pointer(paper, 'pointermove', 200 + dx, 300);
+    pointer(paper, 'pointerup', 200 + dx, 300);
+  };
   it('aims Alice with r, cancels with other arrows, confirms and consumes without time passing', () => {
     showState({ year: 50, boons: { alice: true } });
-    expect(find('[data-action="alice"]').getAttribute('aria-label')).toBe(
-      system.boons.alice.name,
-    );
-    expect(find('.tool.alice').parentElement).toBe(find('.document'));
+    const card = find('.paper-alice');
+    expect(card.parentElement).toBe(find('.document'));
+    expect(card.classList.contains('tool')).toBe(false);
+    expect(card.classList.contains('spent')).toBe(false);
     expect(root.querySelector('.axe-pair .tool.alice')).toBeNull();
-    expect(find('.tool.alice .tool-name').textContent).toBe('와일드 카드');
-    expect(find('.tool.alice').getAttribute('aria-disabled')).toBe('false');
-    expect(find('.tool.alice').title).toBe(
-      `${system.boons.alice.name} — ${system.boons.alice.desc}`,
-    );
     key('r');
     expect(find('.choice-caption.alice').textContent).toBe(system.aliceLine);
+    expect(find('.document').classList.contains('wild-hold')).toBe(true);
     key('ArrowLeft');
     expect(find('.choice-caption').textContent).toBe('');
     key('r');
@@ -1832,51 +1839,33 @@ describe('boon UI', () => {
     expect(find('.document').classList.contains('processed-alice')).toBe(true);
     key(' ');
     expect(year()).toBe('50');
-    expect(root.querySelector('[data-action="alice"]')).toBeNull();
+    expect(root.querySelector('.paper-alice')).toBeNull();
     expect(find('.document h1').textContent).not.toBe(daily.title);
   });
-  it('renders the reroll only while Alice is held, never in preview markup', () => {
+  it('renders the wildcard only while Alice is held, never in preview markup', () => {
     showState({ boons: {} });
-    expect(root.querySelector('.tool.alice')).toBeNull();
-    expect(documentMarkup(daily)).not.toContain('reroll');
+    expect(root.querySelector('.paper-alice')).toBeNull();
+    expect(documentMarkup(daily)).not.toContain('paper-alice');
     showState({ boons: { alice: true } });
-    expect(root.querySelectorAll('.tool.alice')).toHaveLength(1);
+    expect(root.querySelectorAll('.paper-alice')).toHaveLength(1);
   });
-  it.each(['tap', 'click'])('aims and confirms Alice with %s', (mode) => {
+  it('swaps when the paper is held and slid sideways', () => {
     showState({ year: 50, boons: { alice: true } });
-    const activate = () =>
-      mode === 'tap' ? tap('alice') : click('.tool.alice');
-    activate();
-    expect(find('.tool.alice').classList.contains('aimed')).toBe(true);
+    const paper = find('.document');
+    pointer(paper, 'pointerdown', 200, 300);
+    expect(paper.classList.contains('wild-hold')).toBe(true);
     expect(find('.choice-caption.alice').textContent).toBe(system.aliceLine);
-    vi.advanceTimersByTime(200);
-    activate();
-    expect(find('.document').classList.contains('processed-alice')).toBe(true);
+    pointer(paper, 'pointermove', 320, 300);
+    expect(paper.classList.contains('wild-ready')).toBe(true);
+    pointer(paper, 'pointerup', 320, 300);
+    expect(paper.classList.contains('processed-alice')).toBe(true);
     expect(root.querySelector('.ghost,.ink')).toBeNull();
     vi.advanceTimersByTime(500);
     expect(year()).toBe('50');
-    expect(root.querySelector('.tool.alice')).toBeNull();
+    expect(root.querySelector('.paper-alice')).toBeNull();
+    expect(find('.document').classList.contains('wild-arrive')).toBe(true);
     expect(find('.document h1').textContent).not.toBe(daily.title);
   });
-  it.each(['Enter', ' '])(
-    'allows native %s activation on the focused reroll',
-    (value) => {
-      showState({ boons: { alice: true } });
-      find('.tool.alice').focus();
-      for (let i = 0; i < 2; i++) {
-        const event = new KeyboardEvent('keydown', {
-          key: value,
-          bubbles: true,
-          cancelable: true,
-        });
-        find('.tool.alice').dispatchEvent(event);
-        expect(event.defaultPrevented).toBe(false);
-        // jsdom does not generate the native button click from a key press.
-        click('.tool.alice');
-      }
-      expect(root.querySelector('.processed-alice')).not.toBeNull();
-    },
-  );
   it.each([
     'ArrowLeft',
     'ArrowRight',
@@ -1886,50 +1875,30 @@ describe('boon UI', () => {
     'background',
   ])('cancels Alice aim with %s', (cancel) => {
     showState({ boons: { alice: true } });
-    click('.tool.alice');
-    if (cancel === 'paper' || cancel === 'background')
-      pointer(find(cancel === 'paper' ? '.document' : '.desk'), 'pointerdown');
+    key('r');
+    if (cancel === 'paper') {
+      pointer(find('.document'), 'pointerdown');
+      pointer(find('.document'), 'pointerup');
+    } else if (cancel === 'background') pointer(find('.desk'), 'pointerdown');
     else key(cancel);
-    expect(root.querySelector('.aimed,.processed-alice')).toBeNull();
+    expect(root.querySelector('.aimed,.processed-alice,.wild-hold')).toBeNull();
     expect(find('.choice-caption').textContent).toBe('');
   });
-  it.each(['drag', 'hold-release'])(
-    'rerolls with Alice %s and shows its token ghost',
-    (mode) => {
-      showState({ year: 9, boons: { alice: true, bullet: 3 } });
-      expect(
-        [...find('.axe-pair').children].map(
-          (el) => (el as HTMLElement).dataset.action,
-        ),
-      ).toEqual(['axe']);
-      expect(find('.xion-slot .bullet')).not.toBeNull();
-      const button = find('.tool.alice');
-      pointer(button, 'pointerdown', 30, 600);
-      expect(find('.ghost.alice .alice-face').innerHTML).toBe(
-        find('.tool.alice .alice-face').innerHTML,
-      );
-      expect(find('.ghost.alice .reroll-ring')).not.toBeNull();
-      expect(
-        find('.ghost.alice .reroll-face img').getAttribute('src'),
-      ).toContain('alice');
-      expect(button.classList.contains('lifted')).toBe(true);
-      if (mode === 'drag') pointer(button, 'pointermove', 200, 200);
-      pointer(button, 'pointerup', 200, 200);
-      expect(root.querySelector('.processed-alice')).not.toBeNull();
-      expect(root.querySelector('.ghost,.ink,.lifted')).toBeNull();
-      vi.advanceTimersByTime(500);
-      expect(year()).toBe('9');
-      expect(root.querySelector('.tool.alice')).toBeNull();
-      expect(find('.document h1').textContent).not.toBe(daily.title);
-    },
-  );
+  it('keeps the document when the slide stops short', () => {
+    showState({ year: 9, boons: { alice: true } });
+    slide(50);
+    expect(root.querySelector('.processed-alice,.wild-hold')).toBeNull();
+    vi.advanceTimersByTime(500);
+    expect(find('.document h1').textContent).toBe(daily.title);
+    expect(root.querySelector('.paper-alice')).not.toBeNull();
+  });
   it('keeps Alice out of axe halves', () => {
     showState({ year: 9, boons: { alice: true } });
     key('ArrowDown');
     key('ArrowDown');
     expect(root.querySelectorAll('.axe-half')).toHaveLength(2);
-    expect(root.querySelector('.axe-half .alice-face')).toBeNull();
-    expect(root.querySelectorAll('.tool.alice')).toHaveLength(1);
+    expect(root.querySelector('.axe-half .paper-alice')).toBeNull();
+    expect(root.querySelectorAll('.paper-alice')).toHaveLength(1);
   });
   it('finishes the Alice swap after two spaced r presses without skipping the animation', async () => {
     const current = (cards as Card[]).find(
@@ -1945,33 +1914,34 @@ describe('boon UI', () => {
     await new Promise((resolve) => setTimeout(resolve, 900));
     expect(find('.document h1').textContent).not.toBe(current.title);
     expect(root.querySelector('[data-boon="alice"]')).toBeNull();
-    expect(root.querySelector('[data-action="alice"]')).toBeNull();
+    expect(root.querySelector('.paper-alice')).toBeNull();
     expect(year()).toBe('9');
     key('ArrowRight');
     expect(find('[data-action="approve"]').classList.contains('aimed')).toBe(
       true,
     );
   });
-  it('finishes an Alice click using its 500 ms animation timer', () => {
+  it('finishes a slide swap using its 500 ms animation timer', () => {
     showState({ year: 9, boons: { alice: true } });
-    click('.tool.alice');
-    vi.advanceTimersByTime(200);
-    click('.tool.alice');
+    slide();
     vi.advanceTimersByTime(500);
     expect(find('.document h1').textContent).not.toBe(daily.title);
     expect(root.querySelector('[data-boon="alice"]')).toBeNull();
     expect(year()).toBe('9');
   });
-  it.each(['keyboard', 'click', 'pointer'])(
+  it.each(['keyboard', 'slide'])(
     'hesitates via %s when no replacement daily exists and keeps the charge',
     (mode) => {
       vi.spyOn(deck, 'canRerollDaily').mockReturnValue(false);
       showState({ year: 9, boons: { alice: true } });
-      expect(find('.tool.alice').getAttribute('aria-disabled')).toBe('true');
-      if (mode === 'keyboard') key('r');
-      else if (mode === 'pointer') tap('alice');
-      else click('.tool.alice');
-      expect(find('.tool.alice').classList.contains('hesitating')).toBe(true);
+      expect(find('.paper-alice').classList.contains('spent')).toBe(true);
+      if (mode === 'keyboard') {
+        key('r');
+        expect(find('.paper-alice').classList.contains('hesitating')).toBe(true);
+      } else {
+        slide();
+        expect(root.querySelector('.wild-hold')).toBeNull();
+      }
       expect(root.querySelector('.processed-alice')).toBeNull();
       vi.advanceTimersByTime(1200);
       expect(find('.document h1').textContent).toBe(daily.title);
@@ -1983,19 +1953,13 @@ describe('boon UI', () => {
     'hesitates on %s and keeps the charge',
     (kind) => {
       showState({ current: { ...daily, kind }, boons: { alice: true } });
-      expect(find('.tool.alice').getAttribute('aria-disabled')).toBe('true');
+      expect(find('.paper-alice').classList.contains('spent')).toBe(true);
       key('r');
-      expect(
-        find('[data-action="alice"]').classList.contains('hesitating'),
-      ).toBe(true);
+      expect(find('.paper-alice').classList.contains('hesitating')).toBe(true);
       expect(find('.choice-caption').textContent).toBe('');
       expect(root.querySelector('.processed-alice')).toBeNull();
-      const remove = vi.spyOn(find('.tool.alice').classList, 'remove');
-      click('.tool.alice');
-      expect(remove).toHaveBeenCalledWith('hesitating');
-      expect(
-        find('[data-action="alice"]').classList.contains('hesitating'),
-      ).toBe(true);
+      slide();
+      expect(root.querySelector('.processed-alice,.wild-hold')).toBeNull();
     },
   );
 });

@@ -16,6 +16,10 @@ export interface Input {
   setAim(value: Action | null): void;
   /** False when the tool may not be picked up (the app shows why). */
   canLift(action: Action): boolean;
+  /** True while the wildcard may swap the current document. */
+  canWild?(): boolean;
+  /** Shows or clears the wildcard's whisper under the paper. */
+  wildCaption?(on: boolean): void;
   stamp(action: Action, drop?: Point): void;
   placeBlindfold?(gauge?: Gauge): void;
   useBandage?(gauge: Gauge): void;
@@ -25,6 +29,8 @@ export interface Input {
 
 /** Below this travel a press counts as a tap rather than a drag. */
 const TAP_PX = 10;
+/** How far the paper must slide sideways before letting go swaps it. */
+const WILD_PX = 80;
 
 export function createInput(root: HTMLElement, input: Input) {
   let bindings = new AbortController();
@@ -38,10 +44,13 @@ export function createInput(root: HTMLElement, input: Input) {
   } | null = null;
 
   let selectedItem: 'blindfold' | 'bandage' | null = null;
+  // the wildcard gesture: hold the paper, slide it sideways past WILD_PX
+  let wild: { id: number; start: Point; sliding: boolean; ready: boolean } | null = null;
   const paper = () => root.querySelector<HTMLElement>('.document');
   const setTarget = (on: boolean) => paper()?.classList.toggle('target', on);
 
   function reset(returnHeld = false): void {
+    wild = null;
     const held = hold;
     hold = null;
     if (held?.button.hasPointerCapture?.(held.id))
@@ -263,6 +272,79 @@ export function createInput(root: HTMLElement, input: Input) {
         { signal: bindings.signal },
       );
     });
+    bindWild();
+  }
+
+  function endWild(swap: boolean): void {
+    const held = wild;
+    wild = null;
+    const sheet = paper();
+    if (!held || !sheet) return;
+    if (sheet.hasPointerCapture?.(held.id)) sheet.releasePointerCapture(held.id);
+    sheet.classList.remove('wild-hold', 'wild-ready', 'wild-sliding');
+    input.wildCaption?.(false);
+    if (swap) {
+      input.stamp('alice');
+      return;
+    }
+    if (!held.sliding) return;
+    sheet.classList.add('wild-return');
+    sheet.style.removeProperty('translate');
+    sheet.style.removeProperty('rotate');
+    setTimeout(() => sheet.classList.remove('wild-return'), 220);
+  }
+
+  function bindWild(): void {
+    const sheet = paper();
+    if (!sheet) return;
+    const on = (type: string, fn: (e: PointerEvent) => void) =>
+      sheet.addEventListener(type, fn as EventListener, { signal: bindings.signal });
+    on('pointerdown', (e) => {
+      if (
+        e.button !== 0 ||
+        wild ||
+        hold ||
+        !input.playing ||
+        input.busy ||
+        input.sleep ||
+        input.menuOpen ||
+        input.sceneOpen ||
+        !input.canWild?.() ||
+        (e.target as Element).closest('.tool, [data-tip], .bishop-pill, .bishop-sheet')
+      )
+        return;
+      wild = { id: e.pointerId, start: { x: e.clientX, y: e.clientY }, sliding: false, ready: false };
+      if (input.aim) input.setAim(null);
+      sheet.classList.add('wild-hold');
+      input.wildCaption?.(true);
+    });
+    on('pointermove', (e) => {
+      if (!wild || wild.id !== e.pointerId) return;
+      const dx = e.clientX - wild.start.x;
+      const dy = e.clientY - wild.start.y;
+      if (!wild.sliding) {
+        // an upward or downward drag is the letter scrolling, not a swap
+        if (Math.abs(dy) > TAP_PX && Math.abs(dy) > Math.abs(dx)) {
+          endWild(false);
+          return;
+        }
+        if (Math.abs(dx) <= TAP_PX) return;
+        wild.sliding = true;
+        sheet.setPointerCapture?.(e.pointerId);
+        sheet.classList.add('wild-sliding');
+      }
+      wild.ready = Math.abs(dx) >= WILD_PX;
+      sheet.classList.toggle('wild-ready', wild.ready);
+      sheet.style.setProperty('--wild-dir', dx < 0 ? '-1' : '1');
+      sheet.style.translate = `${dx * 0.85}px 0`;
+      sheet.style.rotate = `${dx * 0.03}deg`;
+    });
+    on('pointerup', (e) => {
+      if (wild?.id === e.pointerId) endWild(wild.ready);
+    });
+    on('pointercancel', (e) => {
+      if (wild?.id === e.pointerId) endWild(false);
+    });
   }
 
   const onBackground = (e: PointerEvent) => {
@@ -272,6 +354,7 @@ export function createInput(root: HTMLElement, input: Input) {
       input.menuOpen ||
       input.sceneOpen ||
       hold ||
+      wild ||
       (e.target as Element).closest(
         '.tool, .menu-button, .menu, [data-tip], .bishop-pill, .bishop-sheet',
       )

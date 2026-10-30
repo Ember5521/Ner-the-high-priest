@@ -22,7 +22,7 @@ import { deskMarkup, rewindMarkup } from './desk';
 import { titleScreen, endingScreen, bestYearText } from './screens';
 import { animateGauges, understudyDamped } from './gauges';
 import { axeForbidden, type ToolAction } from './tools';
-import { playAction, hesitateAxe, type Point } from './fx';
+import { playAction, hesitateAxe, showWildNotice, type Point } from './fx';
 import { playRewindFx } from './rewindFx';
 import { createInput } from './input';
 import { bindTooltips } from './tooltip';
@@ -738,6 +738,11 @@ export function mount(root: HTMLDivElement): () => void {
       );
       saveCollection(collection);
       render();
+      // the new paper arrives in the wildcard's purple
+      if (actual === 'alice' && state !== previous)
+        root.querySelector('.document')?.classList.add('wild-arrive');
+      // the first wildcard ever: one short line on how to use it
+      if (state !== previous && grant && grant.boon === 'alice') showWildNotice(root);
       if (card.axe !== 'free' || (actual !== 'reject' && actual !== 'approve'))
         animateGauges(root, oldGauges, state.gauges);
       // the direction stayed hidden on the preview; the understudy owns up now
@@ -802,6 +807,16 @@ export function mount(root: HTMLDivElement): () => void {
         return false;
       }
       return true;
+    },
+    canWild() {
+      return !!state.boons.alice && !state.sleep && canRerollDaily(state, runCards);
+    },
+    wildCaption(on) {
+      if (!on) return updateAim();
+      const caption = root.querySelector<HTMLElement>('.choice-caption');
+      if (!caption) return;
+      caption.textContent = system.aliceLine;
+      caption.className = 'choice-caption alice';
     },
     stamp,
     autoStamp,

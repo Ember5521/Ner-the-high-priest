@@ -65,7 +65,12 @@ describe('Speaki forgeries', () => {
   it('renders the daily header, classes, tools, preview dots and exact numbers', () => {
     const forged = materializeCard(mimic, cards);
     const visibleDaily = { ...target, text: forged.text };
-    expect(documentMarkup(forged)).toBe(documentMarkup(visibleDaily));
+    // the only giveaway is one faint pumpkin hidden somewhere on the paper
+    const forgedMarkup = documentMarkup(forged);
+    expect(forgedMarkup.match(/class="speaki-pumpkin"/g)).toHaveLength(1);
+    expect(forgedMarkup.replace(/<i class="speaki-pumpkin"[\s\S]*?<\/i>/, '')).toBe(
+      documentMarkup(visibleDaily),
+    );
     expect(toolsMarkup(forged, initialState().drowse)).toBe(
       toolsMarkup(visibleDaily, initialState().drowse),
     );
