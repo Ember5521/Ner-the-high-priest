@@ -1906,24 +1906,61 @@ p {
 }
 .scene-art {
   width: 100%;
-  aspect-ratio: 4 / 3;
   border: 2px solid var(--ink);
   border-radius: 3px;
   background: var(--bg);
   overflow: hidden;
 }
+/* the frame has the picture's own shape before the picture arrives, so nothing jumps */
+.scene-art .art-slot {
+  height: auto;
+  aspect-ratio: 4 / 3;
+}
+.scene-art [data-art-slot='ui.linuaRewind'] {
+  aspect-ratio: 800 / 574;
+}
+.scene-art [data-art-slot='ui.speakiCaught'] {
+  aspect-ratio: 800 / 621;
+}
+.scene-art [data-art-slot='ui.speakiFooled'] {
+  aspect-ratio: 820 / 693;
+}
+.scene-art [data-art-slot='ui.stitchScene'] {
+  aspect-ratio: 800 / 694;
+}
+.scene-art [data-art-slot='ui.nerKickout'] {
+  aspect-ratio: 820 / 560;
+}
+.scene-art [data-art-slot='ui.erpinSurvived'] {
+  aspect-ratio: 840 / 560;
+}
+.scene-art [data-art-slot='ui.erpinSave'] {
+  aspect-ratio: 840 / 558;
+}
+.scene-art .art-placeholder,
+.scene-art img {
+  position: absolute;
+  inset: 0;
+}
 /* the picture is cut off at its right and bottom edges; pin those to the frame */
 .scene-art img {
   object-fit: contain;
   object-position: 100% 100%;
+  animation: scene-art-in 0.15s ease-out;
 }
-/* once a picture is in, the frame takes the picture's own shape */
-.scene-art:has(img:not([hidden])) {
-  aspect-ratio: auto;
+@keyframes scene-art-in {
+  from {
+    opacity: 0;
+  }
 }
-.scene-art:has(img:not([hidden])) .art-slot,
-.scene-art:has(img:not([hidden])) img {
-  height: auto;
+@media (prefers-reduced-motion: reduce) {
+  .scene-art img {
+    animation: none;
+  }
+}
+/* a blank frame while loading; the title only stands in once the picture has failed */
+.scene-art .art-slot:has(img) .scene-placeholder {
+  visibility: hidden;
 }
 .scene-placeholder {
   display: grid;

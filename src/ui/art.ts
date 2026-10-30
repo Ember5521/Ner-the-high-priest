@@ -82,6 +82,40 @@ export function hydrateArt(root: HTMLElement): void {
     });
 }
 
+// Held for the page's lifetime: a live reference keeps each picture in the
+// browser's memory cache, so a later <img> with the same src skips revalidation.
+const preloaded: HTMLImageElement[] = [];
+
+// Quietly fetch every picture once the title is up, endings last. Sounds stay
+// out: the music is the largest file and muted players never need it.
+export function preloadArt(): void {
+  const { connection } = navigator as Navigator & {
+    connection?: { saveData?: boolean };
+  };
+  if (connection?.saveData) return;
+  const paths = [art.ui, art.icons, art.portraits, art.boons, art.endings]
+    .flatMap((group) => Object.values(group))
+    .flat();
+  const queue = [
+    ...new Set(paths.map(artUrl).filter((url): url is string => !!url)),
+  ];
+  const next = () => {
+    const url = queue.shift();
+    if (!url) return;
+    const img = new Image();
+    img.decoding = 'async';
+    img.onload = img.onerror = next;
+    img.src = url;
+    preloaded.push(img);
+  };
+  const start = () => {
+    for (let i = 0; i < 4; i++) next();
+  };
+  if ('requestIdleCallback' in window)
+    requestIdleCallback(start, { timeout: 2000 });
+  else setTimeout(start, 200);
+}
+
 // Line-only stand-in until the character art arrives.
 export function portraitArt(key: string, seed = ''): string {
   const svg = `
