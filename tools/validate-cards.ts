@@ -70,6 +70,8 @@ export function validateCards(
     }
     const c = value;
     const mimic = c.kind === 'speaki' && 'mimic' in c;
+    if ('disguise' in c && (c.kind !== 'speaki' || c.disguise !== 'special'))
+      fail('disguise must be special on speaki cards only');
     if (
       'mimic' in c &&
       (c.kind !== 'speaki' ||

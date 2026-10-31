@@ -70,6 +70,7 @@ const labels: Record<string, string> = {
   resume: '계속하기',
   axeLine: '도끼 대사',
   bulletLine: '마탄 대사',
+  scopeLine: '스코프 대사',
   aliceLine: '카드 대사',
   notice: '고지',
 };
@@ -116,7 +117,7 @@ export function copySections(data: SystemCopy): Section[] {
     {
       id: 'other',
       label: '기타',
-      paths: ['axeLine', 'bulletLine', 'aliceLine', 'notice'],
+      paths: ['axeLine', 'bulletLine', 'scopeLine', 'aliceLine', 'notice'],
     },
   ];
 }

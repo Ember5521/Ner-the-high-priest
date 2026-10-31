@@ -809,8 +809,5 @@ legend small {
   border-color: var(--ink);
   color: var(--paper);
 }
-.ed-preview-items #preview-bullet {
-  margin-left: 0;
-}
 
 .ed-preview-items [data-item='intuition'][aria-pressed='true'] { background: #9b6bd6; border-color: #9b6bd6; }

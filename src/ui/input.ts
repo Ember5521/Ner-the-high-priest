@@ -2,6 +2,14 @@ import { GAUGE_KEYS } from '../core/config';
 import type { Gauge } from '../core/state';
 import type { ToolAction as Action } from './tools';
 import { dropTool, liftTool, moveTool, overPaper, type Point } from './fx';
+import {
+  dropItem,
+  hideItemShade,
+  liftItem,
+  moveItem,
+  showItemShade,
+  usableGauge,
+} from './itemShade';
 
 export interface Input {
   readonly busy: boolean;
@@ -49,8 +57,19 @@ export function createInput(root: HTMLElement, input: Input) {
   const paper = () => root.querySelector<HTMLElement>('.document');
   const setTarget = (on: boolean) => paper()?.classList.toggle('target', on);
 
+  /** Puts a held or selected tray item away and lifts its shade. */
+  function clearItem(): void {
+    selectedItem = null;
+    dropItem(root);
+    hideItemShade(root, 'tray');
+    root
+      .querySelectorAll('.tray-item.lifted, .blindfold-mark.lifted')
+      .forEach((el) => el.classList.remove('lifted'));
+  }
+
   function reset(returnHeld = false): void {
     wild = null;
+    clearItem();
     const held = hold;
     hold = null;
     if (held?.button.hasPointerCapture?.(held.id))
@@ -80,12 +99,15 @@ export function createInput(root: HTMLElement, input: Input) {
 
   function bind(): void {
     let start = { x: 0, y: 0 };
+    let moved = false;
+    let wasSelected = false;
     bindings.abort();
     bindings = new AbortController();
     reset();
     root
       .querySelectorAll<HTMLElement>('[data-blindfold-item], [data-bandage-item]')
       .forEach((item) => {
+        const kind = item.hasAttribute('data-bandage-item') ? 'bandage' : 'blindfold';
         item.addEventListener(
           'pointerdown',
           (event) => {
@@ -102,6 +124,13 @@ export function createInput(root: HTMLElement, input: Input) {
             event.preventDefault();
             item.setPointerCapture?.(event.pointerId);
             start = { x: event.clientX, y: event.clientY };
+            moved = false;
+            wasSelected = selectedItem === kind;
+            if (input.aim) input.setAim(null);
+            selectedItem = null;
+            item.classList.add('lifted');
+            liftItem(root, kind, start);
+            showItemShade(root, kind);
           },
           { signal: bindings.signal },
         );
@@ -111,7 +140,9 @@ export function createInput(root: HTMLElement, input: Input) {
           (event) => {
             if (!item.hasPointerCapture?.(event.pointerId)) return;
             item.classList.add('dragging');
-            item.style.translate = `${event.clientX - start.x}px ${event.clientY - start.y}px`;
+            moveItem(root, { x: event.clientX, y: event.clientY });
+            if (Math.hypot(event.clientX - start.x, event.clientY - start.y) > TAP_PX)
+              moved = true;
             const over = document
               .elementsFromPoint(event.clientX, event.clientY)
               .find((el) => el !== item && !item.contains(el))
@@ -121,7 +152,7 @@ export function createInput(root: HTMLElement, input: Input) {
               .forEach(
                 (el) => el !== over && el.classList.remove('blindfold-target'),
               );
-            over?.classList.add('blindfold-target');
+            if (over && usableGauge(over, kind)) over.classList.add('blindfold-target');
           },
           { signal: bindings.signal },
         );
@@ -131,9 +162,9 @@ export function createInput(root: HTMLElement, input: Input) {
             if (!item.hasPointerCapture?.(event.pointerId)) return;
             event.stopPropagation();
             item.releasePointerCapture(event.pointerId);
-            const dragged = item.classList.contains('dragging') || Math.hypot(event.clientX - start.x, event.clientY - start.y) > TAP_PX;
-            item.classList.remove('dragging');
-            item.style.removeProperty('translate');
+            const dragged = moved || Math.hypot(event.clientX - start.x, event.clientY - start.y) > TAP_PX;
+            item.classList.remove('dragging', 'lifted');
+            dropItem(root);
             root
               .querySelectorAll('.gauge.blindfold-target')
               .forEach((el) => el.classList.remove('blindfold-target'));
@@ -141,28 +172,47 @@ export function createInput(root: HTMLElement, input: Input) {
             const target = targets.find((el) => el !== item && !item.contains(el));
             const gauge = target?.closest<HTMLElement>('[data-gauge]')?.dataset
               .gauge as Gauge | undefined;
-            const kind = item.hasAttribute('data-bandage-item') ? 'bandage' : 'blindfold';
             if (gauge) {
-              selectedItem = null;
+              clearItem();
               if (kind === 'bandage') input.useBandage?.(gauge);
               else input.placeBlindfold?.(gauge);
             } else if (kind === 'blindfold' && dragged && targets.some((el) => el.closest('.blindfold-slot'))) {
-              selectedItem = null;
+              clearItem();
               input.placeBlindfold?.();
-            } else selectedItem = kind;
+            } else if (dragged || wasSelected) {
+              // let go over nothing, or a second tap: the item goes back
+              clearItem();
+            } else {
+              // a tap keeps the shade up; the next tap on a gauge uses the item
+              selectedItem = kind;
+              showItemShade(root, kind, true);
+            }
+          },
+          { signal: bindings.signal },
+        );
+        item.addEventListener(
+          'pointercancel',
+          () => {
+            item.classList.remove('dragging');
+            root
+              .querySelectorAll('.gauge.blindfold-target')
+              .forEach((el) => el.classList.remove('blindfold-target'));
+            clearItem();
           },
           { signal: bindings.signal },
         );
         item.addEventListener('click', (event) => {
-          if (event.detail === 0 && item.getAttribute('aria-disabled') !== 'true')
-            selectedItem = item.hasAttribute('data-bandage-item') ? 'bandage' : 'blindfold';
+          if (event.detail === 0 && item.getAttribute('aria-disabled') !== 'true') {
+            selectedItem = kind;
+            showItemShade(root, kind, true);
+          }
         }, { signal: bindings.signal });
       });
     root.querySelectorAll<HTMLElement>('[data-gauge]').forEach((el) => el.addEventListener('click', () => {
       if (!selectedItem || input.busy || input.sleep || input.menuOpen || input.sceneOpen) return;
       const gauge = el.dataset.gauge as Gauge;
       const kind = selectedItem;
-      selectedItem = null;
+      clearItem();
       if (kind === 'bandage') input.useBandage?.(gauge);
       else input.placeBlindfold?.(gauge);
     }, { signal: bindings.signal }));
@@ -183,6 +233,7 @@ export function createInput(root: HTMLElement, input: Input) {
           )
             return;
           if (interrupt() || !input.canLift(action)) return;
+          clearItem();
           const point = { x: e.clientX, y: e.clientY };
           hold = {
             id: e.pointerId,
@@ -239,6 +290,9 @@ export function createInput(root: HTMLElement, input: Input) {
         // A tap keeps the preview up; tapping the same tool again confirms.
         if (e.type === 'pointerup' && !moved) {
           if (wasAimed) input.stamp(action);
+          // the tool is going back home, so its spot lights up for the second tap
+          else if ((action === 'bullet' || action === 'scope') && input.aim === action)
+            showItemShade(root, action, true);
           return;
         }
         input.setAim(null);
@@ -266,6 +320,7 @@ export function createInput(root: HTMLElement, input: Input) {
             interrupt()
           )
             return;
+          clearItem();
           if (input.aim === action) input.stamp(action);
           else input.setAim(action);
         },
@@ -315,6 +370,7 @@ export function createInput(root: HTMLElement, input: Input) {
         return;
       wild = { id: e.pointerId, start: { x: e.clientX, y: e.clientY }, sliding: false, ready: false };
       if (input.aim) input.setAim(null);
+      clearItem();
       sheet.classList.add('wild-hold');
       input.wildCaption?.(true);
     });
@@ -360,7 +416,10 @@ export function createInput(root: HTMLElement, input: Input) {
       )
     )
       return;
-    if (!interrupt() && input.aim) input.setAim(null);
+    if (interrupt()) return;
+    if (input.aim) input.setAim(null);
+    // a tap on a gauge is the selected item's target (its click comes next)
+    if (selectedItem && !(e.target as Element).closest('[data-gauge]')) clearItem();
   };
   root.addEventListener('pointerdown', onBackground);
 
@@ -376,9 +435,17 @@ export function createInput(root: HTMLElement, input: Input) {
     }
     if (/^[1-4]$/.test(e.key)) {
       e.preventDefault();
-      if (!e.repeat && !input.busy && !input.sleep)
-        if (selectedItem === 'bandage') { selectedItem = null; input.useBandage?.(GAUGE_KEYS[Number(e.key) - 1]!); }
-        else { selectedItem = null; input.placeBlindfold?.(GAUGE_KEYS[Number(e.key) - 1]); }
+      if (!e.repeat && !input.busy && !input.sleep) {
+        const kind = selectedItem;
+        clearItem();
+        if (kind === 'bandage') input.useBandage?.(GAUGE_KEYS[Number(e.key) - 1]!);
+        else input.placeBlindfold?.(GAUGE_KEYS[Number(e.key) - 1]);
+      }
+      return;
+    }
+    if (e.key === 'Escape' && selectedItem) {
+      e.preventDefault();
+      if (!e.repeat) clearItem();
       return;
     }
     if ((e.target as Element).closest?.('[data-tip]')) return;
@@ -431,6 +498,7 @@ export function createInput(root: HTMLElement, input: Input) {
       if (e.key === ' ') input.skip();
       return;
     }
+    clearItem();
     if (hold) reset();
     if (e.key === ' ') input.skip();
     else {

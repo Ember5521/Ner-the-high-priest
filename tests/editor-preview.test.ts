@@ -361,12 +361,12 @@ it('equips preview item messages and resets them on the next card message', () =
     kind: 'fixed',
     approve: { label: 'x', effects: { sugar: 20 } },
   };
-  const send = (items: string[] = [], blindfold = '') =>
+  const send = (items: string[] = [], sist = '') =>
     window.dispatchEvent(
       new MessageEvent('message', {
         origin: location.origin,
         source: window.parent,
-        data: { type: 'card', card, aim: 'approve', items, blindfold },
+        data: { type: 'card', card, aim: 'approve', items, sist },
       }),
     );
   for (const item of [
@@ -393,23 +393,17 @@ it('equips preview item messages and resets them on the next card message', () =
       ).toBe('4');
     }
   }
-  send([], 'held');
+  send([], 'blindfold');
   expect(root.querySelector('.sist-slot .blindfold-slot')).not.toBeNull();
   expect(root.querySelector('.blindfold-slot b')).toBeNull();
   expect(root.querySelector('[data-blindfold]')).toBeNull();
-  for (const gauge of ['sugar', 'people', 'faith', 'erpin']) {
-    send([], gauge);
-    expect(
-      root.querySelector(
-        `[data-gauge="${gauge}"][data-blindfold] .blindfold-mark`,
-      ),
-    ).not.toBeNull();
-    if (gauge === 'sugar')
-      expect(
-        root.querySelector<HTMLElement>('[data-gauge="sugar"] .preview-dot')
-          ?.hidden,
-      ).toBe(true);
-  }
+  send([], 'bandage');
+  expect(root.querySelector('.sist-slot .bandage-slot')).not.toBeNull();
+  expect(
+    root
+      .querySelector('[data-gauge="people"] [role="meter"]')
+      ?.getAttribute('aria-valuenow'),
+  ).toBe('25');
   send(['invalid'], 'invalid');
   expect(
     root.querySelector(

@@ -1,24 +1,32 @@
 import '../ui/style.css';
 import {
   initialState,
+  bulletForbidden,
   type Card,
   type Action,
   type State,
   type Mode,
-  type Gauge,
 } from '../core/state';
-import { hesitateAxe, playAction } from '../ui/fx';
+import { hesitateAxe, playAction, type Point } from '../ui/fx';
 import { unlockAudio } from '../ui/sound';
 import { fireScopeOnContact } from '../ui/scopeShot';
-import { BULLET_CHARGES, GAUGE_KEYS } from '../core/config';
-import { axeForbidden } from '../ui/tools';
+import { BULLET_CHARGES } from '../core/config';
+import { canRerollDaily } from '../core/deck';
+import { axeForbidden, type ToolAction } from '../ui/tools';
+import { createInput } from '../ui/input';
+import { hideItemShade } from '../ui/itemShade';
 import { hydrateArt } from '../ui/art';
 import { updateAimPreview } from '../ui/aim';
 import system from '../../data/system.json';
 import { deskMarkup, rewindMarkup } from '../ui/desk';
 import { playRewindFx } from '../ui/rewindFx';
 import { endingScreen } from '../ui/screens';
-import { processDocument, useBandage } from '../core/loop';
+import {
+  aimScope,
+  placeBlindfold,
+  processDocument,
+  useBandage,
+} from '../core/loop';
 import { animateGauges } from '../ui/gauges';
 import rawCards from '../../data/cards/m1.json';
 import {
@@ -49,9 +57,7 @@ export function renderCopyPreview(
     .querySelectorAll('.preferences-overlay')
     .forEach((el) => el.dispatchEvent(new Event('dispose')));
   document.querySelector<HTMLElement>('.rewind-fx')?.click();
-  if (previewKeydown) window.removeEventListener('keydown', previewKeydown);
-  previewKeydown = null;
-  root.onclick = null;
+  session = null;
   root.replaceChildren();
   Object.assign(system, structuredClone(copy));
   if (section === 'tutorial' && system.tutorial.steps.length)
@@ -87,17 +93,187 @@ export function renderCopyPreview(
   }
 }
 
-let previewKeydown: ((event: KeyboardEvent) => void) | null = null;
+type Feature =
+  | { type: 'scene'; scene: string }
+  | { type: 'boon'; boon: keyof typeof system.boons };
+
+/** What the desk is showing; null leaves the game's input inert. */
+interface Session {
+  root: HTMLElement;
+  card: Card;
+  /** The stamp picked with the editor's buttons. */
+  aim: Action | null;
+  /** The tool aimed or held on the desk itself. */
+  liveAim: ToolAction | null;
+  feature?: Feature;
+  armed: boolean;
+  state: State;
+  /** Where a stamp puts the desk back to, so an item can be tried again. */
+  base: State;
+  scene: string | null;
+  busy: boolean;
+  finish: (() => void) | null;
+}
+let session: Session | null = null;
+let bound: { root: HTMLElement; input: ReturnType<typeof createInput> } | null =
+  null;
+
+function refreshAim(s: Session): void {
+  updateAimPreview(
+    s.root,
+    s.card,
+    (s.liveAim ?? s.aim) as Action | null,
+    s.state.drowse.stack === 2,
+    s.state,
+  );
+}
+
+const rerender = (s: Session, state: State) =>
+  renderPreview(s.root, s.card, s.aim, s.feature, s.armed, state, s.base);
+
+function previewStamp(action: ToolAction, drop?: Point): void {
+  const s = session;
+  if (!s || s.scene) return;
+  if (s.busy) {
+    s.finish?.();
+    return;
+  }
+  const { root, card, state } = s;
+  // Same rule as the game: the 마탄 only reaches cards it can reach.
+  if (
+    (action === 'axe' && axeForbidden(card)) ||
+    (action === 'bullet' && (bulletForbidden(card) || !state.boons.bullet))
+  ) {
+    s.liveAim = null;
+    refreshAim(s);
+    hesitateAxe(root, action);
+    return;
+  }
+  if (action === 'scope') {
+    const next = aimScope(state);
+    if (next !== state) rerender(s, next);
+    return;
+  }
+  hideItemShade(root);
+  s.busy = true;
+  const desk = root.querySelector('.desk');
+  const duration = playAction(root, action, drop ?? null, state.sleep > 0);
+  // same as the game: the scope fires the moment the stamp lands
+  if (state.scoped && (action === 'approve' || action === 'reject'))
+    fireScopeOnContact(root, { ...state, current: card }, action);
+  let done = false;
+  const finish = () => {
+    if (done) return;
+    done = true;
+    clearTimeout(timer);
+    if (session === s && root.querySelector('.desk') === desk)
+      rerender(s, s.base);
+  };
+  const timer = setTimeout(finish, duration);
+  s.finish = finish;
+}
+
+// The game's own input, so the desk's tools and items are held and dragged here too.
+function inputFor(root: HTMLElement): ReturnType<typeof createInput> {
+  if (bound?.root === root) return bound.input;
+  bound?.input.dispose();
+  const input = createInput(root, {
+    get busy() {
+      return !!session?.busy;
+    },
+    get sleep() {
+      const state = session?.state;
+      return state && !state.current?.blessings ? state.sleep : 0;
+    },
+    get playing() {
+      return session?.root === root;
+    },
+    get aim() {
+      return session?.liveAim ?? null;
+    },
+    menuOpen: false,
+    get sceneOpen() {
+      return !!session?.scene;
+    },
+    sceneKey() {},
+    openMenu() {},
+    menuKey() {},
+    setAim(value) {
+      const s = session;
+      if (!s) return;
+      if (value === 'scope' && aimScope(s.state) === s.state) return;
+      if (value === 'bullet' && !(s.state.boons.bullet! > 0)) return;
+      if (value === 'alice' && !s.state.boons.alice) return;
+      if (
+        (value === 'axe' && axeForbidden(s.card)) ||
+        (value === 'bullet' && bulletForbidden(s.card))
+      ) {
+        previewStamp(value);
+        return;
+      }
+      s.liveAim = value;
+      refreshAim(s);
+    },
+    canLift(action) {
+      const s = session;
+      if (!s) return false;
+      if (action === 'scope' && aimScope(s.state) === s.state) return false;
+      if (
+        (action === 'axe' && axeForbidden(s.card)) ||
+        (action === 'bullet' &&
+          (bulletForbidden(s.card) || !(s.state.boons.bullet! > 0)))
+      ) {
+        previewStamp(action);
+        return false;
+      }
+      return true;
+    },
+    canWild() {
+      return !!session && canRerollDaily(session.state, sampleCards);
+    },
+    wildCaption(on) {
+      if (!session) return;
+      if (!on) return refreshAim(session);
+      const caption = root.querySelector<HTMLElement>('.choice-caption');
+      if (!caption) return;
+      caption.textContent = system.aliceLine;
+      caption.className = 'choice-caption alice';
+    },
+    stamp: previewStamp,
+    placeBlindfold(gauge) {
+      const s = session;
+      if (!s) return;
+      const next = placeBlindfold(s.state, gauge);
+      if (next !== s.state) rerender(s, next);
+    },
+    useBandage(gauge) {
+      const s = session;
+      if (!s) return;
+      const previous = s.state;
+      const next = useBandage(previous, gauge);
+      if (next === previous) return;
+      rerender(s, next);
+      animateGauges(root, previous.gauges, next.gauges);
+    },
+    autoStamp() {
+      if (session?.state.sleep && !session.busy) previewStamp('approve');
+    },
+    skip() {
+      session?.finish?.();
+    },
+  });
+  bound = { root, input };
+  return input;
+}
 
 export function renderPreview(
   root: HTMLElement,
   card: Card,
   aim: Action | null,
-  feature?:
-    | { type: 'scene'; scene: string }
-    | { type: 'boon'; boon: keyof typeof system.boons },
+  feature?: Feature,
   armed = false,
   state: State = initialState(),
+  base: State = state,
 ): void {
   state.current = card;
   if (armed) state.boons.bullet = BULLET_CHARGES;
@@ -113,50 +289,20 @@ export function renderPreview(
   state.scene = feature?.type === 'scene' ? feature.scene : null;
   const scene = state.scene;
   root.innerHTML = deskMarkup(state);
-  let busy = false;
-  const fire = (action: Action) => {
-    if (busy || scene) return;
-    // Same rule as the game: the 마탄 only reaches cards it can reach.
-    if (
-      (action === 'axe' && axeForbidden(card)) ||
-      (action === 'bullet' && (card.axe === false || !state.boons.bullet))
-    ) {
-      hesitateAxe(root, action);
-      return;
-    }
-    busy = true;
-    const desk = root.querySelector('.desk');
-    const duration = playAction(root, action, null, state.sleep > 0);
-    // same as the game: the scope fires the moment the stamp lands
-    if (state.scoped && (action === 'approve' || action === 'reject'))
-      fireScopeOnContact(root, { ...state, current: card }, action);
-    setTimeout(() => {
-      if (root.querySelector('.desk') === desk)
-        renderPreview(root, card, aim, feature, armed, state);
-    }, duration);
+  session = {
+    root,
+    card,
+    aim,
+    liveAim: aim,
+    feature,
+    armed,
+    state,
+    base,
+    scene,
+    busy: false,
+    finish: null,
   };
-  root.onclick = (event) => {
-    const tool = (event.target as HTMLElement).closest<HTMLElement>(
-      '[data-action]',
-    );
-    if (tool) fire(tool.dataset.action as Action);
-  };
-  if (previewKeydown) window.removeEventListener('keydown', previewKeydown);
-  previewKeydown = (event) => {
-    const action = (
-      {
-        ArrowLeft: 'reject',
-        ArrowDown: 'axe',
-        ArrowUp: 'bullet',
-        ArrowRight: 'approve',
-      } as const
-    )[event.key as 'ArrowLeft'];
-    if (action) {
-      event.preventDefault();
-      if (!event.repeat) fire(action);
-    }
-  };
-  window.addEventListener('keydown', previewKeydown);
+  inputFor(root).bind();
   hydrateArt(root);
   updateAimPreview(root, card, aim, state.drowse.stack === 2, state);
   if (scene) {
@@ -219,6 +365,8 @@ export function renderSpecialPreview(
     const button = document.createElement('button');
     button.className = 'preview-replay';
     button.textContent = '다시 재생';
+    // not a tap on the desk: asleep, that would stamp the paper
+    button.addEventListener('pointerdown', (event) => event.stopPropagation());
     button.onclick = () => renderSpecialPreview(root, id, mode);
     root.append(button);
   };
@@ -228,8 +376,7 @@ export function renderSpecialPreview(
   const desk = root.querySelector('.desk');
   if (id === 'scope')
     setTimeout(() => {
-      if (root.querySelector('.desk') === desk)
-        root.querySelector<HTMLElement>('[data-action="approve"]')?.click();
+      if (root.querySelector('.desk') === desk) previewStamp('approve');
     }, 1100);
   if (id === 'rewind') {
     playAction(root, 'approve', null, false);
@@ -238,9 +385,7 @@ export function renderSpecialPreview(
       .querySelectorAll<HTMLElement>(':scope > :not(.scene)')
       .forEach((el) => el.setAttribute('inert', ''));
     hydrateArt(root);
-    root.onclick = null;
-    if (previewKeydown) window.removeEventListener('keydown', previewKeydown);
-    previewKeydown = null;
+    session = null;
     let busy = false;
     root
       .querySelectorAll<HTMLButtonElement>('[data-rewind]')
@@ -281,9 +426,7 @@ export function renderSpecialPreview(
       });
     root.querySelector<HTMLButtonElement>('[data-rewind="yes"]')!.focus();
   } else if (id === 'alice' || id === 'bullet' || id === 'axe') {
-    root.onclick = null;
-    if (previewKeydown) window.removeEventListener('keydown', previewKeydown);
-    previewKeydown = null;
+    session = null;
     const duration = playAction(root, id, null, false);
     setTimeout(() => {
       if (root.querySelector('.desk') !== desk) return;
@@ -303,7 +446,8 @@ window.addEventListener('pointerdown', unlockPreviewAudio, true);
 window.addEventListener('keydown', unlockPreviewAudio, true);
 let currentYear = 0;
 let currentMode: Mode = 'priest';
-let currentArmed = false;
+let currentXion: '' | 'bullet' | 'scope' = '';
+let currentSist: '' | 'blindfold' | 'bandage' = '';
 let current: Card | null = null;
 let currentAim: Action | null = null;
 const PREVIEW_ITEMS = [
@@ -317,10 +461,6 @@ const PREVIEW_ITEMS = [
   'bandage',
 ];
 let currentItems: string[] = [];
-let currentBlindfold = '';
-let currentScope = '';
-let currentBandage = '';
-let bandageTimer: ReturnType<typeof setTimeout> | undefined;
 // Puts the items picked in the editor on the preview desk, as if they were held.
 function equip(state: State): State {
   const boons = { ...state.boons };
@@ -329,23 +469,16 @@ function equip(state: State): State {
     else if (id === 'bandage') boons.bandage = 1;
     else if (id === 'scope') boons.scope = 4;
     else boons[id as 'understudy' | 'rewind' | 'stitch' | 'alice'] = true;
-  if (currentBlindfold) boons.blindfold = 1;
-  if (currentScope) boons.scope = 4;
-  // the bandage is only usable off-centre, so lower the gauge it will be used on
+  if (currentXion === 'scope') boons.scope = 4;
+  if (currentSist === 'blindfold') boons.blindfold = 1;
   const gauges = { ...state.gauges };
-  if (currentBandage) {
+  // the bandage only works off-centre: two gauges to use it on, two it must skip
+  if (currentSist === 'bandage') {
     boons.bandage = 1;
-    gauges[GAUGE_KEYS.includes(currentBandage as Gauge) ? (currentBandage as Gauge) : 'people'] = 25;
+    gauges.people = 25;
+    gauges.faith = 75;
   }
-  return {
-    ...state,
-    boons,
-    gauges,
-    ...(currentScope === 'aimed' ? { scoped: true as const } : {}),
-    ...(GAUGE_KEYS.includes(currentBlindfold as Gauge)
-      ? { blindfold: currentBlindfold as Gauge }
-      : {}),
-  };
+  return { ...state, boons, gauges };
 }
 window.addEventListener('message', (event) => {
   if (event.origin !== location.origin || event.source !== window.parent)
@@ -373,23 +506,17 @@ window.addEventListener('message', (event) => {
       typeof message.year === 'number' && Number.isFinite(message.year)
         ? Math.max(0, Math.min(200, message.year))
         : 0;
-    currentArmed = message.armed === true;
+    currentXion =
+      message.xion === 'bullet' || message.xion === 'scope' ? message.xion : '';
+    currentSist =
+      message.sist === 'blindfold' || message.sist === 'bandage'
+        ? message.sist
+        : '';
     currentItems = Array.isArray(message.items)
       ? message.items.filter((id: unknown) =>
           PREVIEW_ITEMS.includes(id as string),
         )
       : [];
-    currentBlindfold =
-      message.blindfold === 'held' ||
-      GAUGE_KEYS.includes(message.blindfold as Gauge)
-        ? message.blindfold
-        : '';
-    currentScope =
-      message.scope === 'held' || message.scope === 'aimed' ? message.scope : '';
-    currentBandage =
-      message.bandage === 'held' || GAUGE_KEYS.includes(message.bandage as Gauge)
-        ? message.bandage
-        : '';
     currentMode =
       message.mode === 'bishop'
         ? 'bishop'
@@ -400,23 +527,16 @@ window.addEventListener('message', (event) => {
     currentAim = message.aim === 'none' ? null : message.aim;
     if (!current) {
       root.replaceChildren();
-      if (previewKeydown) window.removeEventListener('keydown', previewKeydown);
-      previewKeydown = null;
+      session = null;
     } else {
-      const prepared = equip({ ...initialState(currentMode), year: currentYear });
-      renderPreview(root, current, currentAim, undefined, currentArmed, prepared);
-      // "반창고 → gauge": show it being used a moment later
-      if (GAUGE_KEYS.includes(currentBandage as Gauge)) {
-        const card = current;
-        const desk = root.querySelector('.desk');
-        clearTimeout(bandageTimer);
-        bandageTimer = setTimeout(() => {
-          if (root.querySelector('.desk') !== desk || current !== card) return;
-          const used = useBandage(prepared, currentBandage as Gauge);
-          renderPreview(root, card, currentAim, undefined, currentArmed, used);
-          animateGauges(root, prepared.gauges, used.gauges);
-        }, 700);
-      }
+      renderPreview(
+        root,
+        current,
+        currentAim,
+        undefined,
+        currentXion === 'bullet',
+        equip({ ...initialState(currentMode), year: currentYear }),
+      );
     }
   } else if (
     current &&
@@ -429,7 +549,7 @@ window.addEventListener('message', (event) => {
       current,
       currentAim,
       message,
-      currentArmed,
+      currentXion === 'bullet',
       equip({ ...initialState(currentMode), year: currentYear }),
     );
   }

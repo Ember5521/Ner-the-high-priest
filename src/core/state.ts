@@ -68,6 +68,7 @@ export interface Card {
   status?: Omit<Status, 'turns'>;
   stamps?: 'direction' | 'light' | 'meet';
   mimic?: string;
+  disguise?: 'special'; // A forgery can wear another kind's paper.
   speaker: string;
   realSpeaker?: string;
   faction: string;
@@ -259,6 +260,21 @@ export function recordSnapshot(state: State): State {
       : history.filter((entry) => entry.year > cutoff || entry === anchor),
   };
 }
+// story documents and item deals do not allow using held items
+export function itemsLocked(card: Document): boolean {
+  return (
+    card.kind === 'story' ||
+    card.look === 'special' ||
+    (card.kind === 'special' &&
+      [card.reject, card.approve].some((side) => side?.grant || side?.mend))
+  );
+}
+
+// bullets follow both axe and item restrictions
+export function bulletForbidden(card: Document): boolean {
+  return card.axe === false || itemsLocked(card);
+}
+
 export function boundary(gauges: State['gauges']): string | undefined {
   for (const key of GAUGE_KEYS) {
     if (gauges[key] <= 0) return `${key}_low`;

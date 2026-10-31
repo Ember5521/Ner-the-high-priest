@@ -22,11 +22,20 @@ it('spends on a stamp but preserves charges on discard and reroll', () => {
   expect(next.boons.scope).toBe(3);
   expect(next.scoped).toBeUndefined();
 });
+it('aims at a forgery too: a stamp wastes the charge, the axe keeps it', () => {
+  const speaki = { ...daily, kind: 'speaki' as const, axe: 'free' as const };
+  const s = aimScope({ ...state(), current: speaki });
+  expect(s.scoped).toBe(true);
+  const stamped = processDocument(s, 'approve', cards, () => 0.5);
+  expect(stamped.gauges).toEqual(s.gauges);
+  expect(stamped.boons.scope).toBe(s.boons.scope! - 1);
+  expect(processDocument(s, 'axe', cards, () => 0.5).boons.scope).toBe(s.boons.scope);
+});
 it('halves Pikora drift and guards invalid targets', () => {
   const card = cards.find(c => c.id === 'special_fricle_pikora')!;
   const s = aimScope({ ...state(), current: card });
   expect(processDocument(s, 'approve', cards, () => 0.5).statuses.filter(x => x.id === 'pikora_drift').every(x => x.left === 3)).toBe(true);
-  for (const current of [null, { ...daily, kind: 'story' as const }, { ...daily, look: 'special' as const }, { ...daily, axe: 'free' as const }]) {
+  for (const current of [null, { ...daily, kind: 'story' as const }, { ...daily, look: 'special' as const }]) {
     const blocked = { ...state(), current };
     expect(aimScope(blocked)).toBe(blocked);
   }

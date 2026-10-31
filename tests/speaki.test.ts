@@ -4,9 +4,10 @@ import { describe, expect, it } from 'vitest';
 import raw from '../data/cards/m1.json';
 import { SPEAKI_CHANCE, SPEAKI_GAP, SPECIAL_CHANCE } from '../src/core/config';
 import { materializeCard, nextDocument } from '../src/core/deck';
-import { initialState, type Card } from '../src/core/state';
+import { initialState, itemsLocked, type Card } from '../src/core/state';
 import { processDocument } from '../src/core/loop';
-import { documentMarkup } from '../src/ui/document';
+import { docKindClass, documentMarkup } from '../src/ui/document';
+import { system } from '../src/i18n';
 import { toolsMarkup } from '../src/ui/tools';
 import { gaugesMarkup, updateGaugePreview } from '../src/ui/gauges';
 import {
@@ -92,6 +93,21 @@ describe('Speaki forgeries', () => {
         ).not.toBeNull();
       }
     }
+  });
+
+  it('renders the forged wildcard as special paper without changing its rules', () => {
+    const fake = cards.find((c) => c.id === 'speaki_fake_wildcard')!;
+    const real = cards.find((c) => c.id === 'special_strange_card')!;
+    const root = document.createElement('div');
+    root.innerHTML = documentMarkup(fake);
+    expect(docKindClass(fake)).toBe(docKindClass(real));
+    expect(docKindClass(fake)).toBe('doc-special');
+    expect(root.querySelector('.document.doc-special')).not.toBeNull();
+    expect(root.querySelector('.speaki-pumpkin')).not.toBeNull();
+    expect(root.querySelector('.document-number')!.textContent).toContain(system.ui.specialPrefix);
+    expect(fake.kind).toBe('speaki');
+    expect(fake.axe).toBe('free');
+    expect(itemsLocked(fake)).toBe(false);
   });
 
   it('uses the chance boundary before the special roll and preserves mandatory priority', () => {
@@ -268,6 +284,10 @@ describe('Speaki forgeries', () => {
 describe('Speaki validation and editing', () => {
   it('validates data and rejects invalid mimic targets, copied fields, text, axe and scenes', () => {
     expect(validateCards(cards)).toEqual([]);
+    for (const card of [{ ...target, disguise: 'special' }, { ...mimic, disguise: 'daily' }])
+      expect(validateCards([target, card])).toContain(
+        '[1] disguise must be special on speaki cards only',
+      );
     const check = (patch: Record<string, unknown>) =>
       validateCards([target, { ...mimic, ...patch }]);
     expect(check({ mimic: target.id })).toEqual([]);

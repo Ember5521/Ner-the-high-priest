@@ -25,6 +25,7 @@ import { axeForbidden, type ToolAction } from './tools';
 import { playAction, hesitateAxe, showWildNotice, type Point } from './fx';
 import { playRewindFx } from './rewindFx';
 import { createInput } from './input';
+import { hideItemShade } from './itemShade';
 import { bindTooltips } from './tooltip';
 import { bindAlbum } from './album';
 import { flyArrivals } from './bishopFly';
@@ -42,6 +43,8 @@ import {
 import {
   initialState,
   earnedExtraEndings,
+  bulletForbidden,
+  itemsLocked,
   type Card,
   type State,
 } from '../core/state';
@@ -621,7 +624,7 @@ export function mount(root: HTMLDivElement): () => void {
     }
   }
   function updateAim(): void {
-    root.querySelector('.bandage-slot')?.setAttribute('aria-disabled', String(menuOpen || sheetOpen || !!state.ending || !!state.scene || !!state.sleep || !!state.bishop?.notices.length || Object.values(state.gauges).every(value => value === 50)));
+    root.querySelector('.bandage-slot')?.setAttribute('aria-disabled', String(menuOpen || sheetOpen || !!state.ending || !!state.scene || !!state.sleep || !!state.bishop?.notices.length || !!(state.current && itemsLocked(state.current)) || Object.values(state.gauges).every(value => value === 50)));
     updateAimPreview(root, state.current, aim, state.drowse.stack === 2, state);
   }
 
@@ -632,7 +635,7 @@ export function mount(root: HTMLDivElement): () => void {
     if (
       state.current &&
       ((value === 'axe' && axeForbidden(state.current)) ||
-        (value === 'bullet' && state.current.axe === false) ||
+        (value === 'bullet' && bulletForbidden(state.current)) ||
         (value === 'alice' && !canRerollDaily(state, runCards)))
     ) {
       stamp(value!);
@@ -665,7 +668,7 @@ export function mount(root: HTMLDivElement): () => void {
     if (
       (action === 'axe' && axeForbidden(card)) ||
       (action === 'bullet' &&
-        (card.axe === false || !(state.boons.bullet! > 0))) ||
+        (bulletForbidden(card) || !(state.boons.bullet! > 0))) ||
       (action === 'alice' && !canRerollDaily(state, runCards))
     ) {
       aim = null;
@@ -685,6 +688,7 @@ export function mount(root: HTMLDivElement): () => void {
     const random = Math.random();
     const asleep = state.sleep > 0 && !card.blessings;
     const actual = asleep ? (random < 0.5 ? 'reject' : 'approve') : action;
+    hideItemShade(root);
     busy = true;
     const duration = playAction(
       root,
@@ -800,7 +804,7 @@ export function mount(root: HTMLDivElement): () => void {
         card &&
         ((action === 'axe' && axeForbidden(card)) ||
           (action === 'bullet' &&
-            (card.axe === false || !(state.boons.bullet! > 0))) ||
+            (bulletForbidden(card) || !(state.boons.bullet! > 0))) ||
           (action === 'alice' && !canRerollDaily(state, runCards)))
       ) {
         stamp(action);

@@ -13,6 +13,7 @@ import {
 } from '../src/core/loop';
 import {
   boundary,
+  bulletForbidden,
   initialState,
   type Action,
   type Card,
@@ -46,7 +47,7 @@ export function classifyDeath(
     (card.axe !== false &&
       card.axe !== 'bullet' &&
       !state.statuses.some((s) => s.axeLock)) ||
-    (card.axe !== false && (state.boons.bullet ?? 0) > 0)
+    (!bulletForbidden(card) && (state.boons.bullet ?? 0) > 0)
   )
     return 'avoidable';
   const lethal = (side: 'reject' | 'approve') => {
@@ -101,7 +102,7 @@ export function playerAction(state: State, policy: Policy, rng: RNG): Action {
     GAUGE_KEYS.reduce((sum, key) => sum + (gauges[key] - 50) ** 2, 0);
   const choice = score(reject) <= score(approve) ? 'reject' : 'approve';
   if (boundary(choice === 'reject' ? reject : approve) && card.axe !== false) {
-    const bulletUsable = (state.boons.bullet ?? 0) > 0;
+    const bulletUsable = !bulletForbidden(card) && (state.boons.bullet ?? 0) > 0;
     if (card.axe === 'bullet' && bulletUsable) return 'bullet';
     if (policy === 'careful') {
       if (

@@ -23,6 +23,8 @@ import { advanceDrowse } from './axe';
 import { dueYear, nextDocument, rerollDaily } from './deck';
 import {
   boundary,
+  bulletForbidden,
+  itemsLocked,
   recordSnapshot,
   type ActiveStatus,
   type Gauge,
@@ -65,7 +67,7 @@ export function processDocument(
     );
   }
   const axeForbidden = card.axe === false || card.axe === 'bullet';
-  const bulletUsable = card.axe !== false && (state.boons.bullet ?? 0) > 0;
+  const bulletUsable = !bulletForbidden(card) && (state.boons.bullet ?? 0) > 0;
   if (
     action === 'axe' &&
     (state.sleep || axeForbidden || state.statuses.some((s) => s.axeLock))
@@ -624,6 +626,7 @@ export function placeBlindfold(state: State, gauge?: Gauge): State {
     state.scene ||
     state.sleep ||
     !state.current ||
+    itemsLocked(state.current) ||
     !(state.boons.blindfold! > 0)
   )
     return state;
@@ -631,7 +634,7 @@ export function placeBlindfold(state: State, gauge?: Gauge): State {
 }
 
 export function useBandage(state: State, gauge: Gauge): State {
-  if (state.ending || state.scene || state.sleep || !state.current || state.bishop?.notices.length || !(state.boons.bandage! > 0) || state.gauges[gauge] === 50) return state;
+  if (state.ending || state.scene || state.sleep || !state.current || itemsLocked(state.current) || state.bishop?.notices.length || !(state.boons.bandage! > 0) || state.gauges[gauge] === 50) return state;
   const value = state.gauges[gauge];
   const boons: State['boons'] = { ...state.boons, bandage: state.boons.bandage! - 1 };
   if (!boons.bandage) delete boons.bandage;
@@ -640,6 +643,6 @@ export function useBandage(state: State, gauge: Gauge): State {
 
 export function aimScope(state: State): State {
   const card = state.current;
-  if (!(state.boons.scope! > 0) || state.scoped || !card || card.kind === 'story' || card.look === 'special' || card.axe === 'free' || state.ending || state.scene || state.sleep || state.bishop?.notices.length) return state;
+  if (!(state.boons.scope! > 0) || state.scoped || !card || itemsLocked(card) || state.ending || state.scene || state.sleep || state.bishop?.notices.length) return state;
   return { ...state, scoped: true };
 }

@@ -7,6 +7,7 @@ const factionLabel = (f: string) =>
   (system.factions as Record<string, string>)[f] ?? f;
 export function docKindClass(card: Document): string {
   if (card.look) return `doc-${card.look}`;
+  if (card.disguise) return `doc-${card.disguise}`;
   return card.kind === 'story' ||
     card.kind === 'fixed' ||
     card.kind === 'special'
@@ -47,7 +48,7 @@ export function documentMarkup(
     <article data-stamps="${card.stamps ?? ''}" class="paper document ${docKindClass(card)} ${card.kind === 'story' ? 'approve-both' : ''}" tabindex="0" aria-label="${escape(system.ui.documentLabel)}">
       ${scoped ? '<div class="scope-reticle" aria-hidden="true"></div>' : ''}
       <div class="paper-content">
-        <p class="document-number">${card.look === 'quest' ? system.ui.questPrefix : card.look === 'hard' ? system.ui.hardPrefix : card.look === 'special' ? system.ui.specialPrefix : card.kind === 'story' ? system.ui.chroniclePrefix : card.kind === 'fixed' ? system.ui.importantPrefix : card.kind === 'special' ? system.ui.specialPrefix : ''}${escape(factionLabel(card.faction))}</p>
+        <p class="document-number">${card.look === 'quest' ? system.ui.questPrefix : card.look === 'hard' ? system.ui.hardPrefix : card.look === 'special' ? system.ui.specialPrefix : card.disguise === 'special' ? system.ui.specialPrefix : card.kind === 'story' ? system.ui.chroniclePrefix : card.kind === 'fixed' ? system.ui.importantPrefix : card.kind === 'special' ? system.ui.specialPrefix : ''}${escape(factionLabel(card.faction))}</p>
         <div class="sender">
           <div class="portrait" style="--speaker:${escape(speaker.color)}">${portraitArt(portraitKey, card.id)}</div>
           <div class="sender-text">

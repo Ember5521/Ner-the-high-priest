@@ -3,6 +3,7 @@ import { system, localizeCard } from '../i18n';
 import type { Card, State } from '../core/state';
 import type { ToolAction as Action } from './tools';
 import { updateGaugePreview } from './gauges';
+import { hideItemShade, showItemShade } from './itemShade';
 export function updateAimPreview(
   root: HTMLElement,
   card: Card | null,
@@ -17,9 +18,13 @@ export function updateAimPreview(
     .forEach((el) => el.classList.toggle('aimed', el.dataset.action === aim));
   // the R key aims the wildcard: the paper takes the same purple as a held swap
   root.querySelector('.document')?.classList.toggle('wild-hold', aim === 'alice');
+  // a keyboard aim has no tool in hand, so the tool's own spot stays lit
+  if (aim === 'bullet' || aim === 'scope')
+    showItemShade(root, aim, !root.querySelector('.ghost'));
+  else hideItemShade(root, 'aim');
   const label =
     aim === 'scope'
-      ? system.boons.scope.short || system.boons.scope.name
+      ? system.scopeLine
         : aim === 'alice'
           ? system.aliceLine
           : aim === 'bullet'

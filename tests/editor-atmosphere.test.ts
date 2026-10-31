@@ -98,15 +98,12 @@ it('applies year defaults, remembers manual years per card and renders slider ch
     expect(button.getAttribute('aria-pressed')).toBe('false');
     expect(root.querySelector(`[data-boon="${id}"]`)).toBeNull();
   }
-  const blindfold =
-    document.querySelector<HTMLSelectElement>('#preview-blindfold')!;
-  for (const value of ['held', 'sugar', 'people', 'faith', 'erpin', '']) {
-    blindfold.value = value;
-    blindfold.dispatchEvent(new Event('change', { bubbles: true }));
-    expect(!!root.querySelector('.sist-slot .blindfold-slot')).toBe(!!value);
-    expect(
-      root.querySelector('[data-blindfold]')?.getAttribute('data-gauge'),
-    ).toBe(value && value !== 'held' ? value : undefined);
+  const sist = document.querySelector<HTMLSelectElement>('#preview-sist')!;
+  for (const value of ['blindfold', 'bandage', '']) {
+    sist.value = value;
+    sist.dispatchEvent(new Event('change', { bubbles: true }));
+    expect(!!root.querySelector('.sist-slot .blindfold-slot')).toBe(value === 'blindfold');
+    expect(!!root.querySelector('.sist-slot .bandage-slot')).toBe(value === 'bandage');
   }
   expect(slider.min).toBe('0');
   expect(slider.max).toBe('200');

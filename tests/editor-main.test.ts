@@ -102,38 +102,28 @@ it('loads selection, validates edits, saves with keyboard, restores aim and prot
       location.origin,
     );
   }
-  const bullet = document.getElementById('preview-bullet') as HTMLButtonElement;
-  bullet.click();
-  expect(bullet.getAttribute('aria-pressed')).toBe('true');
-  expect(post).toHaveBeenLastCalledWith(
-    expect.objectContaining({ type: 'card', armed: true, aim: 'approve' }),
-    location.origin,
-  );
-  bullet.click();
-  expect(bullet.getAttribute('aria-pressed')).toBe('false');
-  expect(post).toHaveBeenLastCalledWith(
-    expect.objectContaining({ armed: false, aim: 'approve' }),
-    location.origin,
-  );
-  // the bandage is a select like the blindfold: none / held / used on a gauge
+  // Xion's and Sist's items are one select each
   expect(document.querySelector('[data-item="bandage"]')).toBeNull();
-  const bandage = document.querySelector<HTMLSelectElement>('#preview-bandage')!;
-  expect([...bandage.options].map((o) => o.value)).toEqual([
-    '',
-    'held',
-    'sugar',
-    'people',
-    'faith',
-    'erpin',
-  ]);
-  bandage.value = 'sugar';
-  bandage.dispatchEvent(new Event('change'));
+  const xion = document.querySelector<HTMLSelectElement>('#preview-xion')!;
+  expect([...xion.options].map((o) => o.value)).toEqual(['', 'bullet', 'scope']);
+  xion.value = 'bullet';
+  xion.dispatchEvent(new Event('change'));
   expect(post).toHaveBeenLastCalledWith(
-    expect.objectContaining({ bandage: 'sugar' }),
+    expect.objectContaining({ type: 'card', xion: 'bullet', aim: 'approve' }),
     location.origin,
   );
-  bandage.value = '';
-  bandage.dispatchEvent(new Event('change'));
+  xion.value = '';
+  xion.dispatchEvent(new Event('change'));
+  const sist = document.querySelector<HTMLSelectElement>('#preview-sist')!;
+  expect([...sist.options].map((o) => o.value)).toEqual(['', 'blindfold', 'bandage']);
+  sist.value = 'bandage';
+  sist.dispatchEvent(new Event('change'));
+  expect(post).toHaveBeenLastCalledWith(
+    expect.objectContaining({ sist: 'bandage' }),
+    location.origin,
+  );
+  sist.value = '';
+  sist.dispatchEvent(new Event('change'));
   expect(JSON.parse(localStorage.getItem('event-editor')!).id).toBe(
     selected.id,
   );

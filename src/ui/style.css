@@ -5590,13 +5590,15 @@ p {
     opacity: 0;
   }
 }
-.blindfold-slot.dragging,
-.bandage-slot.dragging,
-.blindfold-mark.dragging {
-  z-index: 50;
+.tray-item.lifted,
+.blindfold-mark.lifted {
   cursor: grabbing;
-  opacity: 0.9;
   animation: none;
+}
+/* the item is in hand (.item-carry): only a faint trace stays at home */
+.tray-item.lifted .item-face,
+.blindfold-mark.lifted {
+  opacity: 0.25;
 }
 .gauge.blindfold-target .resource-icon {
   filter: drop-shadow(0 0 6px var(--item-blindfold));
@@ -5935,14 +5937,16 @@ p {
   height: 54px;
 }
 /* the blindfold: the green alien sunglasses in full colour */
-.blindfold-slot .item-face {
+.blindfold-slot .item-face,
+.item-carry[data-kind='blindfold'] .item-face {
   background: var(--glyph-blindfold-band) center / contain no-repeat;
 }
 /* the bandage: its glyph inked in a deep orange that reads on the cream tray */
 .bandage-slot {
   --tone: #c0612a;
 }
-.bandage-slot .item-face {
+.bandage-slot .item-face,
+.item-carry[data-kind='bandage'] .item-face {
   background: #e07b36;
   -webkit-mask: var(--glyph-mend) center / contain no-repeat;
   mask: var(--glyph-mend) center / contain no-repeat;
@@ -5960,8 +5964,8 @@ p {
   opacity: 0.4;
   filter: grayscale(1);
 }
-/* while an item is carried, its hover tip gets out of the way */
-.desk:has(.tray-item.dragging) .tip {
+/* while an item is out, its brief replaces the hover tip */
+.desk:has(.item-shade) .tip {
   display: none;
 }
 /* tied over a gauge: only a dashed outline stays behind, to drop it back on */
@@ -6056,4 +6060,88 @@ p {
   width: 100%;
   height: 100%;
   fill: currentColor;
+}
+
+/* an item in hand: the screen goes dark except where it can be used
+   (src/ui/itemShade.ts cuts the holes), and a card says what it does */
+.item-shade {
+  --shade-tone: #a9c6ff;
+  position: fixed;
+  inset: 0;
+  /* above the stage and the dusk overlay, below the tool in hand */
+  z-index: 45;
+  pointer-events: none;
+  animation: fade-in 0.14s ease-out;
+}
+.item-shade[data-kind='scope'] {
+  --shade-tone: #8fc3ff;
+}
+.item-shade[data-kind='bandage'] {
+  --shade-tone: #e9954f;
+}
+.item-shade[data-kind='blindfold'] {
+  --shade-tone: var(--item-blindfold);
+}
+.item-shade-dim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: rgba(24, 15, 10, 0.72);
+}
+.item-shade-ring {
+  position: fixed;
+  box-sizing: border-box;
+  border: 2px solid var(--shade-tone);
+  box-shadow: 0 0 12px var(--shade-tone);
+  animation: item-shade-ring 1.3s ease-in-out infinite;
+}
+@keyframes item-shade-ring {
+  50% {
+    box-shadow: 0 0 3px var(--shade-tone);
+  }
+}
+.item-brief {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  box-sizing: border-box;
+  width: min(320px, calc(100vw - 16px));
+  padding: 9px 13px 10px;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-left: 6px solid var(--shade-tone);
+  border-radius: 3px;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.35);
+  color: var(--ink);
+  text-align: left;
+}
+.item-brief b {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 16px;
+}
+.item-brief span {
+  font-size: 14px;
+  line-height: 1.45;
+  word-break: keep-all;
+}
+.item-carry {
+  position: fixed;
+  z-index: 50;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(1.12);
+  filter: drop-shadow(0 16px 10px rgba(43, 36, 32, 0.28));
+}
+.item-carry .item-face {
+  display: block;
+  width: 64px;
+  height: 64px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .item-shade,
+  .item-shade-ring {
+    animation: none;
+  }
 }

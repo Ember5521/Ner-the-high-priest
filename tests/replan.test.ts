@@ -569,7 +569,7 @@ it.each(['bandage', 'blindfold'] as const)('defers Deal II while %s is held, the
 it.each(['bandage', 'blindfold'] as const)('selects and drags the tray %s without lifting a stamp', async (kind) => {
   const { createInput } = await import('../src/ui/input');
   const root = document.createElement('div');
-  root.innerHTML = deskMarkup({ ...initialState(), current: daily, gauges: { ...initialState().gauges, sugar: 10 }, boons: { [kind]: 1 }, blindfold: kind === 'blindfold' ? 'sugar' : undefined });
+  root.innerHTML = deskMarkup({ ...initialState(), current: daily, gauges: { ...initialState().gauges, sugar: 10, people: 40 }, boons: { [kind]: 1 }, blindfold: kind === 'blindfold' ? 'sugar' : undefined });
   document.body.append(root);
   const item = root.querySelector<HTMLElement>(`.sist-slot .${kind}-slot`)!;
   const gauge = root.querySelector<HTMLElement>('[data-gauge="people"]')!;
@@ -607,11 +607,12 @@ it.each(['bandage', 'blindfold'] as const)('selects and drags the tray %s withou
   try {
     pointer(item, 'pointerdown', 600);
     pointer(item, 'pointermove', 20);
-    expect(item.style.translate).toBe('0px -580px');
+    expect(root.querySelector<HTMLElement>('.item-carry')?.style.top).toBe('20px');
+    expect(root.querySelector('.item-shade')).not.toBeNull();
     expect(gauge.classList.contains('blindfold-target')).toBe(true);
     pointer(item, 'pointerup', 20);
     expect(use).toHaveBeenLastCalledWith('people');
-    expect(root.querySelector('.blindfold-target, .dragging')).toBeNull();
+    expect(root.querySelector('.blindfold-target, .dragging, .item-carry, .item-shade')).toBeNull();
     if (kind === 'blindfold') {
       document.elementsFromPoint = () => [item.querySelector('.item-face')!, item.parentElement!];
       const beforeTap = placeBlindfold.mock.calls.length;

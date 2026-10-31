@@ -78,6 +78,13 @@ export function eligible(card: Card, state: State): boolean {
     ![card.reject, card.approve].some(
       (r) => r?.grant?.boon === 'alice' && state.boons.alice,
     ) &&
+    // Intuition keeps further intuition and hyean offers away.
+    !(
+      state.boons.intuition &&
+      [card.reject, card.approve].some(
+        (r) => r?.grant?.boon === 'intuition' || r?.grant?.boon === 'hyean',
+      )
+    ) &&
     !(
       card.kind !== 'speaki' &&
       card.npc &&

@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest';
 import raw from '../data/cards/m1.json';
-import { initialState, type Card, type Result } from '../src/core/state';
-import { nextDocument } from '../src/core/deck';
+import { initialState, itemsLocked, type Card, type Result } from '../src/core/state';
+import { eligible, nextDocument } from '../src/core/deck';
 import { dismissScene, processDocument } from '../src/core/loop';
 import { mulberry32 } from '../tools/simulate';
 import { validateCards } from '../tools/validate-cards';
@@ -42,6 +42,8 @@ it.each(['daily', 'fixed', 'special', 'speaki', 'story'] as const)(
       for (const side of ['approve', 'reject'] as const) {
         const current = { ...daily, kind, axe: true as const, [side]: result };
         for (const action of ['approve', 'reject', 'axe', 'bullet'] as const) {
+          // a special document that hands out an item refuses the bullet outright
+          if (action === 'bullet' && itemsLocked(current)) continue;
           for (const sleep of [0, 1]) {
             const before = {
               ...initialState(),
@@ -147,4 +149,37 @@ it('uses intuition only after hyean expires and leaves it untouched for empty do
   expect(next.boons.intuition).toEqual({ left: 1 });
   const empty = processDocument({ ...next, current: daily }, 'approve', [daily], () => 0.5);
   expect(empty.boons.intuition).toEqual({ left: 1 });
+});
+
+
+it('blocks intuition and hyean offers only while intuition is held', () => {
+  const offers = [
+    'special_strange_card',
+    'fixed_sist_credit_due',
+    'story_diana_thanks',
+    'story_diana_thanks_again',
+  ].map((id) => cards.find((c) => c.id === id)!);
+  const state = initialState();
+  for (const card of offers) {
+    expect(eligible(card, state)).toBe(true);
+    expect(eligible(card, { ...state, boons: { intuition: { left: 2 } } })).toBe(false);
+  }
+  expect(eligible(offers[0]!, { ...state, boons: { hyean: { left: 2 } } })).toBe(true);
+});
+
+it('delays a scheduled intuition offer until intuition expires', () => {
+  const due = cards.find((c) => c.id === 'fixed_sist_credit_due')!;
+  const state = {
+    ...initialState(),
+    year: 10,
+    boons: { intuition: { left: 2 } },
+    scheduled: { [due.id]: 10 },
+  };
+  const waiting = nextDocument(state, [daily, due], () => 0.5);
+  expect(waiting.current?.id).toBe(daily.id);
+  expect(waiting.scheduled[due.id]).toBe(10);
+  expect(waiting.seen).not.toContain(due.id);
+  const released = nextDocument({ ...waiting, current: null, boons: {} }, [daily, due], () => 0.5);
+  expect(released.current?.id).toBe(due.id);
+  expect(released.scheduled[due.id]).toBeUndefined();
 });

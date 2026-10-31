@@ -38,9 +38,7 @@ let selected: Card | undefined;
 let kind = 'all';
 let rememberedId = '';
 let aim: Action | 'none' = 'none';
-let armed = false;
-// Items the preview desk holds besides the 마탄; the scope is held and
-// the blindfold can also sit on a gauge, so those two are selects.
+// Xion's and Sist's items are one select each; the rest are toggles.
 const PREVIEW_ITEMS = [
   'hyean',
   'intuition',
@@ -50,9 +48,8 @@ const PREVIEW_ITEMS = [
   'alice',
 ] as const;
 let items: string[] = [];
-let blindfold = '';
-let scope = '';
-let bandage = '';
+let xion = '';
+let sist = '';
 let previewYear = 0;
 const yearOverrides = new Map<string, number>();
 const yearControl = get<HTMLInputElement>('preview-year');
@@ -136,11 +133,9 @@ function post() {
       type: 'card',
       card: selected ? materializeCard(selected, cards) : null,
       aim,
-      armed,
+      xion,
+      sist,
       items,
-      blindfold,
-      scope,
-      bandage,
       mode: modeControl.value,
       year: previewYear,
     },
@@ -415,39 +410,15 @@ document.querySelectorAll<HTMLElement>('[data-aim]').forEach((button) => {
     post();
   });
 });
-get('preview-bullet').addEventListener('click', () => {
-  armed = !armed;
-  get('preview-bullet').setAttribute('aria-pressed', String(armed));
-  post();
-});
 {
-  // 보유 shows the tag under 민심; "→ gauge" plays it on that gauge
-  const select = get<HTMLSelectElement>('preview-bandage');
-  select.insertAdjacentHTML(
-    'beforeend',
-    system.gauges
-      .map((g) => `<option value="${g.key}">반창고 → ${g.label}</option>`)
-      .join(''),
-  );
-  select.addEventListener('change', () => {
-    bandage = select.value;
+  const xionSelect = get<HTMLSelectElement>('preview-xion');
+  xionSelect.addEventListener('change', () => {
+    xion = xionSelect.value;
     post();
   });
-}
-get<HTMLSelectElement>('preview-scope').addEventListener('change', (event) => {
-  scope = (event.target as HTMLSelectElement).value;
-  post();
-});
-{
-  const select = get<HTMLSelectElement>('preview-blindfold');
-  select.insertAdjacentHTML(
-    'beforeend',
-    system.gauges
-      .map((g) => `<option value="${g.key}">눈가리개 → ${g.label}</option>`)
-      .join(''),
-  );
-  select.addEventListener('change', () => {
-    blindfold = select.value;
+  const sistSelect = get<HTMLSelectElement>('preview-sist');
+  sistSelect.addEventListener('change', () => {
+    sist = sistSelect.value;
     post();
   });
   for (const id of PREVIEW_ITEMS) {
@@ -463,7 +434,7 @@ get<HTMLSelectElement>('preview-scope').addEventListener('change', (event) => {
       button.setAttribute('aria-pressed', String(items.includes(id)));
       post();
     });
-    select.before(button);
+    sistSelect.parentElement!.append(button);
   }
 }
 frame.addEventListener('load', post);

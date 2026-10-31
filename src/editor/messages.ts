@@ -32,6 +32,10 @@ const RULES: [RegExp, (...m: string[]) => string][] = [
     () => '횟수는 혜안에만 정할 수 있고, 1 이상의 정수여야 합니다.',
   ],
   [
+    /^disguise must be special on speaki cards only$/,
+    () => '다른 종이로 위장하는 설정은 스피키 카드에서 special 값으로만 쓸 수 있습니다.',
+  ],
+  [
     /^mimic must reference an existing daily card on speaki cards only$/,
     () =>
       '흉내 낼 원본은 스피키 카드에서만, 실제로 있는 일반 이벤트로 골라야 합니다.',

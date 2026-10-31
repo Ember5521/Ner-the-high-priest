@@ -2391,7 +2391,7 @@
     "speaker": "sist",
     "faction": "dragon",
     "title": "따끈한 소문",
-    "text": "아이고~ 사장님! 따끈한 소식 하나 있어요, 헤헤. 사탕 조금만 주시면 다 알려 드릴게요. 새로 문 연 과자 가게 소문도 끼워 드릴게요. 여왕님께 전해 드리면 엄청 좋아하실걸요?",
+    "text": "아이고~ 사장님! 따끈한 소식 하나 있어요, 헤헤. 사탕 조금만 주시면 다 알려 드릴게요. 새로 문 연 과자 가게 소문인데요, 여왕님께 전해 드리면 엄청 좋아하실걸요? 주민들 몫이 남을지는 모르겠지만요!",
     "years": 2,
     "axe": true,
     "conditions": {
@@ -2406,11 +2406,8 @@
       "label": "…들어나 보죠.",
       "effects": {
         "sugar": -10,
-        "erpin": 10
-      },
-      "grant": {
-        "boon": "intuition",
-        "uses": 2
+        "erpin": 10,
+        "people": -5
       }
     }
   },
@@ -4297,6 +4294,35 @@
     }
   },
   {
+    "id": "speaki_fake_wildcard",
+    "kind": "speaki",
+    "speaker": "villager",
+    "realSpeaker": "speaki",
+    "faction": "fairy",
+    "disguise": "special",
+    "title": "와일드 카드",
+    "text": "제사장님, 마을 어귀에서 재미난 카드를 주웠어요! 앞면엔 예쁜 호박이 그려져 있고요, 뒷면엔 화난 네르 얼굴이 있는 거예요! 스피... 아니 이 요정 주민은 너무 무서워요! 제사장님이 맡아 주시겠나요오오?",
+    "years": 2,
+    "axe": "free",
+    "reject": {
+      "label": "…한 번 들여다보고 버리죠.",
+      "effects": {}
+    },
+    "approve": {
+      "label": "…일단 제가 맡아 두죠.",
+      "effects": {}
+    },
+    "axeResult": {
+      "scene": "speakiCaught"
+    },
+    "missed": {
+      "scene": "speakiFooled"
+    },
+    "conditions": {
+      "maxYear": 185
+    }
+  },
+  {
     "id": "special_sist_deal",
     "kind": "fixed",
     "speaker": "sist",
@@ -4404,8 +4430,12 @@
     "weight": 2,
     "axe": true,
     "reject": {
-      "label": "버리세요. 수상하네요.",
-      "effects": {}
+      "label": "…한 번 들여다보고 버리죠.",
+      "effects": {},
+      "grant": {
+        "boon": "intuition",
+        "uses": 3
+      }
     },
     "approve": {
       "label": "…일단 제가 맡아 두죠.",

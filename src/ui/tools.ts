@@ -1,4 +1,4 @@
-import type { Action, Choice, Document, State } from '../core/state';
+import { bulletForbidden, itemsLocked, type Action, type Choice, type Document, type State } from '../core/state';
 import { artSlot, escape, uiArt } from './art';
 import { system, format, localizeCard } from '../i18n';
 
@@ -110,7 +110,7 @@ export function toolsMarkup(
     (card.look === 'hard' && card.stamps === 'direction');
   const tool = (action: ToolAction, label: string, key: string) => `
     <button class="tool ${action}${action === 'axe' && axeLocked ? ' status-locked' : ''}" data-action="${action}"${(action === 'reject' || action === 'approve') && card.look === 'special' ? ` data-item="${card[action].grant?.boon ?? (card[action].mend ? 'mend' : '')}"` : ''} aria-label="${escape(label)}"
-      ${action === 'scope' ? `aria-disabled="${asleep || sceneOpen || scoped || card.kind === 'story' || card.look === 'special' || card.axe === 'free'}"` : action === 'axe' || action === 'bullet' ? `aria-disabled="${asleep || (action === 'axe' ? axeForbidden(card) || axeLocked : card.axe === false)}"` : ''}>
+      ${action === 'scope' ? `aria-disabled="${asleep || sceneOpen || scoped || itemsLocked(card)}"` : action === 'axe' || action === 'bullet' ? `aria-disabled="${asleep || (action === 'axe' ? axeForbidden(card) || axeLocked : bulletForbidden(card))}"` : ''}>
       <span class="tool-home" aria-hidden="true">${toolFace(action, card.kind === 'story', card.stamps)}${(action === 'reject' || action === 'approve') && card.look === 'special' ? itemCoin(card[action]) : ''}</span>
       ${action === 'axe' && axeLocked && statusLeft !== undefined ? `<span class="status-left" aria-hidden="true">${statusLeft}</span>` : ''}
       <span class="tool-name">${
@@ -123,7 +123,7 @@ export function toolsMarkup(
   const sistItem = (id: 'bandage' | 'blindfold') => {
     const { name, desc, short } = system.boons[id];
     return (boons[id] ?? 0) > 0
-      ? `<button type="button" class="item-slot tray-item ${id}-slot" data-${id}-item data-tip data-tip-title="${escape(name)}" data-tip-text="${escape(desc)}" aria-label="${escape(name + ' ' + desc)}"${id === 'bandage' ? ` aria-disabled="${bandageDisabled}"` : blindfold ? ' data-placed' : ''}><span class="tool-home" aria-hidden="true"><i class="item-face"></i></span><span class="tool-name">${escape(short)}</span></button>`
+      ? `<button type="button" class="item-slot tray-item ${id}-slot" data-${id}-item data-tip data-tip-title="${escape(name)}" data-tip-text="${escape(desc)}" aria-label="${escape(name + ' ' + desc)}"${itemsLocked(card) ? ' aria-disabled="true"' : id === 'bandage' ? ` aria-disabled="${bandageDisabled}"` : ''}${id === 'blindfold' && blindfold ? ' data-placed' : ''}><span class="tool-home" aria-hidden="true"><i class="item-face"></i></span><span class="tool-name">${escape(short)}</span></button>`
       : '';
   };
   return `

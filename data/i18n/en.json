@@ -170,7 +170,8 @@
       }
     },
     "axeLine": "Haah… This is really testing my temper, isn't it?",
-    "bulletLine": "Dahrk Wander… sigh… One shot, please.",
+    "bulletLine": "Dark Bullet… sigh… One shot, please.",
+    "scopeLine": "Dark Bullet… Take good aim at this one, please.",
     "boons": {
       "intuition": {
         "name": "Intuition",
@@ -473,7 +474,7 @@
         },
         {
           "title": "The Axe and Drowsiness",
-          "text": "You can throw away a document you dislike with the axe. But each ordinary document you chop fills one Z (drowsiness) above the axe. From the second she is too drowsy to read the dots and sees only ?, and at the third Ner falls asleep while Erpin stamps three documents in her place.",
+          "text": "You can throw away a document you dislike with the axe, unless it is marked Urgent. But each ordinary document you chop fills one Z (drowsiness) above the axe. From the second she is too drowsy to read the dots and sees only ?, and at the third Ner falls asleep while Erpin stamps three documents in her place.",
           "try": "Drag the axe down onto the document to throw it away. One Z above the axe will fill.",
           "success": "The document is gone, but one Z filled up. Each one clears after the number of documents written under the axe.",
           "demo": "axe"
@@ -1461,7 +1462,7 @@
     },
     "daily_sist_rumor": {
       "title": "Hot Gossip",
-      "text": "Ohh~ Boss! I've got some piping-hot news, hehe. Just a little candy and I'll tell you everything. I'll even throw in word of a candy shop that just opened. Pass it on to the Queen and she'll be thrilled!",
+      "text": "Ohh~ Boss! I've got some piping-hot news, hehe. Just a little candy and I'll tell you everything. It's about a candy shop that just opened. Pass it on to the Queen and she'll be thrilled! Whether anything's left for the villagers, well, who knows!",
       "reject": "No gossip, thanks.",
       "approve": "…I'll at least hear it."
     },
@@ -1855,6 +1856,12 @@
       "reject": "No, Your Majesty.",
       "approve": "…Just this once."
     },
+    "speaki_fake_wildcard": {
+      "title": "Wild Card",
+      "text": "High Pristess, I found a fun card at the edge of the village! The front has a pretty pumpkin on it, and the back has an angry Ner faaaace! Will the High Pristess keep it for me?",
+      "reject": "…One look, then it goes.",
+      "approve": "…I'll hold on to it for now."
+    },
     "special_sist_deal": {
       "title": "Sist's Deal I",
       "text": "Um, boss? Hand over just a little candy, and this humble peddler will give you the chance to buy her wares. Special price, today only, so choose carefully!",
@@ -1876,7 +1883,7 @@
     "special_strange_card": {
       "title": "Wild Card",
       "text": "High Priestess, I found a strange card at the edge of the village. The front is blank, but when I hold it, different pictures keep showing through! It scares me… Would the Order keep it?",
-      "reject": "Throw it away. It's suspicious.",
+      "reject": "…One look, then it goes.",
       "approve": "…I'll hold on to it for now."
     },
     "speaki_erpin_snack_decree": {
